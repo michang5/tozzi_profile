@@ -244,24 +244,60 @@ a.btn.btn-fb {
   }
 }
 
+#section-2 {
+  background: #fff;
+}
 #section-2 .container {
   overflow: hidden;
-  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   margin-bottom: 20px;
-  height: 110px;
+  height: 160px;
+}
+#section-2.affix {
+  top: 0px;
+  z-index: 99;
+  box-shadow: 0 5px 5px rgba(74, 74, 74, 0.2) !important;
+  width: 100%;
+}
+#section-2.affix .container {
+  margin-bottom: 0 !important;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  height: 130px !important;
+}
+@media only screen and (max-width: 320px) {
+  #section-2.affix .container {
+    height: 120px !important;
+  }
+}
+#section-2.affix .content .slick-prev, #section-2.affix .content .slick-next {
+  top: 30px;
 }
 #section-2 .content {
   margin: 0 auto;
   width: 90%;
 }
+#section-2 .content .slider .slick-list {
+  padding-top: 4px;
+}
 #section-2 .content .slider a {
   color: #666;
+}
+#section-2 .content .slider a:active, #section-2 .content .slider a:focus {
+  outline: 0;
+}
+#section-2 .content .slider a img:active {
+  box-shadow: 0 0 0 4px #FFCE00;
 }
 #section-2 .content .slider img {
   width: 86px;
   height: 86px;
   border-radius: 50%;
   display: inline-block;
+}
+#section-2 .content .slider img.active {
+  box-shadow: 0 0 0 4px #FFCE00;
 }
 #section-2 .content .slider span {
   display: block;
@@ -297,6 +333,9 @@ a.btn.btn-fb {
   right: -40px;
 }
 @media only screen and (min-width: 321px) and (max-width: 480px) {
+  #section-2 .content .slider .slick-prev, #section-2 .content .slider .slick-next {
+    top: 30px;
+  }
   #section-2 .content .slider img {
     width: 78px;
     height: 78px;
@@ -424,22 +463,22 @@ a.btn.btn-fb {
   left: 20px;
 }
 
+#section-8 .comments-container {
+  width: 70%;
+  margin: 0 auto;
+}
+@media only screen and (max-width: 480px) {
+  #section-8 .comments-container {
+    width: 100%;
+  }
+}
+
 footer {
+  background: #111;
   text-align: center;
   font-size: 1.25em;
-  color: #fff;
+  color: #FFCE00;
   line-height: 100px;
-}
-footer li {
-  display: inline-block;
-  vertical-align: top;
-}
-footer li a {
-  color: #fff;
-  padding: 10px;
-}
-footer li:nth-child(1):after {
-  content: "|";
 }
 
 @media only screen and (max-width: 768px) {

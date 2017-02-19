@@ -292,24 +292,69 @@ a.btn.btn-fb {
 	}
 }
 #section-2 {
+	background: $white;
 	.container {
 		overflow: hidden;
-		margin-top: 20px;
+		padding-top: 20px;
+		padding-bottom: 20px;
 		margin-bottom: 20px;
-		height: 110px; 
+		height: 160px; 
+	}
+	&.affix {
+		top: 0px;
+		z-index: 99;
+		box-shadow: 0 5px 5px rgba($dark-gray, .2)!important;
+		width: 100%;
+//		background: $yellow;
+		.container {
+			margin-bottom: 0!important;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			height: 130px!important;
+			@include respond-to (xxs-mobile){
+				height: 120px!important; 
+			}
+		}
+		.content {
+			.slick-prev, .slick-next {
+				top: 30px;
+			}
+//			.slider {
+//				img {
+//					&.active {
+//						box-shadow:0 0 0 4px $light-gray;
+//					}
+//				}
+//			}
+		}
+		
 	}
 	.content {
 		margin: 0 auto;
 		width: 90%;
 		.slider {
+			.slick-list {
+				padding-top: 4px;
+			}
 			a {
 				color: $gray;
+				&:active, &:focus {
+					outline:0;
+				}
+				img {
+					&:active {
+						box-shadow:0 0 0 4px $yellow;
+					}
+				}
 			}
 			img {
 				width: 86px;
 				height: 86px;
 				border-radius: 50%;
 				display: inline-block;
+				&.active {
+					box-shadow:0 0 0 4px $yellow;
+				}
 			}
 			span {
 				display: block;
@@ -349,6 +394,9 @@ a.btn.btn-fb {
 	@include respond-to (xs-mobile){
 		.content {
 			.slider {
+				.slick-prev, .slick-next {
+					top: 30px;
+				}
 				img {
 					width: 78px;
 					height: 78px;
@@ -359,6 +407,7 @@ a.btn.btn-fb {
 	@include respond-to (xxs-mobile){
 		.content {
 			.slider {
+				
 				img {
 					width: 70px;
 					height: 70px;
@@ -497,27 +546,37 @@ a.btn.btn-fb {
 		}
 	}
 }
-
-footer {
-//	background: $yellow;
-	text-align: center;
-	font-size: $xl-font;
-	color: $white;
-	line-height: 100px;
-	li {
-		display: inline-block;
-		vertical-align: top;
-		a {
-			color: $white;
-			padding: 10px;
-		}
-		&:nth-child(1) {
-			&:after {
-				content: ('|');
-			}
+#section-8 {
+	.comments-container {
+		width: 70%;
+		margin: 0 auto;
+	}
+	@include respond-to (normal-mobile){
+		.comments-container { 
+			width: 100%;
 		}
 	}
-	
+}
+
+footer {
+	background: $black;
+	text-align: center;
+	font-size: $xl-font;
+	color: $yellow;
+	line-height: 100px;
+//	li {
+//		display: inline-block;
+//		vertical-align: top;
+//		a {
+//			color: $white;
+//			padding: 10px;
+//		}
+//		&:nth-child(1) {
+//			&:after {
+//				content: ('|');
+//			}
+//		}
+//	}
 }
 @include respond-to (only-device){
 	h2 {
