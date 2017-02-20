@@ -293,26 +293,31 @@ a.btn.btn-fb {
 }
 #section-2 {
 	background: $white;
+//	padding-top: 20px;
+//	padding-bottom: 20px;
+	@include transition(all, .5s, ease-in);
 	.container {
 		overflow: hidden;
-		padding-top: 20px;
-		padding-bottom: 20px;
 		margin-bottom: 20px;
-		height: 160px; 
+		height: 160px;
+//		padding-left: 0;
+//		padding-right: 
 	}
 	&.affix {
 		top: 0px;
 		z-index: 99;
+		padding-top: 0;
+		padding-bottom: 10px;
 		box-shadow: 0 5px 5px rgba($dark-gray, .2)!important;
 		width: 100%;
-//		background: $yellow;
 		.container {
 			margin-bottom: 0!important;
-			padding-top: 10px;
-			padding-bottom: 10px;
-			height: 130px!important;
+			height: 130px;
+			@include respond-to (xs-mobile){
+				height: 110px; 
+			}
 			@include respond-to (xxs-mobile){
-				height: 120px!important; 
+				height: 102px; 
 			}
 		}
 		.content {
@@ -331,10 +336,10 @@ a.btn.btn-fb {
 	}
 	.content {
 		margin: 0 auto;
-		width: 90%;
+		width: 92%;
 		.slider {
 			.slick-list {
-				padding-top: 4px;
+//				padding-top: 10px;
 			}
 			a {
 				color: $gray;
@@ -367,12 +372,18 @@ a.btn.btn-fb {
 		}
 		.slick-initialized .slick-slide {
 			text-align: center;
+			background: $white;
+			padding-top: 10px;
+			padding-bottom: 6px;
+//			padding-left: 5%;
+//			padding-right: 5%;
 		}
 		.slick-prev, .slick-next {
 			background: $light-gray;
 			width: 40px;
 			height: 40px;
 			top: 40px;
+			z-index: 99;
 			&::before {
 				color: $black;
 				content: "\f105";
@@ -390,6 +401,10 @@ a.btn.btn-fb {
 		.slick-next {
 			right: -40px;
 		}
+	}
+	@include respond-to (normal-mobile){
+		padding-top: 0;
+		padding-bottom: 0;
 	}
 	@include respond-to (xs-mobile){
 		.content {
