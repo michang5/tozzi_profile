@@ -187,14 +187,9 @@ a.btn.btn-fb {
 }
 .table th:first-of-type, .table td:first-of-type {
   text-align: left;
-  width: 40px;
-}
-.table th:nth-of-type(2), .table td:nth-of-type(2) {
-  width: 40px;
 }
 .table th:nth-last-of-type(1), .table th:nth-last-of-type(2), .table th:nth-last-of-type(3), .table td:nth-last-of-type(1), .table td:nth-last-of-type(2), .table td:nth-last-of-type(3) {
   text-align: right;
-  width: 80px;
 }
 
 #section-1 {

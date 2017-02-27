@@ -165,19 +165,18 @@ a.btn.btn-fb {
 		font-weight: normal;
 	}
 	tr {
-		
 	}
 	th, td {
 		&:first-of-type {
 			text-align: left;
-			width: 40px;
+//			width: 40px;
 		}
 		&:nth-of-type(2) {
-			width: 40px;
+//			width: 40px;
 		}
 		&:nth-last-of-type(1), &:nth-last-of-type(2), &:nth-last-of-type(3) {
 			text-align: right;
-			width: 80px;
+//			width: 80px;
 		}
 	}
 }
