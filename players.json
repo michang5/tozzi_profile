@@ -1,0 +1,32 @@
+[
+      {
+        name: '卡Ａ爹',
+        href: 'index.html',
+		image: 'images/profile_photo.png',
+		active: '',
+      },
+      {
+        name: '卡B爹',
+        href: 'index.html',
+		image: 'images/profile_photo.png',
+		active: 'active',
+      },
+      {
+        name: '卡C爹',
+        href: 'index.html',
+		image: 'images/profile_photo.png',
+		active: '',
+      },
+      {
+        name: '卡D爹',
+        href: 'index.html',
+		image: 'images/profile_photo.png',
+		active: '',
+      },
+      {
+        name: '卡E爹',
+        href: 'index.html',
+		image: 'images/profile_photo.png',
+		active: '',
+      },
+    ]
