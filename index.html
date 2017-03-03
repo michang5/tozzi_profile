@@ -2,7 +2,7 @@
 <html lang="zh-tw">
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, players-scalable=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<meta name="description" content="">
 
 	<!--og info-->
@@ -54,7 +54,7 @@
 	}(document, 'script', 'facebook-jssdk'));</script>
 </head>
 <body>
-	<vue id="vue">
+	<div id="vue">
 	<div id="section-1">
 		<div class="container">
 			<h2 class="logo"><img src="images/tozzi_logo.png" alt=""></h2>
@@ -68,10 +68,10 @@
 		<div class="container">
 			<div class="content">
 				<div class="slider">
-					<div v-for="players in playerss">
-						<a v-bind:href="players.href">
-							<img v-bind:src="players.image" alt="" v-bind:title="players.name" v-bind:class="players.active">
-							<span>{{players.name}}</span>
+					<div v-for="trader in traders">
+						<a v-bind:href="trader.href">
+							<img v-bind:src="trader.image" alt="" v-bind:title="trader.name" v-bind:class="trader.active">
+							<span v-text="trader.name"></span>
 						</a>
 					</div>
 				</div>
@@ -86,10 +86,10 @@
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-9">
 				
-				<h4><span>{{name}}</span>
-					<a class="btn btn-fb player" href="#" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+				<h4><span v-text="name"></span>
+					<a class="btn btn-fb user" href="#" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
 				</h4>
-				<p>{{strategy}}</p>
+				<pre><p v-text="strategy"></p></pre>
 			</div>
 		</div>
 	</div>	
@@ -105,9 +105,9 @@
 		<div class="container">
 			<h3>對帳單</h3>
 			<div class="statement-list">
-				<ul v-for="report in reports">
-					<h5>{{report.date}}</h5>
-					<li v-for="statement in report.statements"><img v-bind:src="statement.image" v-bind:alt="statement.title" v-bind:title="statement.title" class="img-responsive" data-toggle="modal" data-target="#modal-statement"></li>
+				<ul v-for="(images, date) in reports">
+					<h5 v-text="date"></h5>
+					<li v-for="image in images"><img v-bind:src="image" v-bind:alt="date" v-bind:title="date" class="img-responsive" data-toggle="modal" data-target="#modal-statement"></li>
 				</ul>
 			</div>
 		</div>
@@ -123,19 +123,19 @@
 								<th>#</th>
 								<th>日期</th>
 								<th>標的物</th>
+								<th>買進賣出</th>
 								<th>成交價格</th>
-								<th>買進</th>
-								<th>賣出</th>
+								<th>股數</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr v-for="record in records">
-								<td>{{record.no}}</td>
-								<td>{{record.date}}</td>
-								<td>{{record.name}}</td>
-								<td>${{record.price}}</td>
-								<td>${{record.buy}}</td>
-								<td>${{record.sell}}</td>
+								<td v-text="record.no"></td>
+								<td v-text="record.date"></td>
+								<td v-text="record.name"></td>
+								<td v-text="record.price"></td>
+								<td v-text="record.buy"></td>
+								<td v-text="record.sell"></td>
 							</tr>
 						</tbody>
 					</table>
@@ -149,7 +149,7 @@
 			<h3>交易解說</h3>
 			<div class="expound col-sm-6">
 				<ul>
-					<li v-for="comment in comments">{{comment}}</li>
+					<li v-for="reason in reasons" v-text="reason"></li>
 				</ul>
 			</div>
 		</div>
@@ -179,7 +179,7 @@
 	</div>
 
 	<footer>Copyright © tozzi.com.tw, 2017</footer>	
-	</vue>
+	</div>
 <!--
 	<footer>
 		<nav>
@@ -194,108 +194,87 @@
 	<!--jQuery--> 
 	<script type="text/javascript" src="js/jquery-2.2.4.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js" ></script>
-	<script type="text/javascript" src="js/jquery.mobile.custom.min.js"></script>
+	<!--script type="text/javascript" src="js/jquery.mobile.custom.min.js"></script-->
 	<script type="text/javascript" src="js/slick.min.js" ></script>
 	<script type="text/javascript" src="js/script.js" ></script>
 
 <script>
-var data = {
-  el: '#vue',
-  data: {
-	image: 'images/profile_photo.png',
-	name: '卡B爹',
-	strategy: '一直買一直買一直買...',
-    players: [
-      {
-        name: '卡Ａ爹',
-        href: 'index.html',
-		image: 'images/profile_photo.png',
-		active: '',
-      },
-      {
-        name: '卡B爹',
-        href: 'index.html',
-		image: 'images/profile_photo.png',
-		active: 'active',
-      },
-      {
-        name: '卡C爹',
-        href: 'index.html',
-		image: 'images/profile_photo.png',
-		active: '',
-      },
-      {
-        name: '卡D爹',
-        href: 'index.html',
-		image: 'images/profile_photo.png',
-		active: '',
-      },
-      {
-        name: '卡E爹',
-        href: 'index.html',
-		image: 'images/profile_photo.png',
-		active: '',
-      },
-    ],
-    records: [
-      {
-		no: 1,
-		date: '03/01',
-		name: '2448晶電',
-		price: '123',
-		buy: '122',
-		sell: '123',
-	  },
-      {
-		no: 2,
-		date: '03/02',
-		name: '1314中石化',
-		price: '125',
-		buy: '125',
-		sell: '125',
-	  },
-	],
-	comments: [
-	  '買',
-	  '再買',
-	  '一直買',
-	  '拼命的買',
-	  '閉上眼睛買',
-	  '漫無目的的買',
-	],
-	reports: [
-	  {
-        date: '03/01',
-        statements: [
-		  {
-            title: '03/01 對帳單1',
-            image: 'http://placehold.it/720x1080/ddd/666'
-		  },
-		  {
-            title: '03/01 對帳單2',
-            image: 'http://placehold.it/720x1080/ddd/666'
-		  },
-        ],
-	  },
-	  {
-        date: '03/02',
-        statements: [
-		  {
-            title: '03/02 對帳單',
-            image: 'http://placehold.it/720x1080/ddd/666'
-		  },
-        ],
-	  },
-	],
+var traders = [{},{},{},{},{},{}];       
+
+var records = [
+  {
+    no: 1,
+    date: '03/01',
+    name: '2448晶電',
+    price: '123',
+    buy: '122',
+    sell: '123',
   },
+  {
+    no: 2,
+    date: '03/02',
+    name: '1314中石化',
+    price: '125',
+    buy: '125',
+    sell: '125',
+  },
+];
+
+var reasons = [
+  '買',
+  '再買',
+  '一直買',
+  '拼命的買',
+  '閉上眼睛買',
+  '漫無目的的買',
+];
+
+var reports = {
+  '03/01': [
+    'http://placehold.it/720x1080/ddd/666',
+    'http://placehold.it/720x1080/ddd/666',
+  ],
+  '03/02': [
+     'http://placehold.it/720x1080/ddd/666',
+  ],
 };
-var vue = new Vue(data);
+
+var data = {
+  image: '',
+  name: '',
+  strategy: '',
+  traders: traders,
+  records: [],
+  reports: {},
+  reasons: [],
+};
+
+var id = window.location.search.substr(1);
+if (!id) id = '1';
+
+var vue = new Vue({
+  el: '#vue',
+  data: data,
+});
 
 $(function () {
-  console.log(1);
-  $.ajax('players.json', function (json) {
-    data.players = json;
-    console.log(data);
+  $.ajax({
+    url: '/tozzi/trader/' + id,
+    dataType: 'json',
+    success: function (json) {
+      console.log(json);
+      $.each(json.data.traders, function(index, value) { 
+        value.href = 'index.html?' + value.id;
+        if (value.id == id) value.active = 'active';
+      });
+      data.image = json.data.image;
+      data.name = json.data.name;
+      data.strategy = json.data.strategy;
+      data.traders = json.data.traders;
+      data.records = json.data.records;
+      data.reports = json.data.reports;
+      data.reasons = json.data.reasons;
+    },
   });
 });
 
