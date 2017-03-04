@@ -101,18 +101,18 @@
 			</div>
 		</div>
 	</div>
-	<div id="section-5">
+	<div id="section-5" v-if="Object.keys(reports).length">
 		<div class="container">
 			<h3>對帳單</h3>
 			<div class="statement-list">
-				<ul v-for="(images, date) in reports">
+				<ul style="vertical-align: top" v-for="(images, date) in reports">
 					<h5 v-text="date"></h5>
 					<li v-for="image in images" @click="src = image; title = date"><img v-bind:src="image" v-bind:alt="date" v-bind:title="date" class="img-responsive" data-toggle="modal" data-target="#modal-statement"></li>
 				</ul>
 			</div>
 		</div>
 	</div>
-	<div id="section-6">
+	<div id="section-6" v-if="records.length">
 		<div class="container">
 			<h3>交易記錄</h3> 
 			<div class="tab-container">   
@@ -152,7 +152,7 @@
 		</div>	
 	</div>
 	
-	<div id="section-7">
+	<div id="section-7" v-if="reasons.length">
 		<div class="container">
 			<h3>交易解說</h3>
 			<div class="expound col-sm-6">
