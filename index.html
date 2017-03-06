@@ -103,7 +103,7 @@
 	</div>
 	<div id="section-5" v-if="Object.keys(reports).length">
 		<div class="container">
-			<h3>對帳單</h3>
+			<h3>交易明細</h3>
 			<div class="statement-list">
 				<ul style="vertical-align: top" v-for="(images, date) in reports">
 					<h5 v-text="date"></h5>
@@ -120,9 +120,9 @@
 					<table class="table">
 						<thead>
 							<tr>
-								<th>成交日期</th>
+								<th>日期</th>
 								<th>證券名稱</th>
-								<th>買賣別</th>
+								<th>交易行為</th>
 								<th>股數</th>
 								<th>單價</th>
 								<th>價金</th>
@@ -178,7 +178,7 @@
 			<div class="modal-content">
 				<div type="button" class="close" data-dismiss="modal"></div>
 				<div class="modal-body">
-					<h4 class="modal-title">{{title}} 對帳單</h4>
+					<h4 class="modal-title">{{title}} 交易明細</h4>
 					<img v-bind:src="src" v-bind:alt="title" v-bind:title="title" class="img-responsive">
 				</div>
 			</div>
@@ -241,7 +241,7 @@ $(function () {
     success: function (json) {
       console.log(json);
       $.each(json.data.traders, function(index, value) { 
-        value.href = 'index.html?' + value.id;
+        value.href = '?' + value.id;
         if (value.id == id) value.active = 'active';
       });
       data.image = json.data.image;
