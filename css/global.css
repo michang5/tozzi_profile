@@ -192,6 +192,19 @@ a.btn.btn-fb {
   text-align: right;
 }
 
+.modal-content {
+  width: 90%;
+  margin: 0 auto;
+}
+.modal-content img {
+  margin: 0 auto;
+}
+@media only screen and (max-width: 768px) {
+  .modal-content {
+    width: 100%;
+  }
+}
+
 #section-1 {
   background: url("../images/tozzi_banner.jpg") no-repeat center center;
   box-sizing: border-box;
@@ -357,19 +370,19 @@ a.btn.btn-fb {
   }
 }
 
-#section-3, #section-4, #section-5, #section-6, #section-7, #section-8 {
+#section-3, #section-3-5, #section-4, #section-5, #section-6, #section-7, #section-8 {
   padding: 80px 0;
 }
-#section-3 h3, #section-4 h3, #section-5 h3, #section-6 h3, #section-7 h3, #section-8 h3 {
+#section-3 h3, #section-3-5 h3, #section-4 h3, #section-5 h3, #section-6 h3, #section-7 h3, #section-8 h3 {
   text-align: center;
 }
 @media only screen and (max-width: 480px) {
-  #section-3, #section-4, #section-5, #section-6, #section-7, #section-8 {
+  #section-3, #section-3-5, #section-4, #section-5, #section-6, #section-7, #section-8 {
     padding: 40px 0;
   }
 }
 
-#section-4, #section-6, #section-8 {
+#section-3-5, #section-5, #section-7 {
   background: #F7F7F7;
 }
 
@@ -399,6 +412,29 @@ a.btn.btn-fb {
     width: 60%;
     margin: 0 auto;
   }
+}
+
+#section-3-5 .market-list {
+  padding: 10px 0;
+  margin: 10px 0;
+}
+#section-3-5 .market-list span.date {
+  padding: 4px;
+  display: inline-block;
+  padding-left: 30px;
+}
+#section-3-5 .market-list span.date:before {
+  content: "\f201";
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  padding-right: 4px;
+  font-size: 16px;
+  position: absolute;
+  left: 20px;
+}
+#section-3-5 .market-list p {
+  padding-left: 30px;
 }
 
 #section-4 {
