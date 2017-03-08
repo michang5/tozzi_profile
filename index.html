@@ -85,7 +85,6 @@
 				<img v-bind:src="image" alt="" class="img-responsive">
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-9">
-				
 				<h4><span v-text="name"></span>
 					<a class="btn btn-fb player" href="#" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
 				</h4>
@@ -93,45 +92,13 @@
 			</div>
 		</div>
 	</div>	
-	<div id="section-3-5">
+	<div id="section-3-5" v-if="Object.keys(markets).length">
 		<div class="container">
 			<h3>每週市場觀察</h3>
-			<div class="col-sm-6">
+			<div class="col-sm-6" v-for="(market, date) in markets">
 				<div class="market-list">
-					<span class="date">3/06~3/10</span>
-					<p>二月分提升的股票營收與年報持續公布 加碼二月分營收成長股與年報 <br>
-				</div>
-			</div>
-			<div class="col-sm-6">
-				<div class="market-list">
-					<span class="date">3/13~3/17</span>
-					<p>二月分提升的股票營收與年報持續公布 加碼二月分營收成長股與年報 <br>
-
-	1. 上週買進的康普股票持續加碼 (沿五日均價) 其餘減持<br>
-
-	2. 本周 Robot Daddy 大數據 2402毅嘉/3030德律/6207雷科<br>
-
-	整體市場因大盤指數位居高點,大型股似乎沒有動能,小型股因年報陸續出爐,可觀察淨利反轉股</p>
-				</div>
-			</div>
-			<div class="col-sm-6">
-				<div class="market-list">
-					<span class="date">3/20~3/24</span>
-					<p>二月分提升的股票營收與年報持續公布 加碼二月分營收成長股與年報 <br>
-
-	1. 上週買進的康普股票持續加碼 (沿五日均價) 其餘減持<br>
-				</div>
-			</div>
-			<div class="col-sm-6">
-				<div class="market-list">
-					<span class="date">3/27~3/31</span>
-					<p>二月分提升的股票營收與年報持續公布 加碼二月分營收成長股與年報 <br>
-
-	1. 上週買進的康普股票持續加碼 (沿五日均價) 其餘減持<br>
-
-	2. 本周 Robot Daddy 大數據 2402毅嘉/3030德律/6207雷科<br>
-
-</p>
+					<span class="date" v-text="date"></span>
+					<p v-html="market"></p>
 				</div>
 			</div>
 		</div>
@@ -139,9 +106,7 @@
 	<div id="section-4" style="display: none">
 		<div class="container">
 			<h3>資金報酬曲線圖</h3>
-			<div id="chartdiv" class="stock-chart">
-				曲線圖放這裡
-			</div>
+			<div id="chartdiv" class="stock-chart"></div>
 		</div>
 	</div>
 	<div id="section-5" v-if="Object.keys(reports).length">
@@ -169,14 +134,6 @@
 								<th>股數</th>
 								<th>單價</th>
 								<th>價金</th>
-								<!--th>手續費</th>
-								<th>交易稅</th>
-								<th>利息</th>
-								<th>利息累進稅款</th>
-								<th>應收</th>
-								<th>應付</th>
-								<th>累計績效</th>
-								<th>累計績效%</th-->
 							</tr>
 						</thead>
 						<tbody>
@@ -258,6 +215,7 @@ var data = {
   src: '',
   title: '',
   traders: [{},{},{},{},{},{},{},{},{},{},{},{}],
+  markets: {},
   records: [],
   reports: {},
   reasons: [],
@@ -291,6 +249,7 @@ $(function () {
       data.name = json.data.name;
       data.strategy = json.data.strategy;
       data.traders = json.data.traders;
+      data.markets = json.data.markets;
       data.records = json.data.records;
       data.reports = json.data.reports;
       data.reasons = json.data.reasons;
