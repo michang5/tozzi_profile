@@ -205,6 +205,11 @@ a.btn.btn-fb {
   }
 }
 
+.btn:focus, .btn:active:focus, .btn.active:focus,
+.btn.focus, .btn:active.focus, .btn.active.focus {
+  outline: none;
+}
+
 #section-1 {
   background: url("../images/tozzi_banner.jpg") no-repeat center center;
   box-sizing: border-box;
@@ -403,6 +408,20 @@ a.btn.btn-fb {
   margin: 0;
   font-size: 19px;
 }
+#section-3 a.btn-interview {
+  height: 36px;
+  line-height: 36px;
+  padding: 0 20px;
+  margin-left: 10px;
+  font-size: 13px;
+  background: #111;
+  border-radius: 18px;
+  margin: 0 0 0 10px;
+  vertical-align: top;
+}
+#section-3 a.btn-interview:hover, #section-3 a.btn-interview:active, #section-3 a.btn-interview:focus {
+  color: #FFCE00;
+}
 @media only screen and (max-width: 480px) {
   #section-3 h4 {
     font-size: 1.5em;
@@ -479,10 +498,6 @@ a.btn.btn-fb {
   #section-5 .statement-list li {
     width: 57px;
   }
-}
-
-#section-6 {
-  background: #F7F7F7;
 }
 
 #section-7 .expound {
