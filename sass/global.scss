@@ -212,10 +212,10 @@ a.btn.btn-fb {
 //.btn-group .btn-group + .btn-group {
 //	margin-left: 1px;
 //}
-//.btn:focus,.btn:active:focus,.btn.active:focus,
-//.btn.focus,.btn:active.focus,.btn.active.focus {
-//    outline: none;
-//}
+.btn:focus,.btn:active:focus,.btn.active:focus,
+.btn.focus,.btn:active.focus,.btn.active.focus {
+    outline: none;
+}
 //.btn-primary {
 //	background-color: transparent;
 //	border: 0;
@@ -474,6 +474,20 @@ a.btn.btn-fb {
 			font-size: 19px;
 		}
 	}
+	a.btn-interview {
+		height: 36px;
+		line-height: 36px;
+		padding: 0 20px;
+		margin-left: 10px;
+		font-size: 13px;
+		background: $black;
+		border-radius: 18px;
+		margin: 0 0 0 10px;
+		vertical-align: top;
+		&:hover, &:active, &:focus {
+			color: $yellow;
+		}
+	}
 	@include respond-to (normal-mobile){
 		h4 {
 			font-size: $xxl-font;
@@ -568,7 +582,6 @@ a.btn.btn-fb {
 }
 
 #section-6 {
-	background: $light-gray;
 }
 
 #section-7 {
