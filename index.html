@@ -86,8 +86,8 @@
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-9">
 				<h4><span v-text="name"></span>
-					<a class="btn btn-fb player" href="#" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-					<a class="btn btn-interview" href="">選手訪談</a>
+					<a v-if="facebook" class="btn btn-fb player" v-bind:href="facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+					<a v-if="interview" class="btn btn-interview" v-bind:href="interview">選手訪談</a>
 				</h4>
 				<p v-html="strategy"></p>
 			</div>
@@ -104,7 +104,7 @@
 			</div>
 		</div>
 	</div>
-	<div id="section-4" style="display: none">
+	<div id="section-4">
 		<div class="container">
 			<h3>資金報酬曲線圖</h3>
 			<div id="chartdiv" class="stock-chart"></div>
@@ -189,16 +189,6 @@
 
 	<footer>Copyright © tozzi.com.tw, 2017</footer>	
 	</div>
-<!--
-	<footer>
-		<nav>
-			<ul>
-				<li><a href="#">網站使用條款</a></li>
-				<li><a href="#">隱私權條款</a></li>
-			</ul>
-		</nav>
-	</footer>
--->
 	
 	<!--jQuery--> 
 	<script type="text/javascript" src="js/jquery-2.2.4.js"></script>
@@ -215,26 +205,22 @@ var data = {
   strategy: '',
   src: '',
   title: '',
+  facebook: '',
+  interview: '',
   traders: [{},{},{},{},{},{},{},{},{},{},{},{}],
   markets: {},
   records: [],
   reports: {},
   reasons: [],
+  points: [],
+  price: {},
 };
 
 var id = window.location.search.substr(1);
 if (!id) id = '1';
 
-var vue = new Vue({
-  el: '#vue',
-  data: data,
-  methods: {
-    show: function (src) {
-      this.src = src;
-      alert(src);
-    },
-  }
-});
+var vue = new Vue({ el: '#vue', data: data, });
+var chart;
 
 $(function () {
   $.ajax({
@@ -246,14 +232,9 @@ $(function () {
         value.href = '?' + value.id;
         if (value.id == id) value.active = 'active';
       });
-      data.image = json.data.image;
-      data.name = json.data.name;
-      data.strategy = json.data.strategy;
-      data.traders = json.data.traders;
-      data.markets = json.data.markets;
-      data.records = json.data.records;
-      data.reports = json.data.reports;
-      data.reasons = json.data.reasons;
+      for (var k in json.data) data[k] = json.data[k];
+      data.points = calculate(data);
+      chart = draw(data.points);
     },
   });
 });
