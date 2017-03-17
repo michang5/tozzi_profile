@@ -53,6 +53,7 @@ function calculate(data) {
         var stock = stocks[k];
         for (var j in stock) {
             var s = stock[j];
+if (!price[k]) { console.log(k); continue; }
             p.value += s.share * price[k][p.date];
             p.price += s.share * s.price;
         }
@@ -93,7 +94,7 @@ var chart = AmCharts.makeChart( "chartdiv", {
   "autoMargins": true,
   "marginLeft": 0,
   "marginRight": 0,
-  "marginTop": 10,
+  "marginTop": 25,
   "marginBottom": 0,
   "balloon": {
     "adjustBorderColor": false,
@@ -101,6 +102,12 @@ var chart = AmCharts.makeChart( "chartdiv", {
     "verticalPadding": 8,
     "color": "#ffffff"
   },
+    "legend": {
+        "equalWidths": false,
+        "useGraphSettings": true,
+        "valueAlign": "left",
+        "valueWidth": 120
+    },
   "dataProvider": points,
   "valueAxes": [ {
     "id": "money",
@@ -153,7 +160,7 @@ var chart = AmCharts.makeChart( "chartdiv", {
     "bulletBorderThickness": 3,
     "fillAlphas": 0,
     "lineAlpha": 1,
-    "title": "實現獲利",
+    "title": "已實現獲利",
     "valueField": "gain",
     "dashLengthField": "dashLengthLine"
   }, {
