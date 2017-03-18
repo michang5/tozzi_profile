@@ -215,29 +215,12 @@ var data = {
   points: [],
   price: {},
 };
+//data//
 
-var id = window.location.search.substr(1);
-if (!id) id = '1';
+data.points = calculate(data);
 
-var vue = new Vue({ el: '#vue', data: data, });
-var chart;
-
-$(function () {
-  $.ajax({
-    url: '/tozzi/trader/' + id,
-    dataType: 'json',
-    success: function (json) {
-      console.log(json);
-      $.each(json.data.traders, function(index, value) { 
-        value.href = '?' + value.id;
-        if (value.id == id) value.active = 'active';
-      });
-      for (var k in json.data) data[k] = json.data[k];
-      data.points = calculate(data);
-      chart = draw(data.points);
-    },
-  });
-});
+var vue = new Vue({el: '#vue', data: data});
+var chart = draw(data.points);
 
 </script>
 
