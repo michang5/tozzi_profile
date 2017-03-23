@@ -457,7 +457,7 @@ a.btn.btn-fb {
 }
 
 #section-4 {
-  background: white;
+  background: #F7F7F7;
 }
 #section-4 .stock-chart {
   border: 1px solid #666;
@@ -555,5 +555,77 @@ footer {
   }
 }
 .amcharts-chart-div {
-	background: white;
+  background: white;
+}
+
+#report p {
+  margin-bottom: 20px;
+}
+#report p a {
+  color: #666;
+  text-decoration: underline;
+}
+#report p a:hover {
+  text-decoration: none;
+}
+#report img {
+  margin: 10px auto;
+}
+#report #section-2 .container {
+  height: auto;
+}
+#report #section-2 .container.report-list {
+  border-bottom: 1px solid #ddd;
+  padding: 50px 0;
+}
+#report #section-2 .container.report-list a {
+  display: block;
+  font-size: 1em;
+}
+#report #section-2 .container.report-list a span {
+  display: block;
+  padding: 0 4px;
+}
+#report #section-2 .container.report-list a span.date {
+  font-size: 1em;
+  color: #666;
+  display: inline-block;
+}
+#report #section-2 .container.report-list a span.title {
+  color: #4A4A4A;
+  font-size: 1.2em;
+}
+#report #section-2 .container.report-list a:hover {
+  color: #4A4A4A;
+  text-decoration: underline;
+}
+#report #section-3 {
+  padding: 20px 0;
+}
+#report #section-3 .Tozzi-comments {
+  position: relative;
+  color: #666;
+  margin-bottom: 20px;
+}
+#report #section-3 .Tozzi-comments h3 {
+  font-size: 1.5em;
+  text-align: left;
+}
+#report #section-3 .Tozzi-comments li {
+  font-size: 1.25em;
+  line-height: 1.8;
+  padding-left: 30px;
+}
+#report #section-3 .Tozzi-comments li span {
+  font-size: 12px;
+}
+#report #section-3 .Tozzi-comments li:before {
+  content: "\f046";
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  padding-right: 4px;
+  font-size: 16px;
+  position: absolute;
+  left: 10px;
 }

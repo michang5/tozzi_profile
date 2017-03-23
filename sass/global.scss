@@ -654,3 +654,78 @@ footer {
 .amcharts-chart-div {
 	background: white;
 }
+#report {
+	p {
+		margin-bottom: 20px;
+		a {
+			color: $gray;
+			text-decoration: underline;
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+	img {
+		margin: 10px auto;
+	}
+	#section-2 {
+		.container {
+			height: auto;
+			&.report-list {
+				border-bottom: 1px solid #ddd;
+				padding: 50px 0;
+				a {
+					display: block;
+					font-size: 1em;
+					span {
+						display: block;
+						padding: 0 4px;
+						&.date {
+							font-size: 1em;
+							color: $gray;
+							display: inline-block;
+						}
+						&.title {
+							color: $dark-gray;
+							font-size: 1.2em;
+						}
+					}
+					&:hover {
+						color: $dark-gray;
+						text-decoration: underline;
+					}
+				}
+			}
+		}
+	}
+	#section-3 {
+		padding: 20px 0;
+		.Tozzi-comments {
+			position: relative;
+			color: $gray;
+			margin-bottom: 20px;
+			h3 {
+				font-size: 1.5em;
+				text-align: left;
+			}
+			li {
+				font-size: $xl-font;
+				line-height: 1.8;
+				padding-left: 30px;
+				span {
+					font-size: 12px;
+				}
+				&:before {
+					content: "\f046";
+					font-family: FontAwesome;
+					font-style: normal;
+					font-weight: normal;
+					padding-right: 4px;
+					font-size: 16px;
+					position: absolute;
+					left: 10px;
+				}
+			}
+		}
+	}
+}
