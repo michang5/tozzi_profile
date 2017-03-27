@@ -63,8 +63,21 @@
 			<a class="btn btn-fb" href="https://www.facebook.com/tozziarena" target="_blank">TOZZI facebook 粉絲頁</a>
 		</div>
 	</div>
-				
-	<div id="section-2">
+	<div id="section-2" id="slider" data-spy="affix" data-offset-top="400">
+		<div class="container">
+			<div class="content">
+				<div class="slider">
+					<div v-for="trader in traders">
+						<a v-bind:href="trader.href">
+							<img v-bind:src="trader.image" alt="" v-bind:title="trader.name" v-bind:class="trader.active">
+							<span v-text="trader.name"></span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>		
+	<div id="section-3">
 		<div class="container report-list">
 			<div class="col-sm-6 col-sm-offset-3">
 				<div class="list">
@@ -77,7 +90,7 @@
 		</div>
 	</div>
 	
-	<div id="section-3">
+	<div id="section-4">
 		<div class="container">
 			<div class="report-content" id="report-1">
 				<img src="images/Label.png" alt="KEY MAN OF FIRST 17 Days" class="img-responsive">
@@ -108,84 +121,6 @@
 				<p>各位觀眾看了上面的梳理與點評後，對於選手表現、最近市場變化，是否也有了一些想法或疑問呢？歡迎隨時提出跟TOZZI的選手們一起交流喔！</p>
 				<p>另提醒大家，TOZZI觀眾「伯樂獎」的預測期限到2017年3月31日止，只要按讚成為【TOZZI投資實戰擂台】的粉絲＋依【TOZZI投資實戰擂台】置頂貼文的範例格式🗳 預測「股感獎」前三名＋ tag自己FB上三位好友，就可參加高達 NT$60,000 的抽獎喔！(「伯樂獎」抽獎辦法請見 <a href="https://goo.gl/qnvNqn)">https://goo.gl/qnvNqn)</a>
 </p>
-			</div>
-		</div>
-	</div>	
-	<div id="section-3-5" v-if="Object.keys(markets).length">
-		<div class="container">
-			<h3>每週市場觀察</h3>
-			<div class="col-sm-8 col-sm-offset-2" v-for="(market, date) in markets">
-				<div class="market-list">
-					<span class="date" v-text="date"></span>
-					<p v-html="market"></p>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div id="section-4">
-		<div class="container">
-			<h3>資金報酬曲線圖</h3>
-			<div id="chartdiv" class="stock-chart"></div>
-		</div>
-	</div>
-	<div id="section-5" v-if="Object.keys(reports).length">
-		<div class="container">
-			<h3>交易明細</h3>
-			<div class="statement-list">
-				<ul style="vertical-align: top" v-for="(images, date) in reports">
-					<h5 v-text="date"></h5>
-					<li v-for="image in images" @click="src = image; title = date"><img v-bind:src="image" v-bind:alt="date" v-bind:title="date" class="img-responsive" data-toggle="modal" data-target="#modal-statement"></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-	<div id="section-6" v-if="records.length">
-		<div class="container">
-			<h3>交易記錄</h3> 
-			<div class="tab-container">   
-				<div class="table-responsive">
-					<table class="table">
-						<thead>
-							<tr>
-								<th>日期</th>
-								<th>證券名稱</th>
-								<th>交易行為</th>
-								<th>股數</th>
-								<th>單價</th>
-								<th>價金</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr v-for="record in records">
-								<td v-text="record.date"></td>
-								<td v-text="record.name"></td>
-								<td v-text="record.type"></td>
-								<td v-text="record.share"></td>
-								<td v-text="'$' + record.price"></td>
-								<td v-text="'$' + record.total"></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>	
-	</div>
-	
-	<div id="section-7" v-if="reasons.length">
-		<div class="container">
-			<h3>交易解說</h3>
-			<div class="expound col-sm-6">
-				<ul>
-					<li v-for="reason in reasons" v-html="reason"></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-	
-	<div id="section-8">
-		<div class="container">
-			<div class="comments-container">
-				<div class="fb-comments" data-href="http://www.tozzi.com.tw" data-numposts="5" data-width="100%"></div>
 			</div>
 		</div>
 	</div>
