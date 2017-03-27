@@ -558,24 +558,14 @@ footer {
   background: white;
 }
 
-#report p {
-  margin-bottom: 20px;
-}
-#report p a {
-  color: #666;
-  text-decoration: underline;
-}
-#report p a:hover {
-  text-decoration: none;
-}
-#report img {
-  margin: 10px auto;
+#report #section-3 {
+  background: #F7F7F7;
+  padding: 20px 0;
 }
 #report #section-3 .container {
   height: auto;
 }
 #report #section-3 .container.report-list {
-  border-bottom: 1px solid #ddd;
   padding: 50px 0;
 }
 #report #section-3 .container.report-list a {
@@ -600,7 +590,32 @@ footer {
   text-decoration: underline;
 }
 #report #section-4 {
-  padding: 20px 0;
+  background: #fff;
+  padding: 80px 0;
+}
+#report #section-4 h4 {
+  font-size: 1.75em;
+  color: #4A4A4A;
+  margin-bottom: 60px;
+  text-align: center;
+}
+#report #section-4 h4 span {
+  font-size: 14px;
+  display: block;
+  color: #666;
+}
+#report #section-4 p {
+  margin-bottom: 20px;
+}
+#report #section-4 p a {
+  color: #666;
+  text-decoration: underline;
+}
+#report #section-4 p a:hover {
+  text-decoration: none;
+}
+#report #section-4 img {
+  margin: 10px auto;
 }
 #report #section-4 .Tozzi-comments {
   position: relative;
