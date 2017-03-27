@@ -108,6 +108,7 @@
 		<div class="container">
 			<h3>資金報酬曲線圖</h3>
 			<div id="chartdiv" class="stock-chart"></div>
+			<div id="chartdiv2" class="stock-chart"></div>
 		</div>
 	</div>
 	<div id="section-5" v-if="Object.keys(reports).length">
@@ -220,7 +221,7 @@ var data = {
 data.points = calculate(data);
 
 var vue = new Vue({el: '#vue', data: data});
-var chart = draw(data.points);
+draw(data.points);
 
 </script>
 <script>
