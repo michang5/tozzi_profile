@@ -69,8 +69,8 @@
 			<div class="content">
 				<div class="slider">
 					<div v-for="trader in traders">
-						<a v-bind:href="trader.href">
-							<img v-bind:src="trader.image" alt="" v-bind:title="trader.name" v-bind:class="trader.active">
+						<a :href="trader.href">
+							<img :src="trader.image" alt="" :title="trader.name" :class="trader.active">
 							<span v-text="trader.name"></span>
 						</a>
 					</div>
@@ -93,12 +93,12 @@
 	<div id="section-3">
 		<div class="container">
 			<div class="col-xs-12 col-sm-6 col-md-3">
-				<img v-bind:src="image" alt="" class="img-responsive">
+				<img :src="image" alt="" class="img-responsive">
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-9">
 				<h4><span v-text="name"></span>
-					<a v-if="facebook" class="btn btn-fb player" v-bind:href="facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-					<a v-if="interview" class="btn btn-interview" v-bind:href="interview">選手訪談</a>
+					<a v-if="facebook" class="btn btn-fb player" :href="facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+					<a v-if="interview" class="btn btn-interview" :href="interview">選手訪談</a>
 				</h4>
 				<p v-html="strategy"></p>
 			</div>
@@ -128,7 +128,7 @@
 			<div class="statement-list">
 				<ul style="vertical-align: top" v-for="(images, date) in reports">
 					<h5 v-text="date"></h5>
-					<li v-for="image in images" @click="src = image; title = date"><img v-bind:src="image" v-bind:alt="date" v-bind:title="date" class="img-responsive" data-toggle="modal" data-target="#modal-statement"></li>
+					<li v-for="image in images" @click="src = image; title = date"><img :src="image" :alt="date" :title="date" class="img-responsive" data-toggle="modal" data-target="#modal-statement"></li>
 				</ul>
 			</div>
 		</div>
@@ -176,37 +176,17 @@
 		</div>
 	</div>
 	
-	<div id="section-7-5">
+	<div id="section-7-5" v-if="comments.length">>
 		<div class="container">
 			<h3>來自選手的評價</h3>
-			<div class="col-md-6">
+			<div class="col-md-6" v-for="comment in comments">
 				<div class="player">
-					<img src="images/profile_photo.png" alt="">
-					<span>選手名字</span>
-					<span>90分</span>
+					<img :src="trader(comment.id).image" alt="">
+					<span v-text="trader(comment.id).name"></span>
+					<span v-text="comment.score + '分'"></span>
 				</div>
 				<div class="player-evaluation">
-					<p>一段評價文字，一段評價文字一段評價文字，一段評價文字一段評價文字一段評價文字一段評價文字，一段評價文字一段評價文字一段評價文字一段評價文字一段評價文字。</p>
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="player">
-					<img src="images/profile_photo.png" alt="">
-					<span>選手名字</span>
-					<span>90分</span>
-				</div>
-				<div class="player-evaluation">
-					<p>一段評價文字，一段評價文字一段評價文字，一段評價文字一段評價文字一段評價文字一段評價文字，一段評價文字一段評價文字一段評價文字一段評價文字一段評價文字。</p>
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="player">
-					<img src="images/profile_photo.png" alt="">
-					<span>選手名字</span>
-					<span>90分</span>
-				</div>
-				<div class="player-evaluation">
-					<p>一段評價文字，一段評價文字一段評價文字，一段評價文字一段評價文字一段評價文字一段評價文字，一段評價文字一段評價文字一段評價文字一段評價文字一段評價文字。</p>
+					<p v-text="comment.comment"></p>
 				</div>
 			</div>
 		</div>
@@ -228,7 +208,7 @@
 				<div type="button" class="close" data-dismiss="modal"></div>
 				<div class="modal-body">
 					<h4 class="modal-title">{{title}} 交易明細</h4>
-					<img v-bind:src="src" v-bind:alt="title" v-bind:title="title" class="img-responsive">
+					<img :src="src" :alt="title" :title="title" class="img-responsive">
 				</div>
 			</div>
 
@@ -261,11 +241,19 @@ var data = {
   reports: {},
   reasons: [],
   points: [],
+  comments: [], //[{id: 2, score: 80, comment: 'blah'}],
   price: {},
 };
 //data//
 
-var vue = new Vue({el: '#vue', data: data});
+var vue = new Vue({el: '#vue', data: data, methods: {
+  trader: function (id) {
+    for (var i in this.traders) {
+      if (this.traders[i].id == id)
+        return this.traders[i];
+    }
+  }
+}});
 draw(data.points);
 
 </script>
