@@ -542,6 +542,11 @@ a.btn.btn-fb {
   height: 50px;
   border-radius: 50px;
 }
+#section-7-5 .col-md-6:nth-of-type(odd) {
+  border-bottom: 1px solid #ccc;
+  clear: both;
+  padding: 20px 0;
+}
 #section-7-5 .player span {
   font-size: 1.25em;
   padding: 0 5px;
