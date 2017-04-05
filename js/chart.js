@@ -153,7 +153,7 @@ AmCharts.makeChart( "chartdiv2", {
     }
   } ],
   "startDuration": 1,
-  "graphs": [ {
+  "graphs": [ /*{
     "valueAxis": "point",
     "balloonText": "<span style='font-size:12px;'>[[date]][[title]]:<br><span style='font-size:20px;'>[[value]]</span> [[additional]]</span>",
     "bullet": "round",
@@ -169,7 +169,7 @@ AmCharts.makeChart( "chartdiv2", {
     "title": "加權指數",
     "valueField": "taiex",
     "dashLengthField": "dashLengthLine"
-  }, {
+  },*/ {
     "valueAxis": "percent2",
     "balloonText": "<span style='font-size:12px;'>[[date]][[title]]:<br><span style='font-size:20px;'>[[value]]%</span> [[additional]]</span>",
     "bullet": "round",
