@@ -631,10 +631,12 @@ a.btn.btn-fb {
 		height: 50px;
 		border-radius: 50px;
 	}
-	.col-md-6:nth-of-type(odd) {
-		border-bottom: 1px solid #ccc;
-		clear: both;
+	.col-md-6 {
+		&:nth-of-type(odd) {
+			clear: both;
+		}
 		padding: 20px 0;
+		border-bottom: 1px solid #ccc;
 	}
 	.player {
 		span {
