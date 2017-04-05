@@ -636,7 +636,8 @@ a.btn.btn-fb {
 			clear: both;
 		}
 		padding: 20px 0;
-		border-bottom: 1px solid #ccc;
+		
+		min-height: 120px;
 	}
 	.player {
 		span {
@@ -649,9 +650,21 @@ a.btn.btn-fb {
 		}
 		
 	}
+	.player-evaluation {
+//		width: 90%;
+		padding: 0 10px;
+//		border-bottom: 1px solid #ccc;
+	}
 	p {
 		font-size: $l-font;
-		padding: 2px 0 10px 60px; 
+		padding: 2px 0 10px 40px; 
+	}
+	@include respond-to (normal-mobile){
+		.col-md-6 {
+			min-height: 0;
+			height: auto;
+			padding: 10px 0; 
+		}
 	}
 }
 #section-8 {

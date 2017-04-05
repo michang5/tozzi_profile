@@ -544,7 +544,7 @@ a.btn.btn-fb {
 }
 #section-7-5 .col-md-6 {
   padding: 20px 0;
-  border-bottom: 1px solid #ccc;
+  min-height: 120px;
 }
 #section-7-5 .col-md-6:nth-of-type(odd) {
   clear: both;
@@ -557,9 +557,19 @@ a.btn.btn-fb {
   content: "/";
   padding-left: 10px;
 }
+#section-7-5 .player-evaluation {
+  padding: 0 10px;
+}
 #section-7-5 p {
   font-size: 1.125em;
-  padding: 2px 0 10px 60px;
+  padding: 2px 0 10px 40px;
+}
+@media only screen and (max-width: 480px) {
+  #section-7-5 .col-md-6 {
+    min-height: 0;
+    height: auto;
+    padding: 10px 0;
+  }
 }
 
 #section-8 .comments-container {
