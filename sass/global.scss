@@ -462,7 +462,9 @@ a.btn.btn-fb {
 	a {
 		color: $dark-gray;
 		text-decoration: underline;
-		
+//		margin-bottom: 20px;
+//		border-bottom: 1px solid #999;
+		display: block;
 		&:hover {
 			background: $dark-gray;
 			color: $yellow;

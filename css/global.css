@@ -401,6 +401,7 @@ a.btn.btn-fb {
 #section-2-5 a {
   color: #4A4A4A;
   text-decoration: underline;
+  display: block;
 }
 #section-2-5 a:hover {
   background: #4A4A4A;
