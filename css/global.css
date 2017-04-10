@@ -608,7 +608,9 @@ footer {
 }
 
 #report .report-anchor {
-  padding-top: 20px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid gray;
 }
 #report #section-3 {
   background: #F7F7F7;
@@ -623,6 +625,8 @@ footer {
 #report #section-3 .container.report-list a {
   display: block;
   font-size: 1em;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #999;
 }
 #report #section-3 .container.report-list a span {
   display: block;
@@ -656,6 +660,9 @@ footer {
   display: block;
   color: #666;
 }
+#report #section-4 h5 {
+  font-size: 1.5em;
+}
 #report #section-4 p {
   margin-bottom: 20px;
 }
@@ -668,6 +675,9 @@ footer {
 }
 #report #section-4 img {
   margin: 10px auto;
+}
+#report #section-4 img:nth-of-type(1) {
+  width: 380px;
 }
 #report #section-4 .Tozzi-comments {
   position: relative;
