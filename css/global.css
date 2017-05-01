@@ -50,14 +50,16 @@ h3 {
 h4 {
   color: #666;
   line-height: 1.3;
-  font-weight: normal;
+  font-weight: bold;
 }
 
-p {
-  font-size: 1.25em;
+p, li {
+  font-size: 16px;
   font-weight: normal;
   margin-bottom: 0;
   color: #4A4A4A;
+  line-height: 1.9;
+  letter-spacing: .05em;
 }
 
 a {
@@ -69,6 +71,7 @@ a {
 }
 a:hover, a:focus {
   text-decoration: none;
+  color: #FFCE00;
 }
 
 .clearfix {
@@ -210,11 +213,149 @@ a.btn.btn-fb {
   outline: none;
 }
 
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+  background: #FFCE00;
+  color: #111;
+}
+
+#navigation {
+  background: #111;
+  border: none;
+  padding: 0;
+  z-index: 999;
+  width: 100%;
+  height: 50px;
+}
+#navigation .logo {
+  font-family: 'Impact', "Roboto", 'Helvetica', sans-serif;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  font-weight: normal;
+  font-size: 28px;
+}
+#navigation .col-sm-9 {
+  padding: 0;
+}
+#navigation #main-nav {
+  z-index: 999;
+  position: absolute;
+  width: 100%;
+  background: #111;
+}
+#navigation .navbar {
+  border: none;
+  margin: 0;
+  min-height: inherit;
+}
+#navigation .nav > li {
+  border: none;
+  -moz-transition: all, 0.5s, ease-in-out;
+  -o-transition: all, 0.5s, ease-in-out;
+  -webkit-transition: all, 0.5s, ease-in-out;
+  transition: all, 0.5s, ease-in-out;
+}
+#navigation .nav > li > a {
+  font-size: 16px;
+  letter-spacing: .1em;
+  line-height: 20px;
+  -moz-transition: all, 0.5s, ease-in-out;
+  -o-transition: all, 0.5s, ease-in-out;
+  -webkit-transition: all, 0.5s, ease-in-out;
+  transition: all, 0.5s, ease-in-out;
+  color: #FFCE00;
+  border-left: 1px solid #111;
+}
+#navigation .nav > li > a:hover, #navigation .nav > li > a:focus {
+  background: #FFCE00;
+  color: #111;
+}
+#navigation .nav > li.fb {
+  width: 50px;
+  height: 50px;
+  background: #FFCE00;
+}
+#navigation .nav > li.fb span {
+  display: none;
+}
+#navigation .nav > li.fb > a {
+  color: #111;
+  text-align: center;
+}
+#navigation .nav > li.active {
+  background: #fff;
+}
+#navigation .dropdown .dropdown-menu {
+  border: 0;
+  border-radius: 0;
+  background: #FFCE00;
+  padding: 0;
+}
+#navigation .dropdown .dropdown-menu > li {
+  padding: 0;
+}
+#navigation .dropdown .dropdown-menu > li a {
+  padding: 10px;
+}
+@media only screen and (max-width: 768px) {
+  #navigation .logo {
+    margin: 4px 0;
+  }
+  #navigation .nav > li.active {
+    background: #fff;
+  }
+  #navigation .nav > li.fb {
+    width: auto;
+    height: auto;
+    background: none;
+  }
+  #navigation .nav > li.fb span {
+    display: block;
+  }
+  #navigation .nav > li.fb i {
+    display: none;
+  }
+  #navigation .nav > li.fb > a {
+    color: #FFCE00;
+    text-align: left;
+  }
+  #navigation .nav > li.fb > a:hover {
+    color: #111;
+  }
+  #navigation .nav > li > a {
+    font-size: 16px;
+    padding: 16px;
+    border: 0;
+  }
+}
+@media only screen and (max-width: 767px) {
+  #navigation {
+    padding: 10px 0;
+    font-size: 16px;
+  }
+  #navigation .col-sm-8 {
+    padding: 0;
+  }
+  #navigation .navbar-header {
+    margin-top: -35px;
+    padding: 0 15px;
+  }
+  #navigation .navbar-toggle {
+    padding: 6px 15px;
+    margin: -6px -18px 0;
+    font-size: 1.2em;
+    color: #FFCE00;
+  }
+  #navigation .col-sm-3 {
+    z-index: 999;
+    width: 60%;
+  }
+}
+
 #section-1 {
   background: url("../images/tozzi_banner.jpg") no-repeat center center;
   box-sizing: border-box;
   text-align: center;
-  height: 400px;
+  height: 300px;
   background-size: cover;
 }
 #section-1 h1 {
@@ -243,13 +384,13 @@ a.btn.btn-fb {
 }
 @media only screen and (max-width: 768px) {
   #section-1 {
-    height: 300px;
+    height: 260px;
     font-size: .8em;
   }
 }
 @media only screen and (max-width: 320px) {
   #section-1 {
-    height: 300px;
+    height: 260px;
     font-size: .7em;
   }
   #section-1 h2 {
@@ -650,19 +791,23 @@ footer {
   background: #fff;
   padding: 0 0 80px;
 }
-#report #section-4 h4 {
-  font-size: 1.75em;
+#report #section-4 h2 {
+  font-size: 30px;
+  line-height: 1.2;
   color: #4A4A4A;
   margin-bottom: 0;
   text-align: center;
 }
-#report #section-4 h4 span {
+#report #section-4 h2 span {
   font-size: 14px;
   display: block;
   color: #666;
 }
-#report #section-4 h5 {
-  font-size: 1.5em;
+#report #section-4 h3 {
+  font-size: 24px;
+  text-align: left;
+  margin-top: 30px;
+  margin-bottom: 10px;
 }
 #report #section-4 p {
   margin-bottom: 20px;
@@ -685,12 +830,8 @@ footer {
   color: #666;
   margin-bottom: 20px;
 }
-#report #section-4 .Tozzi-comments h3 {
-  font-size: 1.5em;
-  text-align: left;
-}
 #report #section-4 .Tozzi-comments li {
-  font-size: 1.25em;
+  font-size: 16px;
   line-height: 1.8;
   padding-left: 30px;
 }
@@ -706,4 +847,21 @@ footer {
   font-size: 16px;
   position: absolute;
   left: 10px;
+}
+
+#ranking h2 img {
+  width: 36px;
+  vertical-align: text-top;
+}
+#ranking h2 span {
+  vertical-align: top;
+}
+#ranking table, #ranking th, #ranking td {
+  text-align: center !important;
+}
+#ranking th:nth-of-type(1) {
+  width: 50px;
+}
+#ranking .ranking {
+  margin-bottom: 30px;
 }
