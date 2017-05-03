@@ -33,7 +33,6 @@ h1 {
   font-family: 'impact', "source-han-sans-traditional", 'Helvetica', sans-serif;
   font-weight: 900;
   font-size: 4em;
-  letter-spacing: .115em;
 }
 
 h2 {
@@ -145,6 +144,10 @@ ul, li {
 
 .modal h4 {
   margin: 20px 0;
+}
+
+p.note {
+  font-size: 12px;
 }
 
 a.btn.btn-fb {
@@ -849,6 +852,11 @@ footer {
   left: 10px;
 }
 
+#ranking h2.main-title {
+  font-size: 36px;
+  letter-spacing: 0;
+  text-align: center;
+}
 #ranking h2 img {
   width: 36px;
   vertical-align: text-top;
@@ -858,10 +866,17 @@ footer {
 }
 #ranking table, #ranking th, #ranking td {
   text-align: center !important;
+  font-size: 15px;
 }
 #ranking th:nth-of-type(1) {
   width: 50px;
 }
+#ranking th:nth-of-type(2) {
+  width: 120px;
+}
 #ranking .ranking {
   margin-bottom: 30px;
+}
+#ranking p.note {
+  margin-top: -30px;
 }
