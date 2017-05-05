@@ -206,8 +206,24 @@
 	
 	<div id="section-7-5" v-if="comments.length">
 		<div class="container">
-			<h3>來自選手的評價</h3>
+			<h3>來自選手的評價-三月份</h3>
 			<div class="col-md-6" v-for="comment in comments">
+				<div class="player">
+					<img :src="trader(comment.id).image" alt="">
+					<span v-text="trader(comment.id).name"></span>
+					<span v-text="comment.score + '分'"></span>
+				</div>
+				<div class="player-evaluation">
+					<p v-text="comment.comment"></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="section-7-5" v-if="comments4.length">
+		<div class="container">
+			<h3>來自選手的評價-四月份</h3>
+			<div class="col-md-6" v-for="comment in comments4">
 				<div class="player">
 					<img :src="trader(comment.id).image" alt="">
 					<span v-text="trader(comment.id).name"></span>
@@ -270,6 +286,7 @@ var data = {
   reasons: [],
   points: [],
   comments: [], //[{id: 2, score: 80, comment: 'blah'}],
+  comments4: [],
   price: {},
 };
 
