@@ -19,6 +19,9 @@ body {
 	word-break: normal;
 	line-height: 1.5;
 	overflow-x: hidden;
+	&.season2 {
+		background: $rice;
+	}
 }
 
 //basic style
@@ -41,12 +44,23 @@ h1 {
 }
 h2 {
 	letter-spacing: .09em;
+	font-size: 40px;
+	body.season2 & {
+		color: $dark-gold;
+	}
 }
 h3 {
 	line-height: 1.2;
 	font-weight: 600;
 	color: $dark-gray;
-	font-size: $xxxxxxl-font;
+	font-size: 32px;
+	body.season2 & {
+		span {
+			background-image: -webkit-linear-gradient(rgba($light-gold, 0) 64%, $light-gold 65%);
+			background-image: -o-linear-gradient(rgba($light-gold, 0) 64%, $light-gold 65%);
+			background-image: linear-gradient(rgba($light-gold, 0) 64%, $light-gold 65%);
+		}
+	}
 }
 h4 {
 	color: $gray;
@@ -54,7 +68,7 @@ h4 {
 	font-weight: bold;
 }
 p, li {
-	font-size: 16px;
+	font-size: 18px;
 	font-weight: normal;
 	margin-bottom: 0;
 	color: $dark-gray;
@@ -67,7 +81,15 @@ a {
 	@include transition(all, .5s, ease-in);
 	&:hover, &:focus { 
 		text-decoration: none;
-		color: $primary-color;
+		color: $black;
+		background: $primary-color;
+	}
+	body.season2 & {
+		color: $gold;
+		&:hover, &:focus {
+			color: $white;
+			background: $gold;
+		}
 	}
 }
 hr {
@@ -83,7 +105,7 @@ ul, li {
 }
 @include respond-to (normal-mobile){
 	p {
-		font-size: $l-font;
+		font-size: 16px;
 	}
 }
 .close {
@@ -272,13 +294,17 @@ a.btn.btn-fb {
 	z-index: 999;
 	width:100%;
 	height: 50px;
+	li {
+		font-size: 16px;
+	}
 //	position: absolute;
 	.logo {
 		font-family: 'Impact', "Roboto", 'Helvetica', sans-serif;
 		letter-spacing: 0.01em;
-		line-height: 1;
+		line-height: 54px;
 		font-weight: normal;
 		font-size: 28px;
+		margin: 0;
 	}
 	.col-sm-9 {
 		padding: 0;
@@ -310,16 +336,25 @@ a.btn.btn-fb {
 				color: $black;
 			}
 		}
-		&.fb {
-			width: 50px;
-			height: 50px;
-			background: $yellow;
+		&.fb {		
+			padding: 0;
 			span {
 				display: none;
 			}
 			> a {
+				background: $yellow;
+				border: 0;
+				width: 30px;
+				height: 30px;
+				border-radius: 30px;
+				line-height: 30px;
 				color: $black;
 				text-align: center;
+				padding: 0;
+				margin: 10px;
+				i {
+					line-height: 30px;
+				}
 			}
 		}
 	}
@@ -332,22 +367,10 @@ a.btn.btn-fb {
 			border-radius: 0;
 			background: $yellow;
 			padding: 0;
-//			-webkit-transition: all 0.3s;
-//			-moz-transition: all 0.3s;
-//			-ms-transition: all 0.3s;
-//			-o-transition: all 0.3s;
-//			
-//			transition: all 0.3s;
-//			max-height: 0;
-//			width: 100%!important;
-//			display: block;
-//			overflow: hidden;
-//			opacity: 0;
 			> li {
 				padding: 0;
 				a {
-					padding: 10px;
-//					border-bottom: 2px solid $black;
+					padding: 16px 26px;
 				}
 			}
 		}
@@ -358,19 +381,21 @@ a.btn.btn-fb {
 			}
 		}
 	}
-	
-	@include respond-to (only-device){
+	@include respond-to (only-mobile){
 		.logo {
 			margin: 4px 0;
+			line-height: 28px;
 		}
 		.nav > li {
+			a.dropdown-toggle {
+				&:hover, &:focus {
+					border-bottom: 1px solid #FFE266;
+				}
+			}
 			&.active {
 				background: #fff;
 			}
 			&.fb {
-				width: auto;
-				height: auto;
-				background: none;
 				span {
 					display: block;
 				}
@@ -378,8 +403,14 @@ a.btn.btn-fb {
 					display: none;
 				}
 				> a {
-					color: $yellow;
+					margin: 0;
+					width: auto;
+					height: auto;
+					background: none;
+					border-radius: 0;
 					text-align: left;
+					color: $yellow;
+					padding: 16px;
 					&:hover {
 						color: $black;
 					}
@@ -388,7 +419,7 @@ a.btn.btn-fb {
 			> a {
 				font-size: 16px;
 				padding: 16px;
-				border: 0;
+				border-left: 0!important;
 			}
 		}
 	}
@@ -411,6 +442,78 @@ a.btn.btn-fb {
 		.col-sm-3{
 			z-index: 999;
 			width: 60%;
+		}
+	}
+	body.season2 & {
+		background: $gold;
+		background-image: -webkit-linear-gradient(135deg, $gold, $light-gold, $gold);
+        background-image: -o-linear-gradient(135deg, $gold, $light-gold, $gold);
+        background-image: linear-gradient(135deg, $gold, $light-gold, $gold);
+		#main-nav {
+			background: transparent;
+//			background-image: -webkit-linear-gradient(left top, $gold, $light-gold);
+//        background-image: -o-linear-gradient(left top, $gold, $light-gold);
+//        background-image: linear-gradient(left top, $gold, $light-gold);
+		}
+		.nav {
+			> li {
+				> a {
+					color: $black;
+					border-left: 0;
+					&:hover, &:focus {
+						background: $black;
+						color: $light-gold;
+					}
+				}
+				&.fb {
+//					background: $black;
+					> a {
+						background: $black;
+						color: $light-gold;
+					}
+				}
+			}
+		}
+		h2.logo {
+			a {
+				color: $black;
+				text-shadow: 0 0 3px $light-gold, 0 0 10px $light-gold;
+			}
+		}
+		.dropdown {
+			.dropdown-menu {
+				background: $black;
+//				background-image: -webkit-linear-gradient(45deg, $gold -50% ,$light-gold);
+//				background-image: -o-linear-gradient(45deg, $gold -50% ,$light-gold);
+//        		background-image: linear-gradient(45deg, $gold -50% ,$light-gold);
+				> li {
+					> a {
+						color: $light-gold;
+						&:hover, &:focus {
+							background: $light-gold;
+							color: $black;
+						}
+					}
+				}
+			}
+		}
+		.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+			background: $black;
+			color: $light-gold;
+		}
+		@include respond-to (only-mobile){
+			#main-nav {
+				background-image: -webkit-linear-gradient(135deg, $gold -20%, $light-gold 20%, $gold);
+				background-image: -o-linear-gradient(135deg, $gold -20%, $light-gold 20%, $gold);
+        		background-image: linear-gradient(135deg, $gold -20%, $light-gold 20%, $gold);
+			}
+			.navbar-toggle {
+				color: $black;
+			}
+			.nav > li.fb > a {
+				background: transparent;
+				color: $black;
+			}
 		}
 	}
 }
@@ -451,14 +554,32 @@ a.btn.btn-fb {
 		font-size: .8em;
 	}
 	@include respond-to (xxs-mobile){
-		height: 260px;
+		height: 220px;
 		font-size: .7em;
 		h2 {
 			letter-spacing: .06em;
 		}
 	}
+	body.season2 & {
+		background: url("../images/tozzi_banner_s2.jpg") no-repeat center center;
+		font-size: .65em;
+		height: 360px;
+		h2.logo {
+			margin-top: 170px;
+		}
+		@include respond-to (only-device){
+			height: 300px;
+			font-size: .7em;
+			h2.logo {
+				margin-top: 140px;
+			}
+		}
+		@include respond-to (xxs-mobile){
+
+		}
+	}
 }
-#section-2 {
+#traders #section-2 {
 	background: $white;
 //	padding-top: 20px;
 //	padding-bottom: 20px;
@@ -598,8 +719,12 @@ a.btn.btn-fb {
 		}
 	}
 }
-#section-2-5, #section-3, #section-3-5, #section-4, #section-5, #section-6, #section-7 ,#section-7-5, #section-8{
+#section-2, #section-2-5, #section-3, #section-3-5, #section-4, #section-5, #section-6, #section-7 ,#section-7-5, #section-8 {
 	padding: 80px 0;
+	h2 {
+		text-align: center;
+		margin-bottom: 20px;
+	}
 	h3 {
 		text-align: center;
 		margin-bottom: 20px;
@@ -610,6 +735,14 @@ a.btn.btn-fb {
 }
 #section-2-5, #section-3-5, #section-5, #section-7 {
 	background: $light-gray;
+}
+#section-2 {
+	padding: 30px 0;
+	font-size: 18px;
+	a {
+		display: block;
+		padding: 2px 10px;
+	}
 }
 #section-2-5 {
 	padding: 20px 0;
@@ -663,6 +796,9 @@ a.btn.btn-fb {
 			color: $yellow;
 		}
 	}
+	#ranking & {
+		padding-top: 30px;
+	}
 	@include respond-to (normal-mobile){
 		h4 {
 			font-size: $xxl-font;
@@ -675,7 +811,9 @@ a.btn.btn-fb {
 			}
 		}
 	}
-	
+	.season2 & {
+		background: $light-rice;
+	}
 }
 #section-3-5 {
 	.market-list {
@@ -703,11 +841,14 @@ a.btn.btn-fb {
 }
 #section-4 {
 //	background: $light-gray;
-	.stock-chart {
-		border: 1px solid $light-gray;
-		padding: 10px;
-		height: 300px;
-		margin-bottom: 20px;
+}
+.stock-chart {
+	border: 1px solid $light-gray;
+	padding: 10px;
+	height: 300px;
+	margin-bottom: 20px;
+	.season2 & {
+		border-color: $light-gold;
 	}
 }
 #section-5 {
@@ -813,7 +954,7 @@ a.btn.btn-fb {
 //		border-bottom: 1px solid #ccc;
 	}
 	p {
-		font-size: $l-font;
+		font-size: $xl-font;
 		padding: 2px 0 10px 40px; 
 	}
 	@include respond-to (normal-mobile){
@@ -1005,5 +1146,13 @@ footer {
 	}
     p.note {
         margin-top: -30px;
+		margin-bottom: 50px;
     }
 }
+
+
+//body.season2 {
+//	#navigation {
+//		background: red;
+//	}
+//}
