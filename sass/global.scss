@@ -45,8 +45,10 @@ h1 {
 h2 {
 	letter-spacing: .09em;
 	font-size: 40px;
+    line-height: 1.15;
 	body.season2 & {
 		color: $dark-gold;
+        font-size: 36px;
 	}
 }
 h3 {
@@ -68,7 +70,7 @@ h4 {
 	font-weight: bold;
 }
 p, li {
-	font-size: 18px;
+	font-size: 17px;
 	font-weight: normal;
 	margin-bottom: 0;
 	color: $dark-gray;
@@ -76,21 +78,31 @@ p, li {
 	letter-spacing: .05em;
 //	text-align: justify;
 }
+p {
+    a {
+        body.season2 & {
+            color: $gold;
+            &:hover, &:focus {
+                color: $white;
+                background: $gold;
+            }
+        }
+    }
+}
 a {
 	color: $primary-color;
 	@include transition(all, .5s, ease-in);
 	&:hover, &:focus { 
-		text-decoration: none;
-		color: $black;
-		background: $primary-color;
+		text-decoration: underline;
+//		color: $black;
+//		background: $primary-color;
 	}
-	body.season2 & {
-		color: $gold;
-		&:hover, &:focus {
-			color: $white;
-			background: $gold;
-		}
-	}
+    body.season2 & {
+        color: $gold;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }
 hr {
 }
@@ -242,6 +254,19 @@ a.btn.btn-fb {
 .btn:focus,.btn:active:focus,.btn.active:focus,
 .btn.focus,.btn:active.focus,.btn.active.focus {
     outline: none;
+}
+.btn-default {
+    body.season2 & {
+        background-color: transparent;
+        border: 1px solid $gold;
+        color: $gold;
+        &:hover, &:active, &:focus, &.active, &.dropdown-toggle, &.disabled {
+//    		border: 0;
+    		color: $white;
+    		background-color: $gold;
+    	}
+    }
+    
 }
 //.btn-primary {
 //	background-color: transparent;
@@ -720,7 +745,7 @@ a.btn.btn-fb {
 	}
 }
 #section-2, #section-2-5, #section-3, #section-3-5, #section-4, #section-5, #section-6, #section-7 ,#section-7-5, #section-8 {
-	padding: 80px 0;
+	padding: 40px 0;
 	h2 {
 		text-align: center;
 		margin-bottom: 20px;
@@ -731,6 +756,9 @@ a.btn.btn-fb {
 	}
 	@include respond-to (normal-mobile){
 		padding: 40px 0;
+        h2, h3 {
+            margin-bottom: 10px;
+        }
 	}
 }
 #section-2-5, #section-3-5, #section-5, #section-7 {
@@ -743,6 +771,9 @@ a.btn.btn-fb {
 		display: block;
 		padding: 2px 10px;
 	}
+    .list {
+        margin-bottom: 20px;
+    }
 }
 #section-2-5 {
 	padding: 20px 0;
@@ -998,7 +1029,7 @@ footer {
 }
 @include respond-to (only-device){
 	h2 {
-		font-size: $xxxxl-font;
+		font-size: 2.3em;
 	}
 	h3 {
 		font-size: 2em;
@@ -1149,8 +1180,112 @@ footer {
 		margin-bottom: 50px;
     }
 }
+.ranking-all {
+    .tab-container {
+        border-radius: 10px;
+        background: rgba($rice, .3);
+        padding: 10px;
+        border: 0;
+        box-shadow: 0 2px 0 rgba($gold,.6);
+        margin-bottom: 20px;
+    }
+    .table-responsive {
+        
+    }
+    a {
+        &:hover {
+            background: none;
+            color: $gold;
+        }
+    }
+    .table.ranking {
+        > thead > tr > th {
+            border-bottom: 1px solid $gold;
+        }
+        > tbody > tr > td {
+            border-bottom: 1px solid $light-gray;
+        }
+        td, th {
+            vertical-align: middle!important;
+        }
+        th, td {
+            text-align: center!important;
 
-
+        }
+        tr {
+            img {
+                width: 40px;
+                height: 40px;
+                &:hover {
+                    border: 2px solid $gold;
+                }
+            }
+        }
+    }
+}
+body.season2 #section-4 {
+    h2 {
+        span {
+            &:nth-of-type(2) {
+               font-size: 18px;
+                display: block;
+                margin-top: -5px;
+            }
+        }
+    }
+    padding-bottom: 80px;
+}
+.market-all {
+    .row {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    .market-single {
+        border-bottom: 1px solid $gold;
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+    }
+    p {
+        font-size: 17px;
+    }
+    .trader-single {
+        text-align: center;
+//        .trader-single {
+//            float: right;
+//        }
+       img {
+            width: 70px;
+            height: 70px;
+        }
+        span {
+            display: inline-block;
+            font-size: 15px;
+            margin: 4px 0;
+            padding: 4px 0;
+            width: 70px;
+            background: rgba($gold,.6);
+            color: $white;
+        } 
+    }
+    @include respond-to (only-mobile){
+        .trader-single {
+            text-align: left;
+            span {
+                text-align: center;
+            }
+        }
+    }
+}
+.market-article {
+    padding: 0 15px;
+    text-align: center;
+    ul {
+        li {
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+    }
+}
 //body.season2 {
 //	#navigation {
 //		background: red;
