@@ -109,8 +109,8 @@
 			<div class="content">
 				<div class="slider">
 					<div v-for="trader in traders">
-						<a :href="trader.href">
-							<img :src="trader.image" alt="" :title="trader.name" :class="trader.active">
+						<a :href="'?id=' + trader.id">
+							<img :src="trader.image" alt="" :title="trader.name" :class="{active: trader.id == id}">
 							<span v-text="trader.name"></span>
 						</a>
 					</div>
@@ -272,6 +272,7 @@
 <script>
 
 var data = {
+  id: 0,
   image: '',
   name: '',
   strategy: '',
@@ -292,6 +293,7 @@ var data = {
 
 ///data
 
+data.id = 3;
 data.name = "吳承澤";
 data.image = "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/%E5%90%B3%E6%89%BF%E6%BE%A4.png";
 data.strategy = "這次有兩個月的時間進行交易，隨著大盤指數來到高點，操作也將變的不易進行，而我這次的策略皆以基本面為主，技術面為輔，主要分為二部分。第一部分尋找今年的成長股，並算出公司今年的營運績效，藉此算出合理價格，於價格落入安全範圍內，佈局買進。<br>第二部分尋找殖利率概念股，3-4月期間部分公司將陸續公佈今年發放的股利，在公司公佈消息之前，試算今年可能發放的股利，換算出殖利率，並提前佈局股價仍在低檔，且擁有高殖利率保護的股票進行操作。";
