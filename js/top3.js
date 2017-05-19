@@ -1,6 +1,6 @@
 function hide() {
   var a = $('a[title]');
-  if (a.length == 2) {
+  if (a.length == 1) {
     $('image[x]').parent().parent().hide();
     a.hide();
     return;
