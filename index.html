@@ -29,7 +29,7 @@
 	<script src="https://www.amcharts.com/lib/3/serial.js"></script>
 	<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
 	<link href="css/chart.css" rel="stylesheet">
-	<script src="js/chart.js"></script>
+	<script src="js/top3.js"></script>
 
 	<!--vue-->
 	<script src="https://unpkg.com/vue/dist/vue.js"></script>
@@ -115,9 +115,9 @@
 	</div>
 	<div id="section-3">
 		<div class="container">
-			<div class="chart-top3" v-if="false">
+			<div class="chart-top3" v-if="points.length">
 				<h2>賽季前三名表現</h2>
-				<div class="stock-chart"></div>
+				<div id="chartdiv" class="stock-chart"></div>
 			</div>
 			
 			<div class="ranking-all" v-if="rankings.length">
@@ -214,6 +214,8 @@ var data = {
     {image: 'images/profile_photo.png', comment: '(A)個人投資組合 短期有獲利則會停利，嚴設停損10% <br> (B)整體市場的觀察 目前主要受升息議題影響，這週資金動向外移，下週重點觀看fed 3/15-16是否升息結果，選股方面主要挑強勢股及基本涼涼好股票'},
     {image: 'images/profile_photo.png', comment: '(A)個人投資組合 短期有獲利則會停利，嚴設停損10% <br> (B)整體市場的觀察 目前主要受升息議題影響，這週資金動向外移，下週重點觀看fed 3/15-16是否升息結果，選股方面主要挑強勢股及基本涼涼好股票2'},
   ],
+  points: [],
+  names: [],
   rankings: [
     {delta: '+1', image: 'images/profile_photo.png', name: '選手一', mean: 9.1, gain: '30%', total: 123},
     {delta: '-1', image: 'images/profile_photo.png', name: '選手二', mean: 8.9, gain: '21%', total: 109},
@@ -222,6 +224,7 @@ var data = {
 //data//
 
 var vue = new Vue({el: '#vue', data: data});
+top3(data.points, data.names);
 
 </script>
 <script>
