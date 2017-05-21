@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed:700");
 /* ------------ base ------------ */
 body, html {
   min-height: 100% !important;
@@ -19,7 +20,7 @@ body.season2 {
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.8;
-  margin-top: 10px;
+  margin-top: 0;
   margin-bottom: 10px;
   font-weight: 700;
   font-family: 'Roboto', "source-han-sans-traditional", sans-serif, 'times',"Microsoft JhengHei";
@@ -39,13 +40,12 @@ h1 {
 }
 
 h2 {
-  letter-spacing: .09em;
   font-size: 40px;
   line-height: 1.15;
 }
 body.season2 h2 {
   color: #6E540B;
-  font-size: 36px;
+  font-size: 40px;
 }
 
 h3 {
@@ -53,6 +53,10 @@ h3 {
   font-weight: 600;
   color: #4A4A4A;
   font-size: 32px;
+}
+body.season2 h3 {
+  font-size: 26px;
+  font-weight: normal;
 }
 body.season2 h3 span {
   background-image: -webkit-linear-gradient(rgba(253, 230, 137, 0) 64%, #fde689 65%);
@@ -63,7 +67,15 @@ body.season2 h3 span {
 h4 {
   color: #666;
   line-height: 1.3;
-  font-weight: bold;
+  font-weight: normal;
+}
+body.season2 h4 {
+  color: #6E540B;
+}
+
+h6 {
+  font-size: 19px;
+  color: #666;
 }
 
 p, li {
@@ -118,11 +130,6 @@ ul, li {
   list-style: none;
 }
 
-@media only screen and (max-width: 480px) {
-  p {
-    font-size: 16px;
-  }
-}
 .close {
   position: absolute;
   display: inline-block;
@@ -270,11 +277,17 @@ body.season2 .btn-default:hover, body.season2 .btn-default:active, body.season2 
   font-size: 16px;
 }
 #navigation .logo {
-  font-family: 'Impact', "Roboto", 'Helvetica', sans-serif;
-  letter-spacing: 0.01em;
-  line-height: 54px;
-  font-weight: normal;
+  font-family: 'Roboto Condensed', 'Helvetica', sans-serif;
+  font-weight: 700;
   font-size: 28px;
+  margin-top: 10px;
+  letter-spacing: -.03em;
+}
+#navigation .logo a {
+  text-decoration: none;
+}
+#navigation .logo a:hover {
+  color: #FFCE00;
 }
 #navigation .col-sm-9 {
   padding: 0;
@@ -307,10 +320,12 @@ body.season2 .btn-default:hover, body.season2 .btn-default:active, body.season2 
   transition: all, 0.5s, ease-in-out;
   color: #FFCE00;
   border-left: 1px solid #111;
+  padding: 15px 13px;
 }
 #navigation .nav > li > a:hover, #navigation .nav > li > a:focus {
   background: #FFCE00;
   color: #111;
+  text-decoration: none;
 }
 #navigation .nav > li.fb {
   padding: 0;
@@ -528,6 +543,8 @@ body.season2 #section-1 h2.logo {
 
 #traders #section-2 {
   background: #fff;
+  padding-top: 15px;
+  padding-bottom: 15px;
   -moz-transition: all, 0.5s, ease-in;
   -o-transition: all, 0.5s, ease-in;
   -webkit-transition: all, 0.5s, ease-in;
@@ -535,7 +552,6 @@ body.season2 #section-1 h2.logo {
 }
 #traders #section-2 .container {
   overflow: hidden;
-  margin-bottom: 20px;
   height: 160px;
 }
 #traders #section-2.affix {
@@ -633,8 +649,8 @@ body.season2 #section-1 h2.logo {
     top: 30px;
   }
   #traders #section-2 .content .slider img {
-    width: 78px;
-    height: 78px;
+    width: 75px;
+    height: 75px;
   }
 }
 @media only screen and (max-width: 320px) {
@@ -644,28 +660,37 @@ body.season2 #section-1 h2.logo {
   }
 }
 
-#section-2, #section-2-5, #section-3, #section-3-5, #section-4, #section-5, #section-6, #section-7, #section-7-5, #section-8 {
-  padding: 40px 0;
+#section-2, #section-2-5, #section-3, #section-3-5, #section-4, #section-5, #section-6, #section-7, #section-7-5, #section-7-2, #section-7-1, #section-8 {
+  padding: 70px 0;
 }
-#section-2 h2, #section-2-5 h2, #section-3 h2, #section-3-5 h2, #section-4 h2, #section-5 h2, #section-6 h2, #section-7 h2, #section-7-5 h2, #section-8 h2 {
+#section-2 h2, #section-2-5 h2, #section-3 h2, #section-3-5 h2, #section-4 h2, #section-5 h2, #section-6 h2, #section-7 h2, #section-7-5 h2, #section-7-2 h2, #section-7-1 h2, #section-8 h2 {
   text-align: center;
   margin-bottom: 20px;
 }
-#section-2 h3, #section-2-5 h3, #section-3 h3, #section-3-5 h3, #section-4 h3, #section-5 h3, #section-6 h3, #section-7 h3, #section-7-5 h3, #section-8 h3 {
+#section-2 h3, #section-2-5 h3, #section-3 h3, #section-3-5 h3, #section-4 h3, #section-5 h3, #section-6 h3, #section-7 h3, #section-7-5 h3, #section-7-2 h3, #section-7-1 h3, #section-8 h3 {
   text-align: center;
   margin-bottom: 20px;
 }
 @media only screen and (max-width: 480px) {
-  #section-2, #section-2-5, #section-3, #section-3-5, #section-4, #section-5, #section-6, #section-7, #section-7-5, #section-8 {
+  #section-2, #section-2-5, #section-3, #section-3-5, #section-4, #section-5, #section-6, #section-7, #section-7-5, #section-7-2, #section-7-1, #section-8 {
     padding: 40px 0;
   }
-  #section-2 h2, #section-2 h3, #section-2-5 h2, #section-2-5 h3, #section-3 h2, #section-3 h3, #section-3-5 h2, #section-3-5 h3, #section-4 h2, #section-4 h3, #section-5 h2, #section-5 h3, #section-6 h2, #section-6 h3, #section-7 h2, #section-7 h3, #section-7-5 h2, #section-7-5 h3, #section-8 h2, #section-8 h3 {
+  #section-2 h2, #section-2 h3, #section-2-5 h2, #section-2-5 h3, #section-3 h2, #section-3 h3, #section-3-5 h2, #section-3-5 h3, #section-4 h2, #section-4 h3, #section-5 h2, #section-5 h3, #section-6 h2, #section-6 h3, #section-7 h2, #section-7 h3, #section-7-5 h2, #section-7-5 h3, #section-7-2 h2, #section-7-2 h3, #section-7-1 h2, #section-7-1 h3, #section-8 h2, #section-8 h3 {
     margin-bottom: 10px;
   }
+}
+#section-2 .row, #section-2-5 .row, #section-3 .row, #section-3-5 .row, #section-4 .row, #section-5 .row, #section-6 .row, #section-7 .row, #section-7-5 .row, #section-7-2 .row, #section-7-1 .row, #section-8 .row {
+  margin: 0;
 }
 
 #section-2-5, #section-3-5, #section-5, #section-7 {
   background: #F7F7F7;
+}
+#section-2-5 .row, #section-3-5 .row, #section-5 .row, #section-7 .row {
+  margin: 0;
+}
+.season2 #section-2-5, .season2 #section-3-5, .season2 #section-5, .season2 #section-7 {
+  background: #fff;
 }
 
 #section-2 {
@@ -696,10 +721,13 @@ body.season2 #section-1 h2.logo {
   color: #FFCE00;
 }
 
+#section-3 {
+  padding-top: 0;
+}
 #section-3 h4 {
   font-size: 1.75em;
   line-height: 36px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 #section-3 h4 span, #section-3 h4 a.btn-fb {
   display: inline-block;
@@ -723,6 +751,7 @@ body.season2 #section-1 h2.logo {
   border-radius: 18px;
   margin: 0 0 0 10px;
   vertical-align: top;
+  color: #fde689;
 }
 #section-3 a.btn-interview:hover, #section-3 a.btn-interview:active, #section-3 a.btn-interview:focus {
   color: #FFCE00;
@@ -730,30 +759,32 @@ body.season2 #section-1 h2.logo {
 #ranking #section-3 {
   padding-top: 30px;
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 767px) {
   #section-3 h4 {
-    font-size: 1.5em;
     text-align: center;
   }
   #section-3 .col-xs-12 img {
-    width: 60%;
     margin: 0 auto;
   }
 }
 .season2 #section-3 {
   background: #fffffe;
+  padding-top: 70px;
+}
+.season2#traders #section-3 {
+  padding-top: 0;
 }
 
-#section-3-5 .market-list {
+.market-list {
   padding: 10px 0;
   margin: 10px 0;
 }
-#section-3-5 .market-list span.date {
+.market-list span.date {
   padding: 4px;
   display: inline-block;
   padding-left: 30px;
 }
-#section-3-5 .market-list span.date:before {
+.market-list span.date:before {
   content: "\f201";
   font-family: FontAwesome;
   font-style: normal;
@@ -763,8 +794,21 @@ body.season2 #section-1 h2.logo {
   position: absolute;
   left: 20px;
 }
-#section-3-5 .market-list p {
+.market-list p {
   padding-left: 30px;
+}
+.season2 .market-list {
+  font-size: 17px;
+  line-height: 1.9;
+  padding: 0 0 8px;
+  margin: 0 0 16px;
+  border-bottom: 1px solid #F7F7F7;
+}
+.season2 .market-list p {
+  padding-left: 0;
+}
+.season2 .market-list span.date {
+  color: #b08a08;
 }
 
 .stock-chart {
@@ -772,9 +816,129 @@ body.season2 #section-1 h2.logo {
   padding: 10px;
   height: 300px;
   margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.5);
 }
 .season2 .stock-chart {
   border-color: #fde689;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.expound {
+  position: relative;
+  color: #666;
+}
+.expound li {
+  font-size: 1.25em;
+  line-height: 1.8;
+  padding-left: 30px;
+}
+.expound li span {
+  font-size: 12px;
+}
+.expound li:before {
+  content: "\f00c";
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  padding-right: 4px;
+  font-size: 16px;
+  position: absolute;
+  left: 20px;
+}
+
+.history {
+  margin: 20px auto;
+}
+.history .history-list {
+  font-size: 17px;
+  line-height: 1.9;
+}
+.history .results span {
+  display: block;
+}
+.history h4 span > img {
+  width: 36px !important;
+  padding: 0 5px;
+  vertical-align: text-top;
+}
+.history h6 {
+  font-weight: normal;
+}
+.history span.more {
+  font-size: 15px;
+  vertical-align: middle;
+  position: relative;
+}
+.history span.more a {
+  padding: 2px 4px;
+  text-decoration: underline;
+  padding-left: 27px;
+}
+.history span.more a:before {
+  content: "\f0a4";
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  padding-right: 4px;
+  font-size: 16px;
+  position: absolute;
+  left: 7px;
+}
+.history span.more a:hover {
+  background: #b08a08;
+  color: #fff;
+}
+@media only screen and (max-width: 767px) {
+  .history h6 {
+    text-align: center;
+  }
+  .history h6 a {
+    display: inline-block;
+  }
+}
+
+.season2 .expound {
+  margin-bottom: 30px;
+}
+.season2 .expound h3 {
+  margin-top: -4px;
+}
+
+.expound-list {
+  font-size: 17px;
+  line-height: 1.9;
+  padding-bottom: 8px;
+  margin: 16px 0 30px;
+  border-bottom: 1px solid #F7F7F7;
+}
+.expound-list .date {
+  margin-right: 10px;
+  color: #b08a08;
+}
+.expound-list .statement-list a {
+  padding: 2px 4px;
+  position: relative;
+  text-decoration: underline;
+  padding-left: 27px;
+  cursor: pointer;
+}
+.expound-list .statement-list a:before {
+  content: "\f0c6";
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  padding-right: 4px;
+  font-size: 16px;
+  position: absolute;
+  left: 7px;
+}
+.expound-list .statement-list a:hover {
+  background: #b08a08;
+  color: #fff;
+  text-decoration: none;
+}
+.expound-list .detail {
+  display: block;
 }
 
 #section-5 h5 {
@@ -812,27 +976,8 @@ body.season2 #section-1 h2.logo {
   }
 }
 
-#section-7 .expound {
-  position: relative;
-  color: #666;
-}
-#section-7 .expound li {
-  font-size: 1.25em;
-  line-height: 1.8;
-  padding-left: 30px;
-}
-#section-7 .expound li span {
-  font-size: 12px;
-}
-#section-7 .expound li:before {
-  content: "\f00c";
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  padding-right: 4px;
-  font-size: 16px;
-  position: absolute;
-  left: 20px;
+#section-7-1, #section-7-2 {
+  background: #fff;
 }
 
 #section-7-5 img {
@@ -901,10 +1046,6 @@ footer {
     font-size: 1.2em;
   }
 }
-.amcharts-chart-div {
-  background: white;
-}
-
 #report .report-anchor {
   padding-top: 40px;
   padding-bottom: 40px;
@@ -1035,26 +1176,30 @@ footer {
   margin-bottom: 50px;
 }
 
-.ranking-all .tab-container {
+.season2 .tab-container {
   border-radius: 10px;
-  background: rgba(254, 250, 239, 0.3);
+  background: rgba(255, 255, 255, 0.75);
   padding: 10px;
   border: 0;
-  box-shadow: 0 2px 0 rgba(176, 138, 8, 0.6);
+  box-shadow: 0 2px 2px rgba(176, 138, 8, 0.3);
   margin-bottom: 20px;
+}
+.season2 .table > thead > tr > th {
+  border-bottom: 1px solid #fde689;
+}
+.season2 .table > tbody > tr > td {
+  border-bottom: 1px solid #F7F7F7;
+}
+.season2 .table td, .season2 .table th {
+  vertical-align: middle !important;
+}
+
+.ranking-all .tab-container {
+  background: rgba(254, 250, 239, 0.3);
 }
 .ranking-all a:hover {
   background: none;
   color: #b08a08;
-}
-.ranking-all .table.ranking > thead > tr > th {
-  border-bottom: 1px solid #b08a08;
-}
-.ranking-all .table.ranking > tbody > tr > td {
-  border-bottom: 1px solid #F7F7F7;
-}
-.ranking-all .table.ranking td, .ranking-all .table.ranking th {
-  vertical-align: middle !important;
 }
 .ranking-all .table.ranking th, .ranking-all .table.ranking td {
   text-align: center !important;
@@ -1073,13 +1218,9 @@ body.season2 #section-4 {
 body.season2 #section-4 h2 span:nth-of-type(2) {
   font-size: 18px;
   display: block;
-  margin-top: -5px;
+  margin-top: 0;
 }
 
-.market-all .row {
-  padding-left: 30px;
-  padding-right: 30px;
-}
 .market-all .market-single {
   border-bottom: 1px solid #b08a08;
   padding-bottom: 20px;
@@ -1117,7 +1258,11 @@ body.season2 #section-4 h2 span:nth-of-type(2) {
   padding: 0 15px;
   text-align: center;
 }
+.market-article .row {
+  background: rgba(253, 230, 137, 0.2);
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
 .market-article ul li {
   line-height: 1.2;
-  margin-bottom: 10px;
 }
