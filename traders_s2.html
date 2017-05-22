@@ -136,15 +136,14 @@
                         <h4><span>過去參賽紀錄</span><span><img src="images/icon_ranking.png" alt=""></span></h4>
                         <div class="history-list">
                             <h6>TOZZI ARENA 投資實戰擂台第一季</h6>
-                            <div class="results">
-                                <span>-- 獎第 - 名</span>
-                                <span>選手互評平均分：--</span>
-                                <span>投報率：--</span>
-                                <span>總得分：--</span>
+                            <div class="results" v-if="season1">
+                                <span v-text="season1.prize + '獎第' + season1.rank + '名'"></span>
+                                <span v-text="'選手互評平均分：' + season1.average"></span>
+                                <span v-text="'投報率：' + season1.rate"></span>
+                                <span v-text="'總得分：' + season1.score"></span>
                             </div>
                             <span class="more"><a href="#">看更多</a></span>
                         </div>
-                        
                     </div>
                 </div>
 		    </div>
@@ -160,36 +159,21 @@
 		</div>
 	</div>
 
-	<div id="section-5" v-if="Object.keys(markets).length">
+	<div id="section-5" v-if="reports.length">
         <!--賽程動態 交易解說 市場觀察-->
         <div class="container">
             <h2>賽程動態</h2>
             <div class="row expound">
                 <h3><span>交易解說</span></h3>
                 <div class="col-sm-8 col-sm-offset-2">
-                    <div class="expound-list">
-                        <span class="date">05/19</span>
-                        <span class="statement-list"><a data-toggle="modal" data-target="#modal-statement">查看對帳單</a></span>
-                        <span class="detail">
-                        (A)公司去年毛利回到高檔，且營利率創新高，今年可望配發1.2元現金股利，等待近期公司發布相關消息。<br>
-    (B)目前殖利率仍高，待合理價格後，便出場。<br>
-    (C)公司發布消息前，若股價持續下修，則分批往下加碼佈局。<br>
-    (D)待股價至合理價格後，逢高減碼；若利多不漲時，也將持續減碼出場。
-                        </span>
-                    </div>
-                    <div class="expound-list">
-                        <span class="date">05/15</span>
-                        <span class="statement-list"><a data-toggle="modal" data-target="#modal-statement">查看對帳單</a></span>
-                        <span class="detail">
-                        (A)公司去年毛利回到高檔，且營利率創新高，今年可望配發1.2元現金股利，等待近期公司發布相關消息。<br>
-    (B)目前殖利率仍高，待合理價格後，便出場。<br>
-    (C)公司發布消息前，若股價持續下修，則分批往下加碼佈局。<br>
-    (D)待股價至合理價格後，逢高減碼；若利多不漲時，也將持續減碼出場。
-                        </span>
+                    <div class="expound-list" v-for="r in reports">
+                        <span class="date" v-text="r.date"></span>
+                        <span class="statement-list"><a @click="src = r.images; title = r.date" data-toggle="modal" data-target="#modal-statement">查看對帳單</a></span>
+                        <span class="detail" v-html="r.reason"></span>
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" v-if="markets.length">
                 <h3><span>每週市場觀察</span></h3>
                 <div class="col-sm-8 col-sm-offset-2" v-for="(market, date) in markets">
                     <div class="market-list">
@@ -198,36 +182,13 @@
                     </div>
                 </div>
             </div>
-            
-<!--原交易解說區塊
-            <h3>交易解說</h3>
-            <div class="expound col-sm-8 col-sm-offset-2">
-                <ul>
-                    <li v-for="reason in reasons" v-html="reason">
-                    </li>
-                </ul>
-            </div>
--->
         </div>
     </div>
-<!--原交易明細區塊
-	<div id="section-5" v-if="Object.keys(reports).length">
-		<div class="container">
-			<h3>交易明細</h3>
-			<div class="statement-list">
-				<ul style="vertical-align: top" v-for="(images, date) in reports">
-					<h5 v-text="date"></h5>
-					<li v-for="image in images" @click="src = image; title = date"><img :src="image" :alt="date" :title="date" class="img-responsive" data-toggle="modal" data-target="#modal-statement"></li>
-				</ul>
-			</div>
-		</div>
-	</div>
--->
    
-    <!--交易記錄-->
+    <!--交易紀錄-->
 	<div id="section-6" v-if="records.length">
 		<div class="container">
-			<h2>交易記錄</h2>
+			<h2>交易紀錄</h2>
 			<div class="tab-container">
 				<div class="table-responsive">
 					<table class="table">
@@ -306,7 +267,7 @@
 				<div type="button" class="close" data-dismiss="modal"></div>
 				<div class="modal-body">
 					<h4 class="modal-title">{{title}} 交易明細</h4>
-					<img :src="src" :alt="title" :title="title" class="img-responsive">
+					<img v-for="s in src" :src="s" :alt="title" :title="title" class="img-responsive">
 				</div>
 			</div>
 
@@ -330,19 +291,49 @@ var data = {
   image: '',
   name: '',
   strategy: '',
-  src: '',
+  src: [],
   title: '',
   facebook: '',
   interview: '',
   traders: [{},{},{},{},{},{},{},{},{},{},{},{}],
-  markets: {},
   records: [],
-  reports: {},
-  reasons: [],
+  reports: [
+    {
+      date: "帳戶起始狀態",
+      reason: "(A)公司去年毛利回到高檔，且營利率創新高，今年可望配發1.2元現金股利，等待近期公司發布相關消息。<br>\n(B)目前殖利率仍高，待合理價格後，便出場。<br>\n(C)公司發布消息前，若股價持續下修，則分批往下加碼佈局。<br>\n(D)待股價至合理價格後，逢高減碼；若利多不漲時，也將持續減碼出場。",
+      images: [
+        "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0515orginal.jpg",
+      ],
+    },
+    {
+      date: "5/15",
+      reason: "(A)公司去年毛利回到高檔，且營利率創新高，今年可望配發1.2元現金股利，等待近期公司發布相關消息。<br>\n(B)目前殖利率仍高，待合理價格後，便出場。<br>\n(C)公司發布消息前，若股價持續下修，則分批往下加碼佈局。<br>\n(D)待股價至合理價格後，逢高減碼；若利多不漲時，也將持續減碼出場。這是測試。",
+      images: [
+        "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0515orginal.jpg",
+        "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0515orginal.jpg",
+        "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0515orginal.jpg",
+        "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0515orginal.jpg",
+        "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0515orginal.jpg",
+        "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0515orginal.jpg",
+        "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0515orginal.jpg",
+        "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0515orginal.jpg",
+        "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0515orginal.jpg",
+        "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0515orginal.jpg",
+      ],
+    },
+  ],
   points: [],
   comments5: [],
   comments6: [],
   price: {},
+  season1: {
+	prize: '測試',
+	rank: '一',
+	average: 8.3,
+	rate: '15.4%',
+	score: 21,
+  },
+  markets: [],
 };
 
 ///data
@@ -351,11 +342,8 @@ data.id = 3;
 data.name = "吳承澤";
 data.image = "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/%E5%90%B3%E6%89%BF%E6%BE%A4.png";
 data.strategy = "這次有兩個月的時間進行交易，隨著大盤指數來到高點，操作也將變的不易進行，而我這次的策略皆以基本面為主，技術面為輔，主要分為二部分。第一部分尋找今年的成長股，並算出公司今年的營運績效，藉此算出合理價格，於價格落入安全範圍內，佈局買進。<br>第二部分尋找殖利率概念股，3-4月期間部分公司將陸續公佈今年發放的股利，在公司公佈消息之前，試算今年可能發放的股利，換算出殖利率，並提前佈局股價仍在低檔，且擁有高殖利率保護的股票進行操作。";
-data.reasons = ["3/01：<br>(A)公司去年毛利回到高檔，且營利率創新高，今年可望配發1.2元現金股利，等待近期公司發布相關消息。<br>(B)目前殖利率仍高，待合理價格後，便出場。<br>(C)公司發布消息前，若股價持續下修，則分批往下加碼佈局。<br>(D)待股價至合理價格後，逢高減碼；若利多不漲時，也將持續減碼出場。","3/03：<br>(A)今年營收表現可維持雙位數高成長，近年本業獲利表現持續上揚，且轉投資部分獲利貢獻佳，而目前的本益比低於8X以下、外資由賣轉買。<br>(B)待股價至合理本益比13-14X出場<br>(C)若股價持續下修，則依比例往下加碼<br>(D)股價至合理股價時，或公司出現營運疑慮時減碼。","3/06：<br>伴隨股價下修，殖利率隨之上升，依先前交易策略 加碼持股","3/13：<br>賣出神達：神達上週公佈2月營收雖不如預期，但今年仍可維持兩位數的年增表現。近期來看，雖今年度雙位數字成長，但在2月營收不如預期，加上法人轉賣以及大盤震盪下，暫時先退場觀望。","3/20：<br>買進強盛<br>(A)原因公司在羅斯福路與辛亥路口的嘟更案台大OPUS ONE已全數完工，並於去年12月大筆認列入帳，預估強盛2016年EPS約4.51元，過往股息配發約90%，公司負債比低，預估配發現金4元，目前殖利率高達16%，故予以買進。<br>(B)出場:待公司宣布股息當天反映價值後，便出場。<br>(C)加碼:若股價近期有下跌，則加碼。<br>(D)減碼:達到預期獲利後，便採取換股。","3/24：<br>加碼強盛，下周將公布股利，預估發放現金股利4元，目前殖利率仍有16%。","3/28：<br>加碼強盛，由於盤中下殺，在公布股息消息前的看法依舊不變，預期配發4元股利，隨股價下跌，加碼買進。<br>今日盤後強盛公布發放現金股利3.3元，略低於預期，依今日收盤價計算，有高達13.8%殖利率，期待明日股價表現！","3/29：<br>買進盛餘<br>2016年全年EPS 3.96元， 相較去年EPS -0.29元由虧轉盈、大幅成長，展望今年第一季，因中鋼上半年鋼價逐季調升，第一季營收仍維持高檔，在第二季中鋼鋼價續揚下，預期上半年營運能有佳績。公司宣布發放股利2.45元，目前殖利率約6.53%，本益比約10X。<br>賣出強盛<br>公司昨日公布宣布股利3.3元，依昨日收盤價擁有高達13%殖利率，今天日開盤即反應該利多，以當日最高價25.2元賣出。"];
-data.reports = {"03/01":["https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0301.jpg"],"03/03":["https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0303.jpg"],"03/06":["https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0306.jpg"],"03/13":["https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0313.jpg"],"03/20":["https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0320.png"],"03/24":["https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0324.jpg"],"03/28":["https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0328.jpg"],"03/29":["https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0329.jpg"]};
 data.records = [{"date":"03/01 ","name":"晶采8049","type":"買","share":1000,"price":16.2,"total":16200},{"date":"03/01 ","name":"晶采8049","type":"買","share":1000,"price":16.1,"total":16100},{"date":"03/03 12:33:50","name":"神達3706","type":"買","share":1000,"price":32.6,"total":32600},{"date":"03/06 10:16:58","name":"晶采8049","type":"賣","share":1000,"price":15.4,"total":15400,"gain":-700.0000000000018},{"date":"03/06 10:18:13","name":"晶采8049","type":"買","share":1000,"price":15.45,"total":15450},{"date":"03/06 10:30:35","name":"晶采8049","type":"買","share":1000,"price":15.7,"total":15700},{"date":"03/13 10:02:05","name":"神達3706","type":"賣","share":1000,"price":32.15,"total":32150,"gain":-450},{"date":"03/20 09:00:25","name":"強盛1463","type":"買","share":1000,"price":24,"total":24000},{"date":"03/24 09:29:09","name":"強盛1463","type":"買","share":1000,"price":25.15,"total":25150},{"date":"03/28 11:31:51","name":"強盛1463","type":"買","share":1000,"price":24.4,"total":24400},{"date":"03/29 09:00:15","name":"強盛1463","type":"賣","share":2000,"price":25.2,"total":50400,"gain":1250},{"date":"03/29 09:00:15","name":"強盛1463","type":"賣","share":1000,"price":25.2,"total":25200,"gain":800},{"date":"03/29 11:19:23","name":"盛餘2029","type":"買","share":1000,"price":37.8,"total":37800}];
 data.id = 3;
-data.markets = {"3/06~3/10":"(A)個人投資組合<br>目前已進場的標的，皆在等待下週營收公布，以及股利發放的狀況；下週仍維持原本的交易策略，在今年具成長性的個股，或是具備高殖利率的個股進行選擇，在大盤盤整的同時，選擇低本益比的股票進場。<br>(B)整體市場的觀察/看法<br>目前大盤來到9648點，跌破月線，但9600點有大量紅k做支撐，因此我認為下週大盤可能會在9600-9700盤整，近期則以個股表現為主；台股是否可能走揚，需要持續留意新台幣走勢，上週起，台幣有走貶的趨勢，若台幣仍繼續走貶，對於台股走勢將是一大壓力。","3/13~3/17":"(A)個人投資組合<br>目前持股有晶采及神達，本週晶采為小幅修正，但尾盤都有明顯的拉抬，下週即將公布股息，在擁有高殖利的保護下，繼續持有此檔股票；神達本週公佈2月營收雖不如預期，但今年仍可維持兩位數的年增表現。近期來看，雖今年度雙位數字成長，但在2月營收不如預期，加上法人轉賣以及大盤震盪下，下週可能會先退場觀望。<br>(B)整體市場的觀察/看法<br>上週說到本週走勢仍須注意台幣貶值，而本週在台幣帶量重貶的情況下，也就意味著短期資金的回流美元。以日線圖來看，上週五指數破低，但指標沒破，成低檔背離，短線來看，有機會小幅反彈；週線圖已出現連三天黑K，且死亡交叉持續放大；月線圖的月KD出現死亡交叉，需要特別留意。依上述幾點說明，下週指數走勢將是關鍵，指數9562是否為低點，仍須觀察。","3/20~3/24":"(A)個人投資組合<br>目前持股來看，仍有7.36%的高殖利率，等待下週公布股息；短線持續留意擁有高殖利率的個股，搶公布股息的行情。<br>(B)整體市場的觀察/看法<br>本週大盤持續上攻，周五指數突破前高並站上9900點，再創今年新高，日線來看為多方趨勢；週線終止連3黑K，但目前週線已出現價量背離，因此仍須留意下週走勢，一、量能若無法突破，則暫時壓回整理，二、若能以量滾量 帶量上攻，則能繼續維持多頭走勢。因此下週的「成交量」將是關鍵！","3/27~3/31":"(A)個人投資組合<br>本週二晶采公布股息配發1.3元現金股利，優於預期的1.2，依週五收盤價股價仍有7.9%，接著關注全年報，持續追蹤今年營收狀況是否符合預期。<br>強盛則靜待下週股息宣布。<br>(B)整體市場的觀察/看法<br>目前日線出現KD死亡交叉，短線來看，下個禮拜可能出現壓回或是盤整，除非歐美股市有突然的利多。大盤位處高點，選股尤其重要，尋找擁有高殖利率或是低本益比的個股，買在安全的價位，不輕易追高，正是對於自己的一種保護。","4/05~4/07":"(A)個人投資組合<br>目前持有晶采及盛餘，兩擋都持續看好，但由於資金有限，下週可能先將盛餘獲利了結，轉去另一擋近期股價急跌的個股，在基本面尚未出現變化時，就是搶反彈的好時機！<br>(B)整體市場的觀察/看法<br>目前短線來看都呈現弱勢，日線已出現連六黑K，且週線出現死亡交叉，因此近期尤其重要，若能透過日K漲幅帶動，將可能化解空頭趨勢，若近期仍持續下跌，將帶動月線也呈現死亡交叉，屆時勢必要調整個股，Ｑ1財報將出，會看到許多個股面臨重大匯損，短期內股價必定會反應匯損，但這只是短暫現象，把重點留意在未來的營運上。選擇具營收成長性、擁有高殖利率、低本益比保護，以及全年度獲利財測佳的個股做買進。當股價回檔時，就是佈局的好時機！"};
 data.facebook = "";
 data.interview = "";
 data.comments = [{"id":1,"score":8,"comment":"持有標的符合殖利率選股邏輯，懂得追逐強勢股。"},{"id":2,"score":8,"comment":"交易策略符合營收成長及殖利率判斷買進，交易明確。"},{"id":4,"score":8,"comment":""},{"id":5,"score":7,"comment":""},{"id":8,"score":8,"comment":"對公司基本面有掌握，明確執行交易。"},{"id":9,"score":5,"comment":""},{"id":10,"score":9,"comment":"每一筆交易都有對標的公司做功課，並清楚說明原因，符合其基本面為主的交易策略"},{"id":11,"score":9,"comment":"持有標的符合殖利率選股邏輯，強盛股利不如預期時亦能賣在隔日開盤最高點。看好其往後未來績效，只待時間發酵。"}];
