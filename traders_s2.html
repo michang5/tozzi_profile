@@ -132,17 +132,17 @@
                         <a v-if="interview" class="btn btn-interview" :href="interview">獨家專訪</a>
                     </h4>
                     <p v-html="strategy"></p>
-                    <div class="history">
+                    <div class="history" v-if="season1.prize">
                         <h4><span>過去參賽紀錄</span><span><img src="images/icon_ranking.png" alt=""></span></h4>
                         <div class="history-list">
                             <h6>TOZZI ARENA 投資實戰擂台第一季</h6>
-                            <div class="results" v-if="season1">
+                            <div class="results">
                                 <span v-text="season1.prize + '獎第' + season1.rank + '名'"></span>
                                 <span v-text="'選手互評平均分：' + season1.average"></span>
                                 <span v-text="'投報率：' + season1.rate"></span>
                                 <span v-text="'總得分：' + season1.score"></span>
                             </div>
-                            <span class="more"><a href="#">看更多</a></span>
+                            <span class="more"><a :href="season1.href">看更多</a></span>
                         </div>
                     </div>
                 </div>
@@ -173,7 +173,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row" v-if="markets.length">
+            <div class="row" v-if="Object.keys(markets).length">
                 <h3><span>每週市場觀察</span></h3>
                 <div class="col-sm-8 col-sm-offset-2" v-for="(market, date) in markets">
                     <div class="market-list">
@@ -327,11 +327,12 @@ var data = {
   comments6: [],
   price: {},
   season1: {
-	prize: '測試',
-	rank: '一',
-	average: 8.3,
-	rate: '15.4%',
-	score: 21,
+    prize: '測試',
+    rank: '一',
+    average: 8.3,
+    rate: '15.4%',
+    score: 21,
+    href: '#',
   },
   markets: [],
 };
