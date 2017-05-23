@@ -142,7 +142,7 @@
                                 <span v-text="'投報率：' + season1.rate"></span>
                                 <span v-text="'總得分：' + season1.score"></span>
                             </div>
-                            <span class="more"><a :href="season1.href">看更多</a></span>
+                            <span class="more"><a :href="'traders_s1.html?id=' + id">看更多</a></span>
                         </div>
                     </div>
                 </div>
@@ -332,7 +332,6 @@ var data = {
     average: '8.3',
     rate: '15.4%',
     score: '21',
-    href: '#',
   },
   markets: {},
 };
