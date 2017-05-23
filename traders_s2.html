@@ -159,11 +159,11 @@
 		</div>
 	</div>
 
-	<div id="section-5" v-if="reports.length">
+	<div id="section-5" v-if="reports.length || Object.keys(markets).length">
         <!--賽程動態 交易解說 市場觀察-->
         <div class="container">
             <h2>賽程動態</h2>
-            <div class="row expound">
+            <div class="row expound" v-if="reports.length">
                 <h3><span>交易解說</span></h3>
                 <div class="col-sm-8 col-sm-offset-2">
                     <div class="expound-list" v-for="r in reports">
