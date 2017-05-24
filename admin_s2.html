@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+	<!--css-->
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/global.css" rel="stylesheet">
+	<link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="css/slick-theme.css" rel="stylesheet">
+	<link href="css/slick.css" rel="stylesheet">
+
+	<!--vue-->
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<link href="css/admin.css" rel="stylesheet">
+</head>
+<body class="season2">
+	<div id="vue">
+		姓名：<input v-model="name" class="big">
+		照片：<input v-model="image" class="big">
+		策略：<textarea v-model="strategy" class="big"></textarea>
+		臉書：<input v-model="facebook" class="big">
+		訪談：<textarea v-model="interview" class="big"></textarea>
+    <hr>
+		<h3>解說</h3>
+		<div v-for="(r, i) in reports" class="list">
+			日期：<input v-model="reports[i].date"><br>
+			理由：<textarea v-model="reports[i].reason" class="big"></textarea>
+			圖片：<ul><li v-for="(img, i) in r.images"><input v-model="r.images[i]" class="big"></li></ul>
+      <button @click="r.images.push('')">+1</button><button @click="r.images.pop()">-1</button>
+		</div>
+    <button @click="reports.push({date: '', reason: '', images: ['']})">+1</button>
+    <button @click="reports.pop()">-1</button>
+    <hr>
+		<h3>紀錄</h3>
+		<div v-for="(r, i) in records" class="list">
+			日期：<input v-model="records[i].date">
+			名稱：<input v-model="records[i].name">
+      類型：<select v-model="records[i].type"><option>買</option><option>賣</option></select><br>
+			股數：<input v-model="records[i].share">
+			價錢：<input v-model="records[i].price">
+			總價：<input v-model="records[i].total">
+		</div>
+    <button @click="records.push({date: '', name: '', type: '', share: 0, price: 0, total: 0})">+1</button>
+    <button @click="records.pop()">-1</button>
+    <hr>
+		<h3>市場</h3>
+		<div v-for="(m, date) in markets" class="list">
+			日期：<input v-model="date"><button @click="delete markets[date]">刪除</button><br>
+			觀察：<textarea v-model="markets[date]" class="big"></textarea>
+		</div>
+    新增：<input v-model="key" placeholder="必填"><button @click="newMarket">新增</button>
+	</div>
+<script>
+
+var data = {
+  id: 0,
+  image: '',
+  name: '',
+  strategy: '',
+  key: '',
+  src: [],
+  title: '',
+  facebook: '',
+  interview: '',
+  traders: [{},{},{},{},{},{},{},{},{},{},{},{}],
+  records: [
+    {"date":"03/01 ","name":"晶采8049","type":"買","share":1000,"price":16.2,"total":16200},
+    {"date":"03/01 ","name":"晶采8049","type":"買","share":1000,"price":16.2,"total":16200},
+  ],
+  reports: [
+    {
+      date: "帳戶起始狀態",
+      reason: "(A)公司去年毛利回到高檔，且營利率創新高，今年可望配發1.2元現金股利，等待近期公司發布相關消息。\n(B)目前殖利率仍高，待合理價格後，便出場。\n(C)公司發布消息前，若股價持續下修，則分批往下加碼佈局。\n(D)待股價至合理價格後，逢高減碼；若利多不漲時，也將持續減碼出場。",
+      images: [
+        "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0515orginal.jpg",
+      ],
+    },
+    {
+      date: "5/15",
+      reason: "(A)公司去年毛利回到高檔，且營利率創新高，今年可望配發1.2元現金股利，等待近期公司發布相關消息。\n(B)目前殖利率仍高，待合理價格後，便出場。\n(C)公司發布消息前，若股價持續下修，則分批往下加碼佈局。\n(D)待股價至合理價格後，逢高減碼；若利多不漲時，也將持續減碼出場。這是測試。",
+      images: [
+        "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0515orginal.jpg",
+        "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0515orginal.jpg",
+        "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0515orginal.jpg",
+        "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0515orginal.jpg",
+        "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0515orginal.jpg",
+        "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0515orginal.jpg",
+        "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0515orginal.jpg",
+        "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0515orginal.jpg",
+        "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0515orginal.jpg",
+        "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0515orginal.jpg",
+      ],
+    },
+  ],
+  points: [],
+  comments5: [],
+  comments6: [],
+  price: {},
+  season1: {
+    prize: '測試',
+    rank: '一',
+    average: '8.3',
+    rate: '15.4%',
+    score: '21',
+    href: '#',
+  },
+  markets: {
+    '05/15': '123',
+  },
+};
+
+///data
+
+data.id = 3;
+data.name = "吳承澤";
+data.image = "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/%E5%90%B3%E6%89%BF%E6%BE%A4.png";
+data.strategy = "這次有兩個月的時間進行交易，隨著大盤指數來到高點，操作也將變的不易進行，而我這次的策略皆以基本面為主，技術面為輔，主要分為二部分。第一部分尋找今年的成長股，並算出公司今年的營運績效，藉此算出合理價格，於價格落入安全範圍內，佈局買進。第二部分尋找殖利率概念股，3-4月期間部分公司將陸續公佈今年發放的股利，在公司公佈消息之前，試算今年可能發放的股利，換算出殖利率，並提前佈局股價仍在低檔，且擁有高殖利率保護的股票進行操作。";
+data.records = [{"date":"03/01 ","name":"晶采8049","type":"買","share":1000,"price":16.2,"total":16200},{"date":"03/01 ","name":"晶采8049","type":"買","share":1000,"price":16.1,"total":16100},{"date":"03/03 12:33:50","name":"神達3706","type":"買","share":1000,"price":32.6,"total":32600},{"date":"03/06 10:16:58","name":"晶采8049","type":"賣","share":1000,"price":15.4,"total":15400,"gain":-700.0000000000018},{"date":"03/06 10:18:13","name":"晶采8049","type":"買","share":1000,"price":15.45,"total":15450},{"date":"03/06 10:30:35","name":"晶采8049","type":"買","share":1000,"price":15.7,"total":15700},{"date":"03/13 10:02:05","name":"神達3706","type":"賣","share":1000,"price":32.15,"total":32150,"gain":-450},{"date":"03/20 09:00:25","name":"強盛1463","type":"買","share":1000,"price":24,"total":24000},{"date":"03/24 09:29:09","name":"強盛1463","type":"買","share":1000,"price":25.15,"total":25150},{"date":"03/28 11:31:51","name":"強盛1463","type":"買","share":1000,"price":24.4,"total":24400},{"date":"03/29 09:00:15","name":"強盛1463","type":"賣","share":2000,"price":25.2,"total":50400,"gain":1250},{"date":"03/29 09:00:15","name":"強盛1463","type":"賣","share":1000,"price":25.2,"total":25200,"gain":800},{"date":"03/29 11:19:23","name":"盛餘2029","type":"買","share":1000,"price":37.8,"total":37800}];
+data.id = 3;
+data.facebook = "";
+data.interview = "";
+///
+
+//data//
+
+var vue = new Vue({el: '#vue', data: data, methods: {
+  newMarket: function () {
+    if (!(this.key in this.markets))
+      this.markets[this.key] = '';
+  }
+}});
+
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-93922946-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>
