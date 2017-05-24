@@ -10,7 +10,7 @@
 
 	<!--vue-->
 	<script src="https://unpkg.com/vue/dist/vue.js"></script>
-	<script src="js/jquery-2.2.4.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.1/axios.js"></script>
 	<link href="css/admin.css" rel="stylesheet">
 </head>
 <body class="season2">
@@ -50,11 +50,11 @@
   <div v-for="(r, i) in records" class="list">
     日期：<input v-model="records[i].date">
     名稱：<input v-model="records[i].name">
-    類型：<select v-model="records[i].type"><option>買</option><option>賣</option></select>
+    類型：<select v-model="records[i].type"><option>買</option><option>賣</option><option>原始持有</option></select>
     <button @click="records.splice(i, 1)">刪除</button><br>
-    股數：<input v-model="records[i].share">
-    價錢：<input v-model="records[i].price">
-    總價：<input v-model="records[i].total">
+    股數：<input v-model.number="records[i].share">
+    價錢：<input v-model.number="records[i].price">
+    總價：<input v-model.number="records[i].total">
   </div>
   <button @click="records.push({date: '', name: '', type: '', share: 0, price: 0, total: 0})">新增</button>
 </div>
@@ -125,7 +125,6 @@ var data = {
   ],
   comments5: [],
   comments6: [],
-  price: {},
   history: [{
     season: 1,
     prize: '測試',
@@ -139,12 +138,15 @@ var data = {
   ],
 };
 
-
 //data//
 
 var vue = new Vue({el: '#vue', data: data, methods: {
   save: function () {
-    console.log(this.$data);
+    var x = this.$data;
+    delete x.tab;
+    axios.post('admin_trader2_save', x).then(function() {
+      location.href = 'admin_trader2';
+    });
   }
 }});
 

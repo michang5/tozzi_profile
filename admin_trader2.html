@@ -15,7 +15,7 @@
 <body class="season2">
 <div id="vue" class="row">
 
-<div v-for="t in traders" @click="edit(t.id)" class="list col-sm-2 col-xs-6">
+<div v-for="t in traders" @click="edit(t.id)" class="list col-sm-2 col-xs-6 text-center">
   <img :src="t.image" height="100"><br>
   <span v-text="t.name"></span>
 </div>
