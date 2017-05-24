@@ -10,6 +10,7 @@
 
 	<!--vue-->
 	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.1/axios.js"></script>
 	<link href="css/admin.css" rel="stylesheet">
 </head>
 <body class="season2">
@@ -22,18 +23,17 @@
 
 </div>
 
-
 <script>
 
 var data = {
-  traders: [{},{},{},{},{},{},{},{},{},{},{},{}],
+  traders: [],
 };
 
 //data//
 
 var vue = new Vue({el: '#vue', data: data, methods: {
   edit: function (id) {
-    location.href = "admin_trader2_edit?id=" + id
+    location.href = "admin_trader2_edit?id=" + id;
   }
 }});
 
