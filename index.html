@@ -121,7 +121,7 @@
 			</div>
 			
 			<div class="ranking-all" v-if="rankings.length">
-				<h3><span>綜合評分排行榜 Top 5</span></h3>
+				<h3><span>投報率週排行 Top 5</span></h3>
 				<div class="tab-container">
 				    <div class="table-responsive">
                         <table class="table ranking">
@@ -131,9 +131,9 @@
                                     <th>變動</th>
                                     <th>頭像</th>
                                     <th>名稱</th>
-                                    <th>選手互評平均分</th>
+<!--                                    <th>選手互評平均分</th>-->
                                     <th>投報率</th>
-                                    <th>總得分</th>
+<!--                                    <th>總得分</th>-->
                                 </tr>
                             </thead>
                             <tbody>
@@ -142,9 +142,9 @@
                                     <td v-text="r.delta">-</td>
                                     <td><a href="#"><img :src="r.image" alt="" class="img-circle"></a></td>
                                     <td><a href="#" v-text="r.name"></a></td>
-                                    <td v-text="r.mean">-</td>
+<!--                                    <td v-text="r.mean">-</td>-->
                                     <td v-text="r.gain">-</td>
-                                    <td v-text="r.total">-</td>
+<!--                                    <td v-text="r.total">-</td>-->
                                 </tr>
                             </tbody>
                         </table>
