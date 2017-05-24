@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+	<!--css-->
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/global.css" rel="stylesheet">
+
+	<!--vue-->
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="js/jquery-2.2.4.js"></script>
+	<link href="css/admin.css" rel="stylesheet">
+</head>
+<body class="season2">
+<div id="vue">
+
+<h3>
+  <span @click="tab = 'info'" :class="{tab: tab == 'info'}">基本</span>
+  <span @click="tab = 'reports'" :class="{tab: tab == 'reports'}">解說</span>
+  <span @click="tab = 'records'" :class="{tab: tab == 'records'}">紀錄</span>
+  <span @click="tab = 'markets'" :class="{tab: tab == 'markets'}">市場</span>
+  <span @click="tab = 'history'" :class="{tab: tab == 'history'}">歷史</span>
+  <button @click="save">儲存</button>
+</h3>
+
+<div v-if="tab == 'info'">
+  姓名：<input v-model="name" class="big">
+  照片：<input v-model="image" class="big">
+  預覽：<img :src="image" width="200"><br>
+  策略：<textarea v-model="strategy" class="big"></textarea>
+  臉書：<input v-model="facebook" class="big">
+  訪談：<textarea v-model="interview" class="big"></textarea>
+</div>
+
+<div v-if="tab == 'reports'">
+  <div v-for="(r, i) in reports" class="list">
+    日期：<input v-model="reports[i].date"><button @click="reports.splice(i, 1)">刪除</button><br>
+    理由：<textarea v-model="reports[i].reason" class="big"></textarea>
+    預覽：<div v-html="r.reason" class="list"></div>
+    圖片：<ul><li v-for="(img, i) in r.images"><input v-model="r.images[i]" class="big">預覽：<img :src="img" width="400"><br>
+</li></ul>
+    <button @click="r.images.push('')">+1</button><button @click="r.images.pop()">-1</button>
+  </div>
+  <button @click="reports.push({date: '', reason: '', images: ['']})">新增</button>
+</div>
+
+<div v-if="tab == 'records'">
+  <div v-for="(r, i) in records" class="list">
+    日期：<input v-model="records[i].date">
+    名稱：<input v-model="records[i].name">
+    類型：<select v-model="records[i].type"><option>買</option><option>賣</option></select>
+    <button @click="records.splice(i, 1)">刪除</button><br>
+    股數：<input v-model="records[i].share">
+    價錢：<input v-model="records[i].price">
+    總價：<input v-model="records[i].total">
+  </div>
+  <button @click="records.push({date: '', name: '', type: '', share: 0, price: 0, total: 0})">新增</button>
+</div>
+
+<div v-if="tab == 'markets'">
+  <div v-for="(m, i) in markets" class="list">
+    日期：<input v-model="markets[i].date"><button @click="markets.splice(i, 1)">刪除</button><br>
+    觀察：<textarea v-model="markets[i].info" class="big"></textarea>
+    預覽：<div v-html="m.info" class="list"></div>
+  </div>
+  <button @click="markets.push({date: '', info: ''})">新增</button>
+</div>
+
+<div v-if="tab == 'history'">
+  <div v-for="(h, i) in history" class="list">
+    賽季：<input v-model="history[i].season">
+    獎項：<input v-model="history[i].prize">
+    排名：<input v-model="history[i].rank">
+    <button @click="history.splice(i, 1)">刪除</button><br>
+    平均：<input v-model="history[i].average">
+    投報：<input v-model="history[i].rate">
+    總分：<input v-model="history[i].score">
+  </div>
+  <button @click="history.push({season: '', prize: '', rank: '', average: '', rate: '', score: ''})">新增</button>
+</div>
+
+</div>
+
+
+<script>
+
+var data = {
+  tab: 'info',
+  id: 0,
+  image: '',
+  name: '',
+  strategy: '',
+  facebook: '',
+  interview: '',
+  records: [
+    {"date":"03/01 ","name":"晶采8049","type":"買","share":1000,"price":16.2,"total":16200},
+    {"date":"03/01 ","name":"晶采8049","type":"買","share":1000,"price":16.2,"total":16200},
+  ],
+  reports: [
+    {
+      date: "帳戶起始狀態",
+      reason: "(A)公司去年毛利回到高檔，且營利率創新高，今年可望配發1.2元現金股利，等待近期公司發布相關消息。\n(B)目前殖利率仍高，待合理價格後，便出場。\n(C)公司發布消息前，若股價持續下修，則分批往下加碼佈局。\n(D)待股價至合理價格後，逢高減碼；若利多不漲時，也將持續減碼出場。",
+      images: [
+        "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0515orginal.jpg",
+      ],
+    },
+    {
+      date: "5/15",
+      reason: "(A)公司去年毛利回到高檔，且營利率創新高，今年可望配發1.2元現金股利，等待近期公司發布相關消息。\n(B)目前殖利率仍高，待合理價格後，便出場。\n(C)公司發布消息前，若股價持續下修，則分批往下加碼佈局。\n(D)待股價至合理價格後，逢高減碼；若利多不漲時，也將持續減碼出場。這是測試。",
+      images: [
+        "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0515orginal.jpg",
+        "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0515orginal.jpg",
+        "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0515orginal.jpg",
+        "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0515orginal.jpg",
+        "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0515orginal.jpg",
+        "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0515orginal.jpg",
+        "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0515orginal.jpg",
+        "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0515orginal.jpg",
+        "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0515orginal.jpg",
+        "https://s3-ap-northeast-1.amazonaws.com/tozzi-img/3-0515orginal.jpg",
+      ],
+    },
+  ],
+  comments5: [],
+  comments6: [],
+  price: {},
+  history: [{
+    season: 1,
+    prize: '測試',
+    rank: 1,
+    average: '8.3',
+    rate: '15.4%',
+    score: '21',
+  }],
+  markets: [
+    {date: '05/15', info: '123'}
+  ],
+};
+
+
+//data//
+
+var vue = new Vue({el: '#vue', data: data, methods: {
+  save: function () {
+    console.log(this.$data);
+  }
+}});
+
+</script>
+
+</body>
+</html>
