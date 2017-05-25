@@ -3,9 +3,19 @@ body {
 }
 
 .list {
-	border: 1px solid black;
+	border-width: 1px;
+	border-style: groove;
 	padding: 10px;
 	border-radius: 5px;
+}
+
+.block {
+	border: 1px solid black;
+	padding: 10px;
+}
+
+.black {
+	color: black;
 }
 
 .right {

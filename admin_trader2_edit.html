@@ -22,7 +22,7 @@
   <span @click="tab = 'records'" :class="{tab: tab == 'records'}">紀錄</span>
   <span @click="tab = 'markets'" :class="{tab: tab == 'markets'}">市場</span>
   <span @click="tab = 'history'" :class="{tab: tab == 'history'}">歷史</span>
-  <button @click="save" style="color: black">儲存</button>
+  <button @click="save" class="black">儲存</button>
 </h4>
 
 <div v-if="tab == 'info'">
@@ -39,7 +39,7 @@
     <button @click="reports.splice(i, 1)" class="right">刪除</button>
     日期：<input v-model="reports[i].date"><br>
     理由：<textarea v-model="reports[i].reason" class="big"></textarea>
-    預覽：<div v-html="r.reason" class="list"></div>
+    預覽：<div v-html="r.reason" class="block"></div>
     圖片：<ul><li v-for="(img, i) in r.images"><input v-model="r.images[i]" class="big">預覽：<img :src="img" width="400"><br></li></ul>
     <button @click="r.images.push('')">+1</button><button @click="r.images.pop()">-1</button>
   </div>
@@ -64,7 +64,7 @@
     <button @click="markets.splice(i, 1)" class="right">刪除</button>
     日期：<input v-model="markets[i].date"><br>
     觀察：<textarea v-model="markets[i].info" class="big"></textarea>
-    預覽：<div v-html="m.info" class="list"></div>
+    預覽：<div v-html="m.info" class="block"></div>
   </div>
   <button @click="markets.push({date: '', info: ''})">新增</button>
 </div>
