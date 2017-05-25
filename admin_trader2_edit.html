@@ -22,7 +22,6 @@
   <a @click="tab = 'reports'" :class="{active: tab == 'reports'}" class="item">解說</a>
   <a @click="tab = 'records'" :class="{active: tab == 'records'}" class="item">紀錄</a>
   <a @click="tab = 'markets'" :class="{active: tab == 'markets'}" class="item">市場</a>
-  <a @click="tab = 'history'" :class="{active: tab == 'history'}" class="item">歷史</a>
   <a class="item"><button @click="save" class="ui primary button">儲存</button></a>
 </div>
 
@@ -35,6 +34,17 @@
   臉書：<input v-model="facebook" class="big">
   訪談：<textarea v-model="interview" class="big"></textarea>
   預覽：<div v-html="interview" class="block"></div>
+  歷史：
+  <div v-for="(h, i) in history" class="list">
+    <button @click="history.splice(i, 1)" class="right">刪除</button>
+    <span class="nowrap">賽季：<input v-model="history[i].season"></span>
+    <span class="nowrap">獎項：<input v-model="history[i].prize"></span>
+    <span class="nowrap">排名：<input v-model="history[i].rank"></span>
+    <span class="nowrap">平均：<input v-model="history[i].average"></span>
+    <span class="nowrap">投報：<input v-model="history[i].rate"></span>
+    <span class="nowrap">總分：<input v-model="history[i].score"></span>
+  </div>
+  <button @click="history.push({season: '', prize: '', rank: '', average: '', rate: '', score: ''})">新增</button>
 </div>
 
 <div v-if="tab == 'reports'">
@@ -73,16 +83,6 @@
 </div>
 
 <div v-if="tab == 'history'">
-  <div v-for="(h, i) in history" class="list">
-    <button @click="history.splice(i, 1)" class="right">刪除</button>
-    <span class="nowrap">賽季：<input v-model="history[i].season"></span>
-    <span class="nowrap">獎項：<input v-model="history[i].prize"></span>
-    <span class="nowrap">排名：<input v-model="history[i].rank"></span>
-    <span class="nowrap">平均：<input v-model="history[i].average"></span>
-    <span class="nowrap">投報：<input v-model="history[i].rate"></span>
-    <span class="nowrap">總分：<input v-model="history[i].score"></span>
-  </div>
-  <button @click="history.push({season: '', prize: '', rank: '', average: '', rate: '', score: ''})">新增</button>
 </div>
 
 </div>
