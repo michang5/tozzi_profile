@@ -11,27 +11,30 @@
 	<!--vue-->
 	<script src="js/vue.js"></script>
 	<script src="js/axios.js"></script>
+	<link href="css/semantic.css" rel="stylesheet">
 	<link href="css/admin.css" rel="stylesheet">
 </head>
 <body class="season2">
 <div id="vue">
 
-<h4>
-  <span @click="tab = 'info'" :class="{tab: tab == 'info'}">資訊</span>
-  <span @click="tab = 'reports'" :class="{tab: tab == 'reports'}">解說</span>
-  <span @click="tab = 'records'" :class="{tab: tab == 'records'}">紀錄</span>
-  <span @click="tab = 'markets'" :class="{tab: tab == 'markets'}">市場</span>
-  <span @click="tab = 'history'" :class="{tab: tab == 'history'}">歷史</span>
-  <button @click="save" class="black right">儲存</button>
-</h4>
+<div class="ui top attached tabular menu">
+  <a @click="tab = 'info'" :class="{active: tab == 'info'}" class="item">資訊</a>
+  <a @click="tab = 'reports'" :class="{active: tab == 'reports'}" class="item">解說</a>
+  <a @click="tab = 'records'" :class="{active: tab == 'records'}" class="item">紀錄</a>
+  <a @click="tab = 'markets'" :class="{active: tab == 'markets'}" class="item">市場</a>
+  <a @click="tab = 'history'" :class="{active: tab == 'history'}" class="item">歷史</a>
+  <a class="item"><button @click="save" class="ui primary button">儲存</button></a>
+</div>
 
 <div v-if="tab == 'info'">
   姓名：<input v-model="name" class="big">
   照片：<input v-model="image" class="big">
   <img :src="image" style="width: 200px; margin: 2px"><br>
   策略：<textarea v-model="strategy" class="big"></textarea>
+  預覽：<div v-html="strategy" class="block"></div>
   臉書：<input v-model="facebook" class="big">
   訪談：<textarea v-model="interview" class="big"></textarea>
+  預覽：<div v-html="interview" class="block"></div>
 </div>
 
 <div v-if="tab == 'reports'">
