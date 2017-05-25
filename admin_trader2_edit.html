@@ -16,14 +16,14 @@
 <body class="season2">
 <div id="vue">
 
-<h3>
+<h4>
   <span @click="tab = 'info'" :class="{tab: tab == 'info'}">資訊</span>
   <span @click="tab = 'reports'" :class="{tab: tab == 'reports'}">解說</span>
   <span @click="tab = 'records'" :class="{tab: tab == 'records'}">紀錄</span>
   <span @click="tab = 'markets'" :class="{tab: tab == 'markets'}">市場</span>
   <span @click="tab = 'history'" :class="{tab: tab == 'history'}">歷史</span>
-  <button @click="save">儲存</button>
-</h3>
+  <button @click="save" style="color: black">儲存</button>
+</h4>
 
 <div v-if="tab == 'info'">
   姓名：<input v-model="name" class="big">
@@ -36,11 +36,11 @@
 
 <div v-if="tab == 'reports'">
   <div v-for="(r, i) in reports" class="list">
-    日期：<input v-model="reports[i].date"><button @click="reports.splice(i, 1)">刪除</button><br>
+    <button @click="reports.splice(i, 1)" class="right">刪除</button>
+    日期：<input v-model="reports[i].date"><br>
     理由：<textarea v-model="reports[i].reason" class="big"></textarea>
     預覽：<div v-html="r.reason" class="list"></div>
-    圖片：<ul><li v-for="(img, i) in r.images"><input v-model="r.images[i]" class="big">預覽：<img :src="img" width="400"><br>
-</li></ul>
+    圖片：<ul><li v-for="(img, i) in r.images"><input v-model="r.images[i]" class="big">預覽：<img :src="img" width="400"><br></li></ul>
     <button @click="r.images.push('')">+1</button><button @click="r.images.pop()">-1</button>
   </div>
   <button @click="reports.push({date: '', reason: '', images: ['']})">新增</button>
@@ -48,20 +48,21 @@
 
 <div v-if="tab == 'records'">
   <div v-for="(r, i) in records" class="list">
-    日期：<input v-model="records[i].date">
-    名稱：<input v-model="records[i].name">
-    類型：<select v-model="records[i].type"><option>買</option><option>賣</option><option>原始持有</option></select>
-    <button @click="records.splice(i, 1)">刪除</button><br>
-    股數：<input v-model.number="records[i].share">
-    價錢：<input v-model.number="records[i].price">
-    總價：<input v-model.number="records[i].total">
+    <button @click="records.splice(i, 1)" class="right">刪除</button>
+    <span class="nowrap">日期：<input v-model="records[i].date"></span>
+    <span class="nowrap">名稱：<input v-model="records[i].name"></span>
+    <span class="nowrap">類型：<select v-model="records[i].type"><option>買</option><option>賣</option><option>原始持有</option></select></span>
+    <span class="nowrap">股數：<input v-model.number="records[i].share"></span>
+    <span class="nowrap">價錢：<input v-model.number="records[i].price"></span>
+    <span class="nowrap">總價：<input v-model.number="records[i].total"></span>
   </div>
   <button @click="records.push({date: '', name: '', type: '', share: 0, price: 0, total: 0})">新增</button>
 </div>
 
 <div v-if="tab == 'markets'">
   <div v-for="(m, i) in markets" class="list">
-    日期：<input v-model="markets[i].date"><button @click="markets.splice(i, 1)">刪除</button><br>
+    <button @click="markets.splice(i, 1)" class="right">刪除</button>
+    日期：<input v-model="markets[i].date"><br>
     觀察：<textarea v-model="markets[i].info" class="big"></textarea>
     預覽：<div v-html="m.info" class="list"></div>
   </div>
@@ -70,13 +71,13 @@
 
 <div v-if="tab == 'history'">
   <div v-for="(h, i) in history" class="list">
-    賽季：<input v-model="history[i].season">
-    獎項：<input v-model="history[i].prize">
-    排名：<input v-model="history[i].rank">
-    <button @click="history.splice(i, 1)">刪除</button><br>
-    平均：<input v-model="history[i].average">
-    投報：<input v-model="history[i].rate">
-    總分：<input v-model="history[i].score">
+    <button @click="history.splice(i, 1)" class="right">刪除</button>
+    <span class="nowrap">賽季：<input v-model="history[i].season"></span>
+    <span class="nowrap">獎項：<input v-model="history[i].prize"></span>
+    <span class="nowrap">排名：<input v-model="history[i].rank"></span>
+    <span class="nowrap">平均：<input v-model="history[i].average"></span>
+    <span class="nowrap">投報：<input v-model="history[i].rate"></span>
+    <span class="nowrap">總分：<input v-model="history[i].score"></span>
   </div>
   <button @click="history.push({season: '', prize: '', rank: '', average: '', rate: '', score: ''})">新增</button>
 </div>

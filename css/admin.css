@@ -5,6 +5,15 @@ body {
 .list {
 	border: 1px solid black;
 	padding: 10px;
+	border-radius: 5px;
+}
+
+.right {
+	float: right;
+}
+
+.nowrap {
+	white-space: nowrap;
 }
 
 input.big {
