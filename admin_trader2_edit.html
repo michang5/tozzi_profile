@@ -22,7 +22,7 @@
   <a @click="tab = 'reports'" :class="{active: tab == 'reports'}" class="item">解說</a>
   <a @click="tab = 'records'" :class="{active: tab == 'records'}" class="item">紀錄</a>
   <a @click="tab = 'markets'" :class="{active: tab == 'markets'}" class="item">市場</a>
-  <a class="item"><button @click="save" class="ui primary button">儲存</button></a>
+  <button @click="save" class="ui primary button right">儲存</button>
 </div>
 
 <div v-if="tab == 'info'">
