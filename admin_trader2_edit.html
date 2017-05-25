@@ -28,7 +28,7 @@
 <div v-if="tab == 'info'">
   姓名：<input v-model="name" class="big">
   照片：<input v-model="image" class="big">
-  預覽：<img :src="image" width="200"><br>
+  <img :src="image" style="width: 200px; margin: 2px"><br>
   策略：<textarea v-model="strategy" class="big"></textarea>
   臉書：<input v-model="facebook" class="big">
   訪談：<textarea v-model="interview" class="big"></textarea>
@@ -40,7 +40,7 @@
     日期：<input v-model="reports[i].date"><br>
     理由：<textarea v-model="reports[i].reason" class="big"></textarea>
     預覽：<div v-html="r.reason" class="block"></div>
-    圖片：<ul><li v-for="(img, i) in r.images"><input v-model="r.images[i]" class="big">預覽：<img :src="img" width="400"><br></li></ul>
+    圖片：<ul><li v-for="(img, i) in r.images"><input v-model="r.images[i]" class="big"><img :src="img" style="width: 400px; margin: 2px"><br></li></ul>
     <button @click="r.images.push('')">+1</button><button @click="r.images.pop()">-1</button>
   </div>
   <button @click="reports.push({date: '', reason: '', images: ['']})">新增</button>
