@@ -47,10 +47,17 @@ h2 {
 //	letter-spacing: .09em;
 	font-size: 40px;
     line-height: 1.15;
+    @include respond-to (only-mobile){
+        font-size: 36px;
+    }
 	body.season2 & {
 		color: $dark-gold;
         font-size: 40px;
+        @include respond-to (only-mobile){
+            font-size: 36px;
+        }
 	}
+    
 }
 h3 {
 	line-height: 1.2;
@@ -1308,14 +1315,14 @@ footer {
         letter-spacing: 0;
         text-align: center;
     }
-	h2 {
-		
+	h3 {
 		img {
-			width: 36px;
+			width: 28px; 
 			vertical-align: text-top;
 		}
 		span {
-			vertical-align: top;
+			vertical-align: middle;
+            background: transparent;
 		}	
 	}
 	table, th, td {
