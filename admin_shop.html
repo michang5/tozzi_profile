@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+	<!--css-->
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/global.css" rel="stylesheet">
+
+	<!--vue-->
+	<script src="js/vue.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/axios.js"></script>
+	<script src="js/semantic.js"></script>
+	<link href="css/semantic.css" rel="stylesheet">
+	<link href="css/admin.css" rel="stylesheet">
+</head>
+<body class="season2">
+<div id="vue" class="r1ow">
+
+<div class="ui sub header">Selection</div>
+<select v-model="names" multiple="" class="ui fluid normal dropdown">
+  <option value="">Skills</option>
+<option v-for="t in traders" :value="t.id" v-text="t.name"></option>
+</select>
+
+<div v-for="t in traders" @click="edit(t.id)" class="list col-md-2 col-sm-4 col-xs-6 text-center">
+  <img :src="t.image" height="100"><br>
+  <span v-text="t.name"></span>
+</div>
+
+</div>
+
+<script>
+
+var data = {
+	names: [],
+  traders: [],
+};
+
+//data//
+
+var vue = new Vue({el: '#vue', data: data, methods: {
+  edit: function (id) {
+    location.href = "admin_trader2_edit?id=" + id;
+  }
+}});
+
+$('.ui.normal.dropdown').dropdown();
+
+</script>
+
+</body>
+</html>
