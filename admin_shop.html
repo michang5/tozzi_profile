@@ -17,17 +17,23 @@
 	<link href="css/admin.css" rel="stylesheet">
 </head>
 <body class="season2">
-<div id="vue" class="r1ow">
+<div id="vue">
 
+<!--
 <div class="ui sub header">Selection</div>
 <select v-model="names" multiple="" class="ui fluid normal dropdown">
   <option value="">Skills</option>
 <option v-for="t in traders" :value="t.id" v-text="t.name"></option>
 </select>
+-->
 
-<div v-for="t in traders" @click="edit(t.id)" class="list col-md-2 col-sm-4 col-xs-6 text-center">
-  <img :src="t.image" height="100"><br>
-  <span v-text="t.name"></span>
+<div class="ui fluid multiple search normal selection dropdown">
+  <input type="hidden" id="names" name="country" v-model.lazy="names">
+  <i class="dropdown icon"></i>
+  <div class="default text">請選人</div>
+  <div class="menu">
+  <div class="item" v-for="t in traders" v-bind:data-value="t.id"><img :src="t.image"></img><span v-text="t.name"></span></div>
+  </div>
 </div>
 
 </div>
@@ -35,7 +41,7 @@
 <script>
 
 var data = {
-	names: [],
+	names: '3,4',
   traders: [],
 };
 
