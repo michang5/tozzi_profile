@@ -43,9 +43,19 @@ h2 {
   font-size: 40px;
   line-height: 1.15;
 }
+@media only screen and (max-width: 767px) {
+  h2 {
+    font-size: 36px;
+  }
+}
 body.season2 h2 {
   color: #6E540B;
   font-size: 40px;
+}
+@media only screen and (max-width: 767px) {
+  body.season2 h2 {
+    font-size: 36px;
+  }
 }
 
 h3 {
@@ -1151,12 +1161,13 @@ footer {
   letter-spacing: 0;
   text-align: center;
 }
-#ranking h2 img {
-  width: 36px;
+#ranking h3 img {
+  width: 28px;
   vertical-align: text-top;
 }
-#ranking h2 span {
-  vertical-align: top;
+#ranking h3 span {
+  vertical-align: middle;
+  background: transparent;
 }
 #ranking table, #ranking th, #ranking td {
   text-align: center !important;
