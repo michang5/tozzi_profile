@@ -28,11 +28,24 @@
 </div>
 
 <div v-if="tab == 'info'">
-  商家名稱：<input v-model="name" class="big">
-  負責人：<input v-model="boss" class="big">
-  電話：<input v-model="phone" class="big">
-  地址：<input v-model="address" class="big">
+  商家名稱：<br>
+	<input v-model="name" class="big">
+  負責人：<br>
+	<input v-model="boss" class="big">
+  電話：<br>
+	<input v-model="phone" class="big">
+  地址：<br>
+	<input v-model="address" class="big">
 	<iframe :src="'https://www.google.com.tw/maps?&output=embed&q=' + address" style="width: 100%; border: 1px solid"></iframe>
+	標籤：<br>
+	<div class="ui floating multiple dropdown search normal selection">
+		<input type="hidden" id="names" name="country" v-model.lazy="tag">
+		<i class="dropdown icon"></i>
+		<div class="default text">請選擇類別屬性</div>
+		<div class="menu">
+			<div class="item" v-for="(t,i) in tags" v-bind:data-value="i"><span v-text="t"></span></div>
+		</div>
+	</div>
 </div>
 
 <div v-if="tab == 'media'">
@@ -48,30 +61,19 @@
 	</div>
 </div>
 
-<!--
-	
-<div v-for="s in selected" v-html="traders[s].name"></div>
-
-<select v-model="select" @change="add()">
-  <option value="">請選人</option>
-  <option v-for="(t,i) in traders" :value="i" v-text="t.name"></option>
-</select>
-<div class="ui sub header">Selection</div>
-<select v-model="names" multiple="" class="ui fluid normal dropdown">
-  <option value="">Skills</option>
-<option v-for="t in traders" :value="t.id" v-text="t.name"></option>
-
 <div v-if="tab == 'event'">
-	<div class="ui floating multiple dropdown search normal selection">
-		<input type="hidden" id="names" name="country" v-model.lazy="select" @change="changed">
-		<i class="dropdown icon"></i>
-		<div class="default text">請選人</div>
-		<div class="menu">
-			<div class="item" v-for="(t,i) in traders" v-bind:data-value="i"><span v-text="t.name"></span></div>
-		</div>
-	</div>
+	開發中
 </div>
--->
+
+<div v-if="tab == 'order'">
+	也是開發中
+</div>
+
+<div class="ui page dimmer">
+  <div class="content">
+    <div class="center">Hello</div>
+  </div>
+</div>
 
 </div>
 
@@ -85,35 +87,25 @@ var data = {
 	phone: '',
 	address: '',
 	media: [],
-	//select: '',
-	//selected: [],
-	//names: -1,
-  //traders: [],
+	tag: '',
+	tags: ['餐廳', '旅館', '親子', '客家', '原民', '手作', '文化', '特色'],
 };
 
 //data//
 
 var vue = new Vue({el: '#vue', data: data, methods: {
-  edit: function (id) {
-    location.href = "admin_trader2_edit?id=" + id;
-  },
   save: function () {
-    var x = this.$data;
+    var x = JSON.parse(JSON.stringify(this.$data));
     delete x.tab;
+    delete x.tags;
+		console.log(x);
+		$('body').dimmer('show');
     axios.post('admin_shop_save', x).then(function (e) {
 			console.log(e);
 			alert('儲存成功！');
 			location.reload();
 		});
   },
-/*
-	changed: function () {
-		//if (this.select == -1) return;
-    this.selected.push(this.select);
-  	console.log(this.select);
-		//this.traders.splice(this.select, 1);
-	},
-*/
 	remove: function (i) {
 		if (!confirm('是否確認刪除?')) return;
 		this.media.splice(i, 1);
