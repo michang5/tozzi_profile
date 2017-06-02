@@ -32,7 +32,7 @@
   負責人：<input v-model="boss" class="big">
   電話：<input v-model="phone" class="big">
   地址：<input v-model="address" class="big">
-	<iframe :src="'https://www.google.com.tw/maps/place/' + address" style="width: 100%"></iframe>
+	<iframe :src="'https://www.google.com.tw/maps?&output=embed&q=' + address" style="width: 100%; border: 1px solid"></iframe>
 </div>
 
 <div v-if="tab == 'media'">
@@ -100,7 +100,11 @@ var vue = new Vue({el: '#vue', data: data, methods: {
   save: function () {
     var x = this.$data;
     delete x.tab;
-    axios.post('admin_shop_save', x);
+    axios.post('admin_shop_save', x).then(function (e) {
+			console.log(e);
+			alert('儲存成功！');
+			location.reload();
+		});
   },
 /*
 	changed: function () {
