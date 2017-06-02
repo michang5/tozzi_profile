@@ -26,7 +26,7 @@
 </div>
 
 <div v-if="tab == 'info'">
-  姓名：<input v-model="name" class="big">
+  姓名：<input v-model="v_name" class="big">
   照片：<input v-model="image" class="big">
   <img :src="image" style="width: 200px; margin: 2px"><br>
   策略：<textarea v-model="strategy" class="big"></textarea>
@@ -82,9 +82,6 @@
   <button @click="markets.push({date: '', info: ''})">新增</button>
 </div>
 
-<div v-if="tab == 'history'">
-</div>
-
 </div>
 
 
@@ -94,7 +91,7 @@ var data = {
   tab: 'info',
   id: 0,
   image: '',
-  name: '',
+  v_name: '',
   strategy: '',
   facebook: '',
   interview: '',
