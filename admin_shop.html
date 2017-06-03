@@ -7,7 +7,9 @@
 	<!--css-->
 	<link href="css/global.css" rel="stylesheet">
 	<link href="css/element-ui.css" rel="stylesheet">
+<!--
 	<link href="css/semantic.css" rel="stylesheet">
+-->
 	<link href="css/admin.css" rel="stylesheet">
 
 	<!--vue-->
@@ -20,32 +22,28 @@
 
 <div id="vue" v-loading.fullscreen.lock="lock">
 
-<button @click="save" class="ui primary button" style="position: absolute; right: 0">儲存</button>
+<el-button @click="save" type="primary" icon="upload" class="save">儲存</el-button>
+
+<!--
 <div class="ui top attached tabular menu">
 	<a @click="tab = 'info'" :class="{active: tab == 'info'}" class="item">資訊</a>
 	<a @click="tab = 'media'" :class="{active: tab == 'media'}" class="item">影音</a>
 	<a @click="tab = 'event'" :class="{active: tab == 'event'}" class="item">活動</a>
 	<a @click="tab = 'order'" :class="{active: tab == 'order'}" class="item">訂位</a>
 </div>
-
-<!--
-<el-tabs v-model="tab" type="card">
-	<el-tab-pane label="資訊" name="info">資訊</el-tab-pane>
-	<el-tab-pane label="影音" name="media">影音</el-tab-pane>
-	<el-tab-pane label="活動" name="event">活動</el-tab-pane>
-	<el-tab-pane label="訂位" name="order">訂位</el-tab-pane>
-</el-tabs>
 -->
 
-<div v-if="tab == 'info'">
+<el-tabs v-model="tab" type="card">
+
+<el-tab-pane label="資訊" name="info">
 	商家名稱：<br>
 	<el-input v-model="shop.name"></el-input>
 	標籤：<br>
-	<el-select v-model="shop.tag" multiple placeholder="請選擇類別屬性" style="width: 100%">
+	<el-select v-model="shop.tag" multiple placeholder="請選擇類別屬性" class="big">
 		<el-option v-for="t in tags" :label="t" :value="t"></el-option>
 	</el-select><br>
 	營業日：<br>
-	<el-select v-model="shop.day" multiple placeholder="請選擇營業日" style="width: 100%">
+	<el-select v-model="shop.day" multiple placeholder="請選擇營業日" class="big">
 		<el-option v-for="(d,i) in days" :label="d" :value="i"></el-option>
 	</el-select><br>
 	營業時間：<br>
@@ -63,12 +61,12 @@
 	簡介：<br>
 	<el-input v-model="shop.intro" type="textarea" autosize placeholder="請輸入簡介"></el-input>
 	<div v-html="shop.intro" class="block"></div>
-</div>
+</el-tab-pane>
 
-<div v-if="tab == 'media'">
+<el-tab-pane label="影音" name="media">
 	<div v-for="(m, i) in shop.media" class="list">
-		<el-button @click="removeMedia(i)" class="right" icon="delete">刪除</el-button>
-		<img v-if="/^image/.test(m.type)" :src="m.src" style="height: 100px; vertical-align: baseline">
+		<el-button @click="removeMedia(i)" class="delete" icon="delete"></el-button>
+		<img v-if="/^image/.test(m.type)" :src="m.src" style="height: 100px">
 		<video v-if="/^video/.test(m.type)" :src="m.src" style="height: 100px" controls></video>
 		<br>
 		<el-input v-model="m.desc" type="textarea" autosize placeholder="請輸入說明"></el-input>
@@ -82,27 +80,30 @@
 	<el-upload action="admin_shop_upload" :before-upload="lockScreen" :on-success="addMedia" :show-file-list="false">
 		<el-button type="primary" icon="upload2">上傳</el-button>
 	</el-upload>
-</div>
+</el-tab-pane>
 
-<div v-if="tab == 'event'">
+<el-tab-pane label="活動" name="event">
 	<div v-for="(e, i) in shop.event" class="list">
-		<el-button @click="removeEvent(i)" class="right" icon="delete">刪除</el-button>
+		<el-button @click="removeEvent(i)" class="delete" icon="delete"></el-button>
 		活動名稱：<br>
 		<el-input v-model="e.name"></el-input>
 		活動日期：<br>
-		<el-date-picker v-model="e.start" type="date" placeholder="開始日期"></el-date-picker>
-		<el-date-picker v-model="e.end" type="date" placeholder="結束日期"></el-date-picker>
+		<el-date-picker v-model="e.start" type="date" placeholder="開始日期" style="width: 150px"></el-date-picker>
+		-
+		<el-date-picker v-model="e.end" type="date" placeholder="結束日期" style="width: 150px"></el-date-picker>
 		<br>
 		活動說明：<br>
 		<el-input v-model="e.intro" type="textarea" autosize></el-input>
 		<div v-html="e.intro" class="block"></div>
 	</div>
 	<el-button @click="addEvent" icon="plus">新增</button>
-</div>
+</el-tab-pane>
 
-<div v-if="tab == 'order'">
+<el-tab-pane label="訂位" name="order">
 	還在開發中
-</div>
+</el-tab-pane>
+
+</el-tabs>
 
 </div>
 
