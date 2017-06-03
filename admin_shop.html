@@ -126,6 +126,7 @@ var vue = new Vue({el: '#vue', data: data, methods: {
 		var x = JSON.parse(JSON.stringify(data.$data));
 		delete x.tab;
 		delete x.tags;
+		delete x.days;
 		console.log(x);
 		$('.dimmer').dimmer('show');
 		axios.post('admin_shop_save', x)
