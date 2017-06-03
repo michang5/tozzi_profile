@@ -66,8 +66,8 @@
 <el-tab-pane label="影音" name="media">
 	<div v-for="(m, i) in shop.media" class="list">
 		<el-button @click="removeMedia(i)" class="delete" icon="delete"></el-button>
-		<img v-if="/^image/.test(m.type)" :src="m.src" style="height: 100px">
-		<video v-if="/^video/.test(m.type)" :src="m.src" style="height: 100px" controls></video>
+		<img v-if="/^image/.test(m.type)" :src="m.src" class="big">
+		<video v-if="/^video/.test(m.type)" :src="m.src" class="big" controls></video>
 		<br>
 		<el-input v-model="m.desc" type="textarea" autosize placeholder="請輸入說明"></el-input>
 	</div>
