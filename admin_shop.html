@@ -26,26 +26,33 @@
 
 <div id="vue">
 
-<el-dialog v-model="dialog" :title="dialog"></el-dialog>
-
 <div class="ui top attached tabular menu">
-	<a @click="info" :class="{active: tab == 'info'}" class="item">資訊</a>
+	<a @click="tab = 'info'" :class="{active: tab == 'info'}" class="item">資訊</a>
 	<a @click="tab = 'media'" :class="{active: tab == 'media'}" class="item">影音</a>
 	<a @click="tab = 'event'" :class="{active: tab == 'event'}" class="item">活動</a>
 	<a @click="tab = 'order'" :class="{active: tab == 'order'}" class="item">訂位</a>
 	<button @click="save" class="ui primary button right">儲存</button>
 </div>
 
+<!--
+<el-tabs v-model="tab" type="card">
+	<el-tab-pane label="資訊" name="info">資訊</el-tab-pane>
+	<el-tab-pane label="影音" name="media">影音</el-tab-pane>
+	<el-tab-pane label="活動" name="event">活動</el-tab-pane>
+	<el-tab-pane label="訂位" name="order">訂位</el-tab-pane>
+</el-tabs>
+-->
+
 <div v-if="tab == 'info'">
 	商家名稱：<br>
 	<el-input v-model="name"></el-input>
 	標籤：<br>
 	<el-select v-model="tag" multiple placeholder="請選擇類別屬性" style="width: 100%">
-    <el-option v-for="(t,i) in tags" :label="t" :value="i"></el-option>
+    <el-option v-for="t in tags" :label="t" :value="t"></el-option>
   </el-select><br>
 	營業日：<br>
 	<el-select v-model="day" multiple placeholder="請選擇營業日" style="width: 100%">
-    <el-option v-for="(d,i) in days" :label="d" :value="i"></el-option>
+    <el-option v-for="(d,i) in ['週日', '週一', '週二', '週三', '週四', '週五', '週六']" :label="d" :value="i"></el-option>
   </el-select><br>
 	營業時間：<br>
 	<el-time-select placeholder="開始時間" v-model="start" :picker-options="{start: '06:00', step: '00:15', end: '22:30'}"></el-time-select>
@@ -94,7 +101,7 @@
 </div>
 
 <div v-if="tab == 'order'">
-	也是開發中
+	還在開發中
 </div>
 
 </div>
@@ -104,7 +111,6 @@
 var data = {
 	tab: 'info',
 	tags: ['餐廳', '咖啡', '旅館', '親子', '客家', '原民', '手作', '文化', '特色'],
-	days: ['週日', '週一', '週二', '週三', '週四', '週五', '週六'],
 	id: 0,
 	name: '',
 	tag: '',
@@ -123,10 +129,9 @@ var data = {
 
 var vue = new Vue({el: '#vue', data: data, methods: {
 	save: function () {
-		var x = JSON.parse(JSON.stringify(data.$data));
+		var x = $.extend(data.$data);
 		delete x.tab;
 		delete x.tags;
-		delete x.days;
 		console.log(x);
 		$('.dimmer').dimmer('show');
 		axios.post('admin_shop_save', x)
@@ -173,13 +178,7 @@ var vue = new Vue({el: '#vue', data: data, methods: {
 	removeMedia: function (i) {
 		if (confirm('確認刪除?')) data.media.splice(i, 1);
 	},
-	info: function (e) {
-		data.tab = 'info';
-		setTimeout("$('.ui.dropdown').dropdown()", 200);
-	},
 }});
-
-$('.ui.dropdown').dropdown();
 
 </script>
 

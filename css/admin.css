@@ -6,7 +6,9 @@ body {
 	border-width: 1px;
 	border-style: groove;
 	padding: 10px;
+	margin: 1px;
 	border-radius: 5px;
+	overflow: hidden;
 }
 
 .block {
