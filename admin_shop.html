@@ -20,12 +20,12 @@
 
 <div id="vue" v-loading.fullscreen.lock="lock">
 
+<button @click="save" class="ui primary button" style="position: absolute; right: 0">儲存</button>
 <div class="ui top attached tabular menu">
 	<a @click="tab = 'info'" :class="{active: tab == 'info'}" class="item">資訊</a>
 	<a @click="tab = 'media'" :class="{active: tab == 'media'}" class="item">影音</a>
 	<a @click="tab = 'event'" :class="{active: tab == 'event'}" class="item">活動</a>
 	<a @click="tab = 'order'" :class="{active: tab == 'order'}" class="item">訂位</a>
-	<button @click="save" class="ui primary button right">儲存</button>
 </div>
 
 <!--
@@ -79,7 +79,7 @@
 		<input id="file" type="file" style="visibility: hidden" @change="addMedia($event)">
 	</div>
 -->
-	<el-upload action="admin_shop_upload" :on-success="addMedia" :show-file-list="false">
+	<el-upload action="admin_shop_upload" :before-upload="lockScreen" :on-success="addMedia" :show-file-list="false">
 		<el-button type="primary" icon="upload2">上傳</el-button>
 	</el-upload>
 </div>
@@ -134,10 +134,8 @@ var data = {
 
 var vue = new Vue({el: '#vue', data: data, methods: {
 	save: function () {
-		//vue.lock = true;
 		axios.post('admin_shop_save', vue.shop)
 		.then(function (result) {
-			//vue.lock = false;
 			console.log(result);
 			if (result.data.code == 0)
 				alert('儲存成功！');
@@ -146,7 +144,6 @@ var vue = new Vue({el: '#vue', data: data, methods: {
 			//location.reload();
 		})
 		.catch(function (error) {
-			//vue.lock = false;
 			console.log(error);
 			alert(error);
 		});
@@ -175,7 +172,11 @@ var vue = new Vue({el: '#vue', data: data, methods: {
 		e.target.value = '';
 	},
 */
+	lockScreen: function () {
+		vue.lock = true;
+	},
 	addMedia: function (result) {
+		vue.lock = false;
 		if (result.code != 0) return alert(result.message);
 		result.data.intro = '';
 		vue.shop.media.push(result.data);
