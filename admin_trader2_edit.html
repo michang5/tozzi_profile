@@ -7,12 +7,16 @@
 	<!--css-->
 	<link href="css/bootstrap.css" rel="stylesheet">
 	<link href="css/global.css" rel="stylesheet">
+	<link href="https://unpkg.com/element-ui/lib/theme-default/index.css" rel="stylesheet">
+	<link href="css/semantic.css" rel="stylesheet">
+	<link href="css/admin.css" rel="stylesheet">
 
 	<!--vue-->
 	<script src="js/vue.js"></script>
+	<script src="js/jquery.min.js"></script>
 	<script src="js/axios.js"></script>
-	<link href="css/semantic.css" rel="stylesheet">
-	<link href="css/admin.css" rel="stylesheet">
+	<script src="js/semantic.js"></script>
+	<script src="https://unpkg.com/element-ui/lib/index.js"></script>
 </head>
 <body class="season2">
 <div id="vue">
@@ -26,13 +30,13 @@
 </div>
 
 <div v-if="tab == 'info'">
-  姓名：<input v-model="v_name" class="big">
+  姓名：<input v-model="name" class="big">
   照片：<input v-model="image" class="big">
   <img :src="image" style="width: 200px; margin: 2px"><br>
-  策略：<textarea v-model="strategy" class="big"></textarea>
+  策略：<el-input type="textarea" autosize placeholder="請輸入策略內容" v-model="strategy"></el-input>
   預覽：<div v-html="strategy" class="block"></div>
   臉書：<input v-model="facebook" class="big">
-  訪談：<textarea v-model="interview" class="big"></textarea>
+  訪談：<el-input type="textarea" autosize placeholder="請輸入訪談內容" v-model="interview"></el-input>
   預覽：<div v-html="interview" class="block"></div>
   歷史：
   <div v-for="(h, i) in history" class="list">
@@ -51,7 +55,7 @@
   <div v-for="(r, i) in reports" class="list">
     <button @click="reports.splice(i, 1)" class="right">刪除</button>
     日期：<input v-model="reports[i].date"><br>
-    理由：<textarea v-model="reports[i].reason" class="big"></textarea>
+    理由：<el-input type="textarea" autosize placeholder="請輸入理由" v-model="reports[i].reason"></el-input>
     預覽：<div v-html="r.reason" class="block"></div>
     圖片：<ul><li v-for="(img, i) in r.images"><input v-model="r.images[i]" class="big"><img :src="img" style="width: 400px; margin: 2px"><br></li></ul>
     <button @click="r.images.push('')">+1</button><button @click="r.images.pop()">-1</button>
@@ -76,7 +80,7 @@
   <div v-for="(m, i) in markets" class="list">
     <button @click="markets.splice(i, 1)" class="right">刪除</button>
     日期：<input v-model="markets[i].date"><br>
-    觀察：<textarea v-model="markets[i].info" class="big"></textarea>
+    觀察：<el-input type="textarea" autosize placeholder="請輸入觀察結果" v-model="markets[i].info"></el-input>
     預覽：<div v-html="m.info" class="block"></div>
   </div>
   <button @click="markets.push({date: '', info: ''})">新增</button>
@@ -91,7 +95,7 @@ var data = {
   tab: 'info',
   id: 0,
   image: '',
-  v_name: '',
+  name: '',
   strategy: '',
   facebook: '',
   interview: '',

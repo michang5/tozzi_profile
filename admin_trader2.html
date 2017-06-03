@@ -7,15 +7,19 @@
 	<!--css-->
 	<link href="css/bootstrap.css" rel="stylesheet">
 	<link href="css/global.css" rel="stylesheet">
+	<link href="https://unpkg.com/element-ui/lib/theme-default/index.css" rel="stylesheet">
+	<link href="css/semantic.css" rel="stylesheet">
+	<link href="css/admin.css" rel="stylesheet">
 
 	<!--vue-->
 	<script src="js/vue.js"></script>
+	<script src="js/jquery.min.js"></script>
 	<script src="js/axios.js"></script>
-	<link href="css/semantic.css" rel="stylesheet">
-	<link href="css/admin.css" rel="stylesheet">
+	<script src="js/semantic.js"></script>
+	<script src="https://unpkg.com/element-ui/lib/index.js"></script>
 </head>
 <body class="season2">
-<div id="vue" class="r1ow">
+<div id="vue">
 
 <div v-for="t in traders" @click="edit(t.id)" class="list col-md-2 col-sm-4 col-xs-6 text-center">
   <img :src="t.image" height="100"><br>
