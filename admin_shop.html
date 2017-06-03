@@ -115,8 +115,8 @@ var data = {
 	shop: {
 		id: 0,
 		name: '',
-		tag: '',
-		day: '',
+		tag: [],
+		day: [],
 		start: null,
 		end: null,
 		boss: '',
@@ -138,19 +138,6 @@ var vue = new Vue({el: '#vue', data: data, methods: {
 	progress: function (e) {
 		vue.percent = parseInt(e.percent * 10) / 10 + '%';
 	},
-	save: function () {
-		axios.post('admin_shop_save', vue.shop).then(function (result) {
-			if (result.data.code == 0)
-				alert('儲存成功！');
-			else
-				alert(result.data.message);
-		}).catch(function (error) {
-			alert(error);
-		});
-	},
-	addEvent: function (i) {
-		vue.shop.event.push({name: '', intro: '', start: null, end: null});
-	},
 /*
 	addMedia: function (e) {
 		var file = e.target.files[0];
@@ -164,15 +151,28 @@ var vue = new Vue({el: '#vue', data: data, methods: {
 	},
 */
 	addMedia: function (result) {
-		vue.lock = false;
 		if (result.code != 0) return alert(result.message);
 		vue.shop.media.push(result.data);
+		vue.lock = false;
+	},
+	removeMedia: function (i) {
+		if (confirm('確認刪除?')) vue.shop.media.splice(i, 1);
+	},
+	addEvent: function () {
+		vue.shop.event.push({name: '', intro: '', start: null, end: null});
 	},
 	removeEvent: function (i) {
 		if (confirm('確認刪除?')) vue.shop.event.splice(i, 1);
 	},
-	removeMedia: function (i) {
-		if (confirm('確認刪除?')) vue.shop.media.splice(i, 1);
+	save: function () {
+		axios.post('admin_shop_save', vue.shop).then(function (result) {
+			if (result.data.code == 0)
+				alert('儲存成功！');
+			else
+				alert(result.data.message);
+		}).catch(function (error) {
+			alert(error);
+		});
 	},
 }});
 
