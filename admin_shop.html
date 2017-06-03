@@ -40,7 +40,7 @@
 	商家名稱：<br>
 	<el-input v-model="name"></el-input>
 	標籤：<br>
-	<el-select v-model="tag" multiple filterable placeholder="請選擇類別屬性" style="width: 100%">
+	<el-select v-model="tag" multiple placeholder="請選擇類別屬性" style="width: 100%">
     <el-option v-for="(t,i) in tags" :label="t" :value="i"></el-option>
   </el-select><br>
 	負責人：<br>
