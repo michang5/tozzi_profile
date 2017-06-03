@@ -63,8 +63,8 @@
 	<div v-for="(m, i) in shop.media" class="list">
 		<el-button @click="removeMedia(i)" class="delete" icon="delete"></el-button>
 		<img v-if="/^image/.test(m.type)" :src="m.src" class="media">
-		<video v-else-if="/^video/.test(m.type)" :src="m.src" class="media" controls></video>
-		<a v-else :href="m.src" v-text="m.src.substr(7)"></a>
+		<video v-else-if="/^video/.test(m.type)" :src="m.src" :poster="m.src + '.png'" class="media" title="點一下顯示影片" controls></video>
+		<a v-else :href="m.src" v-text="m.name"></a>
 		<br>
 		<el-input v-model="m.desc" type="textarea" autosize placeholder="請輸入說明"></el-input>
 	</div>
@@ -166,7 +166,6 @@ var vue = new Vue({el: '#vue', data: data, methods: {
 	addMedia: function (result) {
 		vue.lock = false;
 		if (result.code != 0) return alert(result.message);
-		result.data.intro = '';
 		vue.shop.media.push(result.data);
 	},
 	removeEvent: function (i) {
