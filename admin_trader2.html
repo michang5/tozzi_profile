@@ -5,17 +5,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
 	<!--css-->
-	<link href="css/bootstrap.css" rel="stylesheet">
-	<link href="css/global.css" rel="stylesheet">
 	<link href="https://unpkg.com/element-ui/lib/theme-default/index.css" rel="stylesheet">
-	<link href="css/semantic.css" rel="stylesheet">
+	<link href="css/global.css" rel="stylesheet">
 	<link href="css/admin.css" rel="stylesheet">
 
 	<!--vue-->
 	<script src="js/vue.js"></script>
-	<script src="js/jquery.min.js"></script>
-	<script src="js/axios.js"></script>
-	<script src="js/semantic.js"></script>
 	<script src="https://unpkg.com/element-ui/lib/index.js"></script>
 </head>
 <body class="season2">
@@ -23,7 +18,7 @@
 
 <el-row :gutter="0">
 	<el-col v-for="t in traders" :lg="2" :md="3" :sm="4" :xs="8">
-		<div @click="edit(t.id)" class="list text-center">
+		<div @click="edit(t.id)" class="list" style="text-align: center">
 			<img :src="t.image" height="100"><br>
 			<span v-text="t.name"></span>
 		</div>
