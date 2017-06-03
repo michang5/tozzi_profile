@@ -31,7 +31,10 @@
 	<a @click="tab = 'media'" :class="{active: tab == 'media'}" class="item">影音</a>
 	<a @click="tab = 'event'" :class="{active: tab == 'event'}" class="item">活動</a>
 	<a @click="tab = 'order'" :class="{active: tab == 'order'}" class="item">訂位</a>
+<!--
 	<button @click="save" class="ui primary button right">儲存</button>
+-->
+	<el-button @click="save" type="primary" class="right" v-loading.fullscreen.lock="lock">儲存</button>
 </div>
 
 <!--
@@ -45,38 +48,38 @@
 
 <div v-if="tab == 'info'">
 	商家名稱：<br>
-	<el-input v-model="name"></el-input>
+	<el-input v-model="shop.name"></el-input>
 	標籤：<br>
-	<el-select v-model="tag" multiple placeholder="請選擇類別屬性" style="width: 100%">
-    <el-option v-for="t in tags" :label="t" :value="t"></el-option>
-  </el-select><br>
+	<el-select v-model="shop.tag" multiple placeholder="請選擇類別屬性" style="width: 100%">
+		<el-option v-for="t in tags" :label="t" :value="t"></el-option>
+	</el-select><br>
 	營業日：<br>
-	<el-select v-model="day" multiple placeholder="請選擇營業日" style="width: 100%">
-    <el-option v-for="(d,i) in ['週日', '週一', '週二', '週三', '週四', '週五', '週六']" :label="d" :value="i"></el-option>
-  </el-select><br>
+	<el-select v-model="shop.day" multiple placeholder="請選擇營業日" style="width: 100%">
+		<el-option v-for="(d,i) in days" :label="d" :value="i"></el-option>
+	</el-select><br>
 	營業時間：<br>
-	<el-time-select placeholder="開始時間" v-model="start" :picker-options="{start: '06:00', step: '00:15', end: '22:30'}"></el-time-select>
-  <el-time-select placeholder="结束时间" v-model="end" :picker-options="{start: '06:00', step: '00:15', end: '22:30', minTime: start}"></el-time-select>
+	<el-time-select placeholder="開始時間" v-model="shop.start" :picker-options="{start: '06:00', step: '00:15', end: '22:30'}"></el-time-select>
+	<el-time-select placeholder="结束时间" v-model="shop.end" :picker-options="{start: '06:00', step: '00:15', end: '22:30', minTime: shop.start}"></el-time-select>
 	<br>
 	負責人：<br>
-	<el-input v-model="boss"></el-input>
+	<el-input v-model="shop.boss"></el-input>
 	電話：<br>
-	<el-input v-model="phone"></el-input>
+	<el-input v-model="shop.phone"></el-input>
 	地址：<br>
-	<el-input v-model="address"></el-input>
-	<iframe :src="'https://www.google.com.tw/maps?&output=embed&q=' + address" style="width: 100%; border: 1px solid"></iframe>
+	<el-input v-model="shop.address"></el-input>
+	<iframe :src="'https://www.google.com.tw/maps?&output=embed&q=' + shop.address" style="width: 100%; border: 1px solid"></iframe>
 	簡介：<br>
-	<el-input type="textarea" autosize placeholder="請輸入簡介" v-model="intro"></el-input>
-	<div v-html="intro" class="block"></div>
+	<el-input v-model="shop.intro" type="textarea" autosize placeholder="請輸入簡介"></el-input>
+	<div v-html="shop.intro" class="block"></div>
 </div>
 
 <div v-if="tab == 'media'">
-	<div v-for="(m, i) in media" class="list">
+	<div v-for="(m, i) in shop.media" class="list">
 		<el-button @click="removeMedia(i)" class="right" icon="delete">刪除</el-button>
 		<img v-if="m.image" :src="m.src" style="height: 100px; vertical-align: baseline">
 		<video v-if="m.video" :src="m.src" style="height: 100px"></video>
 		<br>
-		<el-input type="textarea" autosize placeholder="請輸入說明" v-model="media[i].desc"></el-input>
+		<el-input v-model="shop.media[i].desc" type="textarea" autosize placeholder="請輸入說明"></el-input>
 	</div>
 	<div>
 		<label for="file" class="ui primary button"><i class="el-icon-upload2"></i>上傳</label>
@@ -85,7 +88,7 @@
 </div>
 
 <div v-if="tab == 'event'">
-	<div v-for="(e, i) in event" class="list">
+	<div v-for="(e, i) in shop.event" class="list">
 		<el-button @click="removeEvent(i)" class="right" icon="delete">刪除</el-button>
 		活動名稱：<br>
 		<el-input v-model="e.name"></el-input>
@@ -94,10 +97,10 @@
 		<el-date-picker v-model="e.end" type="date" placeholder="結束日期"></el-date-picker>
 		<br>
 		活動說明：<br>
-		<el-input v-model="e.intro" type="textarea" autosize></el-input>
+		<el-input v-model="shop.event[i].intro" type="textarea" autosize></el-input>
 		<div v-html="e.intro" class="block"></div>
 	</div>
-  <el-button @click="addEvent" icon="plus">新增</button>
+	<el-button @click="addEvent" icon="plus">新增</button>
 </div>
 
 <div v-if="tab == 'order'">
@@ -110,33 +113,35 @@
 
 var data = {
 	tab: 'info',
+	lock: false,
 	tags: ['餐廳', '咖啡', '旅館', '親子', '客家', '原民', '手作', '文化', '特色'],
-	id: 0,
-	name: '',
-	tag: '',
-	day: '',
-	start: null,
-	end: null,
-	boss: '',
-	phone: '',
-	address: '',
-	intro: '',
-	media: [],
-	event: [],
+	days: ['週日', '週一', '週二', '週三', '週四', '週五', '週六'],
+	shop: {
+		id: 0,
+		name: '',
+		tag: '',
+		day: '',
+		start: null,
+		end: null,
+		boss: '',
+		phone: '',
+		address: '',
+		intro: '',
+		media: [],
+		event: [],
+	}
 };
 
 //data//
 
 var vue = new Vue({el: '#vue', data: data, methods: {
 	save: function () {
-		var x = $.extend(data.$data);
-		delete x.tab;
-		delete x.tags;
-		console.log(x);
-		$('.dimmer').dimmer('show');
-		axios.post('admin_shop_save', x)
+		vue.lock = true;
+		//$('.dimmer').dimmer('show');
+		axios.post('admin_shop_save', vue.shop)
 		.then(function (result) {
-			$('.dimmer').dimmer('hide');
+			vue.lock = false;
+			//$('.dimmer').dimmer('hide');
 			console.log(result);
 			if (result.data.code == 0)
 				alert('儲存成功！');
@@ -145,13 +150,14 @@ var vue = new Vue({el: '#vue', data: data, methods: {
 			location.reload();
 		})
 		.catch(function (error) {
-			$('.dimmer').dimmer('hide');
+			vue.lock = false;
+			//$('.dimmer').dimmer('hide');
 			console.log(error);
 			alert(error);
 		});
 	},
 	addEvent: function (i) {
-		data.event.push({name: '', intro: '', start: null, end: null});
+		vue.shop.event.push({name: '', intro: '', start: null, end: null});
 	},
 	addMedia: function (e) {
 		var file = e.target.files[0];
@@ -167,16 +173,16 @@ var vue = new Vue({el: '#vue', data: data, methods: {
 				file.image = true;
 			else
 				file.video = true;
-			data.media.push(file);
+			vue.shop.media.push(file);
 		}
 		reader.readAsDataURL(e.target.files[0]);
 		e.target.value = '';
 	},
 	removeEvent: function (i) {
-		if (confirm('確認刪除?')) data.event.splice(i, 1);
+		if (confirm('確認刪除?')) vue.shop.event.splice(i, 1);
 	},
 	removeMedia: function (i) {
-		if (confirm('確認刪除?')) data.media.splice(i, 1);
+		if (confirm('確認刪除?')) vue.shop.media.splice(i, 1);
 	},
 }});
 
