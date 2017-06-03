@@ -6,15 +6,15 @@
 
 	<!--css-->
 	<link href="css/global.css" rel="stylesheet">
-	<link href="https://unpkg.com/element-ui/lib/theme-default/index.css" rel="stylesheet">
+	<link href="css/element-ui.css" rel="stylesheet">
 	<link href="css/semantic.css" rel="stylesheet">
 	<link href="css/admin.css" rel="stylesheet">
 
 	<!--vue-->
 	<script src="js/vue.js"></script>
+	<script src="js/element-ui.js"></script>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/axios.js"></script>
-	<script src="https://unpkg.com/element-ui/lib/index.js"></script>
 </head>
 <body class="season2">
 
@@ -49,8 +49,9 @@
 		<el-option v-for="(d,i) in days" :label="d" :value="i"></el-option>
 	</el-select><br>
 	營業時間：<br>
-	<el-time-select placeholder="開始時間" v-model="shop.start" :picker-options="{start: '06:00', step: '00:15', end: '22:30'}"></el-time-select>
-	<el-time-select placeholder="结束时间" v-model="shop.end" :picker-options="{start: '06:00', step: '00:15', end: '22:30', minTime: shop.start}"></el-time-select>
+	<el-time-select placeholder="開始時間" v-model="shop.start" :picker-options="{start: '06:00', step: '00:15', end: '22:30'}" style="width: 150px"></el-time-select>
+	-
+	<el-time-select placeholder="結束時間" v-model="shop.end" :picker-options="{start: '06:00', step: '00:15', end: '22:30', minTime: shop.start}" style="width: 150px"></el-time-select>
 	<br>
 	負責人：<br>
 	<el-input v-model="shop.boss"></el-input>
