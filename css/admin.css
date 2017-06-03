@@ -37,6 +37,11 @@ body {
 	white-space: nowrap;
 }
 
+.map {
+	width: 100%;
+	border: 0;
+}
+
 .media {
 	border: 1px solid black;
 	border-radius: 5px;

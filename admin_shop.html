@@ -53,7 +53,7 @@
 	<el-input v-model="shop.phone"></el-input>
 	地址：<br>
 	<el-input v-model="shop.address"></el-input>
-	<iframe :src="'https://www.google.com.tw/maps?&output=embed&q=' + shop.address" style="width: 100%; border: 1px solid"></iframe>
+	<iframe :src="'https://www.google.com.tw/maps?&output=embed&q=' + shop.address" class="map"></iframe>
 	簡介：<br>
 	<el-input v-model="shop.intro" type="textarea" autosize placeholder="請輸入簡介"></el-input>
 	<div v-html="shop.intro" class="block"></div>
