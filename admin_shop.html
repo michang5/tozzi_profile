@@ -43,6 +43,14 @@
 	<el-select v-model="tag" multiple placeholder="請選擇類別屬性" style="width: 100%">
     <el-option v-for="(t,i) in tags" :label="t" :value="i"></el-option>
   </el-select><br>
+	營業日：<br>
+	<el-select v-model="day" multiple placeholder="請選擇營業日" style="width: 100%">
+    <el-option v-for="(d,i) in days" :label="d" :value="i"></el-option>
+  </el-select><br>
+	營業時間：<br>
+	<el-time-select placeholder="開始時間" v-model="start" :picker-options="{start: '06:00', step: '00:15', end: '22:30'}"></el-time-select>
+  <el-time-select placeholder="结束时间" v-model="end" :picker-options="{start: '06:00', step: '00:15', end: '22:30', minTime: start}"></el-time-select>
+	<br>
 	負責人：<br>
 	<el-input v-model="boss"></el-input>
 	電話：<br>
@@ -57,7 +65,7 @@
 
 <div v-if="tab == 'media'">
 	<div v-for="(m, i) in media" class="list">
-		<el-button @click="remove(i)" class="right" icon="delete">刪除</el-button>
+		<el-button @click="removeMedia(i)" class="right" icon="delete">刪除</el-button>
 		<img v-if="m.image" :src="m.src" style="height: 100px; vertical-align: baseline">
 		<video v-if="m.video" :src="m.src" style="height: 100px"></video>
 		<br>
@@ -65,12 +73,24 @@
 	</div>
 	<div>
 		<label for="file" class="ui primary button"><i class="el-icon-upload2"></i>上傳</label>
-		<input id="file" type="file" style="visibility: hidden" @change="upload($event)">
+		<input id="file" type="file" style="visibility: hidden" @change="addMedia($event)">
 	</div>
 </div>
 
 <div v-if="tab == 'event'">
-	開發中
+	<div v-for="(e, i) in event" class="list">
+		<el-button @click="removeEvent(i)" class="right" icon="delete">刪除</el-button>
+		活動名稱：<br>
+		<el-input v-model="e.name"></el-input>
+		活動日期：<br>
+		<el-date-picker v-model="e.start" type="date" placeholder="開始日期"></el-date-picker>
+		<el-date-picker v-model="e.end" type="date" placeholder="結束日期"></el-date-picker>
+		<br>
+		活動說明：<br>
+		<el-input v-model="e.intro" type="textarea" autosize></el-input>
+		<div v-html="e.intro" class="block"></div>
+	</div>
+  <el-button @click="addEvent" icon="plus">新增</button>
 </div>
 
 <div v-if="tab == 'order'">
@@ -84,22 +104,26 @@
 var data = {
 	tab: 'info',
 	tags: ['餐廳', '咖啡', '旅館', '親子', '客家', '原民', '手作', '文化', '特色'],
+	days: ['週日', '週一', '週二', '週三', '週四', '週五', '週六'],
 	id: 0,
 	name: '',
+	tag: '',
+	day: '',
+	start: null,
+	end: null,
 	boss: '',
 	phone: '',
 	address: '',
+	intro: '',
 	media: [],
 	event: [],
-	tag: '',
-	intro: '',
 };
 
 //data//
 
 var vue = new Vue({el: '#vue', data: data, methods: {
 	save: function () {
-		var x = JSON.parse(JSON.stringify(this.$data));
+		var x = JSON.parse(JSON.stringify(data.$data));
 		delete x.tab;
 		delete x.tags;
 		console.log(x);
@@ -120,10 +144,10 @@ var vue = new Vue({el: '#vue', data: data, methods: {
 			alert(error);
 		});
 	},
-	remove: function (i) {
-		if (confirm('是否確認刪除?')) this.media.splice(i, 1);
+	addEvent: function (i) {
+		data.event.push({name: '', intro: '', start: null, end: null});
 	},
-	upload: function (e) {
+	addMedia: function (e) {
 		var file = e.target.files[0];
 		if (!/^(image|video)/.test(file.type)) {
 			alert('請上傳圖檔或影片');
@@ -142,8 +166,14 @@ var vue = new Vue({el: '#vue', data: data, methods: {
 		reader.readAsDataURL(e.target.files[0]);
 		e.target.value = '';
 	},
+	removeEvent: function (i) {
+		if (confirm('確認刪除?')) data.event.splice(i, 1);
+	},
+	removeMedia: function (i) {
+		if (confirm('確認刪除?')) data.media.splice(i, 1);
+	},
 	info: function (e) {
-		this.tab = 'info';
+		data.tab = 'info';
 		setTimeout("$('.ui.dropdown').dropdown()", 200);
 	},
 }});
