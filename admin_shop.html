@@ -20,21 +20,14 @@
 </head>
 <body class="season2">
 
-<div class="ui inverted dimmer">
-	<div class="ui text loader">上傳中</div>
-</div>
-
-<div id="vue">
+<div id="vue" v-loading.fullscreen.lock="lock">
 
 <div class="ui top attached tabular menu">
 	<a @click="tab = 'info'" :class="{active: tab == 'info'}" class="item">資訊</a>
 	<a @click="tab = 'media'" :class="{active: tab == 'media'}" class="item">影音</a>
 	<a @click="tab = 'event'" :class="{active: tab == 'event'}" class="item">活動</a>
 	<a @click="tab = 'order'" :class="{active: tab == 'order'}" class="item">訂位</a>
-<!--
 	<button @click="save" class="ui primary button right">儲存</button>
--->
-	<el-button @click="save" type="primary" class="right" v-loading.fullscreen.lock="lock">儲存</button>
 </div>
 
 <!--
@@ -137,11 +130,9 @@ var data = {
 var vue = new Vue({el: '#vue', data: data, methods: {
 	save: function () {
 		vue.lock = true;
-		//$('.dimmer').dimmer('show');
 		axios.post('admin_shop_save', vue.shop)
 		.then(function (result) {
 			vue.lock = false;
-			//$('.dimmer').dimmer('hide');
 			console.log(result);
 			if (result.data.code == 0)
 				alert('儲存成功！');
@@ -151,7 +142,6 @@ var vue = new Vue({el: '#vue', data: data, methods: {
 		})
 		.catch(function (error) {
 			vue.lock = false;
-			//$('.dimmer').dimmer('hide');
 			console.log(error);
 			alert(error);
 		});
