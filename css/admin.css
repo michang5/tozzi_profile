@@ -52,3 +52,22 @@ body {
 .big {
 	width: 100%;
 }
+
+table {
+	width: 100%;
+}
+
+th {
+	padding: 6px;
+	background-color: #eeeeee;
+}
+
+td.edit {
+	padding: 1px !important;
+}
+
+td.edit input {
+	border: 0;
+	width: 100%;
+	padding: 5px;
+}
