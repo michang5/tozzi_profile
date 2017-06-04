@@ -114,7 +114,8 @@ var vue = new Vue({el: '#vue', data: data, methods: {
     var x = this.$data;
     delete x.tab;
     axios.post('admin_trader2_save', x).then(function() {
-      location.href = 'admin_trader2';
+      //location.href = 'admin_trader2';
+      location.reload();
     });
   }
 }});
