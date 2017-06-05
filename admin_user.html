@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<link href="css/mint-ui.css" rel="stylesheet">
+	<script src="js/vue.js"></script>
+	<script src="js/axios.js"></script>
+	<script src="js/mint-ui.js"></script>
+</head>
+<body>
+<div id="vue">
+
+<mt-header title="用戶資料">
+  <router-link to="/" slot="left">
+    <mt-button icon="back">返回</mt-button>
+  </router-link>
+  <mt-button icon="more" slot="right"></mt-button>
+</mt-header>
+
+<mt-field label="姓名" placeholder="請輸入姓名" v-model="user.name"></mt-field>
+<mt-field label="信箱" placeholder="請輸入信箱" type="email" v-model="user.email"></mt-field>
+<mt-field label="密碼" placeholder="請輸入密碼" type="password" v-modal="user.pwd"></mt-field>
+<mt-field label="電話" placeholder="請輸入電話" type="tel" v-model="user.phone"></mt-field>
+<mt-field label="網站" placeholder="請輸入網站" type="url" v-model="user.url"></mt-field>
+<mt-field label="生日" placeholder="請輸入生日" type="date" v-model="user.birth"></mt-field>
+<mt-field label="簡介" placeholder="請輸入簡介" type="textarea" rows="4" v-model="user.intro"></mt-field>
+<mt-button type="primary" @click="save">確認</mt-button>
+
+</div>
+
+<script>
+
+var data = {
+	user: {
+		id: 0,
+		name: '',
+		email: '',
+		pwd: '',
+		phone: '',
+		url: '',
+		birth: '',
+		intro: '',
+	}
+};
+
+//data//
+
+var vue = new Vue({el: '#vue', data: data, methods: {
+	save: function () {
+		axios.post('admin_user_save', vue.user).then(function (result) {
+			if (result.data.code == 0)
+				alert('儲存成功！');
+			else
+				alert(result.data.message);
+		}).catch(function (error) {
+			alert(error);
+		});
+	},
+}});
+
+</script>
+
+</body>
+</html>
