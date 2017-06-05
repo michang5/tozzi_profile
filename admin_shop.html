@@ -151,9 +151,9 @@ var vue = new Vue({el: '#vue', data: data, methods: {
 	},
 */
 	addMedia: function (result) {
+		vue.lock = false;
 		if (result.code != 0) return alert(result.message);
 		vue.shop.media.push(result.data);
-		vue.lock = false;
 	},
 	removeMedia: function (i) {
 		if (confirm('確認刪除?')) vue.shop.media.splice(i, 1);
