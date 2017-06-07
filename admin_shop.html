@@ -13,6 +13,7 @@
 	<script src="js/element-ui.js"></script>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/axios.js"></script>
+	<script src="js/api.js"></script>
 </head>
 <body class="season2">
 
@@ -165,14 +166,7 @@ var vue = new Vue({el: '#vue', data: data, methods: {
 		if (confirm('確認刪除?')) vue.shop.event.splice(i, 1);
 	},
 	save: function () {
-		axios.post('admin_shop_save', vue.shop).then(function (result) {
-			if (result.data.code == 0)
-				alert('儲存成功！');
-			else
-				alert(result.data.message);
-		}).catch(function (error) {
-			alert(error);
-		});
+		api('admin_shop_save', vue.shop, function () { alert('儲存成功！'); });
 	},
 }});
 
