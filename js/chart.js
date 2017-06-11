@@ -139,15 +139,18 @@ AmCharts.makeChart( "chartdiv2", {
     },
   "dataProvider": points,
   "valueAxes": [ {
-    "id": "point",
-    "title": "加權指數(點)",
+    "id": "percent",
+    "title": "報酬率(百分比)",
     "axisAlpha": 0,
-    "position": "left"
+    "position": "left",
+    "labelFunction": function(value) {
+      return value + "%";
+    }
   }, {
     "id": "percent2",
     "title": "年化報酬率(百分比)",
     "axisAlpha": 0,
-    "position": "left",
+    "position": "right",
     "labelFunction": function(value) {
       return value + "%";
     }
@@ -170,6 +173,54 @@ AmCharts.makeChart( "chartdiv2", {
     "valueField": "taiex",
     "dashLengthField": "dashLengthLine"
   },*/ {
+    "valueAxis": "percent",
+    "balloonText": "<span style='font-size:12px;'>[[date]][[title]]報酬率:<br><span style='font-size:20px;'>[[value]]%</span> [[additional]]</span>",
+    "bullet": "round",
+    "lineThickness": 3,
+    "bulletSize": 7,
+    "bulletBorderAlpha": 1,
+    "bulletColor": "#FFFFFF",
+    "useLineColorForBulletBorder": true,
+    "bulletBorderThickness": 3,
+    "fillAlphas": 0,
+    "lineAlpha": 1,
+    "lineColor": "#00FFFF",
+    "title": "元大台灣50",
+    "valueField": "r0050",
+    "dashLengthField": "dashLengthLine"
+  }, {
+    "valueAxis": "percent",
+    "balloonText": "<span style='font-size:12px;'>[[date]][[title]]報酬率:<br><span style='font-size:20px;'>[[value]]%</span> [[additional]]</span>",
+    "bullet": "round",
+    "lineThickness": 3,
+    "bulletSize": 7,
+    "bulletBorderAlpha": 1,
+    "bulletColor": "#FFFFFF",
+    "useLineColorForBulletBorder": true,
+    "bulletBorderThickness": 3,
+    "fillAlphas": 0,
+    "lineAlpha": 1,
+    "lineColor": "#0000FF",
+    "title": "元大中型100",
+    "valueField": "r0051",
+    "dashLengthField": "dashLengthLine"
+  }, {
+    "valueAxis": "percent",
+    "balloonText": "<span style='font-size:12px;'>[[date]][[title]]:<br><span style='font-size:20px;'>[[value]]%</span> [[additional]]</span>",
+    "bullet": "round",
+    "lineThickness": 3,
+    "bulletSize": 7,
+    "bulletBorderAlpha": 1,
+    "bulletColor": "#FFFFFF",
+    "useLineColorForBulletBorder": true,
+    "bulletBorderThickness": 3,
+    "fillAlphas": 0,
+    "lineAlpha": 1,
+    "lineColor": "#CF0000",
+    "title": "投報率",
+    "valueField": "rate",
+    "dashLengthField": "dashLengthLine"
+  }/*, {
     "valueAxis": "percent2",
     "balloonText": "<span style='font-size:12px;'>[[date]][[title]]年化報酬率:<br><span style='font-size:20px;'>[[value]]%</span> [[additional]]</span>",
     "bullet": "round",
@@ -217,7 +268,7 @@ AmCharts.makeChart( "chartdiv2", {
     "title": "年化報酬率",
     "valueField": "year",
     "dashLengthField": "dashLengthLine"
-  } ],
+  }*/ ],
   "dataDateFormat": "MM/DD",
   "categoryField": "date",
   "categoryAxis": {
