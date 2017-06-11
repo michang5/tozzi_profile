@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<link href="css/global.css" rel="stylesheet">
+	<link href="css/element-ui.css" rel="stylesheet">
+	<link href="css/admin.css" rel="stylesheet">
+	<script src="js/vue.js"></script>
+	<script src="js/element-ui.js"></script>
+	<script src="js/axios.js"></script>
+	<script src="js/api.js"></script>
+</head>
+<body class="season2">
+
+<div id="vue">
+
+<el-button @click="save" type="primary" icon="upload" class="save">儲存</el-button>
+
+<el-tabs v-model="tab" type="card">
+
+<el-tab-pane label="公告" name="news">
+	<div v-for="(n, i) in season2.news" class="list">
+		<el-button @click="season2.news.splice(i, 1)" class="delete" icon="delete"></el-button>
+		標題：<br>
+		<el-input v-model="n.title"></el-input>
+		連結：<br>
+		<el-input v-model="n.url"></el-input>
+	</div>
+	<el-button @click="season2.news.push({title: '', url: ''})" icon="plus">新增公告</el-button>
+</el-tab-pane>
+
+</el-tabs>
+
+</div>
+
+<script>
+
+var data = {
+	tab: 'news',
+	season2: {
+		news: [],
+	},
+};
+
+//data//
+
+var vue = new Vue({el: '#vue', data: data, methods: {
+	save: function () {
+		api('admin_season2_save', vue.season2, function () { alert('儲存成功！'); });
+	},
+}});
+
+</script>
+
+</body>
+</html>
