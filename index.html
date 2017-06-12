@@ -120,7 +120,7 @@
 				<div id="chartdiv" class="stock-chart"></div>
 			</div>
 			
-			<div class="ranking-all" v-if="rankings.length">
+			<div class="ranking-all" v-if="week.length">
 				<h3><span>投報率週排行 Top 5</span></h3>
 				<div class="tab-container">
 				    <div class="table-responsive">
@@ -128,23 +128,23 @@
                             <thead>
                                 <tr>
                                     <th>名次</th>
-                                    <th>變動</th>
+                                    <th title="以「上週最末交易日」與「上上週最末交易日」收盤後之投報率變化，為排名升降基準。">變動</th>
                                     <th>頭像</th>
                                     <th>名稱</th>
 <!--                                    <th>選手互評平均分</th>-->
-                                    <th>投報率</th>
+                                    <th title="以「上週最末交易日」收盤後之投報率為排名基準。">投報率</th>
 <!--                                    <th>總得分</th>-->
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="(r, index) in rankings">
-                                    <td v-text="index + 1">1</td>
-                                    <td v-text="r.delta">-</td>
-                                    <td><a href="#"><img :src="r.image" alt="" class="img-circle"></a></td>
-                                    <td><a href="#" v-text="r.name"></a></td>
-<!--                                    <td v-text="r.mean">-</td>-->
-                                    <td v-text="r.gain">-</td>
-<!--                                    <td v-text="r.total">-</td>-->
+                                <tr v-for="(t, i) in top5">
+                                    <td v-text="i + 1"></td>
+                                    <td v-text="t.delta" title="以「上週最末交易日」與「上上週最末交易日」收盤後之投報率變化，為排名升降基準。">-</td>
+                                    <td><a :href="'traders_s2.html?id=' + t.id"><img :src="t.trader2.image" :alt="t.trader2.name" class="img-circle"></a></td>
+                                    <td><a :href="'traders_s2.html?id=' + t.id" v-text="t.trader2.name"></a></td>
+<!--                                    <td v-text="t.mean">-</td>-->
+                                    <td v-text="t.point.rate + '%'" title="以「上週最末交易日」收盤後之投報率為排名基準。">-</td>
+<!--                                    <td v-text="t.total">-</td>-->
                                 </tr>
                             </tbody>
                         </table>
@@ -219,7 +219,7 @@ var data = {
   ],
   points: [],
   names: [],
-  rankings: [
+  top5: [
     {delta: '+1', image: 'images/profile_photo.png', name: '選手一', mean: 9.1, gain: '30%', total: 123},
     {delta: '-1', image: 'images/profile_photo.png', name: '選手二', mean: 8.9, gain: '21%', total: 109},
   ]
