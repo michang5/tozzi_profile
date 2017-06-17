@@ -8,8 +8,8 @@ function hide() {
   setTimeout(hide, 500);
 }
 
-function top3(points, names) {
-  if (!points.length) {
+function top3(data) {
+  if (!data.points.length) {
     $('.chart-top3').hide();
     return;
   }
@@ -34,7 +34,7 @@ AmCharts.makeChart( "chartdiv", {
         "valueAlign": "left",
         "valueWidth": 120
     },
-  "dataProvider": points,
+  "dataProvider": data.points,
   "valueAxes": [ {
     "id": "percent",
     "title": "投資報酬率(百分比)",
@@ -46,7 +46,7 @@ AmCharts.makeChart( "chartdiv", {
   "startDuration": 1,
   "graphs": [ {
     "valueAxis": "percent",
-    "balloonText": "<span style='font-size:12px;'>[[date]]" + names[0] + ":<br><span style='font-size:20px;'>[[no0]]%</span> [[additional]]</span>",
+    "balloonText": "<span style='font-size:12px;'>[[date]]" + data.kaede + ":<br><span style='font-size:20px;'>[[kaede]]%</span> [[additional]]</span>",
     "bullet": "round",
     "lineThickness": 3,
     "bulletSize": 7,
@@ -56,12 +56,29 @@ AmCharts.makeChart( "chartdiv", {
     "bulletBorderThickness": 3,
     "fillAlphas": 0,
     "lineAlpha": 1,
-    "title": names[0],
+    "lineColor": "#CF0000",
+    "title": data.kaede,
+    "valueField": "kaede",
+    "dashLengthField": "dashLengthLine"
+  }, {
+    "valueAxis": "percent",
+    "balloonText": "<span style='font-size:12px;'>[[date]]" + data.name0 + ":<br><span style='font-size:20px;'>[[no0]]%</span> [[additional]]</span>",
+    "bullet": "round",
+    "lineThickness": 3,
+    "bulletSize": 7,
+    "bulletBorderAlpha": 1,
+    "bulletColor": "#FFFFFF",
+    "useLineColorForBulletBorder": true,
+    "bulletBorderThickness": 3,
+    "fillAlphas": 0,
+    "lineAlpha": 1,
+    "lineColor": "#FFFF00",
+    "title": data.name0,
     "valueField": "no0",
     "dashLengthField": "dashLengthLine"
   }, {
     "valueAxis": "percent",
-    "balloonText": "<span style='font-size:12px;'>[[date]]" + names[1] + ":<br><span style='font-size:20px;'>[[no1]]%</span> [[additional]]</span>",
+    "balloonText": "<span style='font-size:12px;'>[[date]]" + data.name1 + ":<br><span style='font-size:20px;'>[[no1]]%</span> [[additional]]</span>",
     "bullet": "round",
     "lineThickness": 3,
     "bulletSize": 7,
@@ -71,12 +88,13 @@ AmCharts.makeChart( "chartdiv", {
     "bulletBorderThickness": 3,
     "fillAlphas": 0,
     "lineAlpha": 1,
-    "title": names[1],
+    "lineColor": "#00FF00",
+    "title": data.name1,
     "valueField": "no1",
     "dashLengthField": "dashLengthLine"
   }, {
     "valueAxis": "percent",
-    "balloonText": "<span style='font-size:12px;'>[[date]]" + names[2] + ":<br><span style='font-size:20px;'>[[no2]]%</span> [[additional]]</span>",
+    "balloonText": "<span style='font-size:12px;'>[[date]]" + data.name2 + ":<br><span style='font-size:20px;'>[[no2]]%</span> [[additional]]</span>",
     "bullet": "round",
     "lineThickness": 3,
     "bulletSize": 7,
@@ -86,7 +104,8 @@ AmCharts.makeChart( "chartdiv", {
     "bulletBorderThickness": 3,
     "fillAlphas": 0,
     "lineAlpha": 1,
-    "title": names[2],
+    "lineColor": "#0000FF",
+    "title": data.name2,
     "valueField": "no2",
     "dashLengthField": "dashLengthLine"
   } ],
