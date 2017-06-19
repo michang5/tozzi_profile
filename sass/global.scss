@@ -1315,9 +1315,10 @@ footer {
         letter-spacing: 0;
         text-align: center;
     }
-	h3 {
+	h3, h2 {
 		img {
-			width: 28px; 
+			width: 36px;
+			margin-left: 5px;
 			vertical-align: text-top;
 		}
 		span {
