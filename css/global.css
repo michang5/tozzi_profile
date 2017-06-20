@@ -1161,11 +1161,12 @@ footer {
   letter-spacing: 0;
   text-align: center;
 }
-#ranking h3 img {
-  width: 28px;
+#ranking h3 img, #ranking h2 img {
+  width: 36px;
+  margin-left: 5px;
   vertical-align: text-top;
 }
-#ranking h3 span {
+#ranking h3 span, #ranking h2 span {
   vertical-align: middle;
   background: transparent;
 }
