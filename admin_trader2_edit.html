@@ -61,37 +61,38 @@
 
 <div v-if="tab == 'reports'">
   <div v-for="(r, i) in reports" class="list">
-    <button @click="reports.splice(i, 1)" class="right">刪除</button>
-    日期：<input v-model="reports[i].date"><br>
+    <el-button @click="reports.splice(i, 1)" class="delete" icon="delete">刪除</el-button>
+    日期：<el-input v-model="reports[i].date" style="width: 150px"></el-input><br>
     理由：<el-input type="textarea" autosize placeholder="請輸入理由" v-model="reports[i].reason"></el-input>
-    預覽：<div v-html="r.reason" class="block"></div>
-    圖片：<ul><li v-for="(img, i) in r.images"><input v-model="r.images[i]" class="big"><img :src="img" style="width: 400px; margin: 2px"><br></li></ul>
-    <button @click="r.images.push('')">+1</button><button @click="r.images.pop()">-1</button>
+    <div v-html="r.reason" class="block"></div>
+    圖片：<ul><li v-for="(img, i) in r.images"><el-input v-model="r.images[i]"></el-input><img :src="img" style="width: 400px; margin: 2px"><br></li></ul>
+    <el-button @click="r.images.push('')" icon="plus"></el-button>
+    <el-button @click="r.images.pop()" icon="delete"></el-button>
   </div>
-  <button @click="reports.push({date: '', reason: '', images: ['']})">新增</button>
+  <el-button @click="reports.push({date: '', reason: '', images: ['']})" icon="plus">新增</el-button>
 </div>
 
 <div v-if="tab == 'records'">
   <div v-for="(r, i) in records" class="list">
-    <button @click="records.splice(i, 1)" class="right">刪除</button>
-    <span class="nowrap">日期：<input v-model="records[i].date"></span>
-    <span class="nowrap">名稱：<input v-model="records[i].name"></span>
-    <span class="nowrap">類型：<select v-model="records[i].type"><option>買</option><option>賣</option><option>原始持有</option></select></span>
-    <span class="nowrap">股數：<input v-model.number="records[i].share"></span>
-    <span class="nowrap">價錢：<input v-model.number="records[i].price"></span>
-    <span class="nowrap">總價：<input v-model.number="records[i].total"></span>
+    <el-button @click="records.splice(i, 1)" class="right" icon="delete">刪除</el-button>
+    <span class="nowrap">日期：<el-input v-model="records[i].date" style="width: 120px"></el-input></span>
+    <span class="nowrap">名稱：<el-input v-model="records[i].name" style="width: 120px"></el-input></span>
+    <span class="nowrap">類型：<el-select v-model="records[i].type" style="width: 120px"><el-option>買</el-option><el-option>賣</el-option><el-option>原始持有</el-option></el-select></span>
+    <span class="nowrap">股數：<el-input v-model.number="records[i].share" style="width: 120px"></el-input></span>
+    <span class="nowrap">價錢：<el-input v-model.number="records[i].price" style="width: 120px"></el-input></span>
+    <span class="nowrap">總價：<el-input v-model.number="records[i].total" style="width: 120px"></el-input></span>
   </div>
-  <button @click="records.push({date: '', name: '', type: '', share: 0, price: 0, total: 0})">新增</button>
+  <el-button @click="records.push({date: '', name: '', type: '', share: 0, price: 0, total: 0})" icon="plus">新增</el-button>
 </div>
 
 <div v-if="tab == 'markets'">
   <div v-for="(m, i) in markets" class="list">
-    <button @click="markets.splice(i, 1)" class="right">刪除</button>
-    日期：<input v-model="markets[i].date"><br>
+    <el-button @click="markets.splice(i, 1)" class="delete" icon="delete">刪除</el-button>
+    日期：<el-input v-model="markets[i].date" style="width: 150px"></el-input><br>
     觀察：<el-input type="textarea" autosize placeholder="請輸入觀察結果" v-model="markets[i].info"></el-input>
-    預覽：<div v-html="m.info" class="block"></div>
+    <div v-html="m.info" class="block"></div>
   </div>
-  <button @click="markets.push({date: '', info: ''})">新增</button>
+  <el-button @click="markets.push({date: '', info: ''})" icon="plus">新增</el-button>
 </div>
 
 </div>
