@@ -26,17 +26,17 @@
 </div>
 
 <div v-if="tab == 'info'">
-  姓名：<input v-model="name" class="big">
-  照片：<input v-model="image" class="big">
+  姓名：<el-input v-model="name" class="big"></el-input>
+  照片：<el-input v-model="image" class="big"></el-input>
   <img :src="image" style="width: 200px; margin: 2px"><br>
   策略：<el-input type="textarea" autosize placeholder="請輸入策略內容" v-model="strategy"></el-input>
-  預覽：<div v-html="strategy" class="block"></div>
-  臉書：<input v-model="facebook" class="big">
+  <div v-html="strategy" class="block"></div>
+  臉書：<el-input v-model="facebook" class="big"></el-input>
   訪談：<el-input type="textarea" autosize placeholder="請輸入訪談內容" v-model="interview"></el-input>
-  預覽：<div v-html="interview" class="block"></div>
-  歷史：
+  <div v-html="interview" class="block"></div>
+  歷史紀錄：
   <div v-for="(h, i) in history" class="list">
-    <button @click="history.splice(i, 1)" class="right">刪除</button>
+    <el-button @click="history.splice(i, 1)" class="delete" icon="delete">刪除</el-button>
     <span class="nowrap">賽季：<input v-model="history[i].season"></span>
     <span class="nowrap">獎項：<input v-model="history[i].prize"></span>
     <span class="nowrap">排名：<input v-model="history[i].rank"></span>
@@ -44,7 +44,19 @@
     <span class="nowrap">投報：<input v-model="history[i].rate"></span>
     <span class="nowrap">總分：<input v-model="history[i].score"></span>
   </div>
-  <button @click="history.push({season: '', prize: '', rank: '', average: '', rate: '', score: ''})">新增</button>
+  <el-button @click="history.push({season: '', prize: '', rank: '', average: '', rate: '', score: ''})" icon="plus">新增歷史紀錄</el-button><br>
+  五月評價：
+  <div v-for="(c, i) in comments5" class="list">
+    <el-button @click="comments5.splice(i, 1)" class="delete" icon="delete">刪除</el-button>
+    對象：
+    <el-select v-model="comments5[i].id" placeholder="請選擇對象">
+      <el-option v-for="t in traders" :label="t.name" :value="t.id"></el-option>
+    </el-select>
+    分數：<el-input v-model.number="comments5[i].score" style="width: 100px"></el-input><br>
+    評價：<el-input type="textarea" autosize placeholder="請輸入觀察結果" v-model="comments5[i].comment"></el-input>
+    <div v-html="comments5[i].comment" class="block"></div>
+  </div>
+  <el-button @click="comments5.push({id: '', score: '', comment: ''})" icon="plus">新增五月評價</el-button><br>
 </div>
 
 <div v-if="tab == 'reports'">
@@ -89,6 +101,7 @@
 
 var data = {
   tab: 'info',
+  traders: [],
   id: 0,
   image: '',
   name: '',
@@ -109,6 +122,7 @@ var vue = new Vue({el: '#vue', data: data, methods: {
   save: function () {
     var x = this.$data;
     delete x.tab;
+    delete x.traders;
     axios.post('admin_trader2_save', x).then(function() {
       //location.href = 'admin_trader2';
       location.reload();
