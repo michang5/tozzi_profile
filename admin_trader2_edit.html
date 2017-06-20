@@ -27,27 +27,27 @@
 
 <div v-if="tab == 'info'">
   姓名：<el-input v-model="name" class="big"></el-input>
-  照片：<el-input v-model="image" class="big"></el-input>
+  照片：<el-input v-model="image" type="textarea" autosize placeholder="請輸入圖片網址"></el-input>
   <img :src="image" style="width: 200px; margin: 2px"><br>
-  策略：<el-input type="textarea" autosize placeholder="請輸入策略內容" v-model="strategy"></el-input>
+  策略：<el-input v-model="strategy" type="textarea" autosize placeholder="請輸入策略內容"></el-input>
   <div v-html="strategy" class="block"></div>
-  臉書：<el-input v-model="facebook" class="big"></el-input>
-  訪談：<el-input type="textarea" autosize placeholder="請輸入訪談內容" v-model="interview"></el-input>
+  臉書：<el-input v-model="facebook" type="textarea" autosize placeholder="請輸入臉書網址"></el-input>
+  訪談：<el-input v-model="interview" type="textarea" autosize placeholder="請輸入訪談內容"></el-input>
   <div v-html="interview" class="block"></div>
   歷史紀錄：
   <div v-for="(h, i) in history" class="list">
-    <el-button @click="history.splice(i, 1)" class="delete" icon="delete">刪除</el-button>
-    <span class="nowrap">賽季：<input v-model="history[i].season"></span>
-    <span class="nowrap">獎項：<input v-model="history[i].prize"></span>
-    <span class="nowrap">排名：<input v-model="history[i].rank"></span>
-    <span class="nowrap">平均：<input v-model="history[i].average"></span>
-    <span class="nowrap">投報：<input v-model="history[i].rate"></span>
-    <span class="nowrap">總分：<input v-model="history[i].score"></span>
+    <el-button @click="history.splice(i, 1)" class="right" icon="delete">刪除</el-button>
+    <span class="nowrap">賽季：<el-input v-model="history[i].season" style="width: 120px"></el-input></span>
+    <span class="nowrap">獎項：<el-input v-model="history[i].prize" style="width: 120px"></el-input></span>
+    <span class="nowrap">排名：<el-input v-model="history[i].rank" style="width: 120px"></el-input></span>
+    <span class="nowrap">平均：<el-input v-model="history[i].average" style="width: 120px"></el-input></span>
+    <span class="nowrap">投報：<el-input v-model="history[i].rate" style="width: 120px"></el-input></span>
+    <span class="nowrap">總分：<el-input v-model="history[i].score" style="width: 120px"></el-input></span>
   </div>
   <el-button @click="history.push({season: '', prize: '', rank: '', average: '', rate: '', score: ''})" icon="plus">新增歷史紀錄</el-button><br>
   五月評價：
   <div v-for="(c, i) in comments5" class="list">
-    <el-button @click="comments5.splice(i, 1)" class="delete" icon="delete">刪除</el-button>
+    <el-button @click="comments5.splice(i, 1)" class="right" icon="delete">刪除</el-button>
     對象：
     <el-select v-model="comments5[i].id" placeholder="請選擇對象">
       <el-option v-for="t in traders" :label="t.name" :value="t.id"></el-option>
@@ -65,7 +65,13 @@
     日期：<el-input v-model="reports[i].date" style="width: 150px"></el-input><br>
     理由：<el-input type="textarea" autosize placeholder="請輸入理由" v-model="reports[i].reason"></el-input>
     <div v-html="r.reason" class="block"></div>
-    圖片：<ul><li v-for="(img, i) in r.images"><el-input v-model="r.images[i]"></el-input><img :src="img" style="width: 400px; margin: 2px"><br></li></ul>
+    圖片：
+    <ul>
+      <li v-for="(img, i) in r.images">
+        <el-input v-model="r.images[i]" autosize placeholder="請輸入圖片網址"></el-input>
+        <img :src="img" style="max-width: 400px; margin: 2px">
+      </li>
+    </ul>
     <el-button @click="r.images.push('')" icon="plus"></el-button>
     <el-button @click="r.images.pop()" icon="delete"></el-button>
   </div>
