@@ -222,7 +222,7 @@
 	<div id="section-7-1" v-if="comments5.length">
 		<div class="container">
 			<h2>來自選手的評價-五月份</h2>
-			<div class="col-md-6" v-for="comment in comments">
+			<div class="col-md-6" v-for="comment in comments5">
 				<div class="player">
 					<img :src="trader(comment.id).image" alt="">
 					<span v-text="trader(comment.id).name"></span>
@@ -238,7 +238,7 @@
 	<div id="section-7-2" v-if="comments6.length">
 		<div class="container">
 			<h2>來自選手的評價-六月份</h2>
-			<div class="col-md-6" v-for="comment in comments4">
+			<div class="col-md-6" v-for="comment in comments6">
 				<div class="player">
 					<img :src="trader(comment.id).image" alt="">
 					<span v-text="trader(comment.id).name"></span>
