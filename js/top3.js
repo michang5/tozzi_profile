@@ -56,7 +56,7 @@ AmCharts.makeChart( "chartdiv", {
     "bulletBorderThickness": 3,
     "fillAlphas": 0,
     "lineAlpha": 1,
-    "lineColor": "#CF0000",
+    "lineColor": "#CF6F00",
     "title": data.kaede,
     "valueField": "kaede",
     "dashLengthField": "dashLengthLine"
@@ -72,7 +72,7 @@ AmCharts.makeChart( "chartdiv", {
     "bulletBorderThickness": 3,
     "fillAlphas": 0,
     "lineAlpha": 1,
-    "lineColor": "#FFFF00",
+    "lineColor": "#FF0000",
     "title": data.name0,
     "valueField": "no0",
     "dashLengthField": "dashLengthLine"
@@ -88,7 +88,7 @@ AmCharts.makeChart( "chartdiv", {
     "bulletBorderThickness": 3,
     "fillAlphas": 0,
     "lineAlpha": 1,
-    "lineColor": "#00FF00",
+    "lineColor": "#007F00",
     "title": data.name1,
     "valueField": "no1",
     "dashLengthField": "dashLengthLine"

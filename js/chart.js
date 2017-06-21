@@ -146,6 +146,7 @@ AmCharts.makeChart( "chartdiv2", {
     "labelFunction": function(value) {
       return value + "%";
     }
+/*
   }, {
     "id": "percent2",
     "title": "年化報酬率(百分比)",
@@ -154,11 +155,30 @@ AmCharts.makeChart( "chartdiv2", {
     "labelFunction": function(value) {
       return value + "%";
     }
+*/
+  }, {
+    "id": "point",
+    "title": "加權指數(點)",
+    "axisAlpha": 0,
+    "position": "right",
   } ],
   "startDuration": 1,
-  "graphs": [ /*{
+  "graphs": [ {
+/*
     "valueAxis": "point",
     "balloonText": "<span style='font-size:12px;'>[[date]][[title]]:<br><span style='font-size:20px;'>[[value]]</span> [[additional]]</span>",
+    "lineThickness": 3,
+    "fillAlphas": 1,
+    "fillColors": "#00AF00",
+    "lineAlpha": 1,
+    "lineColor": "#007F00",
+    "title": "加權指數",
+    "valueField": "taiex",
+    "dashLengthField": "dashLengthLine"
+  }, {
+*/
+    "valueAxis": "percent",
+    "balloonText": "<span style='font-size:12px;'>[[date]][[title]]:<br><span style='font-size:20px;'>[[value]]%</span> [[additional]]</span>",
     "bullet": "round",
     "lineThickness": 3,
     "bulletSize": 7,
@@ -168,11 +188,11 @@ AmCharts.makeChart( "chartdiv2", {
     "bulletBorderThickness": 3,
     "fillAlphas": 0,
     "lineAlpha": 1,
-    "lineColor": "#007F00",
-    "title": "加權指數",
-    "valueField": "taiex",
+    "lineColor": "#CF6F00",
+    "title": "かえで🍁投報率",
+    "valueField": "kaede",
     "dashLengthField": "dashLengthLine"
-  },*/ {
+  }, {
     "valueAxis": "percent",
     "balloonText": "<span style='font-size:12px;'>[[date]][[title]]報酬率:<br><span style='font-size:20px;'>[[value]]%</span> [[additional]]</span>",
     "bullet": "round",
@@ -220,7 +240,8 @@ AmCharts.makeChart( "chartdiv2", {
     "title": "投報率",
     "valueField": "rate",
     "dashLengthField": "dashLengthLine"
-  }/*, {
+/*
+  }, {
     "valueAxis": "percent2",
     "balloonText": "<span style='font-size:12px;'>[[date]][[title]]年化報酬率:<br><span style='font-size:20px;'>[[value]]%</span> [[additional]]</span>",
     "bullet": "round",
@@ -268,7 +289,8 @@ AmCharts.makeChart( "chartdiv2", {
     "title": "年化報酬率",
     "valueField": "year",
     "dashLengthField": "dashLengthLine"
-  }*/ ],
+*/
+  } ],
   "dataDateFormat": "MM/DD",
   "categoryField": "date",
   "categoryAxis": {
