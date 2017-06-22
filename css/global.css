@@ -670,6 +670,10 @@ body.season2 #section-1 h2.logo {
   }
 }
 
+.season2#traders #section-2 .content .slider .slick-slide:nth-of-type(1) img {
+  box-shadow: 0 0 2px 1px #da3600, 0 0 6px 0 #FFCE00, 0 0 10px 1px #da3600, 0 0 13px #FFCE00;
+}
+
 #section-2, #section-2-5, #section-3, #section-3-5, #section-4, #section-5, #section-6, #section-7, #section-7-5, #section-7-2, #section-7-1, #section-8 {
   padding: 70px 0;
 }
@@ -780,6 +784,34 @@ body.season2 #section-1 h2.logo {
 .season2 #section-3 {
   background: #fffffe;
   padding-top: 70px;
+}
+.season2.kaede #section-3 .container {
+  padding: 0;
+}
+.season2.kaede #section-3 img {
+  box-shadow: 0 0 2px 1px #da3600, 0 0 6px 0 #FFCE00, 0 0 10px 1px #da3600, 0 0 13px #FFCE00, 0 0 20px 1px #da3600;
+}
+.season2.kaede #section-3 .col-sm-8 {
+  text-align: center;
+  padding: 0;
+}
+.season2.kaede #section-3 .col-sm-8 .kaede-img {
+  max-width: 600px;
+  height: 460px;
+  margin: 0 auto;
+  padding-top: 105px;
+  background: url("../images/kaede-bg.jpg") top center no-repeat;
+}
+.season2.kaede #section-3 .col-sm-8 .kaede-img img {
+  margin: 0 auto;
+  width: 260px;
+}
+.season2.kaede #section-3 .col-sm-8 h4 {
+  color: #da3600;
+  text-align: center;
+}
+.season2.kaede #section-3 .col-sm-8 p {
+  text-align: left;
 }
 .season2#traders #section-3 {
   padding-top: 0;

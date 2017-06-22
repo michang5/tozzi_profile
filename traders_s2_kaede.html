@@ -53,7 +53,7 @@
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
 </head>
-<body id="traders" class="season2">
+<body id="traders" class="season2 kaede">
 	<div id="vue">
 	<!-- Navigation -->
 	<div id="navigation" data-spy="affix" data-offset-top="400">
@@ -123,10 +123,13 @@
 	<div id="section-3">    
 		<div class="container">
 		    <div class="row">
-		        <div class="col-xs-12 col-sm-3">
-                    <img :src="image" alt="" class="img-responsive img-circle">
+		        <div class="col-sm-8 col-sm-offset-2">
+                   	<div class="kaede-img">
+                   		<img :src="image" alt="" class="img-responsive img-circle">
+                   	</div>
+                    
                 </div>
-                <div class="col-xs-12 col-sm-9">
+                <div class="col-sm-8 col-sm-offset-2">
                     <h4><span v-text="name"></span>
                         <a v-if="facebook" class="btn btn-fb player" :href="facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                         <a v-if="interview" class="btn btn-interview" :href="interview">獨家專訪</a>
