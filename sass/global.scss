@@ -778,8 +778,8 @@ a.btn.btn-fb {
 .season2#traders #section-2 {
 	.content {
 		.slider {
-			.slick-slide:nth-of-type(1) {
-				img {
+			.slick-slide {
+				img.active.kaede {
 					box-shadow:0 0 2px 1px #da3600, 0 0 6px 0 $yellow, 0 0 10px 1px #da3600, 0 0 13px $yellow;
 				}
 			}
