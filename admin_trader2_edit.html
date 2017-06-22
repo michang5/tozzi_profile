@@ -69,7 +69,7 @@
     <ul>
       <li v-for="(img, i) in r.images">
         <el-input v-model="r.images[i]" autosize placeholder="請輸入圖片網址"></el-input>
-        <img :src="img" style="max-width: 400px; margin: 2px">
+        <img :src="img" style="max-height: 300px; max-width: 100%; margin: 2px">
       </li>
     </ul>
     <el-button @click="r.images.push('')" icon="plus"></el-button>
