@@ -163,16 +163,16 @@
                 <div class="row" v-for="m in markets">
                     <div class="col-md-2 col-sm-2  col-md-offset-1">
                         <div class="trader-single">
-                            <a href="#">
-                                <img :src="m.image" class="img-circle" alt="">
-                                <span>選手名</span>
+                            <a :href="'traders_s2.html?id=' + m.id">
+                                <img :src="m.image" class="img-circle" :alt="m.name">
+                                <span v-text="m.name"></span>
                             </a>
                         </div>
 
                     </div>
                     <div class="col-md-8 col-sm-10">
                         <div class="market-single">
-                            <p v-html="m.comment"></p>
+                            <p v-html="m.info"></p>
                         </div>
 
                     </div>
