@@ -19,6 +19,11 @@
 
 <el-tabs v-model="tab" type="card">
 
+<el-tab-pane label="設定" name="info">
+	本週：<br>
+	<el-input v-model="season2.week"></el-input>
+</el-tab-pane>
+
 <el-tab-pane label="公告" name="news">
 	<div v-for="(n, i) in season2.news" class="list">
 		<el-button @click="season2.news.splice(i, 1)" class="delete" icon="delete"></el-button>
@@ -37,8 +42,9 @@
 <script>
 
 var data = {
-	tab: 'news',
+	tab: 'info',
 	season2: {
+		week: '6/26~6/30',
 		news: [],
 	},
 };
