@@ -738,6 +738,19 @@ body.season2 #section-1 h2.logo {
 #section-3 {
   padding-top: 0;
 }
+#section-3 .trader-photo {
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  #section-3 .trader-photo {
+    width: 150px;
+    height: 150px;
+  }
+}
 #section-3 h4 {
   font-size: 1.75em;
   line-height: 36px;
@@ -802,9 +815,11 @@ body.season2 #section-1 h2.logo {
   padding-top: 105px;
   background: url("../images/kaede-bg.jpg") top center no-repeat;
 }
-.season2.kaede #section-3 .col-sm-8 .kaede-img img {
-  margin: 0 auto;
-  width: 260px;
+.season2.kaede #section-3 .col-sm-8 .kaede-img .trader-photo {
+  margin: 0px auto;
+  width: 260px !important;
+  height: 260px;
+  box-shadow: 0 0 2px 1px #da3600, 0 0 6px 0 #FFCE00, 0 0 10px 1px #da3600, 0 0 13px #FFCE00, 0 0 20px 1px #da3600;
 }
 .season2.kaede #section-3 .col-sm-8 h4 {
   color: #da3600;
@@ -815,6 +830,57 @@ body.season2 #section-1 h2.logo {
 }
 .season2#traders #section-3 {
   padding-top: 0;
+}
+
+.non-semantic-protector {
+  position: relative;
+  z-index: 1;
+  height: 50px;
+  margin-top: -40px;
+}
+.non-semantic-protector .ribbon {
+  font-size: 16px !important;
+  width: 100px;
+  position: relative;
+  background: orange;
+  color: #fff;
+  text-align: center;
+  padding: 6px 30px;
+  margin: 2em auto 3em;
+}
+.non-semantic-protector .ribbon:before, .non-semantic-protector .ribbon:after {
+  content: "";
+  position: absolute;
+  display: block;
+  bottom: -10px;
+  border: 15px solid #ff8400;
+  z-index: -1;
+}
+.non-semantic-protector .ribbon:before {
+  left: -20px;
+  border-right-width: 15px;
+  border-left-color: transparent;
+}
+.non-semantic-protector .ribbon:after {
+  right: -20px;
+  border-left-width: 15px;
+  border-right-color: transparent;
+}
+.non-semantic-protector .ribbon .ribbon-content:before, .non-semantic-protector .ribbon .ribbon-content:after {
+  content: "";
+  position: absolute;
+  display: block;
+  border-style: solid;
+  border-color: #da3600 transparent transparent transparent;
+  bottom: -10px;
+}
+.non-semantic-protector .ribbon .ribbon-content:before {
+  left: 0;
+  border-width: 10px 0 0 10px;
+}
+.non-semantic-protector .ribbon .ribbon-content:after {
+  right: 0;
+  border-width: 10px 10px 0 0;
 }
 
 .market-list {

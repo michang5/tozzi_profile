@@ -846,6 +846,20 @@ a.btn.btn-fb {
 }
 #section-3 {
     padding-top: 0;
+//    .col-xs-12 {
+//        text-align: center;
+//    }
+    .trader-photo {
+        width: 200px;
+        height: 200px;
+        background-size: cover;
+        margin: 0 auto;
+        border-radius: 50%;
+        @media screen and (min-width: 768px) and (max-width: 992px) {
+            width: 150px;
+            height: 150px;
+        }
+    }
 	h4 {
 		font-size: $xxxl-font;
 		line-height: 36px;
@@ -915,9 +929,11 @@ a.btn.btn-fb {
 				margin: 0 auto;
 				padding-top: 105px;
 				background: url('../images/kaede-bg.jpg') top center no-repeat;
-				img {
-					margin: 0 auto;
-					width: 260px;
+				.trader-photo {
+					margin: 0px auto;
+					width: 260px!important;
+                    height: 260px;
+                    box-shadow: 0 0 2px 1px #da3600, 0 0 6px 0 $yellow, 0 0 10px 1px #da3600, 0 0 13px $yellow, 0 0 20px 1px #da3600,;
 				}
 			}
 			
@@ -936,6 +952,60 @@ a.btn.btn-fb {
         padding-top: 0;
 	}
 	
+}
+.non-semantic-protector {
+    position: relative;
+    z-index: 1;
+    height: 50px;
+    margin-top: -40px;
+    .ribbon {
+        font-size: 16px !important;
+        width: 100px;
+        position: relative;
+//        background: #da3600;
+        background: orange;
+        color: #fff;
+        text-align: center;
+        padding: 6px 30px;
+        margin: 2em auto 3em;
+        &:before, &:after {
+            content: "";
+            position: absolute;
+            display: block;
+            bottom: -10px;
+//            border: 15px solid #b32c00;
+            border: 15px solid #ff8400;
+            z-index: -1;
+        }
+        &:before {
+            left: -20px;
+            border-right-width: 15px;
+            border-left-color: transparent;
+        }
+        &:after {
+            right: -20px;
+            border-left-width: 15px;
+            border-right-color: transparent;
+        }
+        .ribbon-content {
+            &:before, &:after {
+                content: "";
+                position: absolute;
+                display: block;
+                border-style: solid;
+                border-color: #da3600 transparent transparent transparent;
+                bottom: -10px;
+            }
+            &:before {
+                left: 0;
+                border-width: 10px 0 0 10px; 
+            }
+            &:after {
+                right: 0;
+                border-width: 10px 10px 0 0;
+            }
+        }
+    }
 }
 //每週市場觀察
 .market-list {
