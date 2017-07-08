@@ -16,14 +16,14 @@
 <body>
 <div id="vue">
 
-<table border="1">
-  <thead><tr><th>姓名</th><th>身份</th><th>電話</th><th><i class="el-icon-delete"></i></th></tr></thead>
+<table border="1" @click="click">
+  <thead><tr><th>姓名</th><th>身份</th><th>電話</th><th style="width: 30px"><i class="el-icon-delete"></i></th></tr></thead>
   <tbody>
-		<tr v-for="(x, i) in contact.list">
-			<td class="edit"><input v-model="x.name"></td>
-			<td class="edit"><input v-model="x.title"></td>
-			<td class="edit"><input v-model="x.phone"></td>
-			<td class="edit" width="1"><button @click="contact.list.splice(i, 1)">X</button></td>
+		<tr v-for="(x, i) in contact.list" :title="i">
+			<td class="edit" v-text="x.name" title="name"></td>
+			<td class="edit" v-text="x.title" title="title"></td>
+			<td class="edit" v-text="x.phone" title="phone"></td>
+			<td style="padding: 1px; text-align: center"><button @click="contact.list.splice(i, 1)">X</button></td>
 		</tr>
 	</tbody>
   <tfoot>
@@ -41,6 +41,8 @@
 <script>
 
 var data = {
+	idx: 0,
+	key: '',
 	page: 0,
 	contact: {
 		id: 0,
@@ -53,6 +55,31 @@ var data = {
 //data//
 
 var vue = new Vue({el: '#vue', data: data, methods: {
+	blur: function (e) {
+		console.log('BLUR', e);
+		vue.contact.list[vue.idx].edit = null;
+	},
+	click: function (e) {
+		console.log('CLICK', e);
+		if (e.target.className != 'edit') return;
+		vue.idx = parseInt(e.target.parentElement.title);
+		vue.key = e.target.title;
+		var td = e.target;
+		var value = td.innerText;
+		td.style.padding = '0';
+		td.innerHTML = '<input id="edit">';
+		var input = document.getElementById('edit');
+		input.value = value;
+		input.onblur = function (e) {
+			console.log('BLUR', e);
+			value = input.value;
+			td.innerText = input.value;
+			td.style.padding = '6px';
+			vue.contact.list[vue.idx][vue.key] = input.value;
+		};
+		input.focus();
+		console.log(vue.idx, vue.key);
+	},
 	save: function () {
 		axios.post('admin_contact_save', vue.contact).then(function (result) {
 			if (result.data.code == 0)

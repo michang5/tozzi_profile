@@ -83,7 +83,7 @@
     <el-button @click="records.splice(i, 1)" class="right" icon="delete">刪除</el-button>
     <span class="nowrap">日期：<el-input v-model="records[i].date" style="width: 120px"></el-input></span>
     <span class="nowrap">名稱：<el-input v-model="records[i].name" style="width: 120px"></el-input></span>
-    <span class="nowrap">類型：<select class="ui dropdown" v-model="records[i].type" style="width: 120px; background-color: white"><option>買</option><option>賣</option><option>原始持有</option></select></span>
+    <span class="nowrap">類型：<select class="ui dropdown" v-model="records[i].type" style="width: 120px; background-color: white"><option>買</option><option>賣</option><option>現金股利</option><option>股票股利</option><option>原始持有</option></select></span>
     <span class="nowrap">股數：<el-input v-model.number="records[i].share" style="width: 120px"></el-input></span>
     <span class="nowrap">價錢：<el-input v-model.number="records[i].price" style="width: 120px"></el-input></span>
     <span class="nowrap">總價：<el-input v-model.number="records[i].total" style="width: 120px"></el-input></span>

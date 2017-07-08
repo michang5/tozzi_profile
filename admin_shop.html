@@ -5,13 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<link href="css/global.css" rel="stylesheet">
 	<link href="css/element-ui.css" rel="stylesheet">
-<!--
-	<link href="css/semantic.css" rel="stylesheet">
--->
 	<link href="css/admin.css" rel="stylesheet">
 	<script src="js/vue.js"></script>
 	<script src="js/element-ui.js"></script>
-	<script src="js/jquery.min.js"></script>
 	<script src="js/axios.js"></script>
 	<script src="js/api.js"></script>
 </head>
@@ -20,15 +16,6 @@
 <div id="vue">
 
 <el-button @click="save" type="primary" icon="upload" class="save">儲存</el-button>
-
-<!--
-<div class="ui top attached tabular menu">
-	<a @click="tab = 'info'" :class="{active: tab == 'info'}" class="item">資訊</a>
-	<a @click="tab = 'media'" :class="{active: tab == 'media'}" class="item">影音</a>
-	<a @click="tab = 'event'" :class="{active: tab == 'event'}" class="item">活動</a>
-	<a @click="tab = 'order'" :class="{active: tab == 'order'}" class="item">訂位</a>
-</div>
--->
 
 <el-tabs v-model="tab" type="card">
 
@@ -69,12 +56,6 @@
 		<br>
 		<el-input v-model="m.desc" type="textarea" autosize placeholder="請輸入說明"></el-input>
 	</div>
-<!--
-	<div>
-		<label for="file" class="ui primary button"><i class="el-icon-upload2"></i>上傳</label>
-		<input id="file" type="file" style="visibility: hidden" @change="addMedia($event)">
-	</div>
--->
 	<el-upload action="admin_shop_upload" :before-upload="upload" :on-progress="progress" :on-success="addMedia" :show-file-list="false" v-loading.fullscreen.lock="lock" :element-loading-text="percent">
 		<el-button type="primary" icon="upload2">上傳</el-button>
 	</el-upload>
