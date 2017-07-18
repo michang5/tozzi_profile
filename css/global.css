@@ -744,12 +744,25 @@ body.season2 #section-1 h2.logo {
   background-size: cover;
   margin: 0 auto;
   border-radius: 50%;
+  position: relative;
+  overflow: hidden;
 }
 @media screen and (min-width: 768px) and (max-width: 992px) {
   #section-3 .trader-photo {
     width: 150px;
     height: 150px;
   }
+}
+#section-3 .trader-photo .retire {
+  position: absolute;
+  background: rgba(186, 0, 23, 0.85);
+  width: 100%;
+  color: #fff;
+  left: 0;
+  top: 70px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 22px;
 }
 #section-3 h4 {
   font-size: 1.75em;
