@@ -57,6 +57,18 @@
     <div v-html="comments5[i].comment" class="block"></div>
   </div>
   <el-button @click="comments5.push({id: '', score: '', comment: ''})" icon="plus">新增五月評價</el-button><br>
+  六月評價：
+  <div v-for="(c, i) in comments6" class="list">
+    <el-button @click="comments6.splice(i, 1)" class="right" icon="delete">刪除</el-button>
+    對象：
+    <el-select v-model="comments6[i].id" placeholder="請選擇對象">
+      <el-option v-for="t in traders" :label="t.name" :value="t.id"></el-option>
+    </el-select>
+    分數：<el-input v-model.number="comments6[i].score" style="width: 100px"></el-input><br>
+    評價：<el-input type="textarea" autosize placeholder="請輸入觀察結果" v-model="comments6[i].comment"></el-input>
+    <div v-html="comments6[i].comment" class="block"></div>
+  </div>
+  <el-button @click="comments6.push({id: '', score: '', comment: ''})" icon="plus">新增六月評價</el-button><br>
 </div>
 
 <div v-if="tab == 'reports'">
