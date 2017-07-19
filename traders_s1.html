@@ -185,7 +185,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr v-for="record in records">
+							<tr v-for="record in records.sort(function(a,b){return (a.date>b.date)?1:-1;})">
 								<td v-text="record.date"></td>
 								<td v-text="record.name"></td>
 								<td v-text="record.type"></td>
