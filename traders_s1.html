@@ -138,13 +138,13 @@
 			</div>
 		</div>
 	</div>	
-	<div id="section-3-5" v-if="Object.keys(markets).length">
+	<div id="section-3-5" v-if="markets.length">
 		<div class="container">
 			<h3>每週市場觀察</h3>
-			<div class="col-sm-8 col-sm-offset-2" v-for="(market, date) in markets">
+			<div class="col-sm-8 col-sm-offset-2" v-for="m in markets">
 				<div class="market-list">
-					<span class="date" v-text="date"></span>
-					<p v-html="market"></p>
+					<span class="date" v-text="m.date"></span>
+					<p v-html="m.info"></p>
 				</div>
 			</div>
 		</div>
@@ -156,14 +156,15 @@
 			<div id="chartdiv2" class="stock-chart"></div>
 		</div>
 	</div>
-	<div id="section-5" v-if="Object.keys(reports).length">
+	<div id="section-5" v-if="reports.length">
 		<div class="container">
 			<h3>交易明細</h3>
-			<div class="statement-list">
-				<ul style="vertical-align: top" v-for="(images, date) in reports">
-					<h5 v-text="date"></h5>
-					<li v-for="image in images" @click="src = image; title = date"><img :src="image" :alt="date" :title="date" class="img-responsive" data-toggle="modal" data-target="#modal-statement"></li>
-				</ul>
+			<div class="col-sm-8 col-sm-offset-2">
+				<div class="expound-list" v-for="r in reports">
+					<span class="date" v-text="r.date"></span>
+					<span class="statement-list"><a @click="src = r.images; title = r.date" data-toggle="modal" data-target="#modal-statement">查看對帳單</a></span>
+					<span class="detail" v-html="r.reason"></span>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -255,7 +256,7 @@
 				<div type="button" class="close" data-dismiss="modal"></div>
 				<div class="modal-body">
 					<h4 class="modal-title">{{title}} 交易明細</h4>
-					<img :src="src" :alt="title" :title="title" class="img-responsive">
+					<img v-for="s in src" :src="s" :alt="title" :title="title" class="img-responsive">
 				</div>
 			</div>
 
@@ -279,7 +280,7 @@ var data = {
   image: '',
   name: '',
   strategy: '',
-  src: '',
+  src: [],
   title: '',
   facebook: '',
   interview: '',
