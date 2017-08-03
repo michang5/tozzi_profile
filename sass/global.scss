@@ -121,7 +121,7 @@ a {
         }
     }
     body.season3 & {
-        color: $orange;
+        color: $dark-orange;
     }
 }
 hr {
@@ -289,7 +289,16 @@ a.btn.btn-fb {
     		background-color: $gold;
     	}
     }
-    
+    body.season3 & {
+        background-color: transparent;
+        border: 1px solid $dark-orange;
+        color: $dark-orange;
+        &:hover, &:active, &:focus, &.active, &.dropdown-toggle, &.disabled {
+//    		border: 0;
+    		color: $white;
+    		background-color: $dark-orange;
+    	}
+    }
 }
 //.btn-primary {
 //	background-color: transparent;
@@ -390,7 +399,7 @@ a.btn.btn-fb {
             padding: 15px 13px;
 			&:hover, &:focus {
 				background: $yellow;
-				color: $black!important;
+				color: $black;
                 text-decoration: none;
 			}
 		}
@@ -433,6 +442,9 @@ a.btn.btn-fb {
 			}
 		}
 		&.open {
+			a {
+				color: $black;
+			}
 			.dropdown-menu {
 //				max-height: 200px;
 //				opacity: 1;
@@ -520,7 +532,7 @@ a.btn.btn-fb {
 					border-left: 0;
 					&:hover, &:focus {
 						background: $black;
-						color: $light-gold;
+						color: $light-gold!important;
 					}
 				}
 				&.fb {
@@ -576,6 +588,11 @@ a.btn.btn-fb {
 		}
 	}
     body.season3 & {
+		.logo {
+			a {
+				color: $primary-color;
+			}
+		}
         background: $brown;
         #main-nav {
             background: $brown;
@@ -670,6 +687,7 @@ a.btn.btn-fb {
 		background: url("../images/tozzi_banner_s2.jpg") no-repeat center center;
 		font-size: .65em;
 		height: 360px;
+		background-size: cover;
 		h2.logo {
 			margin-top: 160px;
 		}
@@ -686,8 +704,9 @@ a.btn.btn-fb {
 	}
     body.season3 & {
 		background: url("../images/tozzi_banner_s3.jpg") no-repeat center center;
-		font-size: .65em;
+//		font-size: .65em;
 		height: 360px;
+		background-size: cover;
         h1 {
 		    color: $black;
 	    }
@@ -882,6 +901,7 @@ a.btn.btn-fb {
 	h3 {
 		text-align: center;
 		margin-bottom: 20px;
+		font-weight: normal;
 	}
 	@include respond-to (normal-mobile){
 		padding: 40px 0;
@@ -896,6 +916,7 @@ a.btn.btn-fb {
         h2 {
             color: $brown;
         }
+		
     }
 }
 #section-2-5, #section-3-5, #section-5, #section-7 {
@@ -1405,6 +1426,9 @@ footer {
 	font-size: $xl-font;
 	color: $yellow;
 	line-height: 100px;
+	.season3 & {
+		background: $brown;
+	}
 //	li {
 //		display: inline-block;
 //		vertical-align: top;
@@ -1571,36 +1595,42 @@ footer {
 		margin-bottom: 50px;
     }
 }
-.season2 {
-    .tab-container {
-        border-radius: 10px;
-        background: rgba($white, .75);
-        padding: 10px;
-        border: 0;
-        box-shadow: 0 2px 2px rgba($gold,.3);
-        margin-bottom: 20px;
-    }
-    .table {
-        > thead > tr > th {
-            border-bottom: 1px solid $light-gold;
-        }
-        > tbody > tr > td {
-            border-bottom: 1px solid $light-gray;
-        }
-        td, th {
-            vertical-align: middle!important;
-        }
-//        th, td {
-//            text-align: center!important;
-//        }
-    }
+
+.tab-container {
+	border-radius: 10px;
+	background: rgba($white, .75);
+	padding: 10px;
+	border: 0;
+	margin-bottom: 20px;
+	body.season1 & {
+		box-shadow: 0 2px 2px rgba($gray,.3);
+	}
+	body.season2 & {
+		box-shadow: 0 2px 2px rgba($gold,.3);
+	}
+	body.season3 & {
+		box-shadow: 0 2px 2px rgba($dark-orange,.3);
+	}
 }
+.table {
+	> tbody > tr > td {
+		border-bottom: 1px solid $light-gray;
+	}
+	td, th {
+		vertical-align: middle!important;
+	}
+	body.season2 & {
+		> thead > tr > th {
+			border-bottom: 1px solid $light-gold;
+		}
+	}
+}
+
 .ranking-all {
     .tab-container {
         background: rgba($rice, .3);
     }
     .table-responsive {
-        
     }
     a {
         &:hover {
@@ -1662,12 +1692,20 @@ body.season2 #section-4 {
             display: inline-block;
             font-size: 15px;
             margin: 4px 0;
-            padding: 4px 0;
+            padding: 4px;
             width: 70px;
             background: rgba($gold,.6);
             color: $white;
+			vertical-align: middle;
         } 
     }
+	body.season3 & {
+		.trader-single {
+			span {
+				background: rgba($dark-orange,.8);
+			}
+		}
+	}
     @include respond-to (only-mobile){
         .trader-single {
             text-align: left;
@@ -1684,15 +1722,18 @@ body.season2 #section-4 {
         background: rgba($light-gold,.2);
         padding-top: 50px;
         padding-bottom: 50px;
-//        width: 90%;
-//        margin: 0 auto;
     }
     ul {
         li {
             line-height: 1.2;
-            
+            padding: 2px 0;
         }
     }
+	body.season3 & {
+		.row {
+			background: rgba($dark-orange,.2);
+		}
+	}
 }
 //body.season2 {
 //	#navigation {

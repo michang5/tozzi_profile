@@ -122,7 +122,7 @@ body.season2 a:hover {
   text-decoration: underline;
 }
 body.season3 a {
-  color: #ffb400;
+  color: #F57C23;
 }
 
 .clearfix {
@@ -276,6 +276,15 @@ body.season2 .btn-default:hover, body.season2 .btn-default:active, body.season2 
   color: #fff;
   background-color: #b08a08;
 }
+body.season3 .btn-default {
+  background-color: transparent;
+  border: 1px solid #F57C23;
+  color: #F57C23;
+}
+body.season3 .btn-default:hover, body.season3 .btn-default:active, body.season3 .btn-default:focus, body.season3 .btn-default.active, body.season3 .btn-default.dropdown-toggle, body.season3 .btn-default.disabled {
+  color: #fff;
+  background-color: #F57C23;
+}
 
 .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
   background: #FFCE00;
@@ -341,7 +350,7 @@ body.season2 .btn-default:hover, body.season2 .btn-default:active, body.season2 
 }
 #navigation .nav > li > a:hover, #navigation .nav > li > a:focus {
   background: #FFCE00;
-  color: #111 !important;
+  color: #111;
   text-decoration: none;
 }
 #navigation .nav > li.fb {
@@ -379,6 +388,9 @@ body.season2 .btn-default:hover, body.season2 .btn-default:active, body.season2 
 }
 #navigation .dropdown .dropdown-menu > li a {
   padding: 16px 26px;
+}
+#navigation .dropdown.open a {
+  color: #111;
 }
 @media only screen and (max-width: 767px) {
   #navigation .logo {
@@ -454,7 +466,7 @@ body.season2 #navigation .nav > li > a {
 }
 body.season2 #navigation .nav > li > a:hover, body.season2 #navigation .nav > li > a:focus {
   background: #111;
-  color: #fde689;
+  color: #fde689 !important;
 }
 body.season2 #navigation .nav > li.fb > a {
   background: #111;
@@ -494,13 +506,16 @@ body.season2 #navigation .nav .open > a, body.season2 #navigation .nav .open > a
   }
 }
 body.season3 #navigation {
-  background: #694936;
+  background: #503E33;
+}
+body.season3 #navigation .logo a {
+  color: #FFCE00;
 }
 body.season3 #navigation #main-nav {
-  background: #694936;
+  background: #503E33;
 }
 body.season3 #navigation .dropdown .dropdown-menu > li a {
-  color: #694936;
+  color: #503E33;
 }
 body.season3 #navigation .dropdown .dropdown-menu > li a:hover, body.season3 #navigation .dropdown .dropdown-menu > li a:focus {
   background: #ffb400;
@@ -578,6 +593,7 @@ body.season2 #section-1 {
   background: url("../images/tozzi_banner_s2.jpg") no-repeat center center;
   font-size: .65em;
   height: 360px;
+  background-size: cover;
 }
 body.season2 #section-1 h2.logo {
   margin-top: 160px;
@@ -593,8 +609,8 @@ body.season2 #section-1 h2.logo {
 }
 body.season3 #section-1 {
   background: url("../images/tozzi_banner_s3.jpg") no-repeat center center;
-  font-size: .65em;
   height: 360px;
+  background-size: cover;
 }
 body.season3 #section-1 h1 {
   color: #111;
@@ -755,6 +771,7 @@ body.season3 #section-1 h3 span.line {
 #section-2 h3, #section-2-5 h3, #section-3 h3, #section-3-5 h3, #section-4 h3, #section-5 h3, #section-6 h3, #section-7 h3, #section-7-5 h3, #section-7-2 h3, #section-7-1 h3, #section-8 h3 {
   text-align: center;
   margin-bottom: 20px;
+  font-weight: normal;
 }
 @media only screen and (max-width: 480px) {
   #section-2, #section-2-5, #section-3, #section-3-5, #section-4, #section-5, #section-6, #section-7, #section-7-5, #section-7-2, #section-7-1, #section-8 {
@@ -768,7 +785,7 @@ body.season3 #section-1 h3 span.line {
   margin: 0;
 }
 body.season3 #section-2 h2, body.season3 #section-2-5 h2, body.season3 #section-3 h2, body.season3 #section-3-5 h2, body.season3 #section-4 h2, body.season3 #section-5 h2, body.season3 #section-6 h2, body.season3 #section-7 h2, body.season3 #section-7-5 h2, body.season3 #section-7-2 h2, body.season3 #section-7-1 h2, body.season3 #section-8 h2 {
-  color: #694936;
+  color: #503E33;
 }
 
 #section-2-5, #section-3-5, #section-5, #section-7 {
@@ -1230,6 +1247,9 @@ footer {
   color: #FFCE00;
   line-height: 100px;
 }
+.season3 footer {
+  background: #503E33;
+}
 
 @media only screen and (max-width: 768px) {
   h2 {
@@ -1376,22 +1396,31 @@ footer {
   margin-bottom: 50px;
 }
 
-.season2 .tab-container {
+.tab-container {
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.75);
   padding: 10px;
   border: 0;
-  box-shadow: 0 2px 2px rgba(176, 138, 8, 0.3);
   margin-bottom: 20px;
 }
-.season2 .table > thead > tr > th {
-  border-bottom: 1px solid #fde689;
+body.season1 .tab-container {
+  box-shadow: 0 2px 2px rgba(102, 102, 102, 0.3);
 }
-.season2 .table > tbody > tr > td {
+body.season2 .tab-container {
+  box-shadow: 0 2px 2px rgba(176, 138, 8, 0.3);
+}
+body.season3 .tab-container {
+  box-shadow: 0 2px 2px rgba(245, 124, 35, 0.3);
+}
+
+.table > tbody > tr > td {
   border-bottom: 1px solid #F7F7F7;
 }
-.season2 .table td, .season2 .table th {
+.table td, .table th {
   vertical-align: middle !important;
+}
+body.season2 .table > thead > tr > th {
+  border-bottom: 1px solid #fde689;
 }
 
 .ranking-all .tab-container {
@@ -1440,10 +1469,14 @@ body.season2 #section-4 h2 span:nth-of-type(2) {
   display: inline-block;
   font-size: 15px;
   margin: 4px 0;
-  padding: 4px 0;
+  padding: 4px;
   width: 70px;
   background: rgba(176, 138, 8, 0.6);
   color: #fff;
+  vertical-align: middle;
+}
+body.season3 .market-all .trader-single span {
+  background: rgba(245, 124, 35, 0.8);
 }
 @media only screen and (max-width: 767px) {
   .market-all .trader-single {
@@ -1465,4 +1498,8 @@ body.season2 #section-4 h2 span:nth-of-type(2) {
 }
 .market-article ul li {
   line-height: 1.2;
+  padding: 2px 0;
+}
+body.season3 .market-article .row {
+  background: rgba(245, 124, 35, 0.2);
 }
