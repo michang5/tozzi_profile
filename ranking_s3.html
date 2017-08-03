@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="description" content="">
+
+	<!--og info-->
+	<meta property="og:title" content="TOZZI 投資實戰擂台"/>
+	<meta property="og:url" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:site_name" content="TOZZI 投資實戰擂台"/>
+	<meta property="og:description" content="TOZZI 投資實戰擂台 - 投資 Style 千百種，真 Fighting 只有一種">
+
+	<title>TOZZI 投資實戰擂台 - 投資 Style 千百種，真 Fighting 只有一種</title>
+ 
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	
+	<!--css-->
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/global.css" rel="stylesheet">
+	<link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="css/slick-theme.css" rel="stylesheet">
+	<link href="css/slick.css" rel="stylesheet">
+	
+	<!--amchart-->
+	<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+	<script src="https://www.amcharts.com/lib/3/serial.js"></script>
+	<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+	<link href="css/chart.css" rel="stylesheet">
+	<script src="js/chart.js"></script>
+
+	<!--vue-->
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+	<!--google-->
+	<meta name="google-site-verification" content="-MLXb98KIXlOE_dmJ18CK9Ynil6NnPMRct9vU1ZYDpg" />
+	<link href="https://fonts.googleapis.com/css?family=Lora|Roboto:100,700,500" rel="stylesheet">
+	<script src="https://use.typekit.net/oem8boq.js"></script>
+	<script>try{Typekit.load({ async: true });}catch(e){}</script>
+	<!--[if lt IE 9]>
+		<script type="text/javascript" src="js/html5shiv.min.js"></script>
+		<script type="text/javascript" src="js/respond.min.js"></script>
+	<![endif]-->
+	<!--GA-->
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=184369558296135";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+</head>
+<body id="ranking" class="season2">
+	<div id="vue">
+	<!-- Navigation -->
+	<div id="navigation" data-spy="affix" data-offset-top="400">
+		<nav class="navbar navbar-custom" role="navigation">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-3">
+						<h2 class="logo">
+							<a href="index.html">TOZZI ARENA</a>
+						</h2>
+					</div>
+					<div class="col-sm-9">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav">
+								<i class="fa fa-bars"></i>
+							</button>
+						</div>
+						<div class="collapse navbar-collapse" id="main-nav">
+							<ul class="nav navbar-nav navbar-right">
+								<li><a href="index.html">實況</a></li>
+								<li><a href="traders_s3.html">選手</a></li>
+								<li class="dropdown">
+									<a class="dropdown-toggle" data-toggle="dropdown" href="#">賽制
+										<span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li><a href="https://www.facebook.com/notes/tozzi/tozzi-%E6%8A%95%E8%B3%87%E5%AF%A6%E6%88%B0%E7%94%9F%E5%AD%98%E8%B3%BD%E4%B9%8B%E7%B6%93%E5%85%B8%E5%BB%B6%E7%BA%8C20170515-20170714/1324718784281406/" target="_blank">比賽規則</a></li>
+										<li><a  href="https://www.facebook.com/notes/tozzi/%E6%AF%94%E8%B3%BD%E8%A6%8F%E5%89%87faq/1269063403180278/" target="_blank">常見問答</a></li>
+									</ul>
+								</li>
+								<li><a href="ranking_s3.html">排行榜</a></li>
+								<li class="dropdown">
+									<a class="dropdown-toggle" data-toggle="dropdown" href="#">所有賽季
+										<span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li><a href="traders_s1.html" target="_blank">第一季</a></li>
+										<li><a href="index_s2.html" target="_blank">第二季</a></li>
+										<li><a href="index.html" target="_blank">第三季</a></li>
+									</ul>
+                                </li>
+                                <li><a href="https://www.facebook.com/groups/tozzitraders/requests/?notif_t=group_r2j&notif_id=1494519790569737" target="_blank">社團</a></li>
+								<li class="fb"><a href="https://www.facebook.com/tozziarena" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i><span>facebook 粉絲頁</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /.container -->
+		</nav>
+	</div>
+	<!-- /.Navigation -->
+	<div id="section-1">
+		<div class="container">
+			<h2 class="logo"><img src="images/tozzi_logo.png" alt=""></h2>
+			<h1>投資實戰擂台</h1>
+			<h3><span class="line"></span><span>第三季</span><span class="line"></span></h3>
+			<h2>投資 Style 千百種，真 Fighting 只有一種</h2>
+		</div>
+	</div>
+	
+	<div id="section-3">
+		<div class="container">
+            <h2 class="main-title">第三季排行</h2>
+		    <div class="col-sm-12">
+		        <h3><span>綜合排名</span><span><img src="images/icon_ranking.png" alt=""></span></h3>
+			<div class="ranking">
+				<div class="tab-container">   
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>名次</th>
+									<th>名稱</th>
+									<th>投報率</th>
+                                    <th>選手互評平均分</th>
+									<th>總得分</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>1</td>
+									<td>--</td>
+									<td>--</td>
+                                    <td>--</td>
+									<td>--</td>
+								</tr>
+								<tr>
+									<td>2</td>
+									<td>--</td>
+									<td>--</td>
+                                    <td>--</td>
+									<td>--</td>
+								</tr>
+								<tr>
+									<td>3</td>
+									<td>--</td>
+									<td>--</td>
+                                    <td>--</td>
+									<td>--</td>
+								</tr>
+								<tr>
+									<td>4</td>
+									<td>--</td>
+									<td>--</td>
+                                    <td>--</td>
+									<td>--</td>
+								</tr>
+								<tr>
+									<td>5</td>
+									<td>--</td>
+									<td>--</td>
+                                    <td>--</td>
+									<td>--</td>
+								</tr>
+								<tr>
+									<td>6</td>
+									<td>--</td>
+									<td>--</td>
+                                    <td>--</td>
+									<td>--</td>
+								</tr>
+								<tr>
+									<td>7</td>
+									<td>--</td>
+									<td>--</td>
+                                    <td>--</td>
+									<td>--</td>
+								</tr>
+								<tr>
+									<td>8</td>
+									<td>--</td>
+									<td>--</td>
+                                    <td>--</td>
+									<td>--</td>
+								</tr>
+								<tr>
+									<td>9</td>
+									<td>--</td>
+									<td>--</td>
+                                    <td>--</td>
+									<td>--</td>
+								</tr>
+								<tr>
+									<td>10</td>
+									<td>--</td>
+									<td>--</td>
+                                    <td>--</td>
+									<td>--</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<p class="note">註：得獎人若無法提供可供驗證交易真實性之正本文件，將喪失得獎資格，由後一名次者遞補。</p>
+			
+		    </div>
+		</div>
+	</div>
+
+
+	<footer>Copyright © tozzi.com.tw, 2017</footer>	
+	</div>
+	
+	<!--jQuery--> 
+	<script type="text/javascript" src="js/jquery-2.2.4.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+	<!--script type="text/javascript" src="js/jquery.mobile.custom.min.js"></script-->
+	<script type="text/javascript" src="js/slick.min.js" ></script>
+	<script type="text/javascript" src="js/script.js" ></script>
+
+<script>
+
+var data = {
+  image: '',
+  name: '',
+  strategy: '',
+  src: '',
+  title: '',
+  facebook: '',
+  interview: '',
+  traders: [{},{},{},{},{},{},{},{},{},{},{},{}],
+  markets: {},
+  records: [],
+  reports: {},
+  reasons: [],
+  points: [],
+  price: {},
+};
+//data//
+data.traders = [{"id":1,"name":"王必勝","image":"images/profile_photo.png","strategy":"必勝王~Robot Daddy ~交易策略分享: <br>\n1. 籌碼應為主要考量點<br>\n2. 從籌碼移動判斷主力心理因素<br>\n3. 選出值得交易基期<br>\n4. 短線進出標的的標股為主\n","href":"/trader/1"},{"id":2,"name":"Ryan Yo","image":"https://s3-ap-northeast-1.amazonaws.com/tozzi-img/2.png","strategy":"我主要透過題材及基本面篩選股票，配合籌碼及技術線圖找買點，並設定10%停損。\n股價若上升，依照線型及價位重新設定停損點。","href":"/trader/2"},{"id":3,"name":"吳承澤","image":"https://s3-ap-northeast-1.amazonaws.com/tozzi-img/%E5%90%B3%E6%89%BF%E6%BE%A4.png","strategy":"這次有兩個月的時間進行交易，隨著大盤指數來到高點，操作也將變的不易進行，而我這次的策略皆以基本面為主，技術面為輔，主要分為二部分。第一部分尋找今年的成長股，並算出公司今年的營運績效，藉此算出合理價格，於價格落入安全範圍內，佈局買進。<br>第二部分尋找殖利率概念股，3-4月期間部分公司將陸續公佈今年發放的股利，在公司公佈消息之前，試算今年可能發放的股利，換算出殖利率，並提前佈局股價仍在低檔，且擁有高殖利率保護的股票進行操作。","href":"/trader/3"},{"id":4,"name":"李效寬","image":"https://s3-ap-northeast-1.amazonaws.com/tozzi-img/4%E6%9D%8E%E6%95%88%E5%AF%AC.png","strategy":"比賽只有兩個月，所以資金除了全額交割股外會以融資、融卷為主。分析會注重籌碼分析，跟著大戶跟三大法人買股，選有題材炒作的股票。選錯股會很快的停損，然後持續加碼上漲的股票。","href":"/trader/4"},{"id":5,"name":"李睿軒","image":"https://s3-ap-northeast-1.amazonaws.com/tozzi-img/5%E6%9D%8E%E7%9D%BF%E8%BB%92.png","strategy":"本次整體交易策略以基本面及籌碼面分析為主。會將資金配置為長期投資及短期投資兩部分。<br>\n長期投資部分：主要依照基本面分析，標的以去年度獲利佳且股價被低估做篩選。<br>\n短期投資部分：主要依照籌碼面分析，選擇標的會以法人持續進場且基本面沒有太大問題作為標的，再搭配技術分析確認進出場時機。\n","href":"/trader/5"},{"id":7,"name":"林頎寶","image":"https://s3-ap-northeast-1.amazonaws.com/tozzi-img/7%E6%9E%97%E9%A0%8E%E5%AF%B6.png","strategy":"因為只有兩個月的時間，並不打算長期持有。經基本的財務比率篩選後，大致看其所屬產業及成長前景，此舉旨在避開地雷股；並依技術面及法人動向挑選進場時機。出場條件為成長動能不再(依技術面籌碼面判斷)，停損5%。","href":"/trader/7"},{"id":8,"name":"張靜玉","image":"https://s3-ap-northeast-1.amazonaws.com/tozzi-img/8%E5%BC%B5%E9%9D%9C%E7%8E%89.png","strategy":"這個兩個月的交易以技術分析為主，基本分析為輔。大盤高檔整理，靜觀其變。原本手上有獲利的股票目前會續抱，之後視情況出掉。會特別關注景氣循環股與低基期股票，以及整體產業具有成長性的類股。由於交易期間僅兩個月，為短期交易，故不會考慮配置資金於金融股等較溫吞的股票。","href":"/trader/8"},{"id":9,"name":"陳大信","image":"https://s3-ap-northeast-1.amazonaws.com/tozzi-img/9%E9%99%B3%E5%A4%A7%E4%BF%A1.png","strategy":"簡單說 在這短短2個月內的操作將會以主觀心法為重 覺得ok就是ok 而所謂技術籌碼基本面等 都是一個增加佐證重量的工具罷了 到了最後不論佐證得如何又或所謂客觀如何 都是主觀去進行交易 因此回歸到 #自己","href":"/trader/9"},{"id":10,"name":"陳詠聖","image":"https://s3-ap-northeast-1.amazonaws.com/tozzi-img/10%E9%99%B3%E8%A9%A0%E8%81%96.png","strategy":"我是一個投資新手，假如你也和我一樣懵懵懂懂，歡迎追蹤我的表現，我可能就是你的前車之鑑XD<br>\r\n\r\n我選股的方式是由新聞、業界人士獲得消息後，去看籌碼面的分布，並買在最佳五檔中多數人的位置（所謂台灣人的排隊熱潮）。<br>\r\n\r\n我重視實際損益大於未實現損益，所以會在達到理想的報酬時賣出，去看電影吃大餐增加幸福度；虧損的時候不習慣認輸，既然放在裡面的錢沒有急用，就不忍直視地放在那邊也是可以的。<br>\r\n\r\n比賽時間只有兩個月，短短的，但不想為了追逐獎金而承擔原本不去承擔的風險，所以不因比賽打亂自己的步調。<br>\r\n\r\n我還滿有可能死很慘的，但我每次都會寫寫心得，來看看我後來如何吧！\r\n","href":"/trader/10"},{"id":11,"name":"楊皓宇","image":"images/profile_photo.png","strategy":"以基本分析為主，籌碼分析為輔，技術分析錦上添花\n詳情參閱<a href=\"http://goo.gl/zFuMHT\">這裡</a>\n","href":"/trader/11"},{"id":12,"name":"Chia-ci Wang","image":"https://s3-ap-northeast-1.amazonaws.com/tozzi-img/12Chia-ci+Wang.png","strategy":"選股模式將採用基本分析，首先透過財報篩選個股，接著深入分析公司產品、產業概況，挑選出具備成長性之個股。<br>\r\n進場策略分成兩種：一種是公司成長力道強勁，因此以合理價進場；一種則是遭逢黑天鵝，趁股市下跌、股價被低估時加碼進場。原則上並不因短期波動退場，除非公司營收持續下滑、營運轉差；而當股價超過預期價位時，則分批獲利了結。\r\n","href":"/trader/12"}];
+
+var vue = new Vue({el: '#vue', data: data});
+
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-93922946-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

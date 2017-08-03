@@ -14,7 +14,7 @@ body {
   line-height: 1.5;
   overflow-x: hidden;
 }
-body.season2 {
+body.season2, body.season3 {
   background: #FEFAEF;
 }
 
@@ -120,6 +120,9 @@ body.season2 a {
 }
 body.season2 a:hover {
   text-decoration: underline;
+}
+body.season3 a {
+  color: #ffb400;
 }
 
 .clearfix {
@@ -302,6 +305,7 @@ body.season2 .btn-default:hover, body.season2 .btn-default:active, body.season2 
 }
 #navigation .logo a:hover {
   color: #FFCE00;
+  text-decoration: none;
 }
 #navigation .col-sm-9 {
   padding: 0;
@@ -333,12 +337,11 @@ body.season2 .btn-default:hover, body.season2 .btn-default:active, body.season2 
   -webkit-transition: all, 0.5s, ease-in-out;
   transition: all, 0.5s, ease-in-out;
   color: #FFCE00;
-  border-left: 1px solid #111;
   padding: 15px 13px;
 }
 #navigation .nav > li > a:hover, #navigation .nav > li > a:focus {
   background: #FFCE00;
-  color: #111;
+  color: #111 !important;
   text-decoration: none;
 }
 #navigation .nav > li.fb {
@@ -470,6 +473,7 @@ body.season2 #navigation .dropdown .dropdown-menu > li > a {
 body.season2 #navigation .dropdown .dropdown-menu > li > a:hover, body.season2 #navigation .dropdown .dropdown-menu > li > a:focus {
   background: #fde689;
   color: #111;
+  text-decoration: none;
 }
 body.season2 #navigation .nav .open > a, body.season2 #navigation .nav .open > a:hover, body.season2 #navigation .nav .open > a:focus {
   background: #111;
@@ -488,6 +492,18 @@ body.season2 #navigation .nav .open > a, body.season2 #navigation .nav .open > a
     background: transparent;
     color: #111;
   }
+}
+body.season3 #navigation {
+  background: #694936;
+}
+body.season3 #navigation #main-nav {
+  background: #694936;
+}
+body.season3 #navigation .dropdown .dropdown-menu > li a {
+  color: #694936;
+}
+body.season3 #navigation .dropdown .dropdown-menu > li a:hover, body.season3 #navigation .dropdown .dropdown-menu > li a:focus {
+  background: #ffb400;
 }
 
 #section-1 {
@@ -510,12 +526,30 @@ body.season2 #navigation .nav .open > a, body.season2 #navigation .nav .open > a
   margin-top: 0;
 }
 #section-1 h2.logo {
-  margin-top: 50px;
+  margin-top: 32px;
   background: none;
   display: block;
 }
 #section-1 h2.logo img {
   width: 150px;
+}
+#section-1 h3 {
+  font-size: 1em;
+  color: #FFCE00;
+  font-weight: normal;
+}
+#section-1 h3 span {
+  display: inline-block;
+}
+#section-1 h3 span.line {
+  width: 100px;
+  height: 2px;
+  margin: 0 4px;
+  border-bottom: 1px solid #FFCE00;
+  vertical-align: middle;
+}
+body.season2 #section-1 h3 span {
+  background: none;
 }
 @media only screen and (min-width: 1200px) {
   #section-1 .container {
@@ -536,6 +570,9 @@ body.season2 #navigation .nav .open > a, body.season2 #navigation .nav .open > a
   #section-1 h2 {
     letter-spacing: .06em;
   }
+  #section-1 h2.logo {
+    margin-top: 20px;
+  }
 }
 body.season2 #section-1 {
   background: url("../images/tozzi_banner_s2.jpg") no-repeat center center;
@@ -543,15 +580,45 @@ body.season2 #section-1 {
   height: 360px;
 }
 body.season2 #section-1 h2.logo {
-  margin-top: 170px;
+  margin-top: 160px;
 }
 @media only screen and (max-width: 768px) {
   body.season2 #section-1 {
-    height: 300px;
+    height: 350px;
     font-size: .7em;
   }
   body.season2 #section-1 h2.logo {
-    margin-top: 140px;
+    margin-top: 150px;
+  }
+}
+body.season3 #section-1 {
+  background: url("../images/tozzi_banner_s3.jpg") no-repeat center center;
+  font-size: .65em;
+  height: 360px;
+}
+body.season3 #section-1 h1 {
+  color: #111;
+}
+body.season3 #section-1 h2 {
+  box-shadow: 0 4px 0 #111;
+}
+body.season3 #section-1 h2.logo {
+  box-shadow: none;
+  margin-top: 60px;
+}
+body.season3 #section-1 h3 {
+  color: #111;
+}
+body.season3 #section-1 h3 span.line {
+  border-bottom: 1px solid #111;
+}
+@media only screen and (max-width: 768px) {
+  body.season3 #section-1 {
+    height: 350px;
+    font-size: .7em;
+  }
+  body.season3 #section-1 h2.logo {
+    margin-top: 150px;
   }
 }
 
@@ -700,6 +767,9 @@ body.season2 #section-1 h2.logo {
 #section-2 .row, #section-2-5 .row, #section-3 .row, #section-3-5 .row, #section-4 .row, #section-5 .row, #section-6 .row, #section-7 .row, #section-7-5 .row, #section-7-2 .row, #section-7-1 .row, #section-8 .row {
   margin: 0;
 }
+body.season3 #section-2 h2, body.season3 #section-2-5 h2, body.season3 #section-3 h2, body.season3 #section-3-5 h2, body.season3 #section-4 h2, body.season3 #section-5 h2, body.season3 #section-6 h2, body.season3 #section-7 h2, body.season3 #section-7-5 h2, body.season3 #section-7-2 h2, body.season3 #section-7-1 h2, body.season3 #section-8 h2 {
+  color: #694936;
+}
 
 #section-2-5, #section-3-5, #section-5, #section-7 {
   background: #F7F7F7;
@@ -707,7 +777,7 @@ body.season2 #section-1 h2.logo {
 #section-2-5 .row, #section-3-5 .row, #section-5 .row, #section-7 .row {
   margin: 0;
 }
-.season2 #section-2-5, .season2 #section-3-5, .season2 #section-5, .season2 #section-7 {
+.season2 #section-2-5, .season3 #section-2-5, .season2 #section-3-5, .season3 #section-3-5, .season2 #section-5, .season3 #section-5, .season2 #section-7, .season3 #section-7 {
   background: #fff;
 }
 
@@ -811,7 +881,7 @@ body.season2 #section-1 h2.logo {
     margin: 0 auto;
   }
 }
-.season2 #section-3 {
+.season2 #section-3, .season3 #section-3 {
   background: #fffffe;
   padding-top: 70px;
 }
