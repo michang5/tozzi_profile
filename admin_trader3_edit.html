@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/global.css" rel="stylesheet">
+	<link href="css/element-ui.css" rel="stylesheet">
+	<link href="css/semantic.css" rel="stylesheet">
+	<link href="css/admin.css" rel="stylesheet">
+	<script src="js/vue.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/axios.js"></script>
+	<script src="js/semantic.js"></script>
+	<script src="js/element-ui.js"></script>
+</head>
+<body class="season2">
+<div id="vue">
+
+<div class="ui top attached tabular menu">
+  <a @click="tab = 'info'" :class="{active: tab == 'info'}" class="item">資訊</a>
+  <a @click="tab = 'reports'" :class="{active: tab == 'reports'}" class="item">解說</a>
+  <a @click="tab = 'records'" :class="{active: tab == 'records'}" class="item">紀錄</a>
+  <a @click="tab = 'markets'" :class="{active: tab == 'markets'}" class="item">市場</a>
+  <button @click="save" class="ui primary button right">儲存</button>
+</div>
+
+<div v-if="tab == 'info'">
+  姓名：<el-input v-model="name" class="big"></el-input>
+  照片：<el-input v-model="image" type="textarea" autosize placeholder="請輸入圖片網址"></el-input>
+  <img :src="image" style="width: 200px; margin: 2px"><br>
+  策略：<el-input v-model="strategy" type="textarea" autosize placeholder="請輸入策略內容"></el-input>
+  <div v-html="strategy" class="block"></div>
+  臉書：<el-input v-model="facebook" type="textarea" autosize placeholder="請輸入臉書網址"></el-input>
+  訪談：<el-input v-model="interview" type="textarea" autosize placeholder="請輸入訪談內容"></el-input>
+  <div v-html="interview" class="block"></div>
+  第一季紀錄：
+  <div v-for="(h, i) in season1" class="list">
+    <el-button @click="season1.splice(i, 1)" class="right" icon="delete">刪除</el-button>
+    <span class="nowrap">獎項：<el-input v-model="season1[i].prize" style="width: 120px"></el-input></span>
+    <span class="nowrap">排名：<el-input v-model="season1[i].rank" style="width: 120px"></el-input></span>
+    <span class="nowrap">平均：<el-input v-model="season1[i].average" style="width: 120px"></el-input></span>
+    <span class="nowrap">投報：<el-input v-model="season1[i].rate" style="width: 120px"></el-input></span>
+    <span class="nowrap">總分：<el-input v-model="season1[i].score" style="width: 120px"></el-input></span>
+  </div>
+  <el-button @click="season1.push({prize: '', rank: '', average: '', rate: '', score: ''})" icon="plus">新增第一季紀錄</el-button><br>
+  第二季紀錄：
+  <div v-for="(h, i) in season2" class="list">
+    <el-button @click="season2.splice(i, 1)" class="right" icon="delete">刪除</el-button>
+    <span class="nowrap">獎項：<el-input v-model="season2[i].prize" style="width: 120px"></el-input></span>
+    <span class="nowrap">排名：<el-input v-model="season2[i].rank" style="width: 120px"></el-input></span>
+    <span class="nowrap">平均：<el-input v-model="season2[i].average" style="width: 120px"></el-input></span>
+    <span class="nowrap">投報：<el-input v-model="season2[i].rate" style="width: 120px"></el-input></span>
+    <span class="nowrap">總分：<el-input v-model="season2[i].score" style="width: 120px"></el-input></span>
+  </div>
+  <el-button @click="season2.push({prize: '', rank: '', average: '', rate: '', score: ''})" icon="plus">新增第二季紀錄</el-button><br>
+  八月評價：
+  <div v-for="(c, i) in comments8" class="list">
+    <el-button @click="comments8.splice(i, 1)" class="right" icon="delete">刪除</el-button>
+    對象：
+    <el-select v-model="comments8[i].id" placeholder="請選擇對象">
+      <el-option v-for="t in traders" :label="t.name" :value="t.id"></el-option>
+    </el-select>
+    分數：<el-input v-model.number="comments8[i].score" style="width: 100px"></el-input><br>
+    評價：<el-input type="textarea" autosize placeholder="請輸入觀察結果" v-model="comments8[i].comment"></el-input>
+    <div v-html="comments8[i].comment" class="block"></div>
+  </div>
+  <el-button @click="comments8.push({id: '', score: '', comment: ''})" icon="plus">新增八月評價</el-button><br>
+  九月評價：
+  <div v-for="(c, i) in comments9" class="list">
+    <el-button @click="comments9.splice(i, 1)" class="right" icon="delete">刪除</el-button>
+    對象：
+    <el-select v-model="comments9[i].id" placeholder="請選擇對象">
+      <el-option v-for="t in traders" :label="t.name" :value="t.id"></el-option>
+    </el-select>
+    分數：<el-input v-model.number="comments9[i].score" style="width: 100px"></el-input><br>
+    評價：<el-input type="textarea" autosize placeholder="請輸入觀察結果" v-model="comments9[i].comment"></el-input>
+    <div v-html="comments9[i].comment" class="block"></div>
+  </div>
+  <el-button @click="comments9.push({id: '', score: '', comment: ''})" icon="plus">新增九月評價</el-button><br>
+</div>
+
+<div v-if="tab == 'reports'">
+  <div v-for="(r, i) in reports" class="list">
+    <el-button @click="reports.splice(i, 1)" class="delete" icon="delete">刪除</el-button>
+    日期：<el-input v-model="reports[i].date" style="width: 150px"></el-input><br>
+    理由：<el-input type="textarea" autosize placeholder="請輸入理由" v-model="reports[i].reason"></el-input>
+    <div v-html="r.reason" class="block"></div>
+    圖片：
+    <ul>
+      <li v-for="(img, i) in r.images">
+        <el-input v-model="r.images[i]" autosize placeholder="請輸入圖片網址"></el-input>
+        <img :src="img" style="max-height: 400px; max-width: 100%; margin: 2px">
+      </li>
+    </ul>
+    <el-button @click="r.images.push('')" icon="plus"></el-button>
+    <el-button @click="r.images.pop()" icon="delete"></el-button>
+  </div>
+  <el-button @click="reports.push({date: '', reason: '', images: ['']})" icon="plus">新增</el-button>
+</div>
+
+<div v-if="tab == 'records'">
+  <div v-for="(r, i) in records" class="list">
+    <el-button @click="records.splice(i, 1)" class="right" icon="delete">刪除</el-button>
+    <span class="nowrap">日期：<el-input v-model="records[i].date" style="width: 120px"></el-input></span>
+    <span class="nowrap">名稱：<el-input v-model="records[i].name" style="width: 120px"></el-input></span>
+    <span class="nowrap">類型：<select class="ui dropdown" v-model="records[i].type" style="width: 120px; background-color: white"><option>買</option><option>賣</option><option>現金股利</option><option>股票股利</option><option>原始持有</option></select></span>
+    <span class="nowrap">股數：<el-input v-model.number="records[i].share" style="width: 120px"></el-input></span>
+    <span class="nowrap">價錢：<el-input v-model.number="records[i].price" style="width: 120px"></el-input></span>
+    <span class="nowrap">總價：<el-input v-model.number="records[i].total" style="width: 120px"></el-input></span>
+  </div>
+  <el-button @click="records.push({date: '', name: '', type: '', share: 0, price: 0, total: 0})" icon="plus">新增</el-button>
+</div>
+
+<div v-if="tab == 'markets'">
+  <div v-for="(m, i) in markets" class="list">
+    <el-button @click="markets.splice(i, 1)" class="delete" icon="delete">刪除</el-button>
+    日期：<el-input v-model="markets[i].date" style="width: 150px"></el-input><br>
+    觀察：<el-input type="textarea" autosize placeholder="請輸入觀察結果" v-model="markets[i].info"></el-input>
+    <div v-html="m.info" class="block"></div>
+  </div>
+  <el-button @click="markets.push({date: '', info: ''})" icon="plus">新增</el-button>
+</div>
+
+</div>
+
+
+<script>
+
+var data = {
+  tab: 'info',
+  traders: [],
+  id: 0,
+  image: '',
+  name: '',
+  strategy: '',
+  facebook: '',
+  interview: '',
+  records: [],
+  reports: [],
+  comments5: [],
+  comments6: [],
+  season1: [],
+  season2: [],
+  markets: [],
+};
+
+//data//
+
+var vue = new Vue({el: '#vue', data: data, methods: {
+  save: function () {
+    var x = this.$data;
+    delete x.tab;
+    delete x.traders;
+    axios.post('admin_trader3_save', x).then(function() {
+      //location.href = 'admin_trader3';
+      location.reload();
+    });
+  }
+}});
+
+</script>
+
+</body>
+</html>
