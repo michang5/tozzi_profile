@@ -7,6 +7,7 @@
 	<link href="css/global.css" rel="stylesheet">
 	<link href="css/admin.css" rel="stylesheet">
 	<script src="js/vue.js"></script>
+	<script src="js/axios.js"></script>
 	<script src="js/element-ui.js"></script>
 </head>
 <body class="season2">
@@ -20,6 +21,7 @@
 		</div>
 	</el-col>
 </el-row>
+<el-button @click="add" icon="plus">新增一位參賽者</el-button><br>
 
 </div>
 
@@ -34,7 +36,12 @@ var data = {
 var vue = new Vue({el: '#vue', data: data, methods: {
   edit: function (id) {
     location.href = "admin_trader3_edit?id=" + id;
-  }
+  },
+	add: function () {
+    axios.post('admin_trader3_add').then(function() {
+      location.reload();
+    });
+	}
 }});
 
 </script>
