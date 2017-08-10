@@ -144,9 +144,23 @@
 					<a v-if="interview" class="btn btn-interview" :href="interview">獨家專訪</a>
 				</h4>
 				<p v-html="strategy"></p>
+				<div class="history" v-if="history.length">
+                    <h4><span>歷史參賽紀錄</span><span><img src="images/icon_ranking.png" alt=""></span></h4>
+                    <div class="history-list">
+                        <h6>第一季</h6>
+                        <div class="results" v-for="s in history">
+                            <span v-text="s.prize + '獎第 ' + s.rank + ' 名'"></span>
+                            <span v-text="'選手互評平均分：' + s.average"></span>
+                            <span v-text="'投報率：' + s.rate"></span>
+                            <span v-text="'總得分：' + s.score"></span>
+                        </div>
+                        <span class="more"><a :href="'traders_s1.html?id=' + id">看更多</a></span>
+                    </div>
+                </div>
 			</div>
 		</div>
 	</div>	
+	
 	<div id="section-3-5" v-if="markets.length">
 		<div class="container">
 			<h3>每週市場觀察</h3>
