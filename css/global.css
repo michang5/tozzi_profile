@@ -122,7 +122,10 @@ body.season2 a:hover {
   text-decoration: underline;
 }
 body.season3 a {
-  color: #F57C23;
+  color: #503E33;
+}
+body.crowd-plan a {
+  color: #503E33;
 }
 
 .clearfix {
@@ -265,6 +268,8 @@ a.btn.btn-fb {
 .btn:focus, .btn:active:focus, .btn.active:focus,
 .btn.focus, .btn:active.focus, .btn.active.focus {
   outline: none;
+  border: 0;
+  box-shadow: none;
 }
 
 body.season2 .btn-default {
@@ -285,10 +290,128 @@ body.season3 .btn-default:hover, body.season3 .btn-default:active, body.season3 
   color: #fff;
   background-color: #F57C23;
 }
+body.crowd-plan .btn-default {
+  background-color: coral;
+  border: 1px solid #F57C23;
+  color: #fff;
+}
+body.crowd-plan .btn-default:hover, body.crowd-plan .btn-default:active, body.crowd-plan .btn-default:focus, body.crowd-plan .btn-default.active, body.crowd-plan .btn-default.dropdown-toggle, body.crowd-plan .btn-default.disabled {
+  color: #fff;
+  background-color: #F57C23;
+}
+
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+body.crowd-plan .btn-file {
+  background: #fff;
+  border: 1px solid coral;
+  color: coral;
+}
+.btn-file input {
+  display: none;
+}
+
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+}
 
 .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
   background: #FFCE00;
   color: #111;
+}
+
+.navbar-nav {
+  width: 100%;
+  text-align: center;
+}
+.navbar-nav > li {
+  float: none;
+  display: inline-block;
+}
+@media only screen and (max-width: 767px) {
+  .navbar-nav {
+    width: auto;
+  }
+  .navbar-nav > li {
+    display: block;
+  }
+}
+
+.navbar-header {
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  *zoom: 1;
+}
+.navbar-header:after, .navbar-header:before {
+  content: "";
+  display: table;
+}
+.navbar-header:after {
+  clear: both;
+}
+.navbar-header .navbar-brand {
+  display: none;
+  float: none;
+  margin: 0 auto;
+  color: #FFCE00;
+  font-family: 'impact', 'Helvetica', sans-serif;
+  font-size: 1.75em;
+  padding: 20px 0 10px;
+  line-height: 28px;
+}
+.navbar-header .navbar-brand:hover {
+  color: #FFCE00;
+  text-decoration: none;
+}
+body.season2 .navbar-header .navbar-brand {
+  color: #111;
+}
+body.crowd-plan .navbar-header .navbar-brand {
+  color: #fff;
+}
+@media only screen and (max-width: 767px) {
+  .navbar-header {
+    width: auto;
+  }
+  .navbar-header .navbar-brand {
+    display: block;
+    float: left;
+    padding: 10px 0;
+  }
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+  background-color: transparent;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+  border-color: #FFCE00;
+}
+body.crowd-plan .navbar-default .navbar-collapse, body.crowd-plan .navbar-default .navbar-form {
+  border-color: transparent;
+}
+
+.navbar-fixed-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse {
+  max-height: 460px;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  background: #FFCE00;
 }
 
 #navigation {
@@ -297,56 +420,31 @@ body.season3 .btn-default:hover, body.season3 .btn-default:active, body.season3 
   padding: 0;
   z-index: 999;
   width: 100%;
-  height: 50px;
-}
-#navigation li {
-  font-size: 16px;
-}
-#navigation .logo {
-  font-family: 'Roboto Condensed', 'Helvetica', sans-serif;
-  font-weight: 700;
-  font-size: 28px;
-  margin-top: 10px;
-  letter-spacing: -.03em;
-}
-#navigation .logo a {
-  text-decoration: none;
-}
-#navigation .logo a:hover {
-  color: #FFCE00;
-  text-decoration: none;
-}
-#navigation .col-sm-9 {
-  padding: 0;
-}
-#navigation #main-nav {
-  z-index: 999;
-  position: absolute;
-  width: 100%;
-  background: #111;
-}
-#navigation .navbar {
-  border: none;
-  margin: 0;
-  min-height: inherit;
 }
 #navigation .nav > li {
   border: none;
+  margin-left: -1px;
   -moz-transition: all, 0.5s, ease-in-out;
   -o-transition: all, 0.5s, ease-in-out;
   -webkit-transition: all, 0.5s, ease-in-out;
   transition: all, 0.5s, ease-in-out;
+}
+#navigation .nav > li.plan {
+  background-color: coral;
+}
+#navigation .nav > li.plan a {
+  color: #fff;
 }
 #navigation .nav > li > a {
   font-size: 16px;
   letter-spacing: .1em;
-  line-height: 20px;
+  line-height: 50px;
   -moz-transition: all, 0.5s, ease-in-out;
   -o-transition: all, 0.5s, ease-in-out;
   -webkit-transition: all, 0.5s, ease-in-out;
   transition: all, 0.5s, ease-in-out;
   color: #FFCE00;
-  padding: 15px 13px;
+  padding: 0 13px;
 }
 #navigation .nav > li > a:hover, #navigation .nav > li > a:focus {
   background: #FFCE00;
@@ -369,7 +467,6 @@ body.season3 .btn-default:hover, body.season3 .btn-default:active, body.season3 
   color: #111;
   text-align: center;
   padding: 0;
-  margin: 10px;
 }
 #navigation .nav > li.fb > a i {
   line-height: 30px;
@@ -382,12 +479,18 @@ body.season3 .btn-default:hover, body.season3 .btn-default:active, body.season3 
   border-radius: 0;
   background: #FFCE00;
   padding: 0;
+  text-align: center;
 }
 #navigation .dropdown .dropdown-menu > li {
   padding: 0;
 }
 #navigation .dropdown .dropdown-menu > li a {
-  padding: 16px 26px;
+  padding: 12px 20px;
+  color: #111;
+  background-color: rgba(255, 165, 0, 0.1);
+}
+#navigation .dropdown .dropdown-menu > li a:hover {
+  background-color: orange;
 }
 #navigation .dropdown.open a {
   color: #111;
@@ -415,36 +518,32 @@ body.season3 .btn-default:hover, body.season3 .btn-default:active, body.season3 
     height: auto;
     background: none;
     border-radius: 0;
-    text-align: left;
     color: #FFCE00;
-    padding: 16px;
+    padding: 10px;
   }
   #navigation .nav > li.fb > a:hover {
     color: #111;
+    background: #FFCE00;
   }
   #navigation .nav > li > a {
     font-size: 16px;
-    padding: 16px;
+    padding: 0;
     border-left: 0 !important;
   }
 }
 @media only screen and (max-width: 767px) {
   #navigation {
-    padding: 10px 0;
     font-size: 16px;
   }
-  #navigation .col-sm-8 {
-    padding: 0;
-  }
   #navigation .navbar-header {
-    margin-top: -35px;
     padding: 0 15px;
   }
   #navigation .navbar-toggle {
     padding: 6px 15px;
-    margin: -6px -18px 0;
+    margin: 6px 0;
     font-size: 1.2em;
     color: #FFCE00;
+    border: 0;
   }
   #navigation .col-sm-3 {
     z-index: 999;
@@ -459,6 +558,7 @@ body.season2 #navigation {
 }
 body.season2 #navigation #main-nav {
   background: transparent;
+  height: 50px;
 }
 body.season2 #navigation .nav > li > a {
   color: #111;
@@ -472,15 +572,12 @@ body.season2 #navigation .nav > li.fb > a {
   background: #111;
   color: #fde689;
 }
-body.season2 #navigation h2.logo a {
-  color: #111;
-  text-shadow: 0 0 3px #fde689, 0 0 10px #fde689;
-}
 body.season2 #navigation .dropdown .dropdown-menu {
   background: #111;
 }
 body.season2 #navigation .dropdown .dropdown-menu > li > a {
   color: #fde689;
+  background-color: #111;
 }
 body.season2 #navigation .dropdown .dropdown-menu > li > a:hover, body.season2 #navigation .dropdown .dropdown-menu > li > a:focus {
   background: #fde689;
@@ -508,9 +605,6 @@ body.season2 #navigation .nav .open > a, body.season2 #navigation .nav .open > a
 body.season3 #navigation {
   background: #503E33;
 }
-body.season3 #navigation .logo a {
-  color: #FFCE00;
-}
 body.season3 #navigation #main-nav {
   background: #503E33;
 }
@@ -519,6 +613,56 @@ body.season3 #navigation .dropdown .dropdown-menu > li a {
 }
 body.season3 #navigation .dropdown .dropdown-menu > li a:hover, body.season3 #navigation .dropdown .dropdown-menu > li a:focus {
   background: #ffb400;
+}
+body.crowd-plan #navigation {
+  background-color: coral !important;
+}
+body.crowd-plan #navigation .nav > li {
+  background-color: coral !important;
+}
+body.crowd-plan #navigation .nav > li a.dropdown-toggle:hover, body.crowd-plan #navigation .nav > li a.dropdown-toggle:focus {
+  border-bottom: 0;
+}
+body.crowd-plan #navigation .nav > li > a {
+  color: #fff !important;
+}
+body.crowd-plan #navigation .nav > li > a:hover {
+  background-color: rgba(80, 62, 51, 0.2) !important;
+}
+body.crowd-plan #navigation .nav > li.fb > a {
+  background: rgba(80, 62, 51, 0.3);
+}
+body.crowd-plan #navigation .dropdown .dropdown-menu {
+  background-color: coral;
+}
+body.crowd-plan #navigation .dropdown .dropdown-menu > li a {
+  color: #fff;
+  background-color: coral;
+}
+body.crowd-plan #navigation .dropdown .dropdown-menu > li a:hover, body.crowd-plan #navigation .dropdown .dropdown-menu > li a:focus {
+  background-color: rgba(80, 62, 51, 0.3) !important;
+}
+body.crowd-plan #navigation .nav .open > a, body.crowd-plan #navigation .nav .open > a:hover, body.crowd-plan #navigation .nav .open > a:focus {
+  background-color: rgba(80, 62, 51, 0.3) !important;
+}
+@media only screen and (max-width: 767px) {
+  body.crowd-plan #navigation .navbar-toggle {
+    color: #fff;
+  }
+  body.crowd-plan #navigation .nav > li.fb > a {
+    background: transparent;
+    color: #111;
+  }
+  body.crowd-plan #navigation .dropdown {
+    background-color: coral;
+  }
+  body.crowd-plan #navigation .dropdown .dropdown-menu {
+    background-color: coral;
+  }
+  body.crowd-plan #navigation .dropdown .dropdown-menu > li a {
+    border: 0 !important;
+    background-color: rgba(80, 62, 51, 0.3) !important;
+  }
 }
 
 #section-1 {
@@ -637,6 +781,32 @@ body.season3 #section-1 h3 span.line {
     margin-top: 150px;
   }
 }
+body.crowd-plan #section-1 {
+  background: url("../images/tozzi_banner_crowdplan.jpg") no-repeat center center;
+  font-size: .8em;
+  height: 360px;
+  background-size: cover;
+}
+body.crowd-plan #section-1 h1, body.crowd-plan #section-1 h2 {
+  color: #111;
+  text-shadow: 0 0 5px rgba(255, 206, 0, 0.5), 0 0 5px rgba(255, 206, 0, 0.5), 0 0 5px rgba(255, 206, 0, 0.5), 0 0 10px rgba(255, 206, 0, 0.3);
+}
+body.crowd-plan #section-1 h2.logo {
+  margin-top: 100px;
+}
+body.crowd-plan #section-1 h2 {
+  font-size: 1.75em;
+  letter-spacing: .08em;
+}
+@media only screen and (max-width: 768px) {
+  body.crowd-plan #section-1 {
+    height: 350px;
+    font-size: .7em;
+  }
+  body.crowd-plan #section-1 h2.logo {
+    margin-top: 150px;
+  }
+}
 
 #traders #section-2 {
   background: #fff;
@@ -683,10 +853,11 @@ body.season3 #section-1 h3 span.line {
 #traders #section-2 .content .slider a {
   color: #666;
 }
-#traders #section-2 .content .slider a:active, #traders #section-2 .content .slider a:focus {
+#traders #section-2 .content .slider a:hover, #traders #section-2 .content .slider a:active, #traders #section-2 .content .slider a:focus {
   outline: 0;
+  text-decoration: none;
 }
-#traders #section-2 .content .slider a img:active {
+#traders #section-2 .content .slider a img:active, #traders #section-2 .content .slider a img:hover {
   box-shadow: 0 0 0 4px #FFCE00;
 }
 #traders #section-2 .content .slider img {
@@ -755,6 +926,13 @@ body.season3 #section-1 h3 span.line {
     width: 70px;
     height: 70px;
   }
+}
+
+body.crowd-plan#traders #section-2 .content .slider a img:active, body.crowd-plan#traders #section-2 .content .slider a img:hover {
+  box-shadow: 0 0 0 4px coral;
+}
+body.crowd-plan#traders #section-2 .content .slider img.active {
+  box-shadow: 0 0 0 4px coral;
 }
 
 .season2#traders #section-2 .content .slider .slick-slide img.active.kaede {
@@ -1075,6 +1253,7 @@ body.season3 #section-2 h2, body.season3 #section-2-5 h2, body.season3 #section-
 }
 .history h6 {
   font-weight: normal;
+  margin-bottom: 0;
 }
 .history span.more {
   font-size: 15px;
@@ -1082,9 +1261,13 @@ body.season3 #section-2 h2, body.season3 #section-2-5 h2, body.season3 #section-
   position: relative;
 }
 .history span.more a {
-  padding: 2px 4px;
   text-decoration: underline;
-  padding-left: 27px;
+  padding: 6px 6px 6px 27px;
+}
+.history span.more a:hover {
+  background: #b08a08;
+  color: #fff;
+  text-decoration: none;
 }
 .history span.more a:before {
   content: "\f0a4";
@@ -1095,10 +1278,6 @@ body.season3 #section-2 h2, body.season3 #section-2-5 h2, body.season3 #section-
   font-size: 16px;
   position: absolute;
   left: 7px;
-}
-.history span.more a:hover {
-  background: #b08a08;
-  color: #fff;
 }
 @media only screen and (max-width: 767px) {
   .history h6 {
@@ -1151,6 +1330,12 @@ body.season3 #section-2 h2, body.season3 #section-2-5 h2, body.season3 #section-
 }
 .expound-list .detail {
   display: block;
+}
+body.crowd-plan .expound-list .date {
+  color: coral;
+}
+body.crowd-plan .expound-list .statement-list a:hover {
+  background-color: coral;
 }
 
 #section-5 h5 {
@@ -1249,6 +1434,10 @@ footer {
 }
 .season3 footer {
   background: #503E33;
+}
+.crowd-plan footer {
+  background-color: coral;
+  color: #fff;
 }
 
 @media only screen and (max-width: 768px) {
@@ -1412,6 +1601,9 @@ body.season2 .tab-container {
 body.season3 .tab-container {
   box-shadow: 0 2px 2px rgba(245, 124, 35, 0.3);
 }
+body.crowd-plan .tab-container {
+  box-shadow: 0 2px 2px rgba(255, 127, 80, 0.3);
+}
 
 .table > tbody > tr > td {
   border-bottom: 1px solid #F7F7F7;
@@ -1439,6 +1631,9 @@ body.season2 .table > thead > tr > th {
 }
 .ranking-all .table.ranking tr img:hover {
   border: 2px solid #b08a08;
+}
+body.season3 .ranking-all a:hover {
+  color: #ffb400;
 }
 
 body.season2 #section-4 {
@@ -1478,6 +1673,15 @@ body.season2 #section-4 h2 span:nth-of-type(2) {
 body.season3 .market-all .trader-single span {
   background: rgba(245, 124, 35, 0.8);
 }
+body.crowd-plan .market-all .market-single {
+  border-bottom: 1px solid coral;
+}
+body.crowd-plan .market-all .trader-single a:hover {
+  text-decoration: none;
+}
+body.crowd-plan .market-all .trader-single span {
+  background-color: rgba(255, 127, 80, 0.8);
+}
 @media only screen and (max-width: 767px) {
   .market-all .trader-single {
     text-align: left;
@@ -1490,6 +1694,7 @@ body.season3 .market-all .trader-single span {
 .market-article {
   padding: 0 15px;
   text-align: center;
+  margin: 20px auto;
 }
 .market-article .row {
   background: rgba(253, 230, 137, 0.2);
@@ -1502,4 +1707,55 @@ body.season3 .market-all .trader-single span {
 }
 body.season3 .market-article .row {
   background: rgba(245, 124, 35, 0.2);
+}
+
+.crowd-list {
+  width: 20%;
+  display: block;
+  float: left;
+}
+.crowd-list img {
+  width: 70%;
+  margin: 0 auto;
+}
+.crowd-list .history {
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 6px;
+  background-color: rgba(102, 102, 102, 0.05);
+}
+.crowd-list .history-list {
+  margin: 6px 0 0;
+  padding: 5px 5px 10px;
+  border-bottom: 1px solid #ccc;
+  font-size: 14px;
+}
+.crowd-list .history-list:nth-child(1) {
+  margin: 0;
+}
+.crowd-list .history-list:nth-last-of-type(1) {
+  border: 0;
+}
+.crowd-list .history-list h6 {
+  font-size: 16px;
+}
+@media only screen and (max-width: 767px) {
+  .crowd-list {
+    width: 50%;
+  }
+}
+
+.vote [class*='col-sm-'] {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.vote label, .vote span {
+  line-height: 30px;
+}
+
+@media only screen and (max-width: 480px) {
+  .text-muted {
+    display: block;
+    margin-top: 10px;
+  }
 }

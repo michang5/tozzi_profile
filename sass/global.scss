@@ -120,7 +120,14 @@ a {
         }
     }
     body.season3 & {
-        color: $dark-orange;
+        color: $brown;
+    }
+    body.crowd-plan & {
+        color: $brown;
+//        &:hover {
+//            background-color: coral;
+//            color: $white;
+//        }
     }
 }
 hr {
@@ -276,6 +283,8 @@ a.btn.btn-fb {
 .btn:focus,.btn:active:focus,.btn.active:focus,
 .btn.focus,.btn:active.focus,.btn.active.focus {
     outline: none;
+    border: 0;
+    box-shadow: none;
 }
 .btn-default {
     body.season2 & {
@@ -292,6 +301,16 @@ a.btn.btn-fb {
         background-color: transparent;
         border: 1px solid $dark-orange;
         color: $dark-orange;
+        &:hover, &:active, &:focus, &.active, &.dropdown-toggle, &.disabled {
+//    		border: 0;
+    		color: $white;
+    		background-color: $dark-orange;
+    	}
+    }
+    body.crowd-plan & {
+        background-color: coral;
+        border: 1px solid $dark-orange;
+        color: $white;
         &:hover, &:active, &:focus, &.active, &.dropdown-toggle, &.disabled {
 //    		border: 0;
     		color: $white;
@@ -339,9 +358,106 @@ a.btn.btn-fb {
 //		font-size: 12px;
 //	}
 //}
+//.form-control-file {
+//    background-color: coral;
+//    color: $white;
+//    
+//}
+.btn-file {
+    position: relative;
+    overflow: hidden;
+    body.crowd-plan & {
+        background: $white;
+        border: 1px solid coral;
+        color: coral;
+    }
+    input {
+        display: none;
+    }
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
 .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
 	background: $yellow;
 	color: $black;
+}
+.navbar-nav {
+    width: 100%;
+    text-align: center;
+    >li {
+        float: none;
+        display: inline-block;
+    }
+    @include respond-to (only-mobile) {
+         width: auto;
+        >li {
+            display: block;
+        }
+    }
+}
+.navbar-header {
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+    @include clearfix;
+    .navbar-brand {
+        display: none;
+        float: none;
+        margin: 0 auto;
+//        display: block;
+        color: $yellow;
+        font-family: 'impact', 'Helvetica', sans-serif;
+        font-size: $xxxl-font;
+        padding: 20px 0 10px;
+        line-height: 28px;
+        &:hover {
+            color: $yellow;
+            text-decoration: none;
+        }
+        body.season2 & {
+            color: $black;
+        }
+        body.crowd-plan & {
+            color: $white;
+        }
+    }
+    @include respond-to (only-mobile){
+        width: auto;
+        .navbar-brand {
+            display: block;
+            float: left;
+            padding: 10px 0;
+//            margin: 0 auto;
+        }
+    }
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-color: transparent;
+}
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: $yellow;
+    body.crowd-plan & {
+        border-color: transparent;
+    }
+}
+.navbar-fixed-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse {
+    max-height: 460px;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    background: $yellow;
 }
 #navigation {
 	background: $black;
@@ -349,53 +465,24 @@ a.btn.btn-fb {
 	padding: 0;
 	z-index: 999;
 	width:100%;
-	height: 50px;
-	li {
-		font-size: 16px;
-	}
-//	position: absolute;
-	.logo {
-		font-family: 'Roboto Condensed', 'Helvetica', sans-serif;
-//		letter-spacing: 0.01em;
-//		line-height: 54px;
-		font-weight: 700;
-		font-size: 28px;
-        margin-top: 10px;
-        letter-spacing: -.03em;
-        a {
-            text-decoration: none;
-            &:hover {
-                color: $primary-color;
-                text-decoration: none;
-            }
-        }
-	}
-	.col-sm-9 {
-		padding: 0;
-	}
-	#main-nav {
-//		background: $dark-gray;
-		z-index: 999;
-		position: absolute;
-		width: 100%;
-		background: $black;
-	}
-	.navbar {
-		border: none;
-		margin: 0;
-		min-height: inherit;
-	}
 	.nav > li {
 		border: none;
+        margin-left: -1px;
 		@include transition(all ,.5s, ease-in-out);
+        &.plan {
+            background-color: coral;
+            a {
+                color: $white;
+            }
+        }
 		> a {
 			font-size: 16px;
 			letter-spacing: .1em;
-			line-height: 20px;
+			line-height: 50px;
 			@include transition(all ,.5s, ease-in-out);
 			color: $primary-color;
 //			border-left: 1px solid $black;
-            padding: 15px 13px;
+            padding: 0 13px;
 			&:hover, &:focus {
 				background: $yellow;
 				color: $black;
@@ -417,7 +504,7 @@ a.btn.btn-fb {
 				color: $black;
 				text-align: center;
 				padding: 0;
-				margin: 10px;
+//				margin: 10px;
 				i {
 					line-height: 30px;
 				}
@@ -433,10 +520,19 @@ a.btn.btn-fb {
 			border-radius: 0;
 			background: $yellow;
 			padding: 0;
+            text-align: center;
 			> li {
 				padding: 0;
 				a {
-					padding: 16px 26px;
+					padding: 12px 20px;
+//                    background: $black;
+                    color: $black;
+                    background-color: rgba(orange,0.1);
+                    &:hover {
+                        background-color: orange;
+                        
+//                        background: red;
+                    }
 				}
 			}
 		}
@@ -445,8 +541,6 @@ a.btn.btn-fb {
 				color: $black;
 			}
 			.dropdown-menu {
-//				max-height: 200px;
-//				opacity: 1;
 			}
 		}
 	}
@@ -477,36 +571,35 @@ a.btn.btn-fb {
 					height: auto;
 					background: none;
 					border-radius: 0;
-					text-align: left;
+//					text-align: left;
 					color: $yellow;
-					padding: 16px;
+					padding: 10px;
 					&:hover {
 						color: $black;
+                        background: $yellow;
 					}
 				}
 			}
 			> a {
 				font-size: 16px;
-				padding: 16px;
+				padding: 0;
 				border-left: 0!important;
 			}
 		}
 	}
 	@include respond-to (only-mobile){
-		padding: 10px 0;
+//		padding: 10px 0;
 		font-size: 16px;
-		.col-sm-8 {
-			padding: 0;
-		}
 		.navbar-header {
-			margin-top: -35px;
+//			margin-top: -35px;
 			padding: 0 15px;
 		}
 		.navbar-toggle {
 			padding: 6px 15px;
-			margin: -6px -18px 0;
+			margin: 6px 0;
 			font-size: 1.2em;
 			color: $yellow;
+            border: 0;
 		}
 		.col-sm-3{
 			z-index: 999;
@@ -520,9 +613,7 @@ a.btn.btn-fb {
         background-image: linear-gradient(135deg, $gold, $light-gold, $gold);
 		#main-nav {
 			background: transparent;
-//			background-image: -webkit-linear-gradient(left top, $gold, $light-gold);
-//        background-image: -o-linear-gradient(left top, $gold, $light-gold);
-//        background-image: linear-gradient(left top, $gold, $light-gold);
+            height: 50px;
 		}
 		.nav {
 			> li {
@@ -535,7 +626,6 @@ a.btn.btn-fb {
 					}
 				}
 				&.fb {
-//					background: $black;
 					> a {
 						background: $black;
 						color: $light-gold;
@@ -543,21 +633,13 @@ a.btn.btn-fb {
 				}
 			}
 		}
-		h2.logo {
-			a {
-				color: $black;
-				text-shadow: 0 0 3px $light-gold, 0 0 10px $light-gold;
-			}
-		}
 		.dropdown {
 			.dropdown-menu {
 				background: $black;
-//				background-image: -webkit-linear-gradient(45deg, $gold -50% ,$light-gold);
-//				background-image: -o-linear-gradient(45deg, $gold -50% ,$light-gold);
-//        		background-image: linear-gradient(45deg, $gold -50% ,$light-gold);
 				> li {
 					> a {
 						color: $light-gold;
+                        background-color: $black;
 						&:hover, &:focus {
 							background: $light-gold;
 							color: $black;
@@ -587,20 +669,10 @@ a.btn.btn-fb {
 		}
 	}
     body.season3 & {
-		.logo {
-			a {
-				color: $primary-color;
-			}
-		}
         background: $brown;
         #main-nav {
             background: $brown;
         }
-//        .nav > li {
-//            > a {
-//                color: $orange;
-//            }
-//        }
         .dropdown {
             .dropdown-menu {
                 > li {
@@ -614,7 +686,72 @@ a.btn.btn-fb {
             }
         }
     }
+    body.crowd-plan & {
+        background-color: coral!important;
+        .nav > li {
+            background-color: coral!important;
+            a.dropdown-toggle {
+				&:hover, &:focus {
+					border-bottom: 0;
+				}
+			}
+            > a {
+                color: $white!important;
+                &:hover {
+                    background-color: rgba($brown,.2)!important;
+                }
+            }
+            &.fb {
+                > a {
+                    background: rgba($brown,.3);
+                }
+            }
+        }
+        .dropdown {
+            .dropdown-menu {
+                background-color: coral;
+                > li {
+                    a {
+                        color: $white;
+                        background-color: coral;
+
+                        &:hover, &:focus {
+                            background-color: rgba($brown,.3)!important;
+                        }
+                    }
+                }
+            }
+        }
+        .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+			background-color: rgba($brown,.3)!important;
+		}
+        @include respond-to (only-mobile){
+            .navbar-toggle {
+				color: $white;
+			}
+			.nav > li.fb > a {
+				background: transparent;
+				color: $black;
+			}
+            .dropdown {
+                 background-color: coral;
+                .dropdown-menu {
+                    background-color: coral;
+                    > li {
+                        a {
+                            border: 0!important;
+                            background-color: rgba($brown,.3)!important;
+                            &:hover {
+                               
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
+
 #section-1 {
 	background: url("../images/tozzi_banner.jpg") no-repeat center center;
 	box-sizing: border-box;
@@ -735,6 +872,33 @@ a.btn.btn-fb {
 
 		}
 	}
+    body.crowd-plan & {
+		background: url("../images/tozzi_banner_crowdplan.jpg") no-repeat center center;
+		font-size: .8em;
+		height: 360px;
+		background-size: cover;
+        h1, h2 {
+            color: $black;
+            text-shadow: 0 0 5px rgba($yellow,.5), 0 0 5px rgba($yellow,.5), 0 0 5px rgba($yellow,.5), 0 0 10px rgba($yellow,.3);
+        }
+		h2.logo {
+			margin-top: 100px;
+		}
+        h2 {
+            font-size: $xxxl-font;
+        letter-spacing: .08em;
+        }
+		@include respond-to (only-device){
+			height: 350px;
+			font-size: .7em;
+			h2.logo {
+				margin-top: 150px;
+			}
+		}
+		@include respond-to (xxs-mobile){
+
+		}
+	}
 }
 #traders #section-2 {
 	background: $white;
@@ -790,14 +954,14 @@ a.btn.btn-fb {
 			}
 			a {
 				color: $gray;
-				&:active, &:focus {
+				&:hover, &:active, &:focus {
 					outline:0;
+                    text-decoration: none;
 				}
 				img {
-					&:active {
+					&:active,  &:hover {
 						box-shadow:0 0 0 4px $yellow;
 					}
-
 				}
 			}
 			img {
@@ -879,6 +1043,24 @@ a.btn.btn-fb {
 			}
 		}
 	}
+}
+body.crowd-plan#traders #section-2  {
+    .content {
+        .slider {
+            a {
+                img {
+					&:active,  &:hover {
+						box-shadow:0 0 0 4px coral;
+					}
+				}
+            }
+            img {
+                &.active {
+                    box-shadow:0 0 0 4px coral;
+                }
+            }
+        }
+    }
 }
 .season2#traders #section-2 {
 	.content {
@@ -1213,9 +1395,15 @@ a.btn.btn-fb {
 //過去參賽紀錄
 .history {
     margin: 20px auto;
+    
+//    &.row {
+//        margin: 20px auto;
+//    }
     .history-list {
         font-size: 17px;
         line-height: 1.9;
+//        margin-top: 20px;
+        
     }
     .results {
         span {
@@ -1233,15 +1421,20 @@ a.btn.btn-fb {
     }
     h6 {
        font-weight: normal;
+        margin-bottom: 0;
     }
     span.more {
         font-size: 15px;
         vertical-align: middle;
         position: relative;
         a {
-            padding: 2px 4px;
             text-decoration: underline;
-            padding-left: 27px;
+            padding: 6px 6px 6px 27px;
+            &:hover {
+                background: $gold;
+                color: $white;
+                text-decoration: none;
+            }
         }
         a:before {
             content: "\f0a4";
@@ -1252,10 +1445,6 @@ a.btn.btn-fb {
             font-size: 16px;
             position: absolute;
             left: 7px;
-        }
-        a:hover {
-            background: $gold;
-            color: $white;
         }
     }
     @include respond-to (only-mobile){
@@ -1312,6 +1501,18 @@ a.btn.btn-fb {
     }
     .detail {
         display: block;
+    }
+    body.crowd-plan & {
+        .date {
+            color: coral;
+        }
+        .statement-list {
+            a {
+                &:hover {
+                    background-color: coral;
+                }
+            }
+        }
     }
 }
 #section-5 {
@@ -1427,6 +1628,10 @@ footer {
 	line-height: 100px;
 	.season3 & {
 		background: $brown;
+	}
+    .crowd-plan & {
+		background-color: coral;
+        color: $white;
 	}
 //	li {
 //		display: inline-block;
@@ -1610,6 +1815,9 @@ footer {
 	body.season3 & {
 		box-shadow: 0 2px 2px rgba($dark-orange,.3);
 	}
+    body.crowd-plan & {
+		box-shadow: 0 2px 2px rgba(coral,.3);
+	}
 }
 .table {
 	> tbody > tr > td {
@@ -1649,6 +1857,13 @@ footer {
                 &:hover {
                     border: 2px solid $gold;
                 }
+            }
+        }
+    }
+    body.season3 & {
+        a {
+            &:hover {
+                color: $orange;
             }
         }
     }
@@ -1705,6 +1920,21 @@ body.season2 #section-4 {
 			}
 		}
 	}
+    body.crowd-plan & {
+        .market-single {
+            border-bottom: 1px solid coral;
+        }
+		.trader-single {
+            a {
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+			span {
+                background-color: rgba(coral,.8);
+			}
+		}
+	}
     @include respond-to (only-mobile){
         .trader-single {
             text-align: left;
@@ -1717,6 +1947,7 @@ body.season2 #section-4 {
 .market-article {
     padding: 0 15px;
     text-align: center;
+    margin: 20px auto;
     .row {
         background: rgba($light-gold,.2);
         padding-top: 50px;
@@ -1745,3 +1976,56 @@ body.season2 #section-4 {
 //.amcharts-chart-div {
 //	background: white;
 //}
+.crowd-plan {
+    #section-2-5 {
+        
+    }
+}
+.crowd-list {
+    width: 20%;
+    display: block;
+    float: left;
+    img {
+        width: 70%;
+        margin: 0 auto;
+    }
+    .history {
+        padding: 10px;
+        border-radius: 4px;
+        margin-top: 6px;
+        background-color: rgba($gray,.05);
+    }
+    .history-list {
+        margin: 6px 0 0;
+        padding: 5px 5px 10px;
+        border-bottom: 1px solid #ccc;
+        &:nth-child(1) {
+            margin: 0;
+        }
+        &:nth-last-of-type(1){
+            border: 0;
+        }
+        h6 {
+            font-size: 16px;
+        }
+        font-size: 14px;
+    }
+    @include respond-to (only-mobile){
+        width: 50%;
+    }
+}
+.vote {
+    [class*='col-sm-']{
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    label, span {
+        line-height: 30px;
+    }
+}
+.text-muted {
+    @include respond-to (normal-mobile){
+        display: block;
+        margin-top: 10px;
+    }
+}
