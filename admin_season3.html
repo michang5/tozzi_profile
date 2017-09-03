@@ -21,10 +21,11 @@
 <el-tabs v-model="tab" type="card">
 
 <el-tab-pane label="設定" name="info">
-	<div class="g-recaptcha" data-sitekey="6LcQAiwUAAAAAKIfmzx4B1Uoz1Z7NRkfHzvGwoSx"></div>
-
 	本週：<br>
 	<el-input v-model="season3.week"></el-input>
+	領投計畫說明：<br>
+	<el-input v-model="season3.crowd" type="textarea" autosize placeholder="請輸入說明"></el-input>
+	<div v-html="season3.crowd" class="block"></div>
 </el-tab-pane>
 
 <el-tab-pane label="公告" name="news">
@@ -48,6 +49,7 @@ var data = {
 	tab: 'info',
 	season3: {
 		week: '6/26~6/30',
+		crowd: '',
 		news: [],
 	},
 };
