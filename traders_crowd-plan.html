@@ -162,49 +162,50 @@
         <div class="container">
             <h2>投票給選手</h2>
             <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
-                <form class="form-horizontal vote">
+                <form action="/vote" method="post" enctype="multipart/form-data" class="form-horizontal vote">
+                    <input type="hidden" id="id" name="id" :value="id">
                     <div class="form-group">
                         <label class="control-label col-sm-2 col-xs-3" for="serial">序號</label>
                         <div class="col-sm-10 col-xs-9">
-                            <input type="text" class="form-control" id="serial" placeholder="請輸入序號" onfocus="this.placeholder = ''" onblur="this.placeholder = '請輸入序號'">
+                            <input type="text" class="form-control" id="serial" name="serial" placeholder="請輸入序號" onfocus="this.placeholder = ''" onblur="this.placeholder = '請輸入序號'">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2 col-xs-3" for="reason">原因</label>
                         <div class="col-sm-10 col-xs-9">
-                            <textarea class="form-control" rows="3" id="reason" placeholder="請簡述原因" onfocus="this.placeholder = ''" onblur="this.placeholder = '請簡述原因'">
+                            <textarea class="form-control" rows="3" id="reason" name="reason" placeholder="請簡述原因" onfocus="this.placeholder = ''" onblur="this.placeholder = '請簡述原因'">
                             </textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2 col-xs-3" for="name">姓名</label>
                         <div class="col-sm-10 col-xs-9">
-                            <input type="text" class="form-control" id="name" placeholder="請填寫真實姓名" onfocus="this.placeholder = ''" onblur="this.placeholder = '請填寫真實姓名'">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="請填寫真實姓名" onfocus="this.placeholder = ''" onblur="this.placeholder = '請填寫真實姓名'">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2 col-xs-3" for="phone">聯絡電話</label>
                         <div class="col-sm-10 col-xs-9">
-                            <input type="text" class="form-control" id="phone" placeholder="請填寫聯絡電話" onfocus="this.placeholder = ''" onblur="this.placeholder = '請填寫聯絡電話'">
+                            <input type="text" class="form-control" id="phone" name="phone" placeholder="請填寫聯絡電話" onfocus="this.placeholder = ''" onblur="this.placeholder = '請填寫聯絡電話'">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-2 col-xs-3" for="fb-id">FB帳號</label>
+                        <label class="control-label col-sm-2 col-xs-3" for="facebook">FB帳號</label>
                         <div class="col-sm-10 col-xs-9">
-                            <input type="text" class="form-control" id="fb-id" placeholder="請填寫FB帳號" onfocus="this.placeholder = ''" onblur="this.placeholder = '請填寫FB帳號'">
+                            <input type="text" class="form-control" id="facebook" name="facebook" placeholder="請填寫FB帳號" onfocus="this.placeholder = ''" onblur="this.placeholder = '請填寫FB帳號'">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2 col-xs-3" for="experience">股票操作資歷</label>
                         <div class="col-sm-8 col-xs-8">
-                            <input type="text" class="form-control" id="experience" placeholder="股票操作資歷（年為單位）" onfocus="this.placeholder = ''" onblur="this.placeholder = '股票操作資歷（年為單位）'">
+                            <input type="text" class="form-control" id="experience" name="experience" placeholder="股票操作資歷（年為單位）" onfocus="this.placeholder = ''" onblur="this.placeholder = '股票操作資歷（年為單位）'">
                         </div>
                         <span class="col-sm-2 col-xs-1">年</span>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-2 col-xs-3" for="investors-level">股民等級</label>
+                        <label class="control-label col-sm-2 col-xs-3" for="level">股民等級</label>
                         <div class="col-sm-10 col-xs-9">
-                            <select class="form-control" id="investors-level">
+                            <select class="form-control" id="level" name="level">
                                 <option>老師等級</option>
                                 <option>交易員</option>
                                 <option>業餘好手</option>
@@ -214,9 +215,9 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-2 col-xs-3" for="investors-level">身分證</label>
+                        <label class="control-label col-sm-2 col-xs-3" for="file">身分證</label>
                         <div class="col-sm-10 col-xs-9">
-                            <label class="btn btn-file">上傳身分證正反面影本<input type="file"></label>
+                            <label class="btn btn-file">上傳身分證正反面影本<input id="file" name="file" type="file"></label>
                             <small id="fileHelp" class="form-text text-muted">作為發放獎金用，務必拍照或掃描上傳</small>
                         </div>
                     </div>

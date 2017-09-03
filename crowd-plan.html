@@ -29,7 +29,6 @@
 	<script src="https://www.amcharts.com/lib/3/serial.js"></script>
 	<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
 	<link href="css/chart.css" rel="stylesheet">
-	<script src="js/top3.js"></script>
 
 	<!--vue-->
 	<script src="https://unpkg.com/vue/dist/vue.js"></script>
@@ -97,7 +96,7 @@
 		<div class="container">
 			<h2>領投計畫說明</h2>		 
 			<div class="col-sm-10 col-sm-offset-1">
-				<p>說明文字放在這邊，說明文字放在這邊。說明文字放在這邊，說明文字放在這邊。說明文字放在這邊，說明文字放在這邊。</p>
+				<p></p>
 			</div>
 		</div>
 	</div>
@@ -105,255 +104,29 @@
 	<div id="section-2-5">
 	    <div class="container-fluid clearfix">
             <h2>領投選手</h2>
-            <div class="crowd-list row">
-                <img src="images/profile_photo.png" class="img-circle img-responsive" alt="">
+            <div class="crowd-list row" v-for="t in traders">
+                <img :src="t.image" class="img-circle img-responsive" alt="">
                 <div class="col-sm-12">
                     <div class="history">
-                        <div class="history-list">
+                        <div class="history-list" v-if="t.season1.length" v-for="s in t.season1">
                             <h6>第一季</h6>
                             <div class="results">
-                                <span>股感獎第 4 名</span>
-                                <span>選手互評平均分：7.2</span>
-                                <span>投報率：5.7%</span>
-                                <span>總得分：6.45</span>
+                                <span v-text="s.prize + '獎第 ' + s.rank + ' 名'">股感獎第 4 名</span>
+                                <span v-text="'選手互評平均分：' + s.average">選手互評平均分：7.2</span>
+                                <span v-text="'投報率：' + s.rate">投報率：5.7%</span>
+                                <span v-text="'總得分：' + s.score">總得分：6.45</span>
                             </div>
                         </div>
-                        
-                        <button type="button" class="btn btn-default btn-md center-block" id="modify-btn" onclick="location.href='traders_crowd-plan.html';" >我要投給他</button>
-                    </div>
-                </div>
-            </div>
-            <div class="crowd-list row">
-                <img src="images/profile_photo.png" class="img-circle img-responsive" alt="">
-                <div class="col-sm-12">
-                    <div class="history">
-                        <div class="history-list">
-                            <h6>第一季</h6>
-                            <div class="results">
-                                <span>股感獎第 4 名</span>
-                                <span>選手互評平均分：7.2</span>
-                                <span>投報率：5.7%</span>
-                                <span>總得分：6.45</span>
-                            </div>
-                        </div>
-                        <div class="history-list">
+                        <div class="history-list" v-if="t.season2.length" v-for="s in t.season2">
                             <h6>第二季</h6>
                             <div class="results">
-                                <span>股感獎第 4 名</span>
-                                <span>選手互評平均分：7.2</span>
-                                <span>投報率：5.7%</span>
-                                <span>總得分：6.45</span>
+                                <span v-text="s.prize + '獎第 ' + s.rank + ' 名'">股感獎第 4 名</span>
+                                <span v-text="'選手互評平均分：' + s.average">選手互評平均分：7.2</span>
+                                <span v-text="'投報率：' + s.rate">投報率：5.7%</span>
+                                <span v-text="'總得分：' + s.score">總得分：6.45</span>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-default btn-md center-block" id="modify-btn" onclick="location.href='traders_crowd-plan.html';" >我要投給他</button>
-                    </div>
-                </div>
-            </div>
-            <div class="crowd-list row">
-                <img src="images/profile_photo.png" class="img-circle img-responsive" alt="">
-                <div class="col-sm-12">
-                    <div class="history">
-                        <div class="history-list">
-                            <h6>第一季</h6>
-                            <div class="results">
-                                <span>股感獎第 4 名</span>
-                                <span>選手互評平均分：7.2</span>
-                                <span>投報率：5.7%</span>
-                                <span>總得分：6.45</span>
-                            </div>
-                        </div>
-                        <div class="history-list">
-                            <h6>第二季</h6>
-                            <div class="results">
-                                <span>股感獎第 4 名</span>
-                                <span>選手互評平均分：7.2</span>
-                                <span>投報率：5.7%</span>
-                                <span>總得分：6.45</span>
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-default btn-md center-block" id="modify-btn" onclick="location.href='traders_crowd-plan.html';" >我要投給他</button>
-                    </div>
-                </div>
-            </div>
-            <div class="crowd-list row">
-                <img src="images/profile_photo.png" class="img-circle img-responsive" alt="">
-                <div class="col-sm-12">
-                    <div class="history">
-                        <div class="history-list">
-                            <h6>第一季</h6>
-                            <div class="results">
-                                <span>股感獎第 4 名</span>
-                                <span>選手互評平均分：7.2</span>
-                                <span>投報率：5.7%</span>
-                                <span>總得分：6.45</span>
-                            </div>
-                        </div>
-                        <div class="history-list">
-                            <h6>第二季</h6>
-                            <div class="results">
-                                <span>股感獎第 4 名</span>
-                                <span>選手互評平均分：7.2</span>
-                                <span>投報率：5.7%</span>
-                                <span>總得分：6.45</span>
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-default btn-md center-block" id="modify-btn" onclick="location.href='traders_crowd-plan.html';" >我要投給他</button>
-                    </div>
-                </div>
-            </div>
-            <div class="crowd-list row">
-                <img src="images/profile_photo.png" class="img-circle img-responsive" alt="">
-                <div class="col-sm-12">
-                    <div class="history">
-                        <div class="history-list">
-                            <h6>第一季</h6>
-                            <div class="results">
-                                <span>股感獎第 4 名</span>
-                                <span>選手互評平均分：7.2</span>
-                                <span>投報率：5.7%</span>
-                                <span>總得分：6.45</span>
-                            </div>
-                        </div>
-                        <div class="history-list">
-                            <h6>第二季</h6>
-                            <div class="results">
-                                <span>股感獎第 4 名</span>
-                                <span>選手互評平均分：7.2</span>
-                                <span>投報率：5.7%</span>
-                                <span>總得分：6.45</span>
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-default btn-md center-block" id="modify-btn" onclick="location.href='traders_crowd-plan.html';" >我要投給他</button>
-                    </div>
-                </div>
-            </div>
-            <div class="crowd-list row">
-                <img src="images/profile_photo.png" class="img-circle img-responsive" alt="">
-                <div class="col-sm-12">
-                    <div class="history">
-                        <div class="history-list">
-                            <h6>第一季</h6>
-                            <div class="results">
-                                <span>股感獎第 4 名</span>
-                                <span>選手互評平均分：7.2</span>
-                                <span>投報率：5.7%</span>
-                                <span>總得分：6.45</span>
-                            </div>
-                        </div>
-                        <div class="history-list">
-                            <h6>第二季</h6>
-                            <div class="results">
-                                <span>股感獎第 4 名</span>
-                                <span>選手互評平均分：7.2</span>
-                                <span>投報率：5.7%</span>
-                                <span>總得分：6.45</span>
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-default btn-md center-block" id="modify-btn" onclick="location.href='traders_crowd-plan.html';" >我要投給他</button>
-                    </div>
-                </div>
-            </div>
-            <div class="crowd-list row">
-                <img src="images/profile_photo.png" class="img-circle img-responsive" alt="">
-                <div class="col-sm-12">
-                    <div class="history">
-                        <div class="history-list">
-                            <h6>第一季</h6>
-                            <div class="results">
-                                <span>股感獎第 4 名</span>
-                                <span>選手互評平均分：7.2</span>
-                                <span>投報率：5.7%</span>
-                                <span>總得分：6.45</span>
-                            </div>
-                        </div>
-                        <div class="history-list">
-                            <h6>第二季</h6>
-                            <div class="results">
-                                <span>股感獎第 4 名</span>
-                                <span>選手互評平均分：7.2</span>
-                                <span>投報率：5.7%</span>
-                                <span>總得分：6.45</span>
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-default btn-md center-block" id="modify-btn" onclick="location.href='traders_crowd-plan.html';" >我要投給他</button>
-                    </div>
-                </div>
-            </div>
-            <div class="crowd-list row">
-                <img src="images/profile_photo.png" class="img-circle img-responsive" alt="">
-                <div class="col-sm-12">
-                    <div class="history">
-                        <div class="history-list">
-                            <h6>第一季</h6>
-                            <div class="results">
-                                <span>股感獎第 4 名</span>
-                                <span>選手互評平均分：7.2</span>
-                                <span>投報率：5.7%</span>
-                                <span>總得分：6.45</span>
-                            </div>
-                        </div>
-                        <div class="history-list">
-                            <h6>第二季</h6>
-                            <div class="results">
-                                <span>股感獎第 4 名</span>
-                                <span>選手互評平均分：7.2</span>
-                                <span>投報率：5.7%</span>
-                                <span>總得分：6.45</span>
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-default btn-md center-block" id="modify-btn" onclick="location.href='traders_crowd-plan.html';" >我要投給他</button>
-                    </div>
-                </div>
-            </div>
-            <div class="crowd-list row">
-                <img src="images/profile_photo.png" class="img-circle img-responsive" alt="">
-                <div class="col-sm-12">
-                    <div class="history">
-                        <div class="history-list">
-                            <h6>第一季</h6>
-                            <div class="results">
-                                <span>股感獎第 4 名</span>
-                                <span>選手互評平均分：7.2</span>
-                                <span>投報率：5.7%</span>
-                                <span>總得分：6.45</span>
-                            </div>
-                        </div>
-                        <div class="history-list">
-                            <h6>第二季</h6>
-                            <div class="results">
-                                <span>股感獎第 4 名</span>
-                                <span>選手互評平均分：7.2</span>
-                                <span>投報率：5.7%</span>
-                                <span>總得分：6.45</span>
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-default btn-md center-block" id="modify-btn" onclick="location.href='traders_crowd-plan.html';" >我要投給他</button>
-                    </div>
-                </div>
-            </div>
-            <div class="crowd-list row">
-                <img src="images/profile_photo.png" class="img-circle img-responsive" alt="">
-                <div class="col-sm-12">
-                    <div class="history">
-                        <div class="history-list">
-                            <h6>第一季</h6>
-                            <div class="results">
-                                <span>股感獎第 4 名</span>
-                                <span>選手互評平均分：7.2</span>
-                                <span>投報率：5.7%</span>
-                                <span>總得分：6.45</span>
-                            </div>
-                        </div>
-                        <div class="history-list">
-                            <h6>第二季</h6>
-                            <div class="results">
-                                <span>股感獎第 4 名</span>
-                                <span>選手互評平均分：7.2</span>
-                                <span>投報率：5.7%</span>
-                                <span>總得分：6.45</span>
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-default btn-md center-block" id="modify-btn" onclick="location.href='traders_crowd-plan.html';" >我要投給他</button>
+                        <button type="button" class="btn btn-default btn-md center-block" id="modify-btn" @click="go(t.id)" >我要投給他</button>
                     </div>
                 </div>
             </div>
@@ -406,20 +179,19 @@
                 <span v-text="week"></span>
             </h2>
             <div class="row market-all">
-                <div class="row" v-for="m in markets">
+                <div class="row" v-for="t in traders">
                     <div class="col-md-2 col-sm-2  col-md-offset-1">
                         <div class="trader-single">
-                            <a :href="'traders_s3.html?id=' + m.id">
-                                <img :src="m.image" class="img-circle" :alt="m.name">
-                                <span v-text="m.name"></span>
+                            <a :href="'traders_s3.html?id=' + t.id">
+                                <img :src="t.image" class="img-circle" :alt="t.name">
+                                <span v-text="t.name"></span>
                             </a>
                         </div>
                     </div>
                     <div class="col-md-8 col-sm-10">
                         <div class="market-single">
-                            <p v-html="m.info"></p>
+                            <p v-html="t.markets[t.markets.length-1].info"></p>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -439,6 +211,7 @@
 <script>
 
 var data = {
+  traders: [],
   news: [
     {url: 'https://www.facebook.com/notes/tozzi/tozzi-%E6%8A%95%E8%B3%87%E5%AF%A6%E6%88%B0%E7%94%9F%E5%AD%98%E8%B3%BD%E4%B9%8B%E7%B6%93%E5%85%B8%E5%BB%B6%E7%BA%8C20170515-20170714/1324718784281406/', title: '【TOZZI 投資實戰生存賽之經典延續】2017.05.15 ~ 2017.07.14'},
   ],
@@ -459,8 +232,11 @@ var data = {
 
 //data//
 
-var vue = new Vue({el: '#vue', data: data});
-top3(data);
+var vue = new Vue({el: '#vue', data: data, methods: {
+    go: function (id) {
+        location.href='traders_crowd-plan.html?id='+id;
+    }
+}});
 
 </script>
 <script>
