@@ -1044,6 +1044,9 @@ a.btn.btn-fb {
 		}
 	}
 }
+.slick-track {
+    margin: 0 auto;
+}
 body.crowd-plan#traders #section-2  {
     .content {
         .slider {
@@ -1981,10 +1984,14 @@ body.season2 #section-4 {
         
     }
 }
+.crowd-plan .container-fluid {
+    text-align: center;
+}
 .crowd-list {
     width: 20%;
-    display: block;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+//    float: left;
     img {
         width: 70%;
         margin: 0 auto;
@@ -2009,6 +2016,9 @@ body.season2 #section-4 {
             font-size: 16px;
         }
         font-size: 14px;
+    }
+    @media screen and (max-width: 992px) {
+        width: 25%;
     }
     @include respond-to (only-mobile){
         width: 50%;
