@@ -316,9 +316,9 @@ body.crowd-plan .btn-file {
 .btn-file input[type=file] {
   position: absolute;
   top: 0;
-  right: 0;
-  min-width: 100%;
-  min-height: 100%;
+  left: 0;
+  width: 166px;
+  height: 50px;
   font-size: 100px;
   text-align: right;
   filter: alpha(opacity=0);
@@ -926,6 +926,10 @@ body.crowd-plan #section-1 h2 {
     width: 70px;
     height: 70px;
   }
+}
+
+.slick-track {
+  margin: 0 auto;
 }
 
 body.crowd-plan#traders #section-2 .content .slider a img:active, body.crowd-plan#traders #section-2 .content .slider a img:hover {
@@ -1709,10 +1713,14 @@ body.season3 .market-article .row {
   background: rgba(245, 124, 35, 0.2);
 }
 
+.crowd-plan .container-fluid {
+  text-align: center;
+}
+
 .crowd-list {
   width: 20%;
-  display: block;
-  float: left;
+  display: inline-block;
+  vertical-align: top;
 }
 .crowd-list img {
   width: 70%;
@@ -1738,6 +1746,11 @@ body.season3 .market-article .row {
 }
 .crowd-list .history-list h6 {
   font-size: 16px;
+}
+@media screen and (max-width: 992px) {
+  .crowd-list {
+    width: 25%;
+  }
 }
 @media only screen and (max-width: 767px) {
   .crowd-list {
