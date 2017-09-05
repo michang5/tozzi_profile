@@ -329,6 +329,70 @@ body.crowd-plan .btn-file {
   display: block;
 }
 
+.checkbox a {
+  padding: 0 2px;
+  color: coral !important;
+}
+
+#checkout .checkbox-group.head {
+  border-bottom: 1px solid #666;
+}
+.checkbox-group .checkbox label {
+  padding-left: 0;
+  color: red;
+}
+.checkbox-group label {
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 32px;
+  display: block;
+  font-weight: normal;
+  padding-left: 0;
+}
+.checkbox-group label input[type='checkbox'] {
+  opacity: 0;
+  position: absolute;
+  left: 20px;
+}
+.checkbox-group label input[type='checkbox'] + .label-text:before {
+  content: "\f096";
+  font-family: "FontAwesome";
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  font-smoothing: antialiased;
+  width: 20px;
+  display: inline-block;
+  margin-right: 8px;
+  font-size: 24px;
+  vertical-align: middle;
+  color: #666;
+}
+.checkbox-group label input[type='checkbox']:checked + .label-text:before {
+  content: "\f14a";
+  color: coral;
+  animation: tick 180ms ease-in;
+}
+#rake-add-product .checkbox-group label input[type='checkbox']:checked + .label-text:before {
+  content: "\f0fe";
+}
+.checkbox-group label input[type='checkbox']:before {
+  content: "\f0c8";
+  color: #666;
+}
+@keyframes tick {
+  0% {
+    transform: scale(0);
+  }
+  90% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
   background: #FFCE00;
   color: #111;

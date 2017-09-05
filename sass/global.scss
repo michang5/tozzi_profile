@@ -393,6 +393,80 @@ a.btn.btn-fb {
     cursor: inherit;
     display: block;
 }
+.checkbox {
+    a {
+        padding: 0 2px;
+        color: coral!important;
+    }
+}
+.checkbox-group {
+//    &.single-only {
+//        padding: 10px 15px;
+//    }
+    #checkout & {
+        &.head {
+            border-bottom: 1px solid $gray;
+        }
+    }
+    .checkbox {
+        label {
+            padding-left: 0;
+            color: red;
+        }
+    }
+    label {
+        cursor: pointer;
+        font-size: 14px;
+        line-height: 32px;
+        display: block;
+        font-weight: normal;
+        padding-left: 0;
+        input[type='checkbox'] {
+            opacity: 0;
+            position: absolute;
+            left: 20px;
+            +.label-text:before {
+                content: "\f096";
+                font-family: "FontAwesome";
+                speak: none;
+                font-style: normal;
+                font-weight: normal;
+                font-variant: normal;
+                text-transform: none;
+                font-smoothing: antialiased;
+                width: 20px;
+                display: inline-block;
+                margin-right: 8px;
+                font-size: 24px;
+                vertical-align: middle;
+                color: $gray;
+            }
+            &:checked + .label-text:before {
+                content: "\f14a";
+                color: coral;
+                animation: tick 180ms ease-in;
+                #rake-add-product & {
+                    content: "\f0fe";
+                }
+            }
+            &:before {
+                content: "\f0c8";
+                color: $gray;
+            }
+            @keyframes tick {
+                0% {
+                    transform: scale(0);
+                }
+                90% {
+                    transform: scale(1.4);
+                }
+                100% {
+                   transform: scale(1);
+                }
+            }
+        }
+    }
+}
 .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
 	background: $yellow;
 	color: $black;
