@@ -190,9 +190,14 @@ ul, li {
 }
 p.note {
     font-size: 12px;
+    
 }
 .note {
     color: darkred;
+    .crowd-plan & {
+        color: crimson;
+        font-size: 12px;
+    }
 }
 a.btn.btn-fb {
 	display: block;

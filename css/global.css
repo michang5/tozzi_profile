@@ -203,6 +203,10 @@ p.note {
 .note {
   color: darkred;
 }
+.crowd-plan .note {
+  color: crimson;
+  font-size: 12px;
+}
 
 a.btn.btn-fb {
   display: block;
