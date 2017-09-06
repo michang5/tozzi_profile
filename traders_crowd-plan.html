@@ -218,7 +218,7 @@
                     <div class="form-group">
                         <label class="control-label col-sm-2 col-xs-3" for="file">身分證</label>
                         <div class="col-sm-10 col-xs-9">
-                            <label class="btn btn-file">上傳身分證正反面影本
+                            <label class="btn-file">
                             <input id="file" name="file" type="file" required></label>
                             <small id="fileHelp" class="form-text text-muted">作為發放獎金用，務必拍照或掃描上傳</small>
                         </div>
@@ -232,7 +232,7 @@
                                   <label>
                                     <input type="checkbox" name="free-shipping" required/>
                                     <span class="label-text">
-                                      同意<a href="#">個資蒐集告知聲明</a>以及<a href="">優等懸賞廣告聲明</a>
+                                      同意<a data-toggle="modal" data-target="#event-statement">個人資料蒐集告知書</a>以及<a data-toggle="modal" data-target="#info-collect-statement">百人百萬領投計畫」活動聲明</a>
                                     </span>
                                   </label>
                                 </div>
@@ -251,7 +251,7 @@
         </div>
     </div>
    
-    <div id="section-4">
+    <div id="section-4" style="display: none">
         <!--資金報酬曲線圖-->
 		<div class="container">
 			<h2>資金報酬曲線圖</h2>
@@ -261,7 +261,7 @@
 	</div>
    
     <!--賽程動態 交易解說 市場觀察-->
-	<div id="section-5" v-if="reports.length || Object.keys(markets).length">
+	<div id="section-5" v-if="reports.length || Object.keys(markets).length" style="display: none">
         <div class="container">
             <h2>每週市場觀察</h2>
 <!--
@@ -289,7 +289,7 @@
     </div>
    
     <!--交易紀錄-->
-	<div id="section-6" v-if="records.length">
+	<div id="section-6" v-if="records.length" style="display: none">
 		<div class="container">
 			<h2>交易紀錄</h2>
 			<div class="tab-container">
@@ -322,7 +322,7 @@
 	</div>
 
     <!--來自選手的評價-->
-	<div id="section-7-5" v-if="comments5.length">
+	<div id="section-7-5" v-if="comments5.length" style="display: none">
 		<div class="container">
 			<h2>來自選手的評價：5/15~6/16</h2>
 			<div class="col-md-6" v-for="comment in comments5">
@@ -338,7 +338,7 @@
 		</div>
 	</div>
 
-	<div id="section-7-5" v-if="comments6.length">
+	<div id="section-7-5" v-if="comments6.length" style="display: none">
 		<div class="container">
 			<h2>來自選手的評價：6/17～7/14</h2>
 			<div class="col-md-6" v-for="comment in comments6">
@@ -362,6 +362,48 @@
 		</div>
 	</div>
 
+	<div id="event-statement" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div type="button" class="close" data-dismiss="modal"></div>
+				<div class="modal-body">
+					<p>揪探吉股份有限公司（下稱「TOZZI」）舉辦的「百人百萬領投計畫」（下稱「本活動」），是依民法第165-1條至第165-4條優等懸賞廣告之規定辦理，當您按下投票鍵送出您的投票時，即代表您已瞭解並同意下列法律規定之事項：</p>
+					<ul class="statement">
+					    <li>當您依本活動規則完成投票，並於本活動指定期間內送出您的投票結果給TOZZI，且在本活動期間截止後10個工作日內，經評定為優等之人（當您投的TOZZI選手最終獲得正報酬，您才會被評定為優等），TOZZI將依本活動規則之說明發給報酬（也就是因為您精準專業的眼光而提供給您的「伯樂獎金」）。</li>
+					    <li>第1點所述優等之評定，將由TOZZI依本活動規則為之。TOZZI所為之評定，對於TOZZI及應徵人（也就是來投票的您啦），均有拘束力。</li>
+					    <li>若最終被評定為優等之人有數人同等時，依本活動規則說明之計算方式，共同取得報酬請求權。 </li>
+					    <li>其他注意事項：
+					        <ul>
+					            <li>您依本活動規則經評定為優等之人，而取得相關報酬時，將由TOZZI依法扣繳相關稅賦後給付。</li>
+					            <li>您依本活動規則經評定為優等之人後，須配合 TOZZI 指定之方式領取報酬。</li>
+					            <li>您須配合 TOZZI 進行投票人身份之查核（如：提供身份證等證件）。</li>
+					            <li>TOZZI具有補充與調整本活動規則之權利。</li>
+					        </ul>
+					    </li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="info-collect-statement" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div type="button" class="close" data-dismiss="modal"></div>
+				<div class="modal-body">
+                    <p>揪探吉股份有限公司（下稱「TOZZI」）取得您提供的個人資料之目的，是為辦理投資理財活動、確認身分、投票紀錄檢核、獎金發放、產品企劃研究、存款與匯款、投資管理、契約、類似契約或其他法律關係事務、消費者、客戶管理與服務、消費者保護、財產管理、財稅行政、會計與相關服務、商業與技術資訊、資（通）訊服務、資（通）訊與資料庫管理、廣告或商業行為管理、調查、統計與研究分析、其他經營合於營業登記項目或組織章程所定之業務、其他諮詢與顧問服務，及提供您前述活動（下稱「本活動」）及其他類似活動之相關訊息。TOZZI將依您提供個人資料之目的，以符合法令之自動化及人工方式蒐集、處理、利用您的各類資料，於取得您的書面同意前，絕不會將您的個人資料進行超乎上述目的之使用。</p>
+                    <p>您於報名、投票及參與本活動過程中提供給TOZZI的資料，包括但不限於：姓名、行動電話、住家電話號碼、網路平臺申請之帳號、財務交易、年齡、性別、相片、身分證統一編號、出生年月日、國籍、財產、電子郵遞地址、通訊及戶籍地址、金融機構帳戶之號碼與姓名、未分類之資料，及其他可辨識您本人的資料。 </p>
+                    <p>在上述取得您個人資料目的之存續期間內（包含本活動結束後一定期間），TOZZI將藉由您已提供的上述資料，在上述目的範圍內，提供您相關訊息及其他服務。</p>
+                    <p>TOZZI將恪遵個人資料保護相關法規，密切依循法規資訊安全的執行要領，於中華民國領域內蒐集、處理、利用您的個人資料，並依本活動需求，公開您的投票紀錄與結果於TOZZI網站上，以供本活動相關參與者檢驗活動資料之正確性與公平性。您的個人資料將僅限TOZZI於提供您服務或本活動訊息時使用，除法律另有規定或經過您事前書面同意外，TOZZI絕不會向任何其他第三人揭露或供其使用。</p>
+                    <p>您可以自由選擇是否提供您上述個人資料，但您選擇不提供或不完全提供時，TOZZI將可能無法接受您參與本活動或提供您各種獎金。</p>
+                    <p>如公務機關因法規及公共利益，要求TOZZI提供您的特定個人資料時，TOZZI將依公務機關合法正式的程序，做可能必要的配合。</p>
+                    <p>依個人資料保護法的規定，您可向TOZZI提出下列要求：查詢或請求閱覽您的個人資料、請求提供您的個人資料複製本、請求補充或更正您的個人資料、請求停止蒐集、處理或利用您的個人資料、請求刪除您的個人資料。</p>
+                    <p>綜上，TOZZI將秉持對您個人資料保護的重視，依法律及上述原則蒐集、處理、利用您的個人資料，如您對我們有任何指教或要行使前述權利，請將您的需求郵寄到TOZZI的電子郵件信箱<a href="mailto:contact@tozzi.com.tw">contact@tozzi.com.tw</a>。</p>
+                    <p>當您按下投票鍵送出您的投票結果時，即代表您已閱讀且瞭解上述資訊，並同意揪探吉股份有限公司蒐集、處理、利用您提供的個人資料。</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 	<div id="modal-statement" class="modal fade" role="dialog">
 		<div class="modal-dialog">
 

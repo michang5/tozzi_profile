@@ -257,7 +257,6 @@ a.btn.btn-fb {
 }
 
 .modal-content {
-  width: 90%;
   margin: 0 auto;
 }
 .modal-content img {
@@ -304,33 +303,10 @@ body.crowd-plan .btn-default:hover, body.crowd-plan .btn-default:active, body.cr
   background-color: #F57C23;
 }
 
-.btn-file {
-  position: relative;
-  overflow: hidden;
-}
-body.crowd-plan .btn-file {
-  background: #fff;
-  border: 1px solid coral;
-  color: coral;
-}
-.btn-file input {
-  display: none;
-}
-
-.btn-file input[type=file] {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 166px;
+.vote label.btn-file {
+  line-height: 1;
+  padding: 10px 0;
   height: 50px;
-  font-size: 100px;
-  text-align: right;
-  filter: alpha(opacity=0);
-  opacity: 0;
-  outline: none;
-  background: white;
-  cursor: inherit;
-  display: block;
 }
 
 .checkbox a {
@@ -1834,9 +1810,30 @@ body.season3 .market-article .row {
   line-height: 30px;
 }
 
+.text-muted {
+  display: block;
+  margin-top: -10px;
+}
 @media only screen and (max-width: 480px) {
   .text-muted {
     display: block;
     margin-top: 10px;
   }
+}
+
+.statement {
+  padding-left: 30px;
+}
+.statement > li {
+  list-style: decimal;
+}
+.statement > li ul {
+  padding-left: 30px;
+}
+.statement > li ul li {
+  list-style: lower-alpha;
+}
+
+#event-statement .modal-content, #info-collect-statement .modal-content {
+  padding: 40px 20px;
 }
