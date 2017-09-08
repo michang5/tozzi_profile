@@ -53,7 +53,7 @@
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
 </head>
-<body id="traders" class="crowd-plan">
+<body id="traders" class="traders-crowd-plan">
 	<div id="vue">
 	<!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navigation">
@@ -126,6 +126,10 @@
                         <a v-if="facebook" class="btn btn-fb player" :href="facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                         <a v-if="interview" class="btn btn-interview" :href="interview">獨家專訪</a>
                     </h4>
+                    <div class="results">
+                       <span>得票數<span>0</span>票</span>
+                       <span>相當於<span>00</span>元</span>
+                    </div>
                     <p v-html="strategy"></p>
                     <div class="history" v-if="">
                         <div class="row">

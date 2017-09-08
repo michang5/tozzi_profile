@@ -2147,3 +2147,33 @@ body.season2 #section-4 {
         
     }
 }
+.results {
+    padding: 4px 6px;
+    
+    p {
+        font-size: 15px;
+        text-align: center;
+        span {
+            color: coral;
+            padding: 0 3px;
+        }
+    }
+    .traders-crowd-plan & {
+        background: #f6f6f6;
+    }
+    > span {
+        font-size: 15px;
+        text-align: center;
+        padding-right: 8px;
+        > span {
+            color: coral;
+            padding: 0 3px;
+        }
+       
+    }
+     @include respond-to (normal-mobile){
+        .traders-crowd-plan & {
+            text-align: center;
+         }
+    }
+}

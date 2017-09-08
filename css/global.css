@@ -1837,3 +1837,32 @@ body.season3 .market-article .row {
 #event-statement .modal-content, #info-collect-statement .modal-content {
   padding: 40px 20px;
 }
+
+.results {
+  padding: 4px 6px;
+}
+.results p {
+  font-size: 15px;
+  text-align: center;
+}
+.results p span {
+  color: coral;
+  padding: 0 3px;
+}
+.traders-crowd-plan .results {
+  background: #f6f6f6;
+}
+.results > span {
+  font-size: 15px;
+  text-align: center;
+  padding-right: 8px;
+}
+.results > span > span {
+  color: coral;
+  padding: 0 3px;
+}
+@media only screen and (max-width: 480px) {
+  .traders-crowd-plan .results {
+    text-align: center;
+  }
+}

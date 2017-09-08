@@ -108,6 +108,10 @@
             <div class="crowd-list row" v-for="t in traders">
                 <img :src="t.image" class="img-circle img-responsive" alt="">
                 <div class="col-sm-12">
+                    <div class="results">
+                       <p>得票數<span>0</span>票</p>
+                       <p>相當於<span>00</span>元</p>
+                    </div>
                     <div class="history">
                         <div class="history-list" v-if="t.season1.length" v-for="s in t.season1">
                             <h6>第一季</h6>
