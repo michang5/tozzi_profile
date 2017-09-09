@@ -126,8 +126,8 @@
                         <a v-if="interview" class="btn btn-interview" :href="interview">獨家專訪</a>
                     </h4>
                     <div class="results">
-                       <span>得票數<span>0</span>票</span>
-                       <span>相當於<span>00</span>元</span>
+                       <span>得票數<span v-text="count"></span>票</span>
+                       <span>相當於<span v-text="count * 10000"></span>元</span>
                     </div>
                     <p v-html="strategy"></p>
                     <div class="history" v-if="">
@@ -477,6 +477,7 @@ var data = {
   price: {},
   history: [],
   markets: [],
+  count: 0,
 };
 
 ///data
