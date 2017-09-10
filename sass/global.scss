@@ -2152,7 +2152,7 @@ body.season2 #section-4 {
     
     p {
         font-size: 15px;
-        text-align: center;
+        font-size: 15px;
         span {
             color: coral;
             padding: 0 3px;
@@ -2174,6 +2174,9 @@ body.season2 #section-4 {
      @include respond-to (normal-mobile){
         .traders-crowd-plan & {
             text-align: center;
+         }
+         p {
+             text-align: center;
          }
     }
 }

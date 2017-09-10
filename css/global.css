@@ -1843,7 +1843,7 @@ body.season3 .market-article .row {
 }
 .results p {
   font-size: 15px;
-  text-align: center;
+  font-size: 15px;
 }
 .results p span {
   color: coral;
@@ -1863,6 +1863,9 @@ body.season3 .market-article .row {
 }
 @media only screen and (max-width: 480px) {
   .traders-crowd-plan .results {
+    text-align: center;
+  }
+  .results p {
     text-align: center;
   }
 }
