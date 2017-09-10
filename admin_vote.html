@@ -23,6 +23,7 @@
 			<th>時間</th>
 			<th>對象</th>
 			<th>序號</th>
+			<th>正確</th>
 			<th>理由</th>
 			<th>姓名</th>
 			<th>電話</th>
@@ -37,6 +38,7 @@
 			<td v-text="format(v.date)"></td>
 			<td v-text="trader[v.id].name"></td>
 			<td v-text="v.serial"></td>
+			<td v-text="valid(v.serial)"></td>
 			<td v-text="v.reason"></td>
 			<td v-text="v.name"></td>
 			<td v-text="v.phone"></td>
@@ -56,6 +58,7 @@ var data = {
 	idx: 0,
 	key: '',
 	page: 0,
+	season3: {},
 	votes: [],
 	trader: {},
 };
@@ -65,6 +68,9 @@ var data = {
 var vue = new Vue({el: '#vue', data: data, methods: {
 	format: function (date) {
 		return moment(date).format('YYYY/MM/DD HH:mm:ss');
+	},
+	valid: function (serial) {
+		return (this.season3.serial.indexOf(serial) > -1)? '正確': '錯誤';
 	},
 	blur: function (e) {
 		console.log('BLUR', e);
