@@ -267,7 +267,7 @@
     <!--賽程動態 交易解說 市場觀察-->
 	<div id="section-5" v-if="reports.length || Object.keys(markets).length">
         <div class="container">
-            <h2>每週市場觀察</h2>
+            <h2>賽程動態</h2>
             <div class="row expound" v-if="reports.length">
                 <h3><span>交易解說</span></h3>
                 <div class="col-sm-8 col-sm-offset-2">
@@ -279,7 +279,7 @@
                 </div>
             </div>
             <div class="row" v-if="markets.length">
-<!--                <h3><span>每週市場觀察</span></h3>-->
+                <h3><span>每週市場觀察</span></h3>
                 <div class="col-sm-8 col-sm-offset-2" v-for="m in markets">
                     <div class="market-list">
                         <span class="date" v-text="m.date"></span>
