@@ -1493,10 +1493,12 @@ body.crowd-plan#traders #section-2  {
     .history-list {
         font-size: 17px;
         line-height: 1.9;
+        padding: 0;
 //        margin-top: 20px;
         
     }
     .results {
+        text-align: left;
         span {
             display: block;
         }
@@ -2076,7 +2078,7 @@ body.season2 #section-4 {
     text-align: center;
 }
 .crowd-list {
-    width: 20%;
+    width: 33.3%;
     display: inline-block;
     vertical-align: top;
 //    float: left;
@@ -2105,9 +2107,9 @@ body.season2 #section-4 {
         }
         font-size: 14px;
     }
-    @media screen and (max-width: 992px) {
-        width: 25%;
-    }
+//    @media screen and (max-width: 992px) {
+//        width: 33.3%;
+//    }
     @include respond-to (only-mobile){
         width: 50%;
     }
@@ -2148,7 +2150,7 @@ body.season2 #section-4 {
     }
 }
 .results {
-    padding: 4px 6px;
+    padding: 4px 0;
     
     p {
         font-size: 15px;
@@ -2163,7 +2165,7 @@ body.season2 #section-4 {
     }
     > span {
         font-size: 15px;
-        text-align: center;
+//        text-align: center;
         padding-right: 8px;
         > span {
             color: coral;

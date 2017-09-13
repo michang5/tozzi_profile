@@ -1290,6 +1290,10 @@ body.season3 #section-2 h2, body.season3 #section-2-5 h2, body.season3 #section-
 .history .history-list {
   font-size: 17px;
   line-height: 1.9;
+  padding: 0;
+}
+.history .results {
+  text-align: left;
 }
 .history .results span {
   display: block;
@@ -1762,7 +1766,7 @@ body.season3 .market-article .row {
 }
 
 .crowd-list {
-  width: 20%;
+  width: 33.3%;
   display: inline-block;
   vertical-align: top;
 }
@@ -1790,11 +1794,6 @@ body.season3 .market-article .row {
 }
 .crowd-list .history-list h6 {
   font-size: 16px;
-}
-@media screen and (max-width: 992px) {
-  .crowd-list {
-    width: 25%;
-  }
 }
 @media only screen and (max-width: 767px) {
   .crowd-list {
@@ -1839,7 +1838,7 @@ body.season3 .market-article .row {
 }
 
 .results {
-  padding: 4px 6px;
+  padding: 4px 0;
 }
 .results p {
   font-size: 15px;
@@ -1854,7 +1853,6 @@ body.season3 .market-article .row {
 }
 .results > span {
   font-size: 15px;
-  text-align: center;
   padding-right: 8px;
 }
 .results > span > span {
