@@ -29,7 +29,8 @@
 	<script src="https://www.amcharts.com/lib/3/serial.js"></script>
 	<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
 	<link href="css/chart.css" rel="stylesheet">
-
+	<script src="js/top3.js"></script>
+    
 	<!--vue-->
 	<script src="https://unpkg.com/vue/dist/vue.js"></script>
 
@@ -139,7 +140,7 @@
         </div>
 	</div>
 	<!--投報率曲線圖+週排行-->
-	<div id="section-3" style="display: none">
+	<div id="section-3">
 		<div class="container">
 			<div class="chart-top3" v-if="points.length">
 				<h2>所有選手投報率曲線圖</h2>
@@ -245,6 +246,7 @@ var vue = new Vue({el: '#vue', data: data, methods: {
         location.href='traders_crowd-plan.html?id='+id;
     }
 }});
+top3(data);
 
 </script>
 <script>
