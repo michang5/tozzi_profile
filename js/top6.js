@@ -108,9 +108,9 @@ AmCharts.makeChart( "chartdiv", {
     "title": data.name3,
     "valueField": "no3",
     "dashLengthField": "dashLengthLine"
-  }/*, {
+  }, {
     "valueAxis": "percent",
-    "balloonText": "<span style='font-size:12px;'>[[date]]" + data.name4 + ":<br><span style='font-size:20px;'>[[no2]]%</span> [[additional]]</span>",
+    "balloonText": "<span style='font-size:12px;'>[[date]]" + data.name4 + ":<br><span style='font-size:20px;'>[[no4]]%</span> [[additional]]</span>",
     "bullet": "round",
     "lineThickness": 3,
     "bulletSize": 7,
@@ -122,11 +122,11 @@ AmCharts.makeChart( "chartdiv", {
     "lineAlpha": 1,
     "lineColor": "#FF00FF",
     "title": data.name4,
-    "valueField": "no2",
+    "valueField": "no4",
     "dashLengthField": "dashLengthLine"
-  }, {
+  }/*, {
     "valueAxis": "percent",
-    "balloonText": "<span style='font-size:12px;'>[[date]]" + data.name5 + ":<br><span style='font-size:20px;'>[[no2]]%</span> [[additional]]</span>",
+    "balloonText": "<span style='font-size:12px;'>[[date]]" + data.name5 + ":<br><span style='font-size:20px;'>[[no5]]%</span> [[additional]]</span>",
     "bullet": "round",
     "lineThickness": 3,
     "bulletSize": 7,
@@ -138,7 +138,7 @@ AmCharts.makeChart( "chartdiv", {
     "lineAlpha": 1,
     "lineColor": "#FFFF00",
     "title": data.name5,
-    "valueField": "no2",
+    "valueField": "no5",
     "dashLengthField": "dashLengthLine"
   }*/ ],
   "dataDateFormat": "MM/DD",
