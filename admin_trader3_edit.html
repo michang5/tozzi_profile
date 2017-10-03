@@ -108,6 +108,7 @@
     <span class="nowrap">股數：<el-input v-model.number="records[i].share" style="width: 120px"></el-input></span>
     <span class="nowrap">價錢：<el-input v-model.number="records[i].price" style="width: 120px"></el-input></span>
     <span class="nowrap">總價：<el-input v-model.number="records[i].total" style="width: 120px"></el-input></span>
+    <span class="nowrap">排序：<el-input v-model.number="records[i].order" style="width: 120px"></el-input></span>
   </div>
   <el-button @click="records.push({date: '', name: '', type: '', share: 0, price: 0, total: 0})" icon="plus">新增</el-button>
 </div>
