@@ -124,7 +124,7 @@ AmCharts.makeChart( "chartdiv", {
     "title": data.name4,
     "valueField": "no4",
     "dashLengthField": "dashLengthLine"
-  }/*, {
+  }, {
     "valueAxis": "percent",
     "balloonText": "<span style='font-size:12px;'>[[date]]" + data.name5 + ":<br><span style='font-size:20px;'>[[no5]]%</span> [[additional]]</span>",
     "bullet": "round",
@@ -140,7 +140,7 @@ AmCharts.makeChart( "chartdiv", {
     "title": data.name5,
     "valueField": "no5",
     "dashLengthField": "dashLengthLine"
-  }*/ ],
+  } ],
   "dataDateFormat": "MM/DD",
   "categoryField": "date",
   "categoryAxis": {
