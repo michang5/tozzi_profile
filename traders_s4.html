@@ -29,7 +29,7 @@
 	<script src="https://www.amcharts.com/lib/3/serial.js"></script>
 	<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
 	<link href="css/chart.css" rel="stylesheet">
-	<script src="js/chart3.js"></script>
+	<script src="js/chart2.js"></script>
 
 	<!--vue-->
 	<script src="https://unpkg.com/vue/dist/vue.js"></script>
@@ -53,45 +53,53 @@
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
 </head>
-<body id="traders" class="crowd-plan">
+<body id="traders" class="season4">
 	<div id="vue">
-	<!-- Navigation -->
+    <!-- Navigation -->
     <header class="navbar-fixed-top">
         <div class="container">
             <h2 class="logo"><a href="index.html"><img src="images/tozzi_logo_new.png" alt="TOZZI"></a></h2>
             <h2 class="logo-s"><a href="index.html"><img src="images/tozzi_logo_s.png" alt="TOZZI"></a></h2>
             <ul class="right-nav">
-                <li><a href="crowd-plan.html">實況</a></li>
+                <li><a href="index_s4.html">實況</a></li>
                 <li class="dropdown avatar-menu">
                     <a class="dropdown-toggle" data-toggle="dropdown">選手</a>
                     <ul class="dropdown-menu">
                         <div class="container">
                             <div class="row">
                                 <li class="col-xs-3">
-                                    <a href="http://tozzi.com.tw/traders_crowd-plan.html?id=19"><img src="images/trader_s2_1.jpg" class="img-responsive" alt="塔塔相談">
-                                    <span>塔塔相談</span></a>
+                                    <a href="#"><img src="images/profile_photo.png" class="img-responsive" alt="選手名">
+                                    <span>選手名</span></a>
                                 </li>
                                 <li class="col-xs-3">
-                                    <a href="http://tozzi.com.tw/traders_crowd-plan.html?id=8"><img src="images/trader_s1_3.jpg" class="img-responsive" alt="張靜玉">
-                                    <span>張靜玉</span></a>
+                                    <a href="#"><img src="images/profile_photo.png" class="img-responsive" alt="選手名">
+                                    <span>選手名</span></a>
                                 </li>
                                 <li class="col-xs-3">
-                                    <a href="http://tozzi.com.tw/traders_crowd-plan.html?id=10"><img src="images/trader_s2_4.jpg" class="img-responsive" alt="陳詠聖">
-                                    <span>陳詠聖</span></a>
+                                    <a href="#"><img src="images/profile_photo.png" class="img-responsive" alt="選手名">
+                                    <span>選手名</span></a>
                                 </li>
                                 <li class="col-xs-3">
-                                    <a href="http://tozzi.com.tw/traders_crowd-plan.html?id=11"><img src="images/profile_photo.png" class="img-responsive" alt="楊皓宇">
-                                    <span>楊皓宇</span></a>
+                                    <a href="#"><img src="images/profile_photo.png" class="img-responsive" alt="選手名">
+                                    <span>選手名</span></a>
                                 </li>
                             </div>
                             <div class="row">
                                 <li class="col-xs-3">
-                                    <a href="http://tozzi.com.tw/traders_crowd-plan.html?id=14"><img src="images/profile_photo.png" class="img-responsive" alt="洪子涵">
-                                    <span>洪子涵</span></a>
+                                    <a href="#"><img src="images/profile_photo.png" class="img-responsive" alt="選手名">
+                                    <span>選手名</span></a>
                                 </li>
                                 <li class="col-xs-3">
-                                    <a href="http://tozzi.com.tw/traders_crowd-plan.html?id=4"><img src="images/trader_s1_1.jpg" class="img-responsive" alt="李效寬">
-                                    <span>李效寬</span></a>
+                                    <a href="#"><img src="images/profile_photo.png" class="img-responsive" alt="選手名">
+                                    <span>選手名</span></a>
+                                </li>
+                                <li class="col-xs-3">
+                                    <a href="#"><img src="images/profile_photo.png" class="img-responsive" alt="選手名">
+                                    <span>選手名</span></a>
+                                </li>
+                                <li class="col-xs-3">
+                                    <a href="#"><img src="images/profile_photo.png" class="img-responsive" alt="選手名">
+                                    <span>選手名</span></a>
                                 </li>
                             </div>
                         </div>
@@ -135,32 +143,18 @@
             </ul>
         </div>
     </header>
-    <div id="section-1">
+    <!-- /.Navigation -->
+	<div id="section-1">
 		<div class="container-fluid">
 		    <div class="container">
-		        <h1>百人百萬領投計畫</h1>
-                <h2>第一季</h2>
+		        <h1>台股投資實戰賽</h1>
+                <h2>第四季</h2>
 		    </div>
-		</div>
-	</div>
-
-	<div id="section-2">
-		<div class="container">
-			<div class="content">
-				<div class="slider">
-					<div v-for="trader in traders">
-						<a :href="'?id=' + trader.id">
-							<img :src="trader.image" alt="" :title="trader.name" :class="{active: trader.id == id}">
-							<span v-text="trader.name"></span>
-						</a>
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
 	
 	<!--選手介紹 歷史參賽紀錄-->
-    <div id="section-3">    
+	<div id="section-3">    
 		<div class="container">
 		    <div class="row">
 		        <div class="col-xs-12 col-sm-3 text-center">
@@ -168,40 +162,25 @@
                    <div class="trader-photo" :style="'background-image: url(' + image + ')'">
                        <span class="retire" style="display: none" :style="{display: (id == 20)? 'block': 'none'}">7/12起退賽</span>
                    </div>
-<!--                    <img :src="image" alt="" class="img-responsive img-circle">-->
                 </div>
                 <div class="col-xs-12 col-sm-9">
                     <h4><span v-text="name"></span>
                         <a v-if="facebook" class="btn btn-fb player" :href="facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                         <a v-if="interview" class="btn btn-interview" :href="interview">獨家專訪</a>
                     </h4>
-                    <div class="results">
-                       <span>得票數<span v-text="count"></span>票</span>
-                       <span>相當於<span v-text="count * 10000"></span>元</span>
-                    </div>
                     <p v-html="strategy"></p>
-                    <div class="history" v-if="">
+                    <div class="history" v-if="history.length">
                         <div class="row">
                             <h4><span>歷史參賽紀錄</span><span><img src="images/icon_ranking.png" alt=""></span></h4>
-                            <div class="history-list col-xs-6" v-for="s in season1">
+                            <div class="history-list col-xs-6">
                                 <h6>第一季</h6>
-                                <div class="results">
+                                <div class="results" v-for="s in history">
                                     <span v-text="s.prize + '獎第 ' + s.rank + ' 名'"></span>
                                     <span v-text="'選手互評平均分：' + s.average"></span>
                                     <span v-text="'投報率：' + s.rate"></span>
                                     <span v-text="'總得分：' + s.score"></span>
                                 </div>
                                 <span class="more"><a :href="'traders_s1.html?id=' + id">看更多</a></span>
-                            </div>
-                            <div class="history-list col-xs-6" v-for="s in season2">
-                                <h6>第二季</h6>
-                                <div class="results">
-                                    <span v-text="s.prize + '獎第 ' + s.rank + ' 名'"></span>
-                                    <span v-text="'選手互評平均分：' + s.average"></span>
-                                    <span v-text="'投報率：' + s.rate"></span>
-                                    <span v-text="'總得分：' + s.score"></span>
-                                </div>
-                                <span class="more"><a :href="'traders_s2.html?id=' + id">看更多</a></span>
                             </div>
                         </div>
                     </div>
@@ -210,104 +189,7 @@
 
 		</div>
 	</div>
-
-    <!--投票給選手-->
-<!--
-    <div id="section-3-5">
-        <div class="container">
-            <h2>投票給選手</h2>
-            <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
-                <form action="/vote" method="post" enctype="multipart/form-data" class="form-horizontal vote">
-                    <input type="hidden" id="id" name="id" :value="id">
-                    <div class="form-group">
-                        <label class="control-label col-sm-2 col-xs-3" for="serial">序號</label>
-                        <div class="col-sm-10 col-xs-9">
-                            <input type="text" class="form-control" id="serial" name="serial" placeholder="請輸入序號" onfocus="this.placeholder = ''" onblur="this.placeholder = '請輸入序號'" required>
-                            <span class="note">請再次確認序號的正確性，以免影響您的權益</span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2 col-xs-3" for="reason">原因</label>
-                        <div class="col-sm-10 col-xs-9">
-                            <textarea class="form-control" rows="3" id="reason" name="reason" placeholder="請簡述原因" onfocus="this.placeholder = ''" onblur="this.placeholder = '請簡述原因'" required>
-                            </textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2 col-xs-3" for="name">姓名</label>
-                        <div class="col-sm-10 col-xs-9">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="請填寫真實姓名" onfocus="this.placeholder = ''" onblur="this.placeholder = '請填寫真實姓名'" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2 col-xs-3" for="phone">聯絡電話</label>
-                        <div class="col-sm-10 col-xs-9">
-                            <input type="text" class="form-control" id="phone" name="phone" placeholder="請填寫聯絡電話" onfocus="this.placeholder = ''" onblur="this.placeholder = '請填寫聯絡電話'" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2 col-xs-3" for="facebook">FB帳號</label>
-                        <div class="col-sm-10 col-xs-9">
-                            <input type="text" class="form-control" id="facebook" name="facebook" placeholder="請填寫FB帳號" onfocus="this.placeholder = ''" onblur="this.placeholder = '請填寫FB帳號'" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2 col-xs-3" for="experience">股票操作資歷</label>
-                        <div class="col-sm-8 col-xs-8">
-                            <input type="text" class="form-control" id="experience" name="experience" placeholder="股票操作資歷（年為單位）" onfocus="this.placeholder = ''" onblur="this.placeholder = '股票操作資歷（年為單位）'" required>
-                        </div>
-                        <span class="col-sm-2 col-xs-1">年</span>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2 col-xs-3" for="level">股民等級</label>
-                        <div class="col-sm-10 col-xs-9">
-                            <select class="form-control" id="level" name="level" required>
-                                <option>老師等級</option>
-                                <option>交易員</option>
-                                <option>業餘好手</option>
-                                <option>存股息保守型</option>
-                                <option>菜籃族</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2 col-xs-3" for="file">身分證</label>
-                        <div class="col-sm-10 col-xs-9">
-                            <label class="btn-file">
-                            <input id="file" name="file" type="file" required></label>
-                            <small id="fileHelp" class="form-text text-muted">作為發放獎金用，務必拍照或掃描上傳</small>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group center-block">
-                        <div class="col-sm-2 col-xs-3"></div>
-                        <div class="col-sm-10 col-xs-9">
-                            <div class="checkbox">
-                               <div class="checkbox-group">
-                                  <label>
-                                    <input type="checkbox" name="free-shipping" required/>
-                                    <span class="label-text">
-                                      同意<a data-toggle="modal" data-target="#info-collect-statement">個人資料蒐集告知書</a>以及<a data-toggle="modal" data-target="#event-statement">活動聲明</a>
-                                    </span>
-                                  </label>
-                                </div>
-                                <label></label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group center-block">
-                        <div class="col-sm-2 col-xs-3"></div>
-                        <div class="col-sm-10 col-xs-9">
-                            <button type="submit" class="btn btn-default btn-lg">投票送出</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-   
--->
-    <div id="section-4">
+	<div id="section-4">
         <!--資金報酬曲線圖-->
 		<div class="container">
 			<h2>資金報酬曲線圖</h2>
@@ -315,9 +197,9 @@
 			<div id="chartdiv2" class="stock-chart"></div>
 		</div>
 	</div>
-   
-    <!--賽程動態 交易解說 市場觀察-->
+
 	<div id="section-5" v-if="reports.length || Object.keys(markets).length">
+        <!--賽程動態 交易解說 市場觀察-->
         <div class="container">
             <h2>賽程動態</h2>
             <div class="row expound" v-if="reports.length">
@@ -376,7 +258,7 @@
 	</div>
 
     <!--來自選手的評價-->
-	<div id="section-7-5" v-if="comments5.length" style="display: none">
+	<div id="section-7-5" v-if="comments5.length">
 		<div class="container">
 			<h2>來自選手的評價：5/15~6/16</h2>
 			<div class="col-md-6" v-for="comment in comments5">
@@ -392,7 +274,7 @@
 		</div>
 	</div>
 
-	<div id="section-7-5" v-if="comments6.length" style="display: none">
+	<div id="section-7-5" v-if="comments6.length">
 		<div class="container">
 			<h2>來自選手的評價：6/17～7/14</h2>
 			<div class="col-md-6" v-for="comment in comments6">
@@ -416,48 +298,6 @@
 		</div>
 	</div>
 
-	<div id="event-statement" class="modal fade" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div type="button" class="close" data-dismiss="modal"></div>
-				<div class="modal-body">
-					<p>揪探吉股份有限公司（下稱「TOZZI」）舉辦的「百人百萬領投計畫」（下稱「本活動」），是依民法第165-1條至第165-4條優等懸賞廣告之規定辦理，當您按下投票鍵送出您的投票時，即代表您已瞭解並同意下列法律規定之事項：</p>
-					<ul class="statement">
-					    <li>當您依本活動規則完成投票，並於本活動指定期間內送出您的投票結果給TOZZI，且在本活動期間截止後10個工作日內，經評定為優等之人（當您投的TOZZI選手最終獲得正報酬，您才會被評定為優等），TOZZI將依本活動規則之說明發給報酬（也就是因為您精準專業的眼光而提供給您的「伯樂獎金」）。</li>
-					    <li>第1點所述優等之評定，將由TOZZI依本活動規則為之。TOZZI所為之評定，對於TOZZI及應徵人（也就是來投票的您啦），均有拘束力。</li>
-					    <li>若最終被評定為優等之人有數人同等時，依本活動規則說明之計算方式，共同取得報酬請求權。 </li>
-					    <li>其他注意事項：
-					        <ul>
-					            <li>您依本活動規則經評定為優等之人，而取得相關報酬時，將由TOZZI依法扣繳相關稅賦後給付。</li>
-					            <li>您依本活動規則經評定為優等之人後，須配合 TOZZI 指定之方式領取報酬。</li>
-					            <li>您須配合 TOZZI 進行投票人身份之查核（如：提供身份證等證件）。</li>
-					            <li>TOZZI具有補充與調整本活動規則之權利。</li>
-					        </ul>
-					    </li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div id="info-collect-statement" class="modal fade" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div type="button" class="close" data-dismiss="modal"></div>
-				<div class="modal-body">
-                    <p>揪探吉股份有限公司（下稱「TOZZI」）取得您提供的個人資料之目的，是為辦理投資理財活動、確認身分、投票紀錄檢核、獎金發放、產品企劃研究、存款與匯款、投資管理、契約、類似契約或其他法律關係事務、消費者、客戶管理與服務、消費者保護、財產管理、財稅行政、會計與相關服務、商業與技術資訊、資（通）訊服務、資（通）訊與資料庫管理、廣告或商業行為管理、調查、統計與研究分析、其他經營合於營業登記項目或組織章程所定之業務、其他諮詢與顧問服務，及提供您前述活動（下稱「本活動」）及其他類似活動之相關訊息。TOZZI將依您提供個人資料之目的，以符合法令之自動化及人工方式蒐集、處理、利用您的各類資料，於取得您的書面同意前，絕不會將您的個人資料進行超乎上述目的之使用。</p>
-                    <p>您於報名、投票及參與本活動過程中提供給TOZZI的資料，包括但不限於：姓名、行動電話、住家電話號碼、網路平臺申請之帳號、財務交易、年齡、性別、相片、身分證統一編號、出生年月日、國籍、財產、電子郵遞地址、通訊及戶籍地址、金融機構帳戶之號碼與姓名、未分類之資料，及其他可辨識您本人的資料。 </p>
-                    <p>在上述取得您個人資料目的之存續期間內（包含本活動結束後一定期間），TOZZI將藉由您已提供的上述資料，在上述目的範圍內，提供您相關訊息及其他服務。</p>
-                    <p>TOZZI將恪遵個人資料保護相關法規，密切依循法規資訊安全的執行要領，於中華民國領域內蒐集、處理、利用您的個人資料，並依本活動需求，公開您的投票紀錄與結果於TOZZI網站上，以供本活動相關參與者檢驗活動資料之正確性與公平性。您的個人資料將僅限TOZZI於提供您服務或本活動訊息時使用，除法律另有規定或經過您事前書面同意外，TOZZI絕不會向任何其他第三人揭露或供其使用。</p>
-                    <p>您可以自由選擇是否提供您上述個人資料，但您選擇不提供或不完全提供時，TOZZI將可能無法接受您參與本活動或提供您各種獎金。</p>
-                    <p>如公務機關因法規及公共利益，要求TOZZI提供您的特定個人資料時，TOZZI將依公務機關合法正式的程序，做可能必要的配合。</p>
-                    <p>依個人資料保護法的規定，您可向TOZZI提出下列要求：查詢或請求閱覽您的個人資料、請求提供您的個人資料複製本、請求補充或更正您的個人資料、請求停止蒐集、處理或利用您的個人資料、請求刪除您的個人資料。</p>
-                    <p>綜上，TOZZI將秉持對您個人資料保護的重視，依法律及上述原則蒐集、處理、利用您的個人資料，如您對我們有任何指教或要行使前述權利，請將您的需求郵寄到TOZZI的電子郵件信箱<a href="mailto:contact@tozzi.com.tw">contact@tozzi.com.tw</a>。</p>
-                    <p>當您按下投票鍵送出您的投票結果時，即代表您已閱讀且瞭解上述資訊，並同意揪探吉股份有限公司蒐集、處理、利用您提供的個人資料。</p>
-				</div>
-			</div>
-		</div>
-	</div>
-	
 	<div id="modal-statement" class="modal fade" role="dialog">
 		<div class="modal-dialog">
 
@@ -527,7 +367,6 @@ var data = {
   price: {},
   history: [],
   markets: [],
-  count: 0,
 };
 
 ///data
