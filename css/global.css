@@ -910,6 +910,7 @@ body.season3 #section-1 h1 {
 }
 body.season4 #section-1 {
   background-image: url("../images/tozzi_banner_s4.jpg");
+  background-position: top;
 }
 body.season4 #section-1 h1 {
   color: #fff;
