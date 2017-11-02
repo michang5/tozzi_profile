@@ -967,7 +967,7 @@ a.btn.btn-fb {
                 &.open {
                     position: static;
                     .dropdown-menu {
-                        overflow: scroll;
+//                        overflow-y: scroll;
                         height: auto;
                         max-height: 680px;
                         top: 50px;
@@ -1043,6 +1043,7 @@ a.btn.btn-fb {
                     &.open {
                         .dropdown-menu {
                             padding: 30px;
+                            overflow-y: scroll;
                         }
                     }
                     li {
@@ -1135,6 +1136,41 @@ a.btn.btn-fb {
                 height: 38px;
                 padding-top: 8px;
             }
+        }
+    }
+}
+.all {
+    .wrapper {
+        min-height: 100%;
+        position: relative;
+    }
+    footer {
+        margin-top: -100px;
+    }
+    #section-0 {
+        padding-bottom: 100px;
+        img[alt="TOZZI"] {
+            position: absolute;
+            width: 10%;
+            left: 45%;
+            top: 96px;
+        }
+    }
+}
+#section-0 {
+    padding: 80px 0;
+    height: 100%;
+    img {
+        margin: 30px 0;
+        border-radius: 10px;
+    }
+    .img-wrapper {
+        img {
+            border-radius: 0;
+            float: left;
+            width: 50%;
+            padding: 0;
+            margin: 50px 0;
         }
     }
 }
