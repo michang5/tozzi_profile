@@ -67,7 +67,7 @@
                     <ul class="dropdown-menu">
                         <div class="container">
                             <div class="row">
-                                <li class="col-xs-3" v-for="t in traders">
+                                <li class="col-xs-3" v-for="(t,i) in traders" :style="{clear: (i%4 == 0)? 'both': ''}">
                                     <a :href="'traders_s4.html?id=' + t.id"><img :src="t.image" class="img-responsive" :alt="t.name">
                                     <span v-text="t.name"></span></a>
                                 </li>
