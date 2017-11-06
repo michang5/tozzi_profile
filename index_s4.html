@@ -157,15 +157,15 @@
                                 <tr v-for="(t, i) in top5">
                                     <td v-text="i + 1"></td>
                                     <td v-text="t.delta" title="以「上週最末交易日」與「上上週最末交易日」收盤後之投報率變化，為排名升降基準。">-</td>
-                                    <td><a :href="'traders_s3.html?id=' + t.id"><img :src="t.trader3.image" :alt="t.trader3.name" class="img-circle"></a></td>
-                                    <td><a :href="'traders_s3.html?id=' + t.id" v-text="t.trader3.name"></a></td>
+                                    <td><a :href="'traders_s4.html?id=' + t.id"><img :src="t.trader.image" :alt="t.trader.name" class="img-circle"></a></td>
+                                    <td><a :href="'traders_s4.html?id=' + t.id" v-text="t.trader.name"></a></td>
                                     <td v-text="t.point.rate + '%'" title="以「上週最末交易日」收盤後之投報率為排名基準。">-</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
 				</div>
-				<button type="button" class="btn btn-default btn-md center-block" id="modify-btn" onclick="location.href='ranking_s3.html';" >前往排行榜</button>
+				<!--button type="button" class="btn btn-default btn-md center-block" id="modify-btn" onclick="location.href='ranking_s4.html';" >前往排行榜</button-->
 			</div>
 		</div>
 	</div>
@@ -178,7 +178,7 @@
                 <div class="row" v-for="m in markets">
                     <div class="col-md-2 col-sm-2  col-md-offset-1">
                         <div class="trader-single">
-                            <a :href="'traders_s3.html?id=' + m.id">
+                            <a :href="'traders_s4.html?id=' + m.id">
                                 <img :src="m.image" class="img-circle" :alt="m.name">
                                 <span v-text="m.name"></span>
                             </a>
