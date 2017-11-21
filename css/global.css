@@ -389,7 +389,7 @@ body.crowd-plan .navbar-default .navbar-collapse, body.crowd-plan .navbar-defaul
 }
 
 .navbar-fixed-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse {
-  max-height: 560px;
+  height: 100vh;
 }
 
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
@@ -700,8 +700,7 @@ body.warrant .navbar-fixed-top .right-nav > li.others > a {
   position: static;
 }
 .navbar-fixed-top .right-nav > li.dropdown.open .dropdown-menu {
-  height: auto;
-  max-height: 680px;
+  height: 100vh;
   top: 50px;
   background-image: -webkit-linear-gradient(to bottom, #FFCE00, #FF9500);
   background-image: -o-linear-gradient(to bottom, #FFCE00, #FF9500);
@@ -761,7 +760,7 @@ body.warrant .navbar-fixed-top .right-nav > li.dropdown.open .dropdown-menu {
   color: #2A2A32;
 }
 .navbar-fixed-top .right-nav > li.dropdown.avatar-menu.open .dropdown-menu {
-  padding: 30px;
+  padding: 30px 30px 60px;
   overflow-y: scroll;
 }
 .navbar-fixed-top .right-nav > li.dropdown.avatar-menu li {
@@ -787,30 +786,12 @@ body.warrant .navbar-fixed-top .right-nav > li.dropdown.open .dropdown-menu {
 .navbar-fixed-top .right-nav > li.dropdown.avatar-menu li a:hover img {
   box-shadow: 0 0 0 5px #fff;
 }
-.navbar-fixed-top .right-nav > li.dropdown.others .dropdown-menu {
-  padding: 16px 0 20px;
-}
 @media screen and (max-width: 480px) {
-  .navbar-fixed-top .right-nav > li.dropdown.avatar-menu.open .dropdown-menu {
-    padding: 10px;
-  }
   .navbar-fixed-top .right-nav > li.dropdown.open .dropdown-menu {
     top: 47px !important;
-    max-height: 620px;
-  }
-}
-@media screen and (max-width: 375px) {
-  .navbar-fixed-top .right-nav > li.dropdown.avatar-menu.open .dropdown-menu {
-    padding: 10px;
-  }
-  .navbar-fixed-top .right-nav > li.dropdown.open .dropdown-menu {
-    max-height: 620px;
   }
 }
 @media only screen and (max-width: 320px) {
-  .navbar-fixed-top .right-nav > li.dropdown.open .dropdown-menu {
-    max-height: 500px;
-  }
   .navbar-fixed-top .right-nav > li.dropdown li {
     font-size: 15px;
   }
@@ -865,13 +846,6 @@ body.warrant .navbar-fixed-top .right-nav > li.dropdown.open .dropdown-menu {
   margin: 30px 0;
   border-radius: 10px;
 }
-#section-0 .img-wrapper img {
-  border-radius: 0;
-  float: left;
-  width: 50%;
-  padding: 0;
-  margin: 50px 0;
-}
 
 #section-1 {
   background: url("../images/tozzi_banner.jpg") no-repeat center center;
@@ -879,6 +853,8 @@ body.warrant .navbar-fixed-top .right-nav > li.dropdown.open .dropdown-menu {
   margin-top: 50px;
   height: auto;
   background-size: cover;
+  padding: 6px;
+  line-height: 1;
 }
 #section-1 .container {
   padding: 20px;
@@ -982,8 +958,6 @@ body.warrant #section-1 h2 {
   background-image: -o-linear-gradient(top, #b90000, #FF4C78);
   background-image: linear-gradient(to bottom, #b90000, #ff4c78);
   width: auto;
-  padding-left: 6px;
-  padding-right: 6px;
 }
 @media only screen and (max-width: 480px) {
   body.warrant #section-1 {
@@ -1604,11 +1578,20 @@ body.crowd-plan .expound-list .statement-list a:hover {
 }
 
 footer {
-  background: #2A2A32;
   text-align: center;
-  font-size: 1.25em;
+}
+footer .partner {
+  padding: 10px 10px 30px;
+  background: #fff;
+}
+footer .partner h5 {
+  color: #2A2A32;
+}
+footer p {
+  line-height: 70px;
+  background: #2A2A32;
+  font-size: 1.125em;
   color: #FFCE00;
-  line-height: 100px;
 }
 .crowd-plan footer {
   background-color: #2A2A32;
