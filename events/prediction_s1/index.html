@@ -272,8 +272,8 @@
                             </div>
                         </div>
                         <div id="analysis"  class="txt-block expandable row">
-                            <input type="checkbox" name="read05" id="read05" />
-                            <label class="more-link" for="read05"> 
+                            <input type="checkbox" name="read03" id="read03" />
+                            <label class="more-link" for="read03"> 
                                 <div class="shown btn">看更多分析</div>
                                 <div class="not-shown">Collapse</div>
                             </label>
@@ -398,8 +398,8 @@
                             </div>
                         </div>
                         <div id="analysis"  class="txt-block expandable row">
-                            <input type="checkbox" name="read04" id="read04" />
-                            <label class="more-link" for="read04"> 
+                            <input type="checkbox" name="read05" id="read05" />
+                            <label class="more-link" for="read05"> 
                                 <div class="shown btn">看更多分析</div>
                                 <div class="not-shown">Collapse</div>
                             </label>
@@ -497,12 +497,12 @@
         $(document).ready(function() {
 
             function toggleSidebar() {
-                $(".button, .close-nav").toggleClass("active");
+                $(".button").toggleClass("active");
                 $("#main").toggleClass("move-to-left");
                 $(".sidebar-item").toggleClass("active");
             }
 
-            $(".button, .close-nav").on("click tap", function() {
+            $(".button").on("click tap", function() {
                 toggleSidebar();
             });
 
@@ -515,17 +515,17 @@
         });
   
         
-        $(document).ready(function() {
-
-            var hidden = false;
-            var outlined = false;
-  
-                $('.button, .close-nav').click(function() {
-                    if(hidden) $('#share').fadeIn();
-                    else $('#share').fadeOut();
-                    hidden = !hidden;
-                });
-        });
+//        $(document).ready(function() {
+//
+//            var hidden = false;
+//            var outlined = false;
+//  
+//                $('.button, .close-nav').click(function() {
+//                    if(hidden) $('#share').fadeIn();
+//                    else $('#share').fadeOut();
+//                    hidden = !hidden;
+//                });
+//        });
     </script>
 
 </body>
