@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+	<meta name="description" content="">
+
+	<!--og info-->
+	<meta property="og:title" content="股感 x Tozzi 實戰擂台 - 2018 新春加賽潛力股預測賽"/>
+	<meta property="og:url" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:site_name" content="股感 x Tozzi 實戰擂台 - 2018 新春加賽潛力股預測賽"/>
+	<meta property="og:description" content="股感 x Tozzi 實戰擂台 - 2018 新春加賽潛力股預測賽">
+
+	<title>股感 x Tozzi 實戰擂台 - 2018 新春加賽潛力股預測賽</title>
+ 
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	
+	<!--css-->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/global.css" rel="stylesheet">
+	<link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lora|Roboto:400,500" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,700" rel="stylesheet">
+
+    <!--vue-->
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+	<!--google-->
+	<meta name="google-site-verification" content="-MLXb98KIXlOE_dmJ18CK9Ynil6NnPMRct9vU1ZYDpg" />
+	<script src="https://use.typekit.net/oem8boq.js"></script>
+	<script>try{Typekit.load({ async: true });}catch(e){}</script>
+	<!--[if lt IE 9]>
+		<script type="text/javascript" src="js/html5shiv.min.js"></script>
+		<script type="text/javascript" src="js/respond.min.js"></script>
+	<![endif]-->
+	<!--GA-->
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=184369558296135";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+</head>
+<body>
+    <div class="nav-right visible-xs">
+        <div class="button" id="btn">
+            <div class="bar top"></div>
+            <div class="bar middle"></div>
+            <div class="bar bottom"></div>
+        </div>
+    </div>
+    <nav>
+        <div class="nav-right hidden-xs">
+            <div class="button" id="btn">
+                <div class="bar top"></div>
+                <div class="bar middle"></div>
+                <div class="bar bottom"></div>
+            </div>
+        </div>
+    </nav>
+    
+    <div id="main">
+        <header>
+            <div class="container-fluid">
+                <img src="images/dishes_h.png" class="dishes-mobile img-responsive" alt="">
+                <img src="images/kv.png" class="key-slogan" alt="">
+                <img src="images/kv_banner.png" class="dishes img-responsive" alt="">
+            </div>
+        </header>
+        <section id="description">
+            <div class="container">
+                <div class="card">
+                    <div class="inner row">
+                        <div class="col-sm-2 col-md-3">
+                            <div><a href="" class="btn btn-info" data-toggle="modal" data-target="#modal-statement">擂台介紹</a></div>
+                        </div>
+                        <div class="col-sm-10 col-md-9">
+                            <p>當關注投資知識分享的股感知識庫，遇上專辦真錢實單交易競賽的 Tozzi 投資擂台，注定了要在丁酉 🐔 年末，端出台灣罕見的實單股票預測賽。隱藏在民間的素人投資高手，選股名單與分析毫不保留一次曝光，而且絕對真錢進場。偷偷說….賽中還有悔棋翻盤的機會喔！</p>
+                            <p>究竟，誰才能夠封關前，<span><span class="big">加菜成功</span>呢！？</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="count-group">
+                    <div class="count-closed">
+                        <div class="count-content">
+                            <span>距封關還有</span>
+                            <span class="dates">12</span>
+                            <span>交易日</span>
+                        </div>
+                    </div>
+                    <div class="count-repentance">
+                        <div class="count-content">
+                            <span>距悔棋還有</span>
+                            <span class="dates">22</span>
+                            <span>交易日</span>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        <section id="maincard-group" class="clearfix">
+            <div class="container-fluid">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="cate-item level-1">
+                            <div class="ribbon"></div>
+                            <div class="cate-img"></div>
+                        </div>
+                        <div class="row header-info">
+                            <div class="trader">
+                                <img src="https://s3-ap-northeast-1.amazonaws.com/tozzi-img/11%E6%A5%8A%E7%9A%93%E5%AE%87s4.jpg" alt="">
+                                <span>楊皓宇</span>
+                            </div>
+                            <div class="stock-info">
+                                <div class="info">
+                                    <div class="rate-of-return">
+                                        <span class="rate"><sup>+</sup>25.6</span>
+                                        <span class="percent">%</span>
+                                    </div>
+                                    <div class="rank-info">
+                                        <span>排名</span>
+                                        <span class="rank">1</span>
+                                        <span class="lift rise">
+                                            <span></span>
+                                            <span>2</span>
+                                        </span>
+
+                                    </div>
+                                </div>
+                                <div class="stock">
+                                    <span class="stock-item">
+                                        <span>選股</span>
+                                        <span>2317鴻海</span>
+                                    </span>
+                                    <span class="price">
+                                        <span>買進價</span>
+                                        <span>104</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="analysis"  class="txt-block expandable row">
+                            <input type="checkbox" name="read01" id="read01" />
+                            <label class="more-link" for="read01"> 
+                                <div class="shown btn">看更多分析</div>
+                                <div class="not-shown">Collapse</div>
+                            </label>
+                            <div class="expand-block">
+                                <h4>預測分析</h4>
+                                <p>權證無交易，看看有什麼機會吧。</p>
+                                <p>本週刺激的下跌對於心臟是強大的考驗，但融資餘額殺的並不夠多，短線還不能期待有強烈反彈。個股營收有好有壞，但大盤回檔造成多數個股都下跌，此時是否有投資價值浮現的公司值得好好研究。下週比特幣期貨將在CBOE上開始交易，虛擬貨幣市場與金融市場的關係將掀起一陣波瀾，無法預測走勢，但的確值得好好關注。</p>
+                                <h4>預測分析</h4>
+                                <p>權證無交易，看看有什麼機會吧。</p>
+                                <p>本週刺激的下跌對於心臟是強大的考驗，但融資餘額殺的並不夠多，短線還不能期待有強烈反彈。個股營收有好有壞，但大盤回檔造成多數個股都下跌，此時是否有投資價值浮現的公司值得好好研究。下週比特幣期貨將在CBOE上開始交易，虛擬貨幣市場與金融市場的關係將掀起一陣波瀾，無法預測走勢，但的確值得好好關注。</p>
+                            </div>
+                        </div>
+                        <div class="history row">
+                            <h5>參賽紀錄</h5>
+                            <p>TOZZI 台股實戰賽第 <a href="#">二</a> / <a href="#">三</a> / <a href="#">四</a> 季</p>
+                            <p>TOZZI x 台新權證實戰賽第<a href="#">一</a>季</p>
+                            <p>TOZZI 百人百萬領投計畫第<a href="#">一</a>季</p>
+                            <div><a href="" class="btn btn-info" data-toggle="modal" data-target="#modal-statement">選手專訪</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="cate-item level-2">
+                            <div class="ribbon"></div>
+                            <div class="cate-img"></div>
+                        </div>
+                        <div class="row header-info">
+                            <div class="trader">
+                                <img src="https://s3-ap-northeast-1.amazonaws.com/tozzi-img/8%E5%BC%B5%E9%9D%9C%E7%8E%89s2.jpg" alt="">
+                                <span>張靜玉</span>
+                            </div>
+                            <div class="stock-info">
+                                <div class="info">
+                                    <div class="rate-of-return">
+                                        <span class="rate"><sup>+</sup>12.6</span>
+                                        <span class="percent">%</span>
+                                    </div>
+                                    <div class="rank-info">
+                                        <span>排名</span>
+                                        <span class="rank">2</span>
+                                        <span class="lift fall">
+                                            <span></span>
+                                            <span>1</span>
+                                        </span>
+
+                                    </div>
+                                </div>
+                                <div class="stock">
+                                    <span class="stock-item">
+                                        <span>選股</span>
+                                        <span>2317鴻海</span>
+                                    </span>
+                                    <span class="price">
+                                        <span>買進價</span>
+                                        <span>104</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="analysis"  class="txt-block expandable row">
+                            <input type="checkbox" name="read02" id="read02" />
+                            <label class="more-link" for="read02"> 
+                                <div class="shown btn">看更多分析</div>
+                                <div class="not-shown">Collapse</div>
+                            </label>
+                            <div class="expand-block">
+                                <h4>預測分析</h4>
+                                <p>權證無交易，看看有什麼機會吧。</p>
+                                <p>本週刺激的下跌對於心臟是強大的考驗，但融資餘額殺的並不夠多，短線還不能期待有強烈反彈。個股營收有好有壞，但大盤回檔造成多數個股都下跌，此時是否有投資價值浮現的公司值得好好研究。下週比特幣期貨將在CBOE上開始交易，虛擬貨幣市場與金融市場的關係將掀起一陣波瀾，無法預測走勢，但的確值得好好關注。</p>
+                                <h4>預測分析</h4>
+                                <p>權證無交易，看看有什麼機會吧。</p>
+                                <p>本週刺激的下跌對於心臟是強大的考驗，但融資餘額殺的並不夠多，短線還不能期待有強烈反彈。個股營收有好有壞，但大盤回檔造成多數個股都下跌，此時是否有投資價值浮現的公司值得好好研究。下週比特幣期貨將在CBOE上開始交易，虛擬貨幣市場與金融市場的關係將掀起一陣波瀾，無法預測走勢，但的確值得好好關注。</p>
+                            </div>
+                        </div>
+                        <div class="history row">
+                            <h5>參賽紀錄</h5>
+                            <p>TOZZI 台股實戰賽第 <a href="#">二</a> / <a href="#">三</a> / <a href="#">四</a> 季</p>
+                            <p>TOZZI x 台新權證實戰賽第<a href="#">一</a>季</p>
+                            <p>TOZZI 百人百萬領投計畫第<a href="#">一</a>季</p>
+                            <div><a href="" class="btn btn-info" data-toggle="modal" data-target="#modal-statement">選手專訪</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="cate-item level-3">
+                            <div class="ribbon"></div>
+                            <div class="cate-img"></div>
+                        </div>
+                        <div class="row header-info">
+                            <div class="trader">
+                                <img src="https://s3-ap-northeast-1.amazonaws.com/tozzi-img/15%E5%AD%AB%E9%8A%98%E5%9D%87s4.jpg" alt="">
+                                <span>孫銘均</span>
+                            </div>
+                            <div class="stock-info">
+                                <div class="info">
+                                    <div class="rate-of-return">
+                                        <span class="rate"><sup>+</sup>9.2</span>
+                                        <span class="percent">%</span>
+                                    </div>
+                                    <div class="rank-info">
+                                        <span>排名</span>
+                                        <span class="rank">3</span>
+                                        <span class="lift rise">
+                                            <span></span>
+                                            <span>1</span>
+                                        </span>
+
+                                    </div>
+                                </div>
+                                <div class="stock">
+                                    <span class="stock-item">
+                                        <span>選股</span>
+                                        <span>2317鴻海</span>
+                                    </span>
+                                    <span class="price">
+                                        <span>買進價</span>
+                                        <span>104</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="analysis"  class="txt-block expandable row">
+                            <input type="checkbox" name="read05" id="read05" />
+                            <label class="more-link" for="read05"> 
+                                <div class="shown btn">看更多分析</div>
+                                <div class="not-shown">Collapse</div>
+                            </label>
+                            <div class="expand-block">
+                                <h4>預測分析</h4>
+                                <p>權證無交易，看看有什麼機會吧。</p>
+                                <p>本週刺激的下跌對於心臟是強大的考驗，但融資餘額殺的並不夠多，短線還不能期待有強烈反彈。個股營收有好有壞，但大盤回檔造成多數個股都下跌，此時是否有投資價值浮現的公司值得好好研究。下週比特幣期貨將在CBOE上開始交易，虛擬貨幣市場與金融市場的關係將掀起一陣波瀾，無法預測走勢，但的確值得好好關注。</p>
+                                <h4>預測分析</h4>
+                                <p>權證無交易，看看有什麼機會吧。</p>
+                                <p>本週刺激的下跌對於心臟是強大的考驗，但融資餘額殺的並不夠多，短線還不能期待有強烈反彈。個股營收有好有壞，但大盤回檔造成多數個股都下跌，此時是否有投資價值浮現的公司值得好好研究。下週比特幣期貨將在CBOE上開始交易，虛擬貨幣市場與金融市場的關係將掀起一陣波瀾，無法預測走勢，但的確值得好好關注。</p>
+                            </div>
+                        </div>
+                        <div class="history row">
+                            <h5>參賽紀錄</h5>
+                            <p>TOZZI 台股實戰賽第 <a href="#">二</a> / <a href="#">三</a> / <a href="#">四</a> 季</p>
+                            <p>TOZZI x 台新權證實戰賽第<a href="#">一</a>季</p>
+                            <p>TOZZI 百人百萬領投計畫第<a href="#">一</a>季</p>
+                            <div><a href="" class="btn btn-info" data-toggle="modal" data-target="#modal-statement">選手專訪</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="cate-item level-4">
+                            <div class="ribbon"></div>
+                            <div class="cate-img"></div>
+                        </div>
+                        <div class="row header-info">
+                            <div class="trader">
+                                <img src="https://s3-ap-northeast-1.amazonaws.com/tozzi-img/27Moore.jpg" alt="">
+                                <span>Moore</span>
+                            </div>
+                            <div class="stock-info">
+                                <div class="info">
+                                    <div class="rate-of-return">
+                                        <span class="rate"><sup>+</sup>9.2</span>
+                                        <span class="percent">%</span>
+                                    </div>
+                                    <div class="rank-info">
+                                        <span>排名</span>
+                                        <span class="rank">4</span>
+                                        <span class="lift stably">
+                                            <span></span>
+                                            <span>0</span>
+                                        </span>
+
+                                    </div>
+                                </div>
+                                <div class="stock">
+                                    <span class="stock-item">
+                                        <span>選股</span>
+                                        <span>2317鴻海</span>
+                                    </span>
+                                    <span class="price">
+                                        <span>買進價</span>
+                                        <span>104</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="analysis"  class="txt-block expandable row">
+                            <input type="checkbox" name="read04" id="read04" />
+                            <label class="more-link" for="read04"> 
+                                <div class="shown btn">看更多分析</div>
+                                <div class="not-shown">Collapse</div>
+                            </label>
+                            <div class="expand-block">
+                                <h4>預測分析</h4>
+                                <p>權證無交易，看看有什麼機會吧。</p>
+                                <p>本週刺激的下跌對於心臟是強大的考驗，但融資餘額殺的並不夠多，短線還不能期待有強烈反彈。個股營收有好有壞，但大盤回檔造成多數個股都下跌，此時是否有投資價值浮現的公司值得好好研究。下週比特幣期貨將在CBOE上開始交易，虛擬貨幣市場與金融市場的關係將掀起一陣波瀾，無法預測走勢，但的確值得好好關注。</p>
+                                <h4>預測分析</h4>
+                                <p>權證無交易，看看有什麼機會吧。</p>
+                                <p>本週刺激的下跌對於心臟是強大的考驗，但融資餘額殺的並不夠多，短線還不能期待有強烈反彈。個股營收有好有壞，但大盤回檔造成多數個股都下跌，此時是否有投資價值浮現的公司值得好好研究。下週比特幣期貨將在CBOE上開始交易，虛擬貨幣市場與金融市場的關係將掀起一陣波瀾，無法預測走勢，但的確值得好好關注。</p>
+                            </div>
+                        </div>
+                        <div class="history row">
+                            <h5>參賽紀錄</h5>
+                            <p>TOZZI 台股實戰賽第 <a href="#">二</a> / <a href="#">三</a> / <a href="#">四</a> 季</p>
+                            <p>TOZZI x 台新權證實戰賽第<a href="#">一</a>季</p>
+                            <p>TOZZI 百人百萬領投計畫第<a href="#">一</a>季</p>
+                            <div><a href="" class="btn btn-info" data-toggle="modal" data-target="#modal-statement">選手專訪</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="cate-item level-5">
+                            <div class="ribbon"></div>
+                            <div class="cate-img"></div>
+                        </div>
+                        <div class="row header-info">
+                            <div class="trader">
+                                <img src="https://s3-ap-northeast-1.amazonaws.com/tozzi-img/9%E9%99%B3%E5%A4%A7%E4%BF%A1s2.jpg" alt="">
+                                <span>陳大信</span>
+                            </div>
+                            <div class="stock-info">
+                                <div class="info">
+                                    <div class="rate-of-return">
+                                        <span class="rate"><sup>-</sup>1.3</span>
+                                        <span class="percent">%</span>
+                                    </div>
+                                    <div class="rank-info">
+                                        <span>排名</span>
+                                        <span class="rank">5</span>
+                                        <span class="lift stably">
+                                            <span></span>
+                                            <span>0</span>
+                                        </span>
+
+                                    </div>
+                                </div>
+                                <div class="stock">
+                                    <span class="stock-item">
+                                        <span>選股</span>
+                                        <span>2317鴻海</span>
+                                    </span>
+                                    <span class="price">
+                                        <span>買進價</span>
+                                        <span>104</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="analysis"  class="txt-block expandable row">
+                            <input type="checkbox" name="read04" id="read04" />
+                            <label class="more-link" for="read04"> 
+                                <div class="shown btn">看更多分析</div>
+                                <div class="not-shown">Collapse</div>
+                            </label>
+                            <div class="expand-block">
+                                <h4>預測分析</h4>
+                                <p>權證無交易，看看有什麼機會吧。</p>
+                                <p>本週刺激的下跌對於心臟是強大的考驗，但融資餘額殺的並不夠多，短線還不能期待有強烈反彈。個股營收有好有壞，但大盤回檔造成多數個股都下跌，此時是否有投資價值浮現的公司值得好好研究。下週比特幣期貨將在CBOE上開始交易，虛擬貨幣市場與金融市場的關係將掀起一陣波瀾，無法預測走勢，但的確值得好好關注。</p>
+                                <h4>預測分析</h4>
+                                <p>權證無交易，看看有什麼機會吧。</p>
+                                <p>本週刺激的下跌對於心臟是強大的考驗，但融資餘額殺的並不夠多，短線還不能期待有強烈反彈。個股營收有好有壞，但大盤回檔造成多數個股都下跌，此時是否有投資價值浮現的公司值得好好研究。下週比特幣期貨將在CBOE上開始交易，虛擬貨幣市場與金融市場的關係將掀起一陣波瀾，無法預測走勢，但的確值得好好關注。</p>
+                            </div>
+                        </div>
+                        <div class="history row">
+                            <h5>參賽紀錄</h5>
+                            <p>TOZZI 台股實戰賽第 <a href="#">二</a> / <a href="#">三</a> / <a href="#">四</a> 季</p>
+                            <p>TOZZI x 台新權證實戰賽第<a href="#">一</a>季</p>
+                            <p>TOZZI 百人百萬領投計畫第<a href="#">一</a>季</p>
+                            <div><a href="" class="btn btn-info" data-toggle="modal" data-target="#modal-statement">選手專訪</a></div>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+        </section>
+        <footer>
+            <div class="container">
+                <p class="text-center">Copyright © tozzi.com.tw, 2018</p>
+            </div>
+        </footer>
+   
+    </div>
+    
+	<section id="share">
+	    <p>分享到</p>
+	    <ul>
+            <li class="facebook"><a href="#"><i><img src="images/icon_fb.png" alt="share to facebook"></i></a></li>
+            <li class="line"><a href="#"><i><img src="images/icon_line.png" alt="share to line"></i></a></li>
+            <li class="copy"><a href="#"><i><img src="images/icon_copy.png" alt="copy event link"></i></a></li>
+        </ul>
+	</section>
+
+	<div class="sidebar">
+        <ul class="sidebar-list">
+            <li class="sidebar-item"><a href="#" class="sidebar-anchor close-nav" target="_blank">賽制</a></li>
+            <li class="sidebar-item"><a class="sidebar-anchor" data-toggle="collapse" data-target="#sub-menu">TOZZI 實戰擂台各賽季</a>
+                <ul id="sub-menu" class="collapse">
+                    <li class="cate">台股投資實戰賽</li>
+                    <li class="sub"><a class="close-nav" href="../../traders_s1.html" target="_blank"><span>第一季</span></a></li>
+                    <li class="sub"><a class="close-nav" href="../../index_s2.html" target="_blank"><span>第二季
+                        </span></a></li>
+                    <li class="sub"><a class="close-nav" href="../../index_s3.html" target="_blank"><span>第三季</span></a></li>
+                    <li class="sub"><a class="close-nav" href="../../index_s4.html" target="_blank"><span>第四季</span></a></li>
+                    <li class="cate">百人百萬領投計畫</li>
+                    <li class="sub"><a class="close-nav" href="../../crowd-plan.html" target="_blank"><span>第一季</span></a></li>
+                    <li class="cate">權證投資實戰</li>
+                    <li class="sub"><a class="close-nav" href="../../warrant_s1.html" target="_blank"><span>第一季-台新權證聯合舉辦</span></a></li>
+                </ul>
+            </li>
+            <li class="sidebar-item"><a href="https://www.facebook.com/groups/tozzitraders/" class="sidebar-anchor close-nav" target="_blank">Tozzi FB 社團</a></li>
+            <li class="sidebar-item"><a href="https://www.facebook.com/tozziarena/" class="sidebar-anchor close-nav" target="_blank">Tozzi FB 粉絲頁</a></li>
+            <li class="sidebar-item"><a href="https://www.facebook.com/StockFeel.page/" class="sidebar-anchor close-nav" target="_blank">股感 FB 粉絲頁</a></li>
+        </ul>
+    </div>
+	
+	<!-- Modal -->
+    <div id="modal-statement" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div type="button" class="close" data-dismiss="modal"></div>
+				<div class="modal-body">
+					<h4>TOZZI 實戰投資擂台介紹</h4>
+					<p>TOZZI 實戰投資擂台是台灣少見的實名制 / 單帳戶的真錢台股交易競賽，強調不事後諸葛、且言行合一的精神。目前已累積多季的比賽紀錄、新增了權證賽事，並完成首次百萬百人領投計畫。看不慣老師與名嘴的亂象？Tozzi 擂台等你來！</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	
+	<!--jQuery--> 
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+	<script>
+        $(document).ready(function() {
+
+            function toggleSidebar() {
+                $(".button, .close-nav").toggleClass("active");
+                $("#main").toggleClass("move-to-left");
+                $(".sidebar-item").toggleClass("active");
+            }
+
+            $(".button, .close-nav").on("click tap", function() {
+                toggleSidebar();
+            });
+
+            $(document).keyup(function(e) {
+                if (e.keyCode === 27) {
+                    toggleSidebar();
+                }
+            });
+
+        });
+  
+        
+        $(document).ready(function() {
+
+            var hidden = false;
+            var outlined = false;
+  
+                $('.button, .close-nav').click(function() {
+                    if(hidden) $('#share').fadeIn();
+                    else $('#share').fadeOut();
+                    hidden = !hidden;
+                });
+        });
+    </script>
+
+</body>
+</html>
