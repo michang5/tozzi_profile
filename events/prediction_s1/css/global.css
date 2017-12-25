@@ -810,10 +810,12 @@ header .container-fluid {
 #maincard-group {
     background-color: #f4f2ef;
 }
-#maincard-group .container-fluid {
+#maincard-group .container {
     padding: 0;
+/*
     max-width: 1440px;
     margin: 20px auto;
+*/
 }
 #maincard-group .card {
     border-radius: 20px;
@@ -933,7 +935,7 @@ header .container-fluid {
     float: right;
 }
 #maincard-group .card {
-    margin-bottom: 46px;
+    margin-bottom: 56px;
 }
 #maincard-group .card .trader {
     float: left;
@@ -958,9 +960,9 @@ header .container-fluid {
     letter-spacing: -1px;
     font-family: 'Oswald', sans-serif;
     font-weight: 700;
-    letter-spacing: -2px;
     text-align: right;
 }
+
 .rate-of-return {
     display: inline-block;
 }
@@ -1142,7 +1144,30 @@ header .container-fluid {
     color: #4a4a4a;
 }
 .history .btn a {
-    
+}
+.card.note {
+    text-align: center;
+    padding-bottom: 90px!important;
+}
+.card.note h2 {
+    color: #49bfbb;
+    font-weight: 700;
+    line-height: 1.4;
+    font-size: 2.7em;
+}
+.card.note h3 {
+    line-height: 1.3;
+}
+.card.note .btn {
+    background-color: #ffce00;
+    color: #4a4a4a;
+    font-weight: 700;
+    display: block;
+    width: 300px;
+    margin: 10px auto;
+}
+.card.note small {
+    font-size: .9em;
 }
 @media only screen and (min-width: 991px) {
     #maincard-group .card .trader img {
@@ -1153,7 +1178,7 @@ header .container-fluid {
 }
 @media only screen and (min-width: 1024px) {
     #maincard-group .card .info {
-        font-size: 1.4em;
+        font-size: 1.3em;
     }
     .header-info {
         background-image: linear-gradient(to bottom, #fff 46%, #ffce00 47%, #ffce00 55%, #fff 56%);
@@ -1162,6 +1187,9 @@ header .container-fluid {
 @media only screen and (max-width: 767px){
     #maincard-group .card {
         margin-bottom: 60px;
+    }
+    #maincard-group .col-sm-6:nth-last-child(2) .card {
+        margin-bottom: 30px;
     }
 }
 
@@ -1184,6 +1212,7 @@ header .container-fluid {
     }
     #maincard-group .card .info  {
         font-size: .9em;
+        margin: 0;
     }
     .stock {
         font-size: .7em;
@@ -1227,6 +1256,13 @@ footer {
 }
 
 
-
-
+.partner {
+    margin: 0 auto;
+    padding: 60px 0 40px;
+    text-align: center;
+    background-color: #f4f2ef;
+}
+.partner img {
+    width: 318px;
+}
 
