@@ -24,6 +24,11 @@
     <link href="https://fonts.googleapis.com/css?family=Lora|Roboto:400,500" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,800" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Oswald:400,700" rel="stylesheet">
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
 
     <!--vue-->
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
@@ -72,384 +77,447 @@
         </div>
     </nav>
     
-    <div id="main">
-        <header>
-            <div class="container-fluid">
-                <img src="images/dishes_h.png" class="dishes-mobile img-responsive" alt="">
-                <img src="images/kv.png" class="key-slogan" alt="">
-                <img src="images/kv_banner.png" class="dishes img-responsive" alt="">
+    <div id="vue">
+        <div id="main">
+            <header>
+                <div class="container-fluid">
+                    <img src="images/dishes_h.png" class="dishes-mobile img-responsive" alt="">
+                    <img src="images/kv.png" class="key-slogan" alt="">
+                    <img src="images/kv_banner.png" class="dishes img-responsive" alt="">
+                </div>
+            </header>
+            <section id="description">
+                <div class="container">
+                    <div class="card">
+                        <div class="inner row">
+                            <div class="col-sm-2 col-md-3">
+                                <div><a href="" class="btn btn-info" data-toggle="modal" data-target="#modal-statement">擂台介紹</a></div>
+                            </div>
+                            <div class="col-sm-10 col-md-9">
+                                <p>當關注投資知識分享的股感知識庫，遇上專辦真錢實單交易競賽的 Tozzi 投資擂台，注定了要在丁酉 🐔 年末，端出台灣罕見的實單股票預測賽。隱藏在民間的素人投資高手，選股名單與分析毫不保留一次曝光，而且絕對真錢進場。偷偷說….賽中還有悔棋翻盤的機會喔！</p>
+                                <p>究竟，誰才能夠封關前，<span><span class="big">加菜成功</span>呢！？</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="count-group">
+                        <div class="count-closed">
+                            <div class="count-content">
+                                <span>距封關還有</span>
+                                <span class="dates" id="close"></span>
+                                <span>交易日</span>
+                            </div>
+                        </div>
+                        <div class="count-repentance">
+                            <div class="count-content">
+                                <span>距悔棋還有</span>
+                                <span class="dates" id="regret"></span>
+                                <span>交易日</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </section>
+            <section id="maincard-group" class="clearfix">
+                <div class="container">
+                    <div class="col-sm-6" v-for="trader in traders">
+                        <div class="card" v-cloak>
+                            <div v-bind:class="trader.dishLevel">
+                                <div class="ribbon"></div>
+                                <div class="cate-img"></div>
+                            </div>
+                            <div class="row header-info">
+                                <div class="trader">
+                                    <img v-bind:src="trader.profilePic" alt="">
+                                    <span>{{trader.name}}</span>
+                                </div>
+                                <div class="stock-info">
+                                    <div class="info">
+                                        <div class="rate-of-return">
+                                            <span class="rate"><sup>{{trader.return?'+':'-'}}</sup>{{trader.returnRate}}</span>
+                                            <span class="percent">%</span>
+                                        </div>
+                                        <div class="rank-info">
+                                            <span>排名</span>
+                                            <span class="rank">{{trader.rank}}</span>
+<!--                                             <span class="lift rise">
+                                                <span></span>
+                                                <span>2</span>
+                                            </span> -->
+
+                                        </div>
+                                    </div>
+                                    <div class="stock">
+                                        <span class="stock-item">
+                                            <span>選股</span>
+                                            <span>{{trader.stock}}</span>
+                                        </span>
+                                        <span class="price">
+                                            <span>買進價</span>
+                                            <span>{{trader.price}}</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="analysis"  class="txt-block expandable row">
+                                <input type="checkbox" v-bind:name="trader.analysisId" v-bind:id="trader.analysisId" />
+                                <label class="more-link" v-bind:for="trader.analysisId"> 
+                                    <div class="shown btn">看更多分析</div>
+                                    <div class="not-shown">Collapse</div>
+                                </label>
+                                <div class="expand-block">
+                                    <h4>投資結論</h4><p v-html="trader.analysis1"></p>
+                                    <h4>標的簡介</h4><p v-html="trader.analysis2"></p>
+                                    <h4>買進理由</h4><p v-html="trader.analysis3"></p>
+                                    <h4>預期風險</h4><p v-html="trader.analysis4"></p>
+                                </div>
+                            </div>
+                            <div class="history row">
+                                <h5>參賽紀錄</h5>
+                                <p v-if="trader.TStockHistory.length">TOZZI 台股實戰賽第 <history-link v-for="record in trader.TStockHistory" v-bind:history="record" :key="record.id"></history-link> 季</p>
+                                <p v-if="trader.WarrantHistory.length">TOZZI x 台新權證實戰賽第 <history-link v-for="record in trader.WarrantHistory" v-bind:history="record" :key="record.id"></history-link> 季</p>
+                                <p v-if="trader.MillionHistory.length">TOZZI 百人百萬領投計畫第 <history-link v-for="record in trader.MillionHistory" v-bind:history="record" :key="record.id"></history-link> 季</p>
+                                <div v-if="trader.interview"><a v-bind:href="trader.interview" class="btn btn-info">選手專訪</a></div>
+                            </div>
+                        </div>
+                    </div>
+<!--                     <div class="col-sm-6">
+                        <div class="card">
+                            <div class="cate-item level-1">
+                                <div class="ribbon"></div>
+                                <div class="cate-img"></div>
+                            </div>
+                            <div class="row header-info">
+                                <div class="trader">
+                                    <img src="https://s3-ap-northeast-1.amazonaws.com/tozzi-img/11%E6%A5%8A%E7%9A%93%E5%AE%87s4.jpg" alt="">
+                                    <span>楊皓宇</span>
+                                </div>
+                                <div class="stock-info">
+                                    <div class="info">
+                                        <div class="rate-of-return">
+                                            <span class="rate"><sup>+</sup>25.6</span>
+                                            <span class="percent">%</span>
+                                        </div>
+                                        <div class="rank-info">
+                                            <span>排名</span>
+                                            <span class="rank">1</span>
+                                            <span class="lift rise">
+                                                <span></span>
+                                                <span>2</span>
+                                            </span>
+
+                                        </div>
+                                    </div>
+                                    <div class="stock">
+                                        <span class="stock-item">
+                                            <span>選股</span>
+                                            <span>2317鴻海</span>
+                                        </span>
+                                        <span class="price">
+                                            <span>買進價</span>
+                                            <span>104</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="analysis"  class="txt-block expandable row">
+                                <input type="checkbox" name="read01" id="read01" />
+                                <label class="more-link" for="read01"> 
+                                    <div class="shown btn">看更多分析</div>
+                                    <div class="not-shown">Collapse</div>
+                                </label>
+                                <div class="expand-block">
+                                    <h4>預測分析</h4>
+                                    <p>權證無交易，看看有什麼機會吧。</p>
+                                    <p>本週刺激的下跌對於心臟是強大的考驗，但融資餘額殺的並不夠多，短線還不能期待有強烈反彈。個股營收有好有壞，但大盤回檔造成多數個股都下跌，此時是否有投資價值浮現的公司值得好好研究。下週比特幣期貨將在CBOE上開始交易，虛擬貨幣市場與金融市場的關係將掀起一陣波瀾，無法預測走勢，但的確值得好好關注。</p>
+                                    <h4>預測分析</h4>
+                                    <p>權證無交易，看看有什麼機會吧。</p>
+                                    <p>本週刺激的下跌對於心臟是強大的考驗，但融資餘額殺的並不夠多，短線還不能期待有強烈反彈。個股營收有好有壞，但大盤回檔造成多數個股都下跌，此時是否有投資價值浮現的公司值得好好研究。下週比特幣期貨將在CBOE上開始交易，虛擬貨幣市場與金融市場的關係將掀起一陣波瀾，無法預測走勢，但的確值得好好關注。</p>
+                                </div>
+                            </div>
+                            <div class="history row">
+                                <h5>參賽紀錄</h5>
+                                <p>TOZZI 台股實戰賽第 <a href="#">二</a> / <a href="#">三</a> / <a href="#">四</a> 季</p>
+                                <p>TOZZI x 台新權證實戰賽第<a href="#">一</a>季</p>
+                                <p>TOZZI 百人百萬領投計畫第<a href="#">一</a>季</p>
+                                <div><a href="" class="btn btn-info" data-toggle="modal" data-target="#modal-statement">選手專訪</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="cate-item level-2">
+                                <div class="ribbon"></div>
+                                <div class="cate-img"></div>
+                            </div>
+                            <div class="row header-info">
+                                <div class="trader">
+                                    <img src="https://s3-ap-northeast-1.amazonaws.com/tozzi-img/8%E5%BC%B5%E9%9D%9C%E7%8E%89s2.jpg" alt="">
+                                    <span>張靜玉</span>
+                                </div>
+                                <div class="stock-info">
+                                    <div class="info">
+                                        <div class="rate-of-return">
+                                            <span class="rate"><sup>+</sup>12.6</span>
+                                            <span class="percent">%</span>
+                                        </div>
+                                        <div class="rank-info">
+                                            <span>排名</span>
+                                            <span class="rank">2</span>
+                                            <span class="lift fall">
+                                                <span></span>
+                                                <span>1</span>
+                                            </span>
+
+                                        </div>
+                                    </div>
+                                    <div class="stock">
+                                        <span class="stock-item">
+                                            <span>選股</span>
+                                            <span>2317鴻海</span>
+                                        </span>
+                                        <span class="price">
+                                            <span>買進價</span>
+                                            <span>104</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="analysis"  class="txt-block expandable row">
+                                <input type="checkbox" name="read02" id="read02" />
+                                <label class="more-link" for="read02"> 
+                                    <div class="shown btn">看更多分析</div>
+                                    <div class="not-shown">Collapse</div>
+                                </label>
+                                <div class="expand-block">
+                                    <h4>預測分析</h4>
+                                    <p>權證無交易，看看有什麼機會吧。</p>
+                                    <p>本週刺激的下跌對於心臟是強大的考驗，但融資餘額殺的並不夠多，短線還不能期待有強烈反彈。個股營收有好有壞，但大盤回檔造成多數個股都下跌，此時是否有投資價值浮現的公司值得好好研究。下週比特幣期貨將在CBOE上開始交易，虛擬貨幣市場與金融市場的關係將掀起一陣波瀾，無法預測走勢，但的確值得好好關注。</p>
+                                    <h4>預測分析</h4>
+                                    <p>權證無交易，看看有什麼機會吧。</p>
+                                    <p>本週刺激的下跌對於心臟是強大的考驗，但融資餘額殺的並不夠多，短線還不能期待有強烈反彈。個股營收有好有壞，但大盤回檔造成多數個股都下跌，此時是否有投資價值浮現的公司值得好好研究。下週比特幣期貨將在CBOE上開始交易，虛擬貨幣市場與金融市場的關係將掀起一陣波瀾，無法預測走勢，但的確值得好好關注。</p>
+                                </div>
+                            </div>
+                            <div class="history row">
+                                <h5>參賽紀錄</h5>
+                                <p>TOZZI 台股實戰賽第 <a href="#">二</a> / <a href="#">三</a> / <a href="#">四</a> 季</p>
+                                <p>TOZZI x 台新權證實戰賽第<a href="#">一</a>季</p>
+                                <p>TOZZI 百人百萬領投計畫第<a href="#">一</a>季</p>
+                                <div><a href="" class="btn btn-info" data-toggle="modal" data-target="#modal-statement">選手專訪</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="cate-item level-3">
+                                <div class="ribbon"></div>
+                                <div class="cate-img"></div>
+                            </div>
+                            <div class="row header-info">
+                                <div class="trader">
+                                    <img src="https://s3-ap-northeast-1.amazonaws.com/tozzi-img/15%E5%AD%AB%E9%8A%98%E5%9D%87s4.jpg" alt="">
+                                    <span>孫銘均</span>
+                                </div>
+                                <div class="stock-info">
+                                    <div class="info">
+                                        <div class="rate-of-return">
+                                            <span class="rate"><sup>+</sup>9.2</span>
+                                            <span class="percent">%</span>
+                                        </div>
+                                        <div class="rank-info">
+                                            <span>排名</span>
+                                            <span class="rank">3</span>
+                                            <span class="lift rise">
+                                                <span></span>
+                                                <span>1</span>
+                                            </span>
+
+                                        </div>
+                                    </div>
+                                    <div class="stock">
+                                        <span class="stock-item">
+                                            <span>選股</span>
+                                            <span>2317鴻海</span>
+                                        </span>
+                                        <span class="price">
+                                            <span>買進價</span>
+                                            <span>104</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="analysis"  class="txt-block expandable row">
+                                <input type="checkbox" name="read03" id="read03" />
+                                <label class="more-link" for="read03"> 
+                                    <div class="shown btn">看更多分析</div>
+                                    <div class="not-shown">Collapse</div>
+                                </label>
+                                <div class="expand-block">
+                                    <h4>預測分析</h4>
+                                    <p>權證無交易，看看有什麼機會吧。</p>
+                                    <p>本週刺激的下跌對於心臟是強大的考驗，但融資餘額殺的並不夠多，短線還不能期待有強烈反彈。個股營收有好有壞，但大盤回檔造成多數個股都下跌，此時是否有投資價值浮現的公司值得好好研究。下週比特幣期貨將在CBOE上開始交易，虛擬貨幣市場與金融市場的關係將掀起一陣波瀾，無法預測走勢，但的確值得好好關注。</p>
+                                    <h4>預測分析</h4>
+                                    <p>權證無交易，看看有什麼機會吧。</p>
+                                    <p>本週刺激的下跌對於心臟是強大的考驗，但融資餘額殺的並不夠多，短線還不能期待有強烈反彈。個股營收有好有壞，但大盤回檔造成多數個股都下跌，此時是否有投資價值浮現的公司值得好好研究。下週比特幣期貨將在CBOE上開始交易，虛擬貨幣市場與金融市場的關係將掀起一陣波瀾，無法預測走勢，但的確值得好好關注。</p>
+                                </div>
+                            </div>
+                            <div class="history row">
+                                <h5>參賽紀錄</h5>
+                                <p>TOZZI 台股實戰賽第 <a href="#">二</a> / <a href="#">三</a> / <a href="#">四</a> 季</p>
+                                <p>TOZZI x 台新權證實戰賽第<a href="#">一</a>季</p>
+                                <p>TOZZI 百人百萬領投計畫第<a href="#">一</a>季</p>
+                                <div><a href="" class="btn btn-info" data-toggle="modal" data-target="#modal-statement">選手專訪</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="cate-item level-4">
+                                <div class="ribbon"></div>
+                                <div class="cate-img"></div>
+                            </div>
+                            <div class="row header-info">
+                                <div class="trader">
+                                    <img src="https://s3-ap-northeast-1.amazonaws.com/tozzi-img/27Moore.jpg" alt="">
+                                    <span>Moore</span>
+                                </div>
+                                <div class="stock-info">
+                                    <div class="info">
+                                        <div class="rate-of-return">
+                                            <span class="rate"><sup>+</sup>3.16</span>
+                                            <span class="percent">%</span>
+                                        </div>
+                                        <div class="rank-info">
+                                            <span>排名</span>
+                                            <span class="rank">4</span>
+                                            <span class="lift stably">
+                                                <span></span>
+                                                <span>0</span>
+                                            </span>
+
+                                        </div>
+                                    </div>
+                                    <div class="stock">
+                                        <span class="stock-item">
+                                            <span>選股</span>
+                                            <span>2317鴻海</span>
+                                        </span>
+                                        <span class="price">
+                                            <span>買進價</span>
+                                            <span>104</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="analysis"  class="txt-block expandable row">
+                                <input type="checkbox" name="read04" id="read04" />
+                                <label class="more-link" for="read04"> 
+                                    <div class="shown btn">看更多分析</div>
+                                    <div class="not-shown">Collapse</div>
+                                </label>
+                                <div class="expand-block">
+                                    <h4>預測分析</h4>
+                                    <p>權證無交易，看看有什麼機會吧。</p>
+                                    <p>本週刺激的下跌對於心臟是強大的考驗，但融資餘額殺的並不夠多，短線還不能期待有強烈反彈。個股營收有好有壞，但大盤回檔造成多數個股都下跌，此時是否有投資價值浮現的公司值得好好研究。下週比特幣期貨將在CBOE上開始交易，虛擬貨幣市場與金融市場的關係將掀起一陣波瀾，無法預測走勢，但的確值得好好關注。</p>
+                                    <h4>預測分析</h4>
+                                    <p>權證無交易，看看有什麼機會吧。</p>
+                                    <p>本週刺激的下跌對於心臟是強大的考驗，但融資餘額殺的並不夠多，短線還不能期待有強烈反彈。個股營收有好有壞，但大盤回檔造成多數個股都下跌，此時是否有投資價值浮現的公司值得好好研究。下週比特幣期貨將在CBOE上開始交易，虛擬貨幣市場與金融市場的關係將掀起一陣波瀾，無法預測走勢，但的確值得好好關注。</p>
+                                </div>
+                            </div>
+                            <div class="history row">
+                                <h5>參賽紀錄</h5>
+                                <p>TOZZI 台股實戰賽第 <a href="#">二</a> / <a href="#">三</a> / <a href="#">四</a> 季</p>
+                                <p>TOZZI x 台新權證實戰賽第<a href="#">一</a>季</p>
+                                <p>TOZZI 百人百萬領投計畫第<a href="#">一</a>季</p>
+                                <div><a href="" class="btn btn-info" data-toggle="modal" data-target="#modal-statement">選手專訪</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="cate-item level-5">
+                                <div class="ribbon"></div>
+                                <div class="cate-img"></div>
+                            </div>
+                            <div class="row header-info">
+                                <div class="trader">
+                                    <img src="https://s3-ap-northeast-1.amazonaws.com/tozzi-img/9%E9%99%B3%E5%A4%A7%E4%BF%A1s2.jpg" alt="">
+                                    <span>陳大信</span>
+                                </div>
+                                <div class="stock-info">
+                                    <div class="info">
+                                        <div class="rate-of-return">
+                                            <span class="rate"><sup>-</sup>1.3</span>
+                                            <span class="percent">%</span>
+                                        </div>
+                                        <div class="rank-info">
+                                            <span>排名</span>
+                                            <span class="rank">5</span>
+                                            <span class="lift stably">
+                                                <span></span>
+                                                <span>0</span>
+                                            </span>
+
+                                        </div>
+                                    </div>
+                                    <div class="stock">
+                                        <span class="stock-item">
+                                            <span>選股</span>
+                                            <span>2317鴻海</span>
+                                        </span>
+                                        <span class="price">
+                                            <span>買進價</span>
+                                            <span>104</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="analysis"  class="txt-block expandable row">
+                                <input type="checkbox" name="read05" id="read05" />
+                                <label class="more-link" for="read05"> 
+                                    <div class="shown btn">看更多分析</div>
+                                    <div class="not-shown">Collapse</div>
+                                </label>
+                                <div class="expand-block">
+                                    <h4>預測分析</h4>
+                                    <p>權證無交易，看看有什麼機會吧。</p>
+                                    <p>本週刺激的下跌對於心臟是強大的考驗，但融資餘額殺的並不夠多，短線還不能期待有強烈反彈。個股營收有好有壞，但大盤回檔造成多數個股都下跌，此時是否有投資價值浮現的公司值得好好研究。下週比特幣期貨將在CBOE上開始交易，虛擬貨幣市場與金融市場的關係將掀起一陣波瀾，無法預測走勢，但的確值得好好關注。</p>
+                                    <h4>預測分析</h4>
+                                    <p>權證無交易，看看有什麼機會吧。</p>
+                                    <p>本週刺激的下跌對於心臟是強大的考驗，但融資餘額殺的並不夠多，短線還不能期待有強烈反彈。個股營收有好有壞，但大盤回檔造成多數個股都下跌，此時是否有投資價值浮現的公司值得好好研究。下週比特幣期貨將在CBOE上開始交易，虛擬貨幣市場與金融市場的關係將掀起一陣波瀾，無法預測走勢，但的確值得好好關注。</p>
+                                </div>
+                            </div>
+                            <div class="history row">
+                                <h5>參賽紀錄</h5>
+                                <p>TOZZI 台股實戰賽第 <a href="#">二</a> / <a href="#">三</a> / <a href="#">四</a> 季</p>
+                                <p>TOZZI x 台新權證實戰賽第<a href="#">一</a>季</p>
+                                <p>TOZZI 百人百萬領投計畫第<a href="#">一</a>季</p>
+                                <div><a href="" class="btn btn-info" data-toggle="modal" data-target="#modal-statement">選手專訪</a></div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="col-sm-6">
+                        <div class="card note">
+                            <h2>這麼好玩的比賽<br>怎麼沒揪？</h2>
+                            <h3>丟個訊息給 TOZZI 小編<br>下次比賽就通知您！</h3>
+                            <a href="https://www.messenger.com/t/1225833880836564" target="_blank" class="btn btn-info btn-lg">跟小編聊天</a>
+                            <small>別擔心，小編不會騷擾跟咬人</small>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="partner">
+                <img src="images/stockfeel.png" alt="股感知識庫">
             </div>
-        </header>
-        <section id="description">
-            <div class="container">
-                <div class="card">
-                    <div class="inner row">
-                        <div class="col-sm-2 col-md-3">
-                            <div><a href="" class="btn btn-info" data-toggle="modal" data-target="#modal-statement">擂台介紹</a></div>
-                        </div>
-                        <div class="col-sm-10 col-md-9">
-                            <p>當關注投資知識分享的股感知識庫，遇上專辦真錢實單交易競賽的 Tozzi 投資擂台，注定了要在丁酉 🐔 年末，端出台灣罕見的實單股票預測賽。隱藏在民間的素人投資高手，選股名單與分析毫不保留一次曝光，而且絕對真錢進場。偷偷說….賽中還有悔棋翻盤的機會喔！</p>
-                            <p>究竟，誰才能夠封關前，<span><span class="big">加菜成功</span>呢！？</span></p>
-                        </div>
-                    </div>
+            <footer>
+                <div class="container">
+                    <p class="text-center">Copyright © tozzi.com.tw, 2018</p>
                 </div>
-                <div class="count-group">
-                    <div class="count-closed">
-                        <div class="count-content">
-                            <span>距封關還有</span>
-                            <span class="dates" id="close"></span>
-                            <span>交易日</span>
-                        </div>
-                    </div>
-                    <div class="count-repentance">
-                        <div class="count-content">
-                            <span>距悔棋還有</span>
-                            <span class="dates" id="regret"></span>
-                            <span>交易日</span>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-        </section>
-        <section id="maincard-group" class="clearfix">
-            <div class="container">
-                <div class="col-sm-6">
-                    <div class="card">
-                        <div class="cate-item level-1">
-                            <div class="ribbon"></div>
-                            <div class="cate-img"></div>
-                        </div>
-                        <div class="row header-info">
-                            <div class="trader">
-                                <img src="https://s3-ap-northeast-1.amazonaws.com/tozzi-img/11%E6%A5%8A%E7%9A%93%E5%AE%87s4.jpg" alt="">
-                                <span>楊皓宇</span>
-                            </div>
-                            <div class="stock-info">
-                                <div class="info">
-                                    <div class="rate-of-return">
-                                        <span class="rate"><sup>+</sup>25.6</span>
-                                        <span class="percent">%</span>
-                                    </div>
-                                    <div class="rank-info">
-                                        <span>排名</span>
-                                        <span class="rank">1</span>
-                                        <span class="lift rise">
-                                            <span></span>
-                                            <span>2</span>
-                                        </span>
-
-                                    </div>
-                                </div>
-                                <div class="stock">
-                                    <span class="stock-item">
-                                        <span>選股</span>
-                                        <span>2317鴻海</span>
-                                    </span>
-                                    <span class="price">
-                                        <span>買進價</span>
-                                        <span>104</span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="analysis"  class="txt-block expandable row">
-                            <input type="checkbox" name="read01" id="read01" />
-                            <label class="more-link" for="read01"> 
-                                <div class="shown btn">看更多分析</div>
-                                <div class="not-shown">Collapse</div>
-                            </label>
-                            <div class="expand-block">
-                                <h4>預測分析</h4>
-                                <p>權證無交易，看看有什麼機會吧。</p>
-                                <p>本週刺激的下跌對於心臟是強大的考驗，但融資餘額殺的並不夠多，短線還不能期待有強烈反彈。個股營收有好有壞，但大盤回檔造成多數個股都下跌，此時是否有投資價值浮現的公司值得好好研究。下週比特幣期貨將在CBOE上開始交易，虛擬貨幣市場與金融市場的關係將掀起一陣波瀾，無法預測走勢，但的確值得好好關注。</p>
-                                <h4>預測分析</h4>
-                                <p>權證無交易，看看有什麼機會吧。</p>
-                                <p>本週刺激的下跌對於心臟是強大的考驗，但融資餘額殺的並不夠多，短線還不能期待有強烈反彈。個股營收有好有壞，但大盤回檔造成多數個股都下跌，此時是否有投資價值浮現的公司值得好好研究。下週比特幣期貨將在CBOE上開始交易，虛擬貨幣市場與金融市場的關係將掀起一陣波瀾，無法預測走勢，但的確值得好好關注。</p>
-                            </div>
-                        </div>
-                        <div class="history row">
-                            <h5>參賽紀錄</h5>
-                            <p>TOZZI 台股實戰賽第 <a href="#">二</a> / <a href="#">三</a> / <a href="#">四</a> 季</p>
-                            <p>TOZZI x 台新權證實戰賽第<a href="#">一</a>季</p>
-                            <p>TOZZI 百人百萬領投計畫第<a href="#">一</a>季</p>
-                            <div><a href="" class="btn btn-info" data-toggle="modal" data-target="#modal-statement">選手專訪</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="card">
-                        <div class="cate-item level-2">
-                            <div class="ribbon"></div>
-                            <div class="cate-img"></div>
-                        </div>
-                        <div class="row header-info">
-                            <div class="trader">
-                                <img src="https://s3-ap-northeast-1.amazonaws.com/tozzi-img/8%E5%BC%B5%E9%9D%9C%E7%8E%89s2.jpg" alt="">
-                                <span>張靜玉</span>
-                            </div>
-                            <div class="stock-info">
-                                <div class="info">
-                                    <div class="rate-of-return">
-                                        <span class="rate"><sup>+</sup>12.6</span>
-                                        <span class="percent">%</span>
-                                    </div>
-                                    <div class="rank-info">
-                                        <span>排名</span>
-                                        <span class="rank">2</span>
-                                        <span class="lift fall">
-                                            <span></span>
-                                            <span>1</span>
-                                        </span>
-
-                                    </div>
-                                </div>
-                                <div class="stock">
-                                    <span class="stock-item">
-                                        <span>選股</span>
-                                        <span>2317鴻海</span>
-                                    </span>
-                                    <span class="price">
-                                        <span>買進價</span>
-                                        <span>104</span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="analysis"  class="txt-block expandable row">
-                            <input type="checkbox" name="read02" id="read02" />
-                            <label class="more-link" for="read02"> 
-                                <div class="shown btn">看更多分析</div>
-                                <div class="not-shown">Collapse</div>
-                            </label>
-                            <div class="expand-block">
-                                <h4>預測分析</h4>
-                                <p>權證無交易，看看有什麼機會吧。</p>
-                                <p>本週刺激的下跌對於心臟是強大的考驗，但融資餘額殺的並不夠多，短線還不能期待有強烈反彈。個股營收有好有壞，但大盤回檔造成多數個股都下跌，此時是否有投資價值浮現的公司值得好好研究。下週比特幣期貨將在CBOE上開始交易，虛擬貨幣市場與金融市場的關係將掀起一陣波瀾，無法預測走勢，但的確值得好好關注。</p>
-                                <h4>預測分析</h4>
-                                <p>權證無交易，看看有什麼機會吧。</p>
-                                <p>本週刺激的下跌對於心臟是強大的考驗，但融資餘額殺的並不夠多，短線還不能期待有強烈反彈。個股營收有好有壞，但大盤回檔造成多數個股都下跌，此時是否有投資價值浮現的公司值得好好研究。下週比特幣期貨將在CBOE上開始交易，虛擬貨幣市場與金融市場的關係將掀起一陣波瀾，無法預測走勢，但的確值得好好關注。</p>
-                            </div>
-                        </div>
-                        <div class="history row">
-                            <h5>參賽紀錄</h5>
-                            <p>TOZZI 台股實戰賽第 <a href="#">二</a> / <a href="#">三</a> / <a href="#">四</a> 季</p>
-                            <p>TOZZI x 台新權證實戰賽第<a href="#">一</a>季</p>
-                            <p>TOZZI 百人百萬領投計畫第<a href="#">一</a>季</p>
-                            <div><a href="" class="btn btn-info" data-toggle="modal" data-target="#modal-statement">選手專訪</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="card">
-                        <div class="cate-item level-3">
-                            <div class="ribbon"></div>
-                            <div class="cate-img"></div>
-                        </div>
-                        <div class="row header-info">
-                            <div class="trader">
-                                <img src="https://s3-ap-northeast-1.amazonaws.com/tozzi-img/15%E5%AD%AB%E9%8A%98%E5%9D%87s4.jpg" alt="">
-                                <span>孫銘均</span>
-                            </div>
-                            <div class="stock-info">
-                                <div class="info">
-                                    <div class="rate-of-return">
-                                        <span class="rate"><sup>+</sup>9.2</span>
-                                        <span class="percent">%</span>
-                                    </div>
-                                    <div class="rank-info">
-                                        <span>排名</span>
-                                        <span class="rank">3</span>
-                                        <span class="lift rise">
-                                            <span></span>
-                                            <span>1</span>
-                                        </span>
-
-                                    </div>
-                                </div>
-                                <div class="stock">
-                                    <span class="stock-item">
-                                        <span>選股</span>
-                                        <span>2317鴻海</span>
-                                    </span>
-                                    <span class="price">
-                                        <span>買進價</span>
-                                        <span>104</span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="analysis"  class="txt-block expandable row">
-                            <input type="checkbox" name="read03" id="read03" />
-                            <label class="more-link" for="read03"> 
-                                <div class="shown btn">看更多分析</div>
-                                <div class="not-shown">Collapse</div>
-                            </label>
-                            <div class="expand-block">
-                                <h4>預測分析</h4>
-                                <p>權證無交易，看看有什麼機會吧。</p>
-                                <p>本週刺激的下跌對於心臟是強大的考驗，但融資餘額殺的並不夠多，短線還不能期待有強烈反彈。個股營收有好有壞，但大盤回檔造成多數個股都下跌，此時是否有投資價值浮現的公司值得好好研究。下週比特幣期貨將在CBOE上開始交易，虛擬貨幣市場與金融市場的關係將掀起一陣波瀾，無法預測走勢，但的確值得好好關注。</p>
-                                <h4>預測分析</h4>
-                                <p>權證無交易，看看有什麼機會吧。</p>
-                                <p>本週刺激的下跌對於心臟是強大的考驗，但融資餘額殺的並不夠多，短線還不能期待有強烈反彈。個股營收有好有壞，但大盤回檔造成多數個股都下跌，此時是否有投資價值浮現的公司值得好好研究。下週比特幣期貨將在CBOE上開始交易，虛擬貨幣市場與金融市場的關係將掀起一陣波瀾，無法預測走勢，但的確值得好好關注。</p>
-                            </div>
-                        </div>
-                        <div class="history row">
-                            <h5>參賽紀錄</h5>
-                            <p>TOZZI 台股實戰賽第 <a href="#">二</a> / <a href="#">三</a> / <a href="#">四</a> 季</p>
-                            <p>TOZZI x 台新權證實戰賽第<a href="#">一</a>季</p>
-                            <p>TOZZI 百人百萬領投計畫第<a href="#">一</a>季</p>
-                            <div><a href="" class="btn btn-info" data-toggle="modal" data-target="#modal-statement">選手專訪</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="card">
-                        <div class="cate-item level-4">
-                            <div class="ribbon"></div>
-                            <div class="cate-img"></div>
-                        </div>
-                        <div class="row header-info">
-                            <div class="trader">
-                                <img src="https://s3-ap-northeast-1.amazonaws.com/tozzi-img/27Moore.jpg" alt="">
-                                <span>Moore</span>
-                            </div>
-                            <div class="stock-info">
-                                <div class="info">
-                                    <div class="rate-of-return">
-                                        <span class="rate"><sup>+</sup>3.16</span>
-                                        <span class="percent">%</span>
-                                    </div>
-                                    <div class="rank-info">
-                                        <span>排名</span>
-                                        <span class="rank">4</span>
-                                        <span class="lift stably">
-                                            <span></span>
-                                            <span>0</span>
-                                        </span>
-
-                                    </div>
-                                </div>
-                                <div class="stock">
-                                    <span class="stock-item">
-                                        <span>選股</span>
-                                        <span>2317鴻海</span>
-                                    </span>
-                                    <span class="price">
-                                        <span>買進價</span>
-                                        <span>104</span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="analysis"  class="txt-block expandable row">
-                            <input type="checkbox" name="read04" id="read04" />
-                            <label class="more-link" for="read04"> 
-                                <div class="shown btn">看更多分析</div>
-                                <div class="not-shown">Collapse</div>
-                            </label>
-                            <div class="expand-block">
-                                <h4>預測分析</h4>
-                                <p>權證無交易，看看有什麼機會吧。</p>
-                                <p>本週刺激的下跌對於心臟是強大的考驗，但融資餘額殺的並不夠多，短線還不能期待有強烈反彈。個股營收有好有壞，但大盤回檔造成多數個股都下跌，此時是否有投資價值浮現的公司值得好好研究。下週比特幣期貨將在CBOE上開始交易，虛擬貨幣市場與金融市場的關係將掀起一陣波瀾，無法預測走勢，但的確值得好好關注。</p>
-                                <h4>預測分析</h4>
-                                <p>權證無交易，看看有什麼機會吧。</p>
-                                <p>本週刺激的下跌對於心臟是強大的考驗，但融資餘額殺的並不夠多，短線還不能期待有強烈反彈。個股營收有好有壞，但大盤回檔造成多數個股都下跌，此時是否有投資價值浮現的公司值得好好研究。下週比特幣期貨將在CBOE上開始交易，虛擬貨幣市場與金融市場的關係將掀起一陣波瀾，無法預測走勢，但的確值得好好關注。</p>
-                            </div>
-                        </div>
-                        <div class="history row">
-                            <h5>參賽紀錄</h5>
-                            <p>TOZZI 台股實戰賽第 <a href="#">二</a> / <a href="#">三</a> / <a href="#">四</a> 季</p>
-                            <p>TOZZI x 台新權證實戰賽第<a href="#">一</a>季</p>
-                            <p>TOZZI 百人百萬領投計畫第<a href="#">一</a>季</p>
-                            <div><a href="" class="btn btn-info" data-toggle="modal" data-target="#modal-statement">選手專訪</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="card">
-                        <div class="cate-item level-5">
-                            <div class="ribbon"></div>
-                            <div class="cate-img"></div>
-                        </div>
-                        <div class="row header-info">
-                            <div class="trader">
-                                <img src="https://s3-ap-northeast-1.amazonaws.com/tozzi-img/9%E9%99%B3%E5%A4%A7%E4%BF%A1s2.jpg" alt="">
-                                <span>陳大信</span>
-                            </div>
-                            <div class="stock-info">
-                                <div class="info">
-                                    <div class="rate-of-return">
-                                        <span class="rate"><sup>-</sup>1.3</span>
-                                        <span class="percent">%</span>
-                                    </div>
-                                    <div class="rank-info">
-                                        <span>排名</span>
-                                        <span class="rank">5</span>
-                                        <span class="lift stably">
-                                            <span></span>
-                                            <span>0</span>
-                                        </span>
-
-                                    </div>
-                                </div>
-                                <div class="stock">
-                                    <span class="stock-item">
-                                        <span>選股</span>
-                                        <span>2317鴻海</span>
-                                    </span>
-                                    <span class="price">
-                                        <span>買進價</span>
-                                        <span>104</span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="analysis"  class="txt-block expandable row">
-                            <input type="checkbox" name="read05" id="read05" />
-                            <label class="more-link" for="read05"> 
-                                <div class="shown btn">看更多分析</div>
-                                <div class="not-shown">Collapse</div>
-                            </label>
-                            <div class="expand-block">
-                                <h4>預測分析</h4>
-                                <p>權證無交易，看看有什麼機會吧。</p>
-                                <p>本週刺激的下跌對於心臟是強大的考驗，但融資餘額殺的並不夠多，短線還不能期待有強烈反彈。個股營收有好有壞，但大盤回檔造成多數個股都下跌，此時是否有投資價值浮現的公司值得好好研究。下週比特幣期貨將在CBOE上開始交易，虛擬貨幣市場與金融市場的關係將掀起一陣波瀾，無法預測走勢，但的確值得好好關注。</p>
-                                <h4>預測分析</h4>
-                                <p>權證無交易，看看有什麼機會吧。</p>
-                                <p>本週刺激的下跌對於心臟是強大的考驗，但融資餘額殺的並不夠多，短線還不能期待有強烈反彈。個股營收有好有壞，但大盤回檔造成多數個股都下跌，此時是否有投資價值浮現的公司值得好好研究。下週比特幣期貨將在CBOE上開始交易，虛擬貨幣市場與金融市場的關係將掀起一陣波瀾，無法預測走勢，但的確值得好好關注。</p>
-                            </div>
-                        </div>
-                        <div class="history row">
-                            <h5>參賽紀錄</h5>
-                            <p>TOZZI 台股實戰賽第 <a href="#">二</a> / <a href="#">三</a> / <a href="#">四</a> 季</p>
-                            <p>TOZZI x 台新權證實戰賽第<a href="#">一</a>季</p>
-                            <p>TOZZI 百人百萬領投計畫第<a href="#">一</a>季</p>
-                            <div><a href="" class="btn btn-info" data-toggle="modal" data-target="#modal-statement">選手專訪</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="card note">
-                        <h2>這麼好玩的比賽<br>怎麼沒揪？</h2>
-                        <h3>丟個訊息給 TOZZI 小編<br>下次比賽就通知您！</h3>
-                        <a href="https://www.messenger.com/t/1225833880836564" target="_blank" class="btn btn-info btn-lg">跟小編聊天</a>
-                        <small>別擔心，小編不會騷擾跟咬人</small>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div class="partner">
-            <img src="images/stockfeel.png" alt="股感知識庫">
+            </footer>
+       
         </div>
-        <footer>
-            <div class="container">
-                <p class="text-center">Copyright © tozzi.com.tw, 2018</p>
-            </div>
-        </footer>
-   
     </div>
-    
+
     <section id="share">
         <p>分享到</p>
         <ul>
@@ -462,7 +530,7 @@
     <div class="sidebar">
         <ul class="sidebar-list">
             <li class="sidebar-item"><a href="#" class="sidebar-anchor close-nav" target="_blank">賽制</a></li>
-            <li class="sidebar-item"><a class="sidebar-anchor" data-toggle="collapse" data-target="#sub-menu">TOZZI 實戰擂台各賽季</a>
+            <li class="sidebar-item"><a href="#" class="sidebar-anchor" data-toggle="collapse" data-target="#sub-menu">TOZZI 實戰擂台各賽季</a>
                 <ul id="sub-menu" class="collapse">
                     <li class="cate">台股投資實戰賽</li>
                     <li class="sub"><a class="close-nav" href="../../traders_s1.html" target="_blank"><span>第一季</span></a></li>
@@ -612,6 +680,368 @@
         var x = setInterval(countingClose, 86400000);
         var y = setInterval(countingRegret, 86400000);
         // end of counting down
+    </script>
+    <script type="text/javascript">
+
+        (function() {
+            function decimalAdjust(type, value, exp) {
+                if (typeof exp === 'undefined' || +exp === 0) {
+                    return Math[type](value);
+                }
+                value = +value;
+                exp = +exp;
+                if (value === null || isNaN(value) || !(typeof exp === 'number' && exp % 1 === 0)) {
+                    return NaN;
+                }
+                if (value < 0) {
+                    return -decimalAdjust(type, -value, exp);
+                }
+                value = value.toString().split('e');
+                value = Math[type](+(value[0] + 'e' + (value[1] ? (+value[1] - exp) : -exp)));
+                value = value.toString().split('e');
+                return +(value[0] + 'e' + (value[1] ? (+value[1] + exp) : exp));
+            }
+            if (!Math.round10) {
+                Math.round10 = function(value, exp) {
+                    return decimalAdjust('round', value, exp);
+                };
+            }
+        })();
+
+        Vue.component('history-link', {
+            props: ['history'],
+            template: ' <span><a v-bind:href="history.href">{{history.season}}</a> {{history.slash}}</span>'
+        });
+
+        var tradersData = {
+            traders: 
+            [
+                /////////////////////////////////////
+                {dishLevel: 'cate-item level-1',
+                 name: '框框',
+                 profilePic: 'https://s3-ap-northeast-1.amazonaws.com/tozzi-img/64%E6%A1%86%E6%A1%86s4.jpg',
+                 return: false,
+                 returnRate: 25.6,
+                 rate: 1,
+                 rank: 9,
+                 stock: '2353宏碁',
+                 stockId: '2353',
+                 price: 10,
+                 analysisId: 'ana1',
+                 analysis1: '1.自高點下修15%以上停損。2.法人、主力連續賣時停損。3.部分現股長期投資，如果看好會賣出一些轉成融資。4.部分融資，漲太快就賣出再找時機接，來回賺價差。5.不再沒獲利時重壓，有漲的話再持續加碼減少心理負擔，專心工作、好好生活不要太在意短期股價的波動。',
+                 analysis2: '宏碁未來發展四部曲 PC、電競、VR及AI1.華碩最賺錢的就電競了，宏碁大力發展電競是正確方向，又沒有燒錢虧損的手機部門。2.VR走跟企業合作的商用，覺得比HTC的策略好。3.不看好不實際又燒錢的AI，大部分只有話題沒有產品，但接超級電腦訂單，賺做夢人的錢，往硬體發展是不錯的。報導說”陳俊聖也認為，宏碁在AI應用會選擇對的部分再切入，「大到有點用，小到我們會贏」為原則”，真的要好好選不要輕易投入，相信會做出好的選擇。',
+                 analysis3: '1.在有賺錢的時候華碩就有talent pool很過份，最近卻說年初績效獎金將加碼，可見相關產業不錯。2.intel被amd逼出效能，出了比以前強很多的8代cpu，正是換筆電的好時機。3.看mobile01的宏碁討論，大家都賺翻了很羨慕想跟，雖然有更多隻更猛的飆股，但感覺都飆完了，不如買這隻跟著作夢。4.信任陳俊聖會帶領轉型，有夢讓股東不輕易賣出股票，跌了以為是洗，減緩大跌的可能，連幾根的接近漲停，上車的人目前信心滿滿。5.三大法人最近還是買比較多，>400張大股東，連4個禮拜增加了。',
+                 analysis4: '1.轉型失敗。2.筆電、電競高峰過後獲利減少。但以上兩點因該比賽結束的時候還無法判斷這個3.已漲過高。就看看主力跟法人的情況決定是否賣出4.營收不如預期。5.如果像去年第四季那樣認列虧損那就慘了。機率很低6.股票崩盤。不太可能',
+                 TStockHistory: [
+                     {href: 'http://tozzi.com.tw/traders_s1.html?id=4', season: '一', id: 1, slash: '/'},
+                     {href: 'http://tozzi.com.tw/traders_s2.html?id=4', season: '二', id: 2, slash: '/'},
+                     {href: 'http://tozzi.com.tw/traders_s3.html?id=4', season: '三', id: 3, slash: '/'},
+                     {href: 'http://tozzi.com.tw/traders_s4.html?id=64', season: '四', id: 4, slash: ''}],
+                 WarrantHistory: [],
+                 MillionHistory: [],
+                 interview: 'https://www.facebook.com/notes/tozzi/%E9%81%B8%E6%89%8B%E5%B0%88%E8%A8%AA%E7%B3%BB%E5%88%97%E6%9D%8E%E6%95%88%E5%AF%AC%E4%B9%8B%E8%99%8E%E5%BC%8F%E7%8D%B5%E8%82%A1%E6%B3%95/1391643350922282/'},
+                 /////////////////////////////////////
+                 {dishLevel: 'cate-item level-1',
+                 name: '吳駿廷',
+                 profilePic: 'https://s3-ap-northeast-1.amazonaws.com/tozzi-img/50%E5%90%B3%E9%A7%BF%E5%BB%B7s4.jpg',
+                 return: true,
+                 returnRate: 25.6,
+                 rate: 1,
+                 rank: 8,
+                 stock: '6451訊芯-ky',
+                 stockId: '6451',
+                 price: 10,
+                 analysisId: 'ana2',
+                 analysis1: '買進，展望明年，訊芯看好5G通訊網路、數據中心建置等發展需求，將帶動系統級封裝（SiP）應用、光收發模組、車用電子商機，配合訊芯多元布局邁入收割期，5G通訊時代將很快到來，由於高速傳輸速度將帶動SiP爆發性成長，也需要更多SiP技術支援，對訊芯營運是很大的成長機會。',
+                 analysis2: '訊芯-KY為鴻海(2317)旗下封測廠，有著富爸爸鴻海撐腰，蘋果iPhone X將於第四季出貨放量，不過外傳3D感測貼合供應商夏普良率不佳，市場傳言，繼GIS-KY加派人手赴日救援，協助提升貼合良率外，訊芯-KY也被點名加入救火，有助於今年第四季的業績表現。訊芯在過去主要業務為手機封測的部分，但由於去年受手機銷售衰退，以及RF/PA廠商因整併轉型減少釋出外包訂單量而導致營收衰退，訊芯痛定思痛在今年積極轉型、拓展產品多元化，拓展指紋辨識、車用電子、微機電等新應用產品布局，以減少單一產品對營運的影響，由於今年才剛多元佈局、轉型，面臨轉型陣痛期的訊芯，今年營收大幅衰退，但車用電子已獲德、陸車廠認證，多元布局效益也逐步顯現，所謂「蹲的越低，跳的越高」正是形容訊芯的現狀，2018年訊芯將能收穫過去努力的果實，恢復穩健成長動能，相信對於訊芯而言將是大豐收的一年，可望出現爆發性的成長。',
+                 analysis3: 'A.基本面分析：訊芯第三季雖然驚見上市以來首季虧損，稅後虧損0.15億元、每股虧損0.14元，前三季稅後淨利1.01億元，每股盈餘0.97元，訊芯11月的營收為2.68億，創下今年新高，受惠於第四季蘋果出貨放量，預期第四季營收將攻上今年高點，但主要看好的仍是訊芯明年的轉機性，隨著多元布局效益已逐步浮現，訊芯明年營運可望擺脫轉型陣痛期，訊芯在良率不斷拉高下，有機會分得蘋果在Sip製程的訂單，這對明年訊芯的業績拉升將具爆發力。<a href="https://s3-ap-northeast-1.amazonaws.com/tozzi-img/%E5%90%B3%E9%A7%BF%E5%BB%B7P1.png">(圖一)</a>上圖是訊芯去年和今年的每季稅前、稅後營收表，可以明顯看出訊芯今年面臨轉型陣痛期，營收大幅衰退，但明年在轉型調整後有機會營收出現大爆發，尤其近期台股的氛圍已經從前陣子最紅的3D感測族群、「晶」「光」檔炒作完後，近期資金轉向今年相對沒有漲到的股票和明年具有業績轉機題材的股票，訊芯完全符合以上的條件，相信不久後將成為市場上資金搶進的標的之一。B.技術面分析：<a href="https://s3-ap-northeast-1.amazonaws.com/tozzi-img/%E5%90%B3%E9%A7%BF%E5%BB%B7P2.png">(圖二)</a>上圖為訊芯的日線圖，本坡段在低點量縮整理了兩個禮拜後，從109元開始起漲放量上攻，而當黑k拉回時都是量縮，短期比較大的壓力在152.5元前坡段高點爆量的高點，套牢比較多的籌碼，預期在152.5上下可能會有稍大的賣壓，目前DMI指標代表趨勢的ADX線還在穩定上升中，坡段多頭仍舊持續。<a href="https://s3-ap-northeast-1.amazonaws.com/tozzi-img/%E5%90%B3%E9%A7%BF%E5%BB%B7P3.png">(圖三)</a>上圖為週線圖，訊芯在2017年台股大多頭行情時，許多個股創歷史新高，但訊芯基本上還在打底的階段，今年第三季向上突破底部箱型整理後又稍微拉回，拉回時量能未出現爆量且未跌破箱型整理的低點，因此視為正常的創高後清洗浮動籌碼的正常拉回現象，DMI指標仍舊持續中期多頭的指示，近期訊芯又蠢蠢欲動準備挑戰前高152.5元的位置，預期一旦突破前高將又持續一坡大行情。C.籌碼面分析：<a href="https://s3-ap-northeast-1.amazonaws.com/tozzi-img/%E5%90%B3%E9%A7%BF%E5%BB%B7P4.png">(圖四)</a>以上是訊芯近期的籌碼圖，可以看出專挑選中小型潛力股的投信，近期大力加碼訊芯，時近年底投信這時通常會選擇明年業績看好或業績具有轉機的股票，由近期投信默默佈局訊芯可以看出，投信對於明年的訊芯是有不小的信心的。另外從主力、散戶買賣超可以看出，近期散戶狂把手上的持股倒給主力，以籌碼的角度而論，將更有利訊芯多頭的延續，籌碼變得相對更安定，主力隨時可以往上拉升股價。',
+                 analysis4: '以大盤的角度來說，週線5MA已經向下貫穿了20MA呈現死亡交叉，可能會有不小的坡段修正，正所謂覆巢之下無完卵，訊芯有可能會在市場一片恐慌下，亦被大盤給拖累。另外，訊芯的母公司鴻海集團，在外界對於iphone8、iphoneX的出貨疑慮揮之不去，甚至外傳蘋果將砍iphoneX的訂單高達40%，對於鴻海的股價無疑是很大的打擊，若母公司鴻海的股價跌跌不休，擔心訊芯也會受到一定程度的影響。最後訊芯股性經常暴衝最後又收長上影線，在今年11/28訊芯一度暴漲接近漲停板，但在午盤後迅速下跌，最後大跌5%收盤，留下爆量長黑上影線，且之後坡段最低一度跌到106元，在這段期間若訊芯單一日從高點拉回超過10%，且單日成交量為五日均量的兩倍以上時，則可能需要先賣出持股作觀望。',
+                 TStockHistory: [
+                     {href: 'http://tozzi.com.tw/traders_s4.html?id=50', season: '四', id: 4, slash: ''}],
+                 WarrantHistory: [],
+                 MillionHistory: [],
+                 interview: ''},
+                 /////////////////////////////////////
+                 {dishLevel: 'cate-item level-1',
+                 name: '陳大信',
+                 profilePic: 'https://s3-ap-northeast-1.amazonaws.com/tozzi-img/9%E9%99%B3%E5%A4%A7%E4%BF%A1s2.jpg',
+                 return: true,
+                 returnRate: 25.6,
+                 rate: 1,
+                 rank: 7,
+                 stock: '3264欣銓',
+                 stockId: '3264',
+                 price: 10,
+                 analysisId: 'ana3',
+                 analysis1: '買進，切記設一個停損點，剩下的就是學會抱好抱滿跟著獲利奔跑了。然而很多人會覺得基本面分析就是長期抱到天荒地老，但這其實對資金的善用度並不妥當，而且基本面分析不等同未來確切答案，畢竟生死有命，富貴在天。 從這檔標的基本切入，就是近年好好地在做基本功，然後現在到了開花結果的季節，只是是曇花一現還是成就一方霸主就得看造化了。因此進出場主要是透過觀察月營收、季度EPS、本益比和籌碼技術面為標準。',
+                 analysis2: '欣銓科技為一專業之半導體測試廠，屬半導體產業鏈下游的封裝測試廠，服務的內容包含記憶體、邏輯與混合信號積體電路的測試工程開發及測試生產。近年來在手機市場，半導體產業以及車用電子領域等皆有涉略，主要客戶為德儀（TI）、旺宏、台積電、聯發科、聯電、恩智浦（NXP）、Marvell、Sandisk、Freescale等。',
+                 analysis3: '相對相同電子產業的競爭公司而言，欣銓是在醞釀成長爆發期，無論是2016年開始在中國南京設廠即將完成而明年開始進行封測之外，又或是在日本續發展出新客戶市場，還是拼購『3559全智科』以期進入無線射品（RF）測試領域(物聯網)。尤其2017年前三季的EPS更是接近了2016年整年的EPS，甚至在這一季的大單照顧下，營收也有望突破而即將創近年年EPS新高。穩健度而言，其實每年的現金股利或是殖利率都大於3%，也是穩健投資的不錯選擇。',
+                 analysis4: '本益比目前還在合理範圍，只是近期開始創高中很可能會突破合理範圍，畢竟基本面投資的話其實應該出手在30元以下會是比較典型的價值型投資人。另外基本面分析的地雷主要還有公司派的誠信正直影響性，這檔標的目前上看來還是穩健地在汲汲營營，但人性始終是善變的，不得不防。最後若是大盤指數回檔得讓人跌得七零八落，估計股價也會受到影響。若是季度EPS最終不給力或是跌破季線將認賠出場。',
+                 TStockHistory: [
+                     {href: 'http://tozzi.com.tw/traders_s1.html?id=9', season: '一', id: 1, slash: '/'},
+                     {href: 'http://tozzi.com.tw/traders_s2.html?id=9', season: '二', id: 2, slash: '/'},
+                     {href: 'http://tozzi.com.tw/traders_s3.html?id=9', season: '三', id: 3, slash: '/'},
+                     {href: 'http://tozzi.com.tw/traders_s4.html?id=9', season: '四', id: 4, slash: ''}],
+                 WarrantHistory: [],
+                 MillionHistory: [],
+                 interview: ''},
+                 /////////////////////////////////////
+                 {dishLevel: 'cate-item level-1',
+                 name: '游穎繜',
+                 profilePic: 'https://s3-ap-northeast-1.amazonaws.com/tozzi-img/24%E6%B8%B8%E7%A9%8E%E7%B9%9C.jpg',
+                 return: true,
+                 returnRate: 25.6,
+                 rate: 1,
+                 rank: 6,
+                 stock: '2377微星',
+                 stockId: '2377',
+                 price: 10,
+                 analysisId: 'ana4',
+                 analysis1: '微星為國內三大自有品牌主機板製造廠商，僅次於華碩、技嘉，2010年開始轉攻中高階電競筆電及相關產品開發，2012年推出首款遊戲筆電，2013年營收逐漸出現起色，獲利也因為電競產品毛利率較高，而連帶轉佳，2014年取得中國電競市場第一、美國僅次於DELL，榮登全球前三強的電競業者地位。目前其電競系列產品，已取得宏達電HTC Vive及輝達NVIDIA等大廠的VR認證，希望可乘著VR風潮將電競事業帶往另一個高峰。',
+                 analysis2: '微星科技成立於1986年，公司早期以主機板製造起家，可算是國內主機板製造商的先驅，與同以主機板起家的技嘉(2376)同年創立。MB產業從亞洲金融風暴(1997)開始、 Dot-com bubble(2000)後產業集中度快速升高。台廠因完整售後服務、品質控管要求，與大廠(Intel、AMD)密切合作並取得認證，導致產業大者恆大的趨勢成形。2005年開始，台灣四大主機板廠(和碩、技嘉、微星、精英)占全球市占率已突破90%。',
+                 analysis3: '自2013年微星電競市場開始貢獻獲利後，本益比落於8~12倍之間，目前微星每股在55元左右，應屬過去本益比上緣，不過考量電競市場正蓬勃發展，根據遊戲業研究機構Newzoo最新一份報告指出，2016全球電競市場收入將從2015年的3.25億美元增長至2016年的4.63億美元，同比增長43%。到2019年，這個數據有望達到11億美元。儘管產業總值增長非僅限於硬體製造的部分，但未來後市在微星MSI於全球市場已打出知名度下，應可期待。',
+                 analysis4: '從2012年微星推出首款電競筆電後，營收、毛利、營業利益、營業現金流入皆持續向上，趨勢一致，盈餘品質佳。2014年因微星快速增加存貨，導致營業現流對淨利比出現低於100%的情形，該狀況已於2015年營收帶動下逐漸去除，不過存貨占比自此升至30%以上，加上應收帳款占總資產達58%，營運風險偏高，未來將會是觀察重點。資料來源:財報狗',
+                 TStockHistory: [
+                     {href: 'http://tozzi.com.tw/traders_s3.html?id=24', season: '三', id: 3, slash: '/'},
+                     {href: 'http://tozzi.com.tw/traders_s4.html?id=24', season: '四', id: 4, slash: ''}],
+                 WarrantHistory: [],
+                 MillionHistory: [],
+                 interview: ''},
+                 /////////////////////////////////////
+                 {dishLevel: 'cate-item level-1',
+                 name: '楊皓宇',
+                 profilePic: 'https://s3-ap-northeast-1.amazonaws.com/tozzi-img/11%E6%A5%8A%E7%9A%93%E5%AE%87s4.jpg',
+                 return: true,
+                 returnRate: 25.6,
+                 rate: 1,
+                 rank: 5,
+                 stock: '5534長虹',
+                 stockId: '5534',
+                 price: 10,
+                 analysisId: 'ana5',
+                 analysis1: '估值以2017Q3之淨值為基礎，加上待售房地預計可認列EPS，在建房地預計可認列EPS則依完工年度打折計算，獲利率依過往低標3成計算，營建用地因距完工時程還很遠不加計利益，最後是新世紀之潛在獲利。保守估值如下：42.81+20.83+16.6*0.8+6.41*0.6+9.51*0.4+13.12=97.69。以目前股價74.9元計，尚有約3成左右的空間。',
+                 analysis2: '長虹為建設開發公司，股本29.03億，經營業務主要為住宅、廠辦大樓之開發。營建業自從IFRS上路營收認列改為全部完工法後，建案交屋情況便是影響個股營收的重大因素。',
+                 analysis3: '長虹近期新建案有長虹天璽、長虹天薈陸續交屋中，估計還可認列約11.41、0.83元EPS，餘屋則剩下世紀長虹約0.25元。10月底公告售出的長虹新世紀大樓，估計也會在明年初認列入帳，預計可貢獻8.34元EPS。明年還有林口長虹天際可望完工開始交屋。出租中的長虹新時代則可貢獻穩定的租金收益，若以出售新世紀相同之出租報酬率2.8%計算，一年租金約2億，整棟價值至少也有約71.4億，目前帳列成本是33.3億，中間的差額價值約13.12元EPS。整體來說可受惠近期建案認列因素獲利頗豐。',
+                 analysis4: '房市比預期悲觀尚未回穩，完工之建案交屋不順，新推出之建案銷售不佳。但近期房市移轉棟量小有回溫，且長虹歷年來算是營建業中的模範生，受影響程度應可降低。另外一個隱憂是2016年後取得的土地到開發完成後，要適用房地合一稅新制，這會造成建商所得稅率大幅提升，我想這也是為什麼長虹近年都未購地之主要原因，相對其他建商，這點可以看出長虹經營階層之保守。',
+                 TStockHistory: [
+                     {href: 'http://tozzi.com.tw/traders_s1.html?id=11', season: '一', id: 1, slash: '/'},
+                     {href: 'http://tozzi.com.tw/traders_s2.html?id=11', season: '二', id: 2, slash: '/'},
+                     {href: 'http://tozzi.com.tw/traders_s3.html?id=11', season: '三', id: 3, slash: '/'},
+                     {href: 'http://tozzi.com.tw/traders_s4.html?id=11', season: '四', id: 4, slash: ''}],
+                 WarrantHistory: [],
+                 MillionHistory: [],
+                 interview: 'https://www.facebook.com/notes/tozzi/%E9%81%B8%E6%89%8B%E5%B0%88%E8%A8%AA%E7%B3%BB%E5%88%97%E6%A5%8A%E7%9A%93%E5%AE%87%E7%9A%84%E6%8A%95%E8%B3%87%E5%93%B2%E5%AD%B8%E9%B3%B3%E5%87%B0%E4%B8%8D%E8%90%BD%E7%84%A1%E5%AF%B6%E4%B9%8B%E5%9C%B0/1314122192007732/'},
+                 /////////////////////////////////////
+                 {dishLevel: 'cate-item level-1',
+                 name: 'Moore',
+                 profilePic: 'https://s3-ap-northeast-1.amazonaws.com/tozzi-img/27Moore.jpg',
+                 return: true,
+                 returnRate: 25.6,
+                 rate: 1,
+                 rank: 4,
+                 stock: '6615慧智',
+                 stockId: '6615',
+                 price: 10,
+                 analysisId: 'ana6',
+                 analysis1: '買進，並且透過觀察OTC生技指數的變化來看，指數已有從回測波轉強的跡象，且基期在相對低點；營收成長表現觀察，年營收都能保持3.5億以上，重點是毛利率與營業利益率都保持在高水平(毛利35%以上，營利率13%以上)，依照上櫃後的營收公布以及財報，以及OTC生技族群是否有續強來做為續抱依據。',
+                 analysis2: '慧智為基因檢測公司，主要產品為全球基因測序，近期除母胎兒醫學為主軸外，也新增腫瘤醫學相關市場，明年首季將推出癌症檢測商品，每季也都會推出相關檢測商品，目前商品的特色是高毛利，高獲利，高成長。',
+                 analysis3: '產業結構切合先進國家需求，並且廣為開發中國家接受，市場能見度高，同類型股票，如近期中美冠科(6554)在12月初創低後被日商以兩倍以上市價併購，以及從11月起漲的大江(8436)皆為同質性產品，若能由族群轉強帶動個股表現將不容小覷。',
+                 analysis4: '生技產業初期投入大量成本後，最擔心的就是營收以及成長度不如預期，新藥則是擔心解盲(如浩鼎)，或是藥品專利問題等，以此基因檢測類別來看的風險即是產品在上市之後無法受到消費者青睞，導致成長力道不如預期，因此當營收呈現衰退，或是有降低毛利來衝高營收的策略後，會考慮換股操作。',
+                 TStockHistory: [
+                     {href: 'http://tozzi.com.tw/traders_s3.html?id=27', season: '三', id: 3, slash: '/'},
+                     {href: 'http://tozzi.com.tw/traders_s4.html?id=27', season: '四', id: 4, slash: ''}],
+                 WarrantHistory: [
+                     {href: 'http://tozzi.com.tw/traders_w1.html?id=21', season: '一', id: 1, slash: ''}],
+                 MillionHistory: [],
+                 interview: ''},
+                 /////////////////////////////////////
+                 {dishLevel: 'cate-item level-1',
+                 name: 'Trader Yu',
+                 profilePic: 'https://s3-ap-northeast-1.amazonaws.com/tozzi-img/30Trader+Yu.jpg',
+                 return: true,
+                 returnRate: 25.6,
+                 rate: 1,
+                 rank: 3,
+                 stock: '2015豐興',
+                 stockId: '2015',
+                 price: 10,
+                 analysisId: 'ana7',
+                 analysis1: '買進股票，觀察到技術面即將高機率準備突破將近一年的區間，以籌碼來看，蠻有機率挑戰近幾年新高，加上公司經營績效高於交易所同類公司，獲利能力高於交易所同類公司，成長能力符合交易所同類公司標準，償債能力高於交易所同類公司，所以選擇買進，事不宜遲。',
+                 analysis2: '豐興為鋼鐵公司，「勞雇同心，共創雙贏」之信念，擁有煉鋼電弧爐二座，年鋼胚產品180萬公噸，軋鋼廠三廠年成品產能180萬公噸，產品服務，角鋼、方鋼、槽鋼、扁鋼等型鋼生產製造及銷售、棒鋼、盤元、鋼筋等條鋼生產製造及銷售，「誠信經營，穩健創造」之經營理念。',
+                 analysis3: '全球各地面臨寒冬強風暴雪，交通運輸本就相當不便，造成廢鋼收集困難，國際原料行情部分，美國大船廢鋼由每噸352美元大漲至400美元，日本2H廢鋼由每噸357美元漲至365美元，美國貨櫃廢鋼由每噸330美元漲至343美元，澳洲鐵礦砂由70.3美元漲至73.55美元，國際原物料價格走揚讓人充滿各種想像力，沒錯，充滿想像力，就是無限可能。',
+                 analysis4: '預期該股會漲，無非是希望強風暴雪預期強勁或者是純技術面符合預期，買進後走勢不如預期或者跌破一年的盤整區間，就會立刻止血進行換股操作，待下次狙擊新目標，該股需要注意的風險，假設如預期衝上近幾年高點，是否遇到壓力回檔是否有支撐，再伺機加碼放大。',
+                 TStockHistory: [
+                     {href: 'http://tozzi.com.tw/traders_s3.html?id=30', season: '三', id: 3, slash: '/'},
+                     {href: 'http://tozzi.com.tw/traders_s4.html?id=30', season: '四', id: 4, slash: ''}],
+                 WarrantHistory: [],
+                 MillionHistory: [],
+                 interview: ''},
+                 /////////////////////////////////////
+                 {dishLevel: 'cate-item level-1',
+                 name: 'cyc',
+                 profilePic: 'https://s3-ap-northeast-1.amazonaws.com/tozzi-img/49-%E6%B1%9F%E5%93%B2%E5%AE%87s4.jpg',
+                 return: true,
+                 returnRate: 25.6,
+                 rate: 1,
+                 rank: 2,
+                 stock: '9945潤泰新',
+                 stockId: '9945',
+                 price: 10,
+                 analysisId: 'ana8',
+                 analysis1: '這檔持有蠻久的，從6月中0056高股息基金把潤泰新潤泰全賣光光那天後陸續買進6張(除權後7.2張)，之前出了2張目前手上5.2張。比賽只比六週又是第一季財報空窗期，長線因素影響不易顯現，在籌碼面和技術面有不錯的條件，就……賭一把囉，不過短線漲跌要跟小型妖股PK還是很難的。<a href="https://s3-ap-northeast-1.amazonaws.com/tozzi-img/cycP0.png">(圖一)</a>',
+                 analysis2: '1. 主要經營業務：委託營造廠興建國民住宅．商業大樓出租出售業務。2. 控股型公司(集團)，由潤成投控持有南山人壽，其他像是生技股、日友、前陣子上新聞的高鑫零售(Concord)等等。3. 簡單總結就是：主業營建、副業投資，但副業做比較大?4. 因為南山人壽金融資產帳面未實現損失，eps好像很高但都不能配息，高股息基金憤而踢出投資組合。',
+                 analysis3: '籌碼面：1. 10月初持股比例突出和凹洞為資料錯誤，那週除權的新股入集保帳戶。2. 股價未還原權值，8月底除權缺口實際上不存在(後續再看還原k線圖)3. 小戶持股比例下降，算50張或20張以下更明顯。可以發現小戶在去年4月高鑫零售消息和台幣匯率強升後(第一個缺口)隨著股價下跌買進4. 在除權息後(8月底缺口)大戶持股緩速增加5. 相關股潤泰全(下頁圖)籌碼面有相似之處<a href="https://s3-ap-northeast-1.amazonaws.com/tozzi-img/cycP1.png">(圖二)</a><a href="https://s3-ap-northeast-1.amazonaws.com/tozzi-img/cycP2.png">(圖三)</a>技術面： <a href="https://s3-ap-northeast-1.amazonaws.com/tozzi-img/cycP3.png">(圖四)</a>1. 還原權值log K線可以看到已經接近收復3月底的跳空缺口，事件上來說，那時賣高鑫零售沒成局大跌，我認為是事件炒作，主因還是南山人壽匯損壓力和配股配息影響市場情緒。2. 60MA來看，8月底除權均線開始反轉，9月底新股入集保和兩星期前高鑫零售賣掉後的反壓(這叫利多出盡?)在60MA均有撐住。3. 還原週線上11月中跳空高點剛好是壓力區。4. 比賽只有6週，就看看會不會突破35元的壓力區。<a href="https://s3-ap-northeast-1.amazonaws.com/tozzi-img/cycP4.png">(圖五)</a>',
+                 analysis4: '持有南山人壽的比例：其實跟個股分析有點沒關係……，不過在換算南山獲利損益和潤泰新帳面價值的關係時會用到，大概估計一下。潤泰新106Q3財報數據：股本167.2億，每股淨值25.37元。1. 首先是潤成投控持有南山的比例 (http://ins-info.ib.gov.tw/customer/Info1-4.aspx?UID=11456006)，75.144+15.481=89.63(%)<a href="https://s3-ap-northeast-1.amazonaws.com/tozzi-img/cycP5.png">(圖六)</a>2. 財報28頁潤泰新權益法投資項目，這裡挺複雜的，因為子母公司交叉持股，要算實際潤泰新持有潤成投控的真實比例得先把權益法投資的每家公司查清楚，若只列入潤泰全的影響，計算(等比級數計算題)會得到潤泰新持有21.27%潤成投控，有19.06%南山人壽。網路資料表示：潤泰新持股25％，潤泰全球持23％，寶成工業持20％，另外，潤泰集團旗下的匯弘、長春、宜泰三家投資公司，也合計持有潤成32％股權。3. 潤泰新財報資料：<a href="https://s3-ap-northeast-1.amazonaws.com/tozzi-img/cycP6.png">(圖七)</a>4. 潤泰全財報資料：<a href="https://s3-ap-northeast-1.amazonaws.com/tozzi-img/cycP7.png">(圖八)</a>台幣匯率：今年台幣漲最兇的時段是第一季(32.330.75)，6月底時美金兌台幣約在30.45，12/28破半年新低在29.75，壽險業匯損問題應不會較去年嚴重，當然台幣如果再漲5%又是另一回事了。<a href="https://s3-ap-northeast-1.amazonaws.com/tozzi-img/cycP8.png">(圖九)</a>美國十年公債殖利率：恩…比賽只比六週這個應該可以無視。利率上漲對壽險業持有債券的帳面價值有害，依照南山人壽106H1財報第111頁的數字來算，十年期公債殖利率衝破3%創2014以來新高的話，計算帳面價值的影響約是 -1.44元。<a href="https://s3-ap-northeast-1.amazonaws.com/tozzi-img/cycP9.png">(圖十)</a><a href="https://s3-ap-northeast-1.amazonaws.com/tozzi-img/cycP10.png">(圖十一)</a>',
+                 TStockHistory: [
+                     {href: 'http://tozzi.com.tw/traders_s4.html?id=49', season: '四', id: 4, slash: ''}],
+                 WarrantHistory: [],
+                 MillionHistory: [],
+                 interview: ''},
+                 /////////////////////////////////////
+                 {dishLevel: 'cate-item level-1',
+                 name: '羅翊仁',
+                 profilePic: 'https://s3-ap-northeast-1.amazonaws.com/tozzi-img/45%E7%BE%85%E7%BF%8A%E4%BB%81.jpg',
+                 return: true,
+                 returnRate: 25.6,
+                 rate: 1,
+                 rank: 1,
+                 stock: '4180安成藥',
+                 stockId: '4180',
+                 price: 10,
+                 analysisId: 'ana9',
+                 analysis1: '買進，根據大盤走勢,每月財報狀況以及藥證取得進度決定進出場。近期合併景德,可由景德向美國申請眼科藥證,擴充產能。由杜邦分析可知,安成藥ROE受到稅後淨利率影響最大,權益乘數維持穩定,近幾季毛利為正且有上升趨勢,但營業利益持續為負值為管銷以及研發費用導致入不敷出。假設安成藥由虧轉盈成功,由近四季最高稅後淨利可知,單季稅後淨利約為3.5億元,全年估15億元,E.P.S為1.5元。若由股價定價模型,合理股價應為30元。但成長性難以預估,合理股價認為至少100元,故買進。',
+                 analysis2: '安成藥主要業務為新藥之開發，少數沒有負債之生技公司,股本12億,今年營收預估7億。本業毛利率約40~50%,公司目標為每年四件美國要正申請的計畫,2016.2017年皆完成。2017年11月已取得憂鬱症藥證,明年可望在美國上市增加營收。產能方面今年以1.8億元收購景德製藥,景德製藥為國內老牌公司近年轉型有成,只是近年生技產業不被重視,加上台泥公司的營運規劃調整,才跟其他藥廠談收購,對於安成藥而言產能獲得擴充,明年可望由虧轉盈。',
+                 analysis3: '開發美國新藥市場的公司,由於美國近年學名藥市場藥價大跌,股價處於低基期,具有"本夢比"的產業(非"慘"業),一旦業績爆發非常恐怖,2013年後股價走長空,近期來到低檔有特定分點在接,今年投入三個新藥申請,預計明年第一季會有回報,加上憂鬱症藥可望上市,第一季或第二季財報預期成長,加上美國升息,預期有匯兌利益.E.P.S明年估3元,近期拉回找買點140達預設停利點,技術面打底階段量能微增,待爆量確定走勢。籌碼面外資慢慢接,基本面還是不差。',
+                 analysis4: '基本上沒有主力要炒生技,股價很難持續走高,預期風險為大盤風險,以及公司營運出現不如預期之大問題,短線風險為籌碼技術走空,停損點預設15%。生技股經過幾年前炒作過頭,市場上投資人對於生技股避之唯恐不及,害怕自己一買,就會被套牢。因此成交量要持續放大其實還有待觀察,若市場上動能不足,股價仍會長期盤整,必須有強大持股信心,才能享受最後獲利。',
+                 TStockHistory: [
+                     {href: 'http://tozzi.com.tw/traders_s4.html?id=45', season: '四', id: 4, slash: ''}],
+                 WarrantHistory: [
+                     {href: 'http://tozzi.com.tw/traders_w1.html?id=45', season: '一', id: 1, slash: ''}],
+                 MillionHistory: [],
+                 interview: ''},
+                 /////////////////////////////////////
+                 {dishLevel: 'cate-item level-1',
+                 name: '冬天好冷',
+                 profilePic: '',
+                 return: true,
+                 returnRate: 25.6,
+                 rate: 1,
+                 rank: 13,
+                 stock: '2327國巨',
+                 stockId: '2327',
+                 price: 10,
+                 analysisId: 'ana10',
+                 analysis1: '',
+                 analysis2: '',
+                 analysis3: '',
+                 analysis4: '',
+                 TStockHistory: [
+                     {href: 'http://tozzi.com.tw/traders_s1.html?id=8', season: '一', id: 1, slash: '/'},
+                     {href: 'http://tozzi.com.tw/traders_s2.html?id=8', season: '二', id: 2, slash: '/'},
+                     {href: 'http://tozzi.com.tw/traders_s3.html?id=8', season: '三', id: 3, slash: '/'},
+                     {href: 'http://tozzi.com.tw/traders_s4.html?id=8', season: '四', id: 4, slash: ''}],
+                 WarrantHistory: [],
+                 MillionHistory: [],
+                 interview: 'https://www.facebook.com/notes/tozzi/%E9%81%B8%E6%89%8B%E5%B0%88%E8%A8%AA%E7%B3%BB%E5%88%97-%E5%BC%B5%E9%9D%9C%E7%8E%89%E7%9A%84%E6%B3%A2%E6%96%AF%E8%B2%93%E6%8A%95%E8%B3%87%E8%97%9D%E8%A1%93/1322042447882373/'},
+                 /////////////////////////////////////
+                 {dishLevel: 'cate-item level-1',
+                 name: '流的滑',
+                 profilePic: 'https://s3-ap-northeast-1.amazonaws.com/tozzi-img/21%E6%B5%81%E7%9A%84%E6%BB%91s4.jpg',
+                 return: true,
+                 returnRate: 25.6,
+                 rate: 1,
+                 rank: 11,
+                 stock: '1524耿鼎',
+                 stockId: '1524',
+                 price: 10,
+                 analysisId: 'ana11',
+                 analysis1: '買進，持續觀察股價跟營收表現。因為這間公司是出口，如果新台幣大幅升值的話可能匯損會很嚴重。毛利率跟營益率也不如去年，稍微有點尷尬。但如果12月營收出來，第四季營收優於去年就可以期待一下了，如果賺個0.4塊，算是還行，但假如他賺個0.5，那隨便漲到15塊應該是有機會的，但現在是財報空窗期所以我只是單純的有信心而已QQ',
+                 analysis2: '耿鼎為汽車板金件製造大廠，主要從事生產汽車後售市場的金屬碰撞件，主要產品為葉子板、引擎蓋、車門等。近年來由於汽車普及率不斷地提高，促使全球汽車零件需求大增，尤其是汽車鈑金件的需求更大於以往，耿鼎近年來不斷引進世界各國最先進的生產設備，大大的提升了技術與產能。',
+                 analysis3: '基本面:Q3毛利率20.69%，營益率9.98%，營收6.39億，稅後盈餘 0.3 ，Q4到明年Q1是車用傳統旺季，營收比上季增加，預期可以持續下去，股價11.95來說是不貴。技術面:季線之上大概是還不錯吧。籌碼面:工廠在桃園，有幾間桃園分點在吃，可能還行吧。',
+                 analysis4: '這支股票阿，股性比較不好，大概是容易開高走低，漲跌不太乾脆。看過公司法說會，公司不以追求營收為目標，那獲利就難有爆發，可能漲跌都會是慢慢的吧。但還是期待年底車用旺季，可以帶動獲利的成長，股價在季線之上，拉回量縮不破底進場，嚴設停損，應該不會賠到大錢吧。買進，持續觀察股價跟營收表現。因為這間公司是出口，如果新台幣大幅升值的話可能匯損會很嚴重。毛利率跟營益率也不如去年，稍微有點尷尬。但如果12月營收出來，第四季營收優於去年就可以期待一下了，如果賺個0.4塊，算是還行，但假如他賺個0.5，那隨便漲到15塊應該是有機會的，但現在是財報空窗期所以我只是單純的有信心而已QQ',
+                 TStockHistory: [
+                     {href: 'http://tozzi.com.tw/traders_s3.html?id=21', season: '三', id: 3, slash: '/'},
+                     {href: 'http://tozzi.com.tw/traders_s4.html?id=21', season: '四', id: 4, slash: ''}],
+                 WarrantHistory: [
+                     {href: 'http://tozzi.com.tw/traders_w1.html?id=21', season: '一', id: 1, slash: ''}],
+                 MillionHistory: [],
+                 interview: ''},
+                 /////////////////////////////////////
+                 {dishLevel: 'cate-item level-1',
+                 name: '股感小編',
+                 profilePic: '',
+                 return: true,
+                 returnRate: 25.6,
+                 rate: 1,
+                 rank: 10,
+                 stock: '2617台航',
+                 stockId: '2617',
+                 price: 10,
+                 analysisId: 'ana12',
+                 analysis1: '買進，並且透過觀察BDI指數（以及其子項目指數BPI、BHI）的變化以及營收成長表現來看，指數雖回降但仍較去年基期高，Q2可能保持獲利並持續至年底，以股價淨值比（PB）以及BDI指數作為進出標準。',
+                 analysis2: '台航為散裝貨運公司，主要經營亞洲以及歐洲的遠洋航線，裝卸貨區域以中國、澳洲、南北美洲以及歐洲等地，船型則以巴拿馬極限型以及輕便極限型為主，自從2008年航運業整體需求降低以及供給上升的狀況，台航去年進入虧損的狀態',
+                 analysis3: '股價淨值比（PB）處於歷史下緣，大概0.5倍左右，而且毛利率回升，EPS已轉正，提供一種轉機股的投資價值。而且第一季已經由虧轉盈，並且BDI指數從低點持續上升，同時航運業的供給面交船數量已大幅降低，在需求提昇的狀態下公司的營運提升會呈現轉機，此外營收年成長除了6月之外維持正數，對照整體較去年成長的BDI指數，航運業有呈現回春的跡象',
+                 analysis4: '航運業整體產業基於整體供給龐大以及需求難以大幅成長的狀況下，很難在近期呈現持續性的成長， 因此當台航的股價淨值比（PB)回到0.8倍以上或是營收年成長率開始轉負時，就會進行換股操作。',
+                 TStockHistory: [],
+                 WarrantHistory: [],
+                 MillionHistory: [],
+                 interview: ''},
+            ]
+        };
+
+        var stockTodayPrice = {
+            '2353': 11,
+            '6451': 12,
+            '3264': 10.1,
+            '2377': 10.3,
+            '5534': 10.8,
+            '6615': 10.7,
+            '2015': 11.7,
+            '9945': 11.2,
+            '4180': 19,
+            '2327': 20,
+            '1524': 9,
+            '2617': 8,
+        };
+
+        tradersData.traders.forEach(function(trader){
+            var todayPrice = stockTodayPrice[trader.stockId];
+            var rate = (todayPrice - trader.price) / trader.price *100;
+
+            if (rate >= 20){
+                trader.dishLevel = 'cate-item level-1';
+            }else if (rate < 20 && rate >= 10){
+                trader.dishLevel = 'cate-item level-2';
+            }else if (rate < 10 && rate >= 5){
+                trader.dishLevel = 'cate-item level-3';
+            }else if (rate < 5 && rate >= 0){
+                trader.dishLevel = 'cate-item level-4';
+            }else{
+                trader.dishLevel = 'cate-item level-5';
+            }
+
+            if (rate >= 0){
+                trader.rate = Math.round10(rate, -1);
+                trader.return = true;
+                trader.returnRate = trader.rate;
+            }else{
+                trader.rate = Math.round10(rate, -1);
+                trader.return = false;
+                trader.returnRate = Math.abs(trader.rate);
+            }
+        });
+
+        tradersData.traders.sort(function(a, b){
+            return b.rate - a.rate;
+        });
+
+        tradersData.traders.forEach(function(trader, index){
+            trader.rank = index + 1;
+        });
+
+        var vue = new Vue({el: '#vue', data: tradersData});
+
+
     </script>
 </body>
 </html>
