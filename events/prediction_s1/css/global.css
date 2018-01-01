@@ -1121,7 +1121,7 @@ header .container-fluid {
 }
 
 .txt-block.expandable [type=checkbox]:checked~.expand-block {
-    max-height: 50rem;
+    max-height: 2000rem;
 }
 .history h5 {
     font-size: 1.25em;
