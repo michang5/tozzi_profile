@@ -120,7 +120,7 @@
             </section>
             <section id="maincard-group" class="clearfix">
                 <div class="container">
-                    <div class="col-sm-6" v-for="trader in traders">
+                    <div class="col-sm-6" v-for="trader in traders" :style="{clear: ((trader.rank+1)%2 == 0)? 'left': ''}">
                         <div class="card" v-cloak>
                             <div v-bind:class="trader.dishLevel">
                                 <div class="ribbon"></div>
