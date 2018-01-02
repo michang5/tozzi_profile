@@ -368,6 +368,31 @@
     </script>
     <script type="text/javascript">
 
+        var data = {};
+        //data//
+
+        var d = new Date();
+        var today;
+        var date = d.getDate();
+        var month = d.getMonth() + 1;
+        if (d.getDay() == 0){
+            date -= 2;
+        }else if(d.getDay() == 6){
+            date -= 1;
+        }
+        if (date < 10){
+            date = '0' + date;
+        }else{
+            date.toString();
+        }
+        if (month < 10){
+            month = '0' + month;
+        }else{
+            month.toString();
+        }
+        today = month + '/' + date;
+        console.log(today);
+
         (function() {
             function decimalAdjust(type, value, exp) {
                 if (typeof exp === 'undefined' || +exp === 0) {
@@ -675,18 +700,18 @@
         };
 
         var stockTodayPrice = {
-            '2353': 23.85,
-            '6451': 139.0,
-            '3264': 38,
-            '2377': 79.9,
-            '5534': 79,
+            '2353': data.s2353[today],
+            '6451': data.s6451[today],
+            '3264': data.s3264[today],
+            '2377': data.s2377[today],
+            '5534': data.s5534[today],
             '6615': 110.2,
-            '2015': 57.8,
-            '9945': 32,
-            '4180': 84.7,
-            '2327': 354,
-            '1524': 11.8,
-            '2617': 17.1,
+            '2015': data.s2015[today],
+            '9945': data.s9945[today],
+            '4180': data.s4180[today],
+            '2327': data.s2327[today],
+            '1524': data.s1524[today],
+            '2617': data.s2617[today],
         };
 
         tradersData.traders.forEach(function(trader){
