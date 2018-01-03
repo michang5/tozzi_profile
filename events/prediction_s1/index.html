@@ -383,17 +383,26 @@
 
         var d = new Date();
         var today;
+        var yesterday;
         var date = d.getDate();
+        var lastDate = d.getDate() - 1;
         var month = d.getMonth() + 1;
         if (d.getDay() == 0){
             date -= 2;
+            lastDate -=2;
         }else if(d.getDay() == 6){
             date -= 1;
+            lastDate-=2;
         }
         if (date < 10){
             date = '0' + date;
         }else{
             date.toString();
+        }
+        if (lastDate < 10){
+            lastDate = '0' + lastDate;
+        }else{
+            lastDate.toString();
         }
         if (month < 10){
             month = '0' + month;
@@ -401,7 +410,11 @@
             month.toString();
         }
         today = month + '/' + date;
+        yesterday = month + '/' + lastDate;
+
         console.log(today);
+        console.log(yesterday);
+        console.log(data.s2353[today]);
 
         (function() {
             function decimalAdjust(type, value, exp) {
@@ -710,18 +723,18 @@
         };
 
         var stockTodayPrice = {
-            '2353': data.s2353[today],
-            '6451': data.s6451[today],
-            '3264': data.s3264[today],
-            '2377': data.s2377[today],
-            '5534': data.s5534[today],
-            '6615': 110.2,
-            '2015': data.s2015[today],
-            '9945': data.s9945[today],
-            '4180': data.s4180[today],
-            '2327': data.s2327[today],
-            '1524': data.s1524[today],
-            '2617': data.s2617[today],
+            '2353': data.s2353[today]===undefined?data.s2353[yesterday]:data.s2353[today],
+            '6451': data.s6451[today]===undefined?data.s6451[yesterday]:data.s6451[today],
+            '3264': data.s3264[today]===undefined?data.s3264[yesterday]:data.s3264[today],
+            '2377': data.s2377[today]===undefined?data.s2377[yesterday]:data.s2377[today],
+            '5534': data.s5534[today]===undefined?data.s5534[yesterday]:data.s5534[today],
+            '6615': 107.88,
+            '2015': data.s2015[today]===undefined?data.s2015[yesterday]:data.s2015[today],
+            '9945': data.s9945[today]===undefined?data.s9945[yesterday]:data.s9945[today],
+            '4180': data.s4180[today]===undefined?data.s4180[yesterday]:data.s4180[today],
+            '2327': data.s2327[today]===undefined?data.s2327[yesterday]:data.s2327[today],
+            '1524': data.s1524[today]===undefined?data.s1524[yesterday]:data.s1524[today],
+            '2617': data.s2617[today]===undefined?data.s2617[yesterday]:data.s2617[today],
         };
 
         tradersData.traders.forEach(function(trader){
