@@ -969,7 +969,7 @@ a.btn.btn-fb {
                     position: static;
                     .dropdown-menu {
 //                        overflow-y: scroll;
-                        height: 100vh;
+                        max-height: 100vh;
 //                        max-height: 680px;
                         top: 50px;
                         background-image: -webkit-linear-gradient(to bottom, $yellow, $orange);
@@ -981,6 +981,7 @@ a.btn.btn-fb {
                         text-align: center;
                         left: 0;
                         right: 0;
+                        padding-bottom: 40px;
                         > li {
                             a {
                                 text-decoration: none;
@@ -1028,6 +1029,9 @@ a.btn.btn-fb {
                                 background-image: -o-linear-gradient(left top, $peach, $hotpink);
                                 background-image: linear-gradient(left top, $peach, $hotpink);
                             }
+                            &:nth-of-type(4) {
+                                background-image: linear-gradient(to right bottom, #49bfbb 0%, #ffce00 70%);
+                            }
                             li {
                                 &:nth-of-type(1) {
                                     font-size: 28px;
@@ -1040,11 +1044,15 @@ a.btn.btn-fb {
                         }
                     }
                 }
+                &.open {
+                    .dropdown-menu {
+                        overflow-y: scroll;
+                    }
+                }
                 &.avatar-menu {
                     &.open {
                         .dropdown-menu {
                             padding: 30px 30px 60px;
-                            overflow-y: scroll;
                         }
                     }
                     li {
@@ -1143,7 +1151,7 @@ a.btn.btn-fb {
 .all {
     .wrapper {
         min-height: 100%;
-        position: relative;
+//        position: relative;
     }
     footer {
         margin-top: -100px;
@@ -1159,7 +1167,7 @@ a.btn.btn-fb {
     }
 }
 #section-0 {
-    padding: 80px 0;
+    padding: 40px 0;
     height: 100%;
     img {
         margin: 30px 0;
@@ -2117,6 +2125,12 @@ footer {
         background: $white;
         h5 {
             color: $black;
+        }
+        img {
+            width: 130px;
+            display: inline-block;
+            vertical-align: top;
+            margin: 10px;
         }
     }
     p {

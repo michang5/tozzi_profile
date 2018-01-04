@@ -187,7 +187,7 @@
                                 <p v-if="trader.TStockHistory.length">TOZZI 台股實戰賽第 <history-link v-for="record in trader.TStockHistory" v-bind:history="record" :key="record.id"></history-link> 季</p>
                                 <p v-if="trader.WarrantHistory.length">TOZZI x 台新權證實戰賽第 <history-link v-for="record in trader.WarrantHistory" v-bind:history="record" :key="record.id"></history-link> 季</p>
                                 <p v-if="trader.MillionHistory.length">TOZZI 百人百萬領投計畫第 <history-link v-for="record in trader.MillionHistory" v-bind:history="record" :key="record.id"></history-link> 季</p>
-                                <div v-if="trader.interview"><a v-bind:href="trader.interview" class="btn btn-info">選手專訪</a></div>
+                                <div v-if="trader.interview"><a v-bind:href="trader.interview" target="_blank" class="btn btn-info">選手專訪</a></div>
                             </div>
                         </div>
                     </div>
@@ -202,7 +202,7 @@
                 </div>
             </section>
             <div class="partner">
-                <img src="images/stockfeel.png" alt="股感知識庫">
+                <a href="https://www.stockfeel.com.tw/" target="_blank"><img src="images/stockfeel.png" alt="股感知識庫"></a>
             </div>
             <footer>
                 <div class="container">

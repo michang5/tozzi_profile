@@ -1218,6 +1218,9 @@ header .container-fluid {
         font-size: .7em;
         padding: 5px;
     }
+    .card.note .btn {
+        max-width: 100%;
+    }
 }
 
 

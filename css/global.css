@@ -700,7 +700,7 @@ body.warrant .navbar-fixed-top .right-nav > li.others > a {
   position: static;
 }
 .navbar-fixed-top .right-nav > li.dropdown.open .dropdown-menu {
-  height: 100vh;
+  max-height: 100vh;
   top: 50px;
   background-image: -webkit-linear-gradient(to bottom, #FFCE00, #FF9500);
   background-image: -o-linear-gradient(to bottom, #FFCE00, #FF9500);
@@ -710,6 +710,7 @@ body.warrant .navbar-fixed-top .right-nav > li.others > a {
   text-align: center;
   left: 0;
   right: 0;
+  padding-bottom: 40px;
 }
 .navbar-fixed-top .right-nav > li.dropdown.open .dropdown-menu > li a {
   text-decoration: none;
@@ -752,6 +753,9 @@ body.warrant .navbar-fixed-top .right-nav > li.dropdown.open .dropdown-menu {
   background-image: -o-linear-gradient(left top, #FF9662, #FF4C78);
   background-image: linear-gradient(to right bottom, #ff9662, #ff4c78);
 }
+.navbar-fixed-top .right-nav > li.dropdown.play .dropdown-menu .play-cate:nth-of-type(4) {
+  background-image: linear-gradient(to right bottom, #49bfbb 0%, #ffce00 70%);
+}
 .navbar-fixed-top .right-nav > li.dropdown.play .dropdown-menu .play-cate li:nth-of-type(1) {
   font-size: 28px;
   font-family: "source-han-sans-traditional", sans-serif, 'times',"Microsoft JhengHei";
@@ -759,9 +763,11 @@ body.warrant .navbar-fixed-top .right-nav > li.dropdown.open .dropdown-menu {
   text-shadow: 0 1px #fff;
   color: #2A2A32;
 }
+.navbar-fixed-top .right-nav > li.dropdown.open .dropdown-menu {
+  overflow-y: scroll;
+}
 .navbar-fixed-top .right-nav > li.dropdown.avatar-menu.open .dropdown-menu {
   padding: 30px 30px 60px;
-  overflow-y: scroll;
 }
 .navbar-fixed-top .right-nav > li.dropdown.avatar-menu li {
   line-height: 1.2;
@@ -823,7 +829,6 @@ body.warrant .navbar-fixed-top .right-nav > li.dropdown.open .dropdown-menu {
 
 .all .wrapper {
   min-height: 100%;
-  position: relative;
 }
 .all footer {
   margin-top: -100px;
@@ -839,7 +844,7 @@ body.warrant .navbar-fixed-top .right-nav > li.dropdown.open .dropdown-menu {
 }
 
 #section-0 {
-  padding: 80px 0;
+  padding: 40px 0;
   height: 100%;
 }
 #section-0 img {
@@ -1586,6 +1591,12 @@ footer .partner {
 }
 footer .partner h5 {
   color: #2A2A32;
+}
+footer .partner img {
+  width: 130px;
+  display: inline-block;
+  vertical-align: top;
+  margin: 10px;
 }
 footer p {
   line-height: 70px;
