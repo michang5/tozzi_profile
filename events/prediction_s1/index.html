@@ -120,7 +120,7 @@
                         <div class="count-repentance">
                             <div class="count-content">
                                 <span>距悔棋還有</span>
-                                <span class="dates" id="regret"></span>
+                                <span id="regret"></span>
                                 <span>交易日</span>
                             </div>
                         </div>
@@ -406,7 +406,7 @@
 
         // counting down
         var countDownClose = new Date("Feb 10, 2018").getTime();
-        var countDownRegret = new Date("Jan 23, 2018").getTime();
+        //var countDownRegret = new Date("Jan 23, 2018").getTime();
         var countingClose = function () {
             var now = new Date().getTime();
             var distanceOfClose = countDownClose - now;
@@ -418,21 +418,22 @@
                 document.getElementById("close").innerHTML = 0;
             }
         };
-        var countingRegret = function () {
-            var now = new Date().getTime();
-            var distanceOfRegret = countDownRegret - now;
-            var daysBeforeRegret = Math.floor(distanceOfRegret / (1000 * 60 * 60 * 24));
-            document.getElementById("regret").innerHTML = daysBeforeRegret;
+        document.getElementById("regret").innerHTML = '<h2>已截止</h2>';
+        // var countingRegret = function () {
+        //     var now = new Date().getTime();
+        //     var distanceOfRegret = countDownRegret - now;
+        //     var daysBeforeRegret = Math.floor(distanceOfRegret / (1000 * 60 * 60 * 24));
+        //     document.getElementById("regret").innerHTML = daysBeforeRegret;
 
-            if (distanceOfRegret < 0) {
-                clearInterval(y);
-                document.getElementById("regret").innerHTML = 0;
-            }
-        }
+        //     if (distanceOfRegret <= 0) {
+        //         clearInterval(y);
+        //         document.getElementById("regret").innerHTML = 0;
+        //     }
+        // }
         countingClose();
-        countingRegret();
+        //countingRegret();
         var x = setInterval(countingClose, 86400000);
-        var y = setInterval(countingRegret, 86400000);
+        //var y = setInterval(countingRegret, 86400000);
         // end of counting down
     </script>
     <script type="text/javascript">
