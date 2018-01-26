@@ -53,7 +53,7 @@
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
 </head>
-<body id="index" class="warrant">
+<body id="index" class="season5">
 	<div id="vue">
 	<!-- Navigation -->
     <header class="navbar-fixed-top">
@@ -61,14 +61,14 @@
             <h2 class="logo"><a href="index.html"><img src="images/tozzi_logo_new.png" alt="TOZZI"></a></h2>
             <h2 class="logo-s"><a href="index.html"><img src="images/tozzi_logo_s.png" alt="TOZZI"></a></h2>
             <ul class="right-nav">
-                <li><a href="warrant_s1.html">實況</a></li>
+                <li><a href="index_s5.html">實況</a></li>
                 <li class="dropdown avatar-menu">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">選手</a>
                     <ul class="dropdown-menu">
                         <div class="container">
                             <div class="row">
                                 <li class="col-xs-3" v-for="(t,i) in traders" :style="{clear: (i%4 == 0)? 'both': ''}">
-                                    <a :href="'traders_w1.html?id=' + t.id"><img :src="t.image" class="img-responsive" :alt="t.name">
+                                    <a :href="'traders_s4.html?id=' + t.id"><img :src="t.image" class="img-responsive" :alt="t.name">
                                     <span v-text="t.name"></span></a>
                                 </li>
                             </div>
@@ -111,8 +111,9 @@
                 <li class="dropdown others">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#"></a>
                     <ul class="dropdown-menu">
-                        <li><a href="https://goo.gl/hYidRC" target="_blank">比賽規則</a></li>
-                         <li><a href="https://goo.gl/iNyU4Z" target="_blank">常見問答</a></li>
+                        <li><a href="https://goo.gl/G8yhhF" target="_blank">比賽規則</a></li>
+                        <li><a href="https://goo.gl/iNyU4Z" target="_blank">常見問答</a></li>
+                        <li><a href="https://goo.gl/v3NMWh" target="_blank">選手發言常見問答</a></li>
                         <li><a href="https://goo.gl/A95Vg9" target="_blank">FB社團</a></li>
                         <li><a href="https://www.facebook.com/tozziarena" target="_blank"><span>FB粉絲頁</span></a></li>
                     </ul>
@@ -124,8 +125,8 @@
 	<div id="section-1">
 		<div class="container-fluid">
 		    <div class="container">
-		        <h1>權證投資實戰賽</h1>
-                <h2>第一季-台新權證聯合舉辦</h2>
+		        <h1>台股投資實戰賽</h1>
+                <h2>第五季</h2>
 		    </div>
 		</div>
 	</div>
@@ -134,19 +135,15 @@
 			<h2>比賽公告</h2>		 
 			<div class="col-sm-8 col-sm-offset-2">
 				<div class="list">
-					<a v-for="n in news" :href="n.url" target="_blank" v-html="'<i class=\'fa fa-bullhorn\' aria-hidden=\'true\'></i>' + n.title"></a>
+					<a href="https://goo.gl/G8yhhF" target="_blank">【TOZZI 台股投資實戰賽】 2018.02.01 ~ 2018.04.13</a>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div id="section-3" style="padding-bottom: 30px;">
+<!--
+    <div id="section-3" class="ranking">
         <div class="container">
-	        <img src="images/warrant_s1_banner.jpg" alt="權證投資實戰賽 台新權證聯合舉辦" class="img-responsive center-block">
-        </div>
-	</div>
-    <div id="section-6" class="ranking">
-        <div class="container">
-            <h2 class="main-title">第一季排行</h2>
+            <h2 class="main-title">第四季排行</h2>
             <div class="col-sm-12">
                 <h3><span>綜合排名</span><span><img src="images/icon_ranking.png" alt=""></span></h3>
             <div class="ranking">
@@ -159,121 +156,218 @@
                                     <th>名稱</th>
                                     <th>投報率</th>
                                     <th>違規扣分</th>
-                                    <th>未達台新10筆扣分</th>
                                     <th>總得分</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>1</td>
-                                    <td>吳家松</td>
-                                    <td>144.4</td>
+                                    <td>羅翊仁</td>
+                                    <td>14.1</td>
                                     <td>0</td>
-                                    <td>0</td>
-                                    <td>144.4</td>
+                                    <td>14.1</td>
                                 </tr>
                                 <tr>
                                     <td>2</td>
-                                    <td>Moore</td>
-                                    <td>46.3</td>
-                                    <td>-0.6</td>
+                                    <td>楊皓宇</td>
+                                    <td>10.7</td>
                                     <td>0</td>
-                                    <td>45.7</td>
+                                    <td>10.7</td>
                                 </tr>
                                 <tr>
                                     <td>3</td>
-                                    <td>短彈田</td>
-                                    <td>21.5</td>
-                                    <td>-0.6</td>
+                                    <td>蔡大交一元</td>
+                                    <td>7.9</td>
                                     <td>0</td>
-                                    <td>20.9</td>
+                                    <td>7.9</td>
                                 </tr>
                                 <tr>
                                     <td>4</td>
-                                    <td>董建維</td>
-                                    <td>11.1</td>
-                                    <td>-0.3</td>
-                                    <td>-1</td>
-                                    <td>9.8</td>
+                                    <td>胖紙豬</td>
+                                    <td>7.1</td>
+                                    <td>-0.6</td>
+                                    <td>6.5</td>
                                 </tr>
                                 <tr>
                                     <td>5</td>
-                                    <td>黃鉦博</td>
-                                    <td>1.2</td>
-                                    <td>-0.6</td>
-                                    <td>0</td>
-                                    <td>0.6</td>
+                                    <td>Daris</td>
+                                    <td>6.3</td>
+                                    <td>-0.3</td>
+                                    <td>6</td>
                                 </tr>
                                 <tr>
                                     <td>6</td>
-                                    <td>陳安煦</td>
-                                    <td>3.1</td>
+                                    <td>蔡庭玉</td>
+                                    <td>4.3</td>
                                     <td>-0.6</td>
-                                    <td>-3.5</td>
-                                    <td>-1</td>
+                                    <td>3.7</td>
                                 </tr>
                                 <tr>
                                     <td>7</td>
-                                    <td>CY Lu</td>
-                                    <td>-4.7</td>
-                                    <td>-0.3</td>
-                                    <td>0</td>
-                                    <td>-5</td>
+                                    <td>游穎繜</td>
+                                    <td>4.2</td>
+                                    <td>-0.6</td>
+                                    <td>3.6</td>
                                 </tr>
                                 <tr>
                                     <td>8</td>
-                                    <td>李睿軒</td>
-                                    <td>-2.6</td>
-                                    <td>-0.6</td>
-                                    <td>-2.5</td>
-                                    <td>-5.7</td>
+                                    <td>Moore</td>
+                                    <td>3.4</td>
+                                    <td>0</td>
+                                    <td>3.4</td>
                                 </tr>
                                 <tr>
                                     <td>9</td>
-                                    <td>流的滑</td>
-                                    <td>-15.9</td>
-                                    <td>-1.2</td>
-                                    <td>-5</td>
-                                    <td>-22.1</td>
+                                    <td>范皓惟</td>
+                                    <td>2.9</td>
+                                    <td>-0.6</td>
+                                    <td>2.3</td>
                                 </tr>
                                 <tr>
                                     <td>10</td>
-                                    <td>陳浩哲</td>
-                                    <td>-21.7</td>
-                                    <td>-0.6</td>
-                                    <td>0</td>
-                                    <td>-22.3</td>
+                                    <td>流的滑</td>
+                                    <td>3.2</td>
+                                    <td>-1.2</td>
+                                    <td>2</td>
                                 </tr>
                                 <tr>
                                     <td>11</td>
-                                    <td>方登賢</td>
-                                    <td>-30.5</td>
+                                    <td>孫銘均</td>
+                                    <td>0.1</td>
                                     <td>0</td>
-                                    <td>0</td>
-                                    <td>-30.5</td>
+                                    <td>0.1</td>
                                 </tr>
                                 <tr>
                                     <td>12</td>
-                                    <td>羅翊仁</td>
-                                    <td>-29.4</td>
+                                    <td>吳駿廷</td>
+                                    <td>-1.3</td>
                                     <td>0</td>
-                                    <td>-5</td>
-                                    <td>-34.4</td>
+                                    <td>-1.3</td>
                                 </tr>
                                 <tr>
-                                    <td>--</td>
-                                    <td>楊皓宇</td>
-                                    <td>無交易</td>
-                                    <td>0</td>
-                                    <td>N/A</td>
-                                    <td>無資格</td>
+                                    <td>13</td>
+                                    <td>岡田光弘</td>
+                                    <td>-1.1</td>
+                                    <td>-0.9</td>
+                                    <td>-2</td>
                                 </tr>
                                 <tr>
-                                    <td>--</td>
-                                    <td>蔡欣雨</td>
-                                    <td>無交易</td>
+                                    <td>14</td>
+                                    <td>郭敦棋</td>
+                                    <td>-0.6</td>
                                     <td>-1.8</td>
-                                    <td>N/A</td>
+                                    <td>-2.4</td>
+                                </tr>
+                                <tr>
+                                    <td>15</td>
+                                    <td>李俊毅</td>
+                                    <td>-3</td>
+                                    <td>0</td>
+                                    <td>-3</td>
+                                </tr>
+                                <tr>
+                                    <td>16</td>
+                                    <td>cyc</td>
+                                    <td>-3</td>
+                                    <td>0</td>
+                                    <td>-3</td>
+                                </tr>
+                                <tr>
+                                    <td>17</td>
+                                    <td>張靜玉</td>
+                                    <td>-2.2</td>
+                                    <td>-0.9</td>
+                                    <td>-3.1</td>
+                                </tr>
+                                <tr>
+                                    <td>18</td>
+                                    <td>陳浩哲</td>
+                                    <td>-3</td>
+                                    <td>-0.6</td>
+                                    <td>-3.6</td>
+                                </tr>
+                                <tr>
+                                    <td>19</td>
+                                    <td>Shan Liu</td>
+                                    <td>-3.5</td>
+                                    <td>-0.6</td>
+                                    <td>-4.1</td>
+                                </tr>
+                                <tr>
+                                    <td>20</td>
+                                    <td>吳家松</td>
+                                    <td>-6.2</td>
+                                    <td>0</td>
+                                    <td>-6.2</td>
+                                </tr>
+                                <tr>
+                                    <td>21</td>
+                                    <td>莊忠翰</td>
+                                    <td>-5.4</td>
+                                    <td>-1.2</td>
+                                    <td>-6.6</td>
+                                </tr>
+                                <tr>
+                                    <td>22</td>
+                                    <td>塔塔相談</td>
+                                    <td>-6.7</td>
+                                    <td>-0.9</td>
+                                    <td>-7.6</td>
+                                </tr>
+                                <tr>
+                                    <td>23</td>
+                                    <td>陳詠聖</td>
+                                    <td>-7.1</td>
+                                    <td>-0.6</td>
+                                    <td>-7.7</td>
+                                </tr>
+                                <tr>
+                                    <td>24</td>
+                                    <td>框框</td>
+                                    <td>-7.5</td>
+                                    <td>-0.3</td>
+                                    <td>-7.8</td>
+                                </tr>
+                                <tr>
+                                    <td>25</td>
+                                    <td>董建維</td>
+                                    <td>-8.7</td>
+                                    <td>-0.3</td>
+                                    <td>-9</td>
+                                </tr>
+                                <tr>
+                                    <td>26</td>
+                                    <td>陳大信</td>
+                                    <td>-9.8</td>
+                                    <td>0</td>
+                                    <td>-9.8</td>
+                                </tr>
+                                <tr>
+                                    <td>27</td>
+                                    <td>陳嘉仁</td>
+                                    <td>-10.6</td>
+                                    <td>-1.8</td>
+                                    <td>-12.4</td>
+                                </tr>
+                                <tr>
+                                    <td>28</td>
+                                    <td>Trader Yu</td>
+                                    <td>-12.4</td>
+                                    <td>-1.8</td>
+                                    <td>-14.2</td>
+                                </tr>
+                                <tr>
+                                    <td>29</td>
+                                    <td>田仲軒</td>
+                                    <td>-16.5</td>
+                                    <td>-0.3</td>
+                                    <td>-16.8</td>
+                                </tr>
+                                <tr>
+                                    <td>--</td>
+                                    <td>李睿軒</td>
+                                    <td>無交易</td>
+                                    <td>-0.6</td>
                                     <td>無資格</td>
                                 </tr>
                                 <tr>
@@ -281,7 +375,6 @@
                                     <td>劉士琦</td>
                                     <td>無交易</td>
                                     <td>-1.8</td>
-                                    <td>N/A</td>
                                     <td>無資格</td>
                                 </tr>
                                 <tr>
@@ -289,7 +382,27 @@
                                     <td>廖志仁</td>
                                     <td>無交易</td>
                                     <td>-1.8</td>
-                                    <td>N/A</td>
+                                    <td>無資格</td>
+                                </tr>
+                                <tr>
+                                    <td>--</td>
+                                    <td>Jasper Chen</td>
+                                    <td>無交易</td>
+                                    <td>-1.8</td>
+                                    <td>無資格</td>
+                                </tr>
+                                <tr>
+                                    <td>--</td>
+                                    <td>古盛耀</td>
+                                    <td>無交易</td>
+                                    <td>-1.8</td>
+                                    <td>無資格</td>
+                                </tr>
+                                <tr>
+                                    <td>--</td>
+                                    <td>徐松源</td>
+                                    <td>無交易</td>
+                                    <td>-1.8</td>
                                     <td>無資格</td>
                                 </tr>
                                 <tr>
@@ -298,36 +411,10 @@
                                     <td>退賽</td>
                                     <td>退賽</td>
                                     <td>退賽</td>
-                                    <td>退賽</td>
                                 </tr>
                                 <tr>
                                     <td>--</td>
                                     <td>洪子涵</td>
-                                    <td>退賽</td>
-                                    <td>退賽</td>
-                                    <td>退賽</td>
-                                    <td>退賽</td>
-                                </tr>
-                                <tr>
-                                    <td>--</td>
-                                    <td>李嘉修</td>
-                                    <td>退賽</td>
-                                    <td>退賽</td>
-                                    <td>退賽</td>
-                                    <td>退賽</td>
-                                </tr>
-                                <tr>
-                                    <td>--</td>
-                                    <td>Albert</td>
-                                    <td>退賽</td>
-                                    <td>退賽</td>
-                                    <td>退賽</td>
-                                    <td>退賽</td>
-                                </tr>
-                                <tr>
-                                    <td>--</td>
-                                    <td>許國隆</td>
-                                    <td>退賽</td>
                                     <td>退賽</td>
                                     <td>退賽</td>
                                     <td>退賽</td>
@@ -342,6 +429,8 @@
             </div>
         </div>
     </div>
+	
+-->
 	<div id="section-4">
 		<div class="container">
 			<div class="chart-top3" v-if="points.length">
@@ -366,15 +455,15 @@
                                 <tr v-for="(t, i) in top5">
                                     <td v-text="i + 1"></td>
                                     <td v-text="t.delta" title="以「上週最末交易日」與「上上週最末交易日」收盤後之投報率變化，為排名升降基準。">-</td>
-                                    <td><a :href="'traders_w1.html?id=' + t.id"><img :src="t.trader.image" :alt="t.trader.name" class="img-circle"></a></td>
-                                    <td><a :href="'traders_w1.html?id=' + t.id" v-text="t.trader.name"></a></td>
+                                    <td><a :href="'traders_s4.html?id=' + t.id"><img :src="t.trader.image" :alt="t.trader.name" class="img-circle"></a></td>
+                                    <td><a :href="'traders_s4.html?id=' + t.id" v-text="t.trader.name"></a></td>
                                     <td v-text="t.point.rate + '%'" title="以「上週最末交易日」收盤後之投報率為排名基準。">-</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
 				</div>
-				<!--button type="button" class="btn btn-default btn-md center-block" id="modify-btn" onclick="location.href='ranking_w1.html';" >前往排行榜</button-->
+				<!--button type="button" class="btn btn-default btn-md center-block" id="modify-btn" onclick="location.href='ranking_s4.html';" >前往排行榜</button-->
 			</div>
 		</div>
 	</div>
@@ -387,7 +476,7 @@
                 <div class="row" v-for="m in markets">
                     <div class="col-md-2 col-sm-2  col-md-offset-1">
                         <div class="trader-single">
-                            <a :href="'traders_w1.html?id=' + m.id">
+                            <a :href="'traders_s4.html?id=' + m.id">
                                 <img :src="m.image" class="img-circle" :alt="m.name">
                                 <span v-text="m.name"></span>
                             </a>
@@ -417,10 +506,6 @@
         </div>
     </div>
 	<footer>
-        <div class="partner">
-            <h5>合作夥伴</h5>
-            <a href="https://warrant.tssco.com.tw/warrantweb/Index.action" target="_blank"><img src="images/taishin_warrant_LOGO.jpg" alt="台新權證網"></a>
-        </div>
 	    <p>Copyright © tozzi.com.tw, 2017</p>
 	</footer>
 	</div>

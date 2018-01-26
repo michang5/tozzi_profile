@@ -934,6 +934,19 @@ body.season4 #section-1 h2 {
   background-color: rgba(255, 255, 255, 0.5);
   background-image: none;
 }
+body.season5 #section-1 {
+  background-image: url("../images/tozzi_banner_s5.jpg");
+  background-position: top;
+}
+body.season5 #section-1 h1 {
+  color: #b70000;
+  text-shadow: none;
+}
+body.season5 #section-1 h2 {
+  color: #fff;
+  background-color: #b70000;
+  background-image: none;
+}
 body.crowd-plan #section-1 {
   background-image: url("../images/tozzi_banner_crowdplan.jpg");
 }
@@ -1354,6 +1367,14 @@ body.crowd-plan#traders #section-2 .content .slider img.active {
   color: #b08a08;
 }
 
+body.season5 #section-4 {
+  background: #fff;
+}
+
+body.season5 #section-5 {
+  background: #F7F7F7;
+}
+
 .stock-chart {
   border: 1px solid #F7F7F7;
   padding: 10px;
@@ -1461,7 +1482,8 @@ body.crowd-plan#traders #section-2 .content .slider img.active {
 }
 .expound-list .date {
   margin-right: 10px;
-  color: #b08a08;
+  color: #2A2A32;
+  font-weight: bold;
 }
 .expound-list .statement-list a {
   padding: 2px 4px;
@@ -1765,12 +1787,12 @@ footer p {
 }
 
 .tab-container {
-  border-radius: 10px;
+  border-radius: 20px;
   background: rgba(255, 255, 255, 0.75);
   padding: 10px;
   border: 0;
   margin-bottom: 20px;
-  box-shadow: 0 2px 2px rgba(102, 102, 102, 0.3);
+  box-shadow: 0 6px 10px rgba(102, 102, 102, 0.3), 0 6px 20px rgba(102, 102, 102, 0.1);
 }
 body.crowd-plan .tab-container {
   box-shadow: 0 2px 2px rgba(255, 127, 80, 0.3);
@@ -1973,4 +1995,35 @@ body.crowd-plan .market-all .trader-single span {
   .results p {
     text-align: center;
   }
+}
+
+.retracement-rate {
+  border-radius: 18px;
+  box-shadow: 0 0 0 1px rgba(125, 125, 125, 0.1), 0 10px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+.retracement-rate.row {
+  margin: 20px 0 !important;
+}
+.retracement-rate p.max span:nth-of-type(1) {
+  font-weight: bold;
+}
+.retracement-rate ul {
+  padding-left: 18px;
+}
+.retracement-rate ul li {
+  margin: 4px 0;
+  list-style: disc;
+  font-size: 14px;
+}
+.retracement-rate ul li span {
+  margin-right: 4px;
+}
+.retracement-rate ul li span:after {
+  content: "/";
+  padding-left: 4px;
+  font-weight: 100;
+}
+.retracement-rate ul li span:nth-last-of-type(1):after {
+  content: "";
 }

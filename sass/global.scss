@@ -1337,6 +1337,20 @@ a.btn.btn-fb {
             background-image: none;
         }
     }
+    body.season5 & {
+        background-image: url("../images/tozzi_banner_s5.jpg");
+        background-position: top;
+        h1 {
+            color: #b70000;
+            text-shadow: none;
+            
+        }
+        h2 {
+            color: #fff;
+            background-color: #b70000;
+            background-image: none;
+        }
+    }
     body.crowd-plan & {
 		background-image: url("../images/tozzi_banner_crowdplan.jpg");
         h2, h1 {
@@ -1850,7 +1864,14 @@ body.crowd-plan#traders #section-2  {
 }
 
 #section-4 {
-//	background: $light-gray;
+    body.season5 & {
+        background: $white;
+    }
+}
+#section-5 {
+    body.season5 & {
+        background: $light-gray;
+    }
 }
 //曲線圖
 .stock-chart {
@@ -1970,7 +1991,8 @@ body.crowd-plan#traders #section-2  {
     border-bottom: 1px solid $light-gray;
     .date {
         margin-right: 10px;
-        color: $gold;
+        color: $black;
+        font-weight: bold;
     }
     .statement-list {
         a {
@@ -2315,12 +2337,12 @@ footer {
 }
 
 .tab-container {
-	border-radius: 10px;
+	border-radius: 20px;
 	background: rgba($white, .75);
 	padding: 10px;
 	border: 0;
 	margin-bottom: 20px;
-    box-shadow: 0 2px 2px rgba($gray,.3);
+    box-shadow: 0 6px 10px rgba($gray,.3),0 6px 20px rgba($gray,.1);
 //	body.season1 & {
 //		box-shadow: 0 2px 2px rgba($gray,.3);
 //	}
@@ -2602,5 +2624,44 @@ body.season2 #section-4 {
          p {
              text-align: center;
          }
+    }
+}
+.retracement-rate {
+    border-radius: 18px;
+    box-shadow: 0 0 0 1px rgba(125,125,125,.1), 0 10px 10px rgba(0,0,0,.1);
+    padding: 20px;
+    &.row {
+        margin: 20px 0!important;
+    }
+    p {
+        &.max {
+            span {
+                &:nth-of-type(1) {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+    ul {
+        padding-left: 18px;
+        li {
+            margin: 4px 0;
+            list-style: disc;
+            font-size: 14px;
+            span {
+                margin-right: 4px;
+                &:after {
+                    content: ('/');
+                    padding-left: 4px;
+                    font-weight: 100;
+                    
+                }
+                &:nth-last-of-type(1) {
+                    &:after {
+                        content: (''); 
+                    }    
+                }
+            }
+        }
     }
 }
