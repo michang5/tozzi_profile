@@ -135,7 +135,7 @@
 			<h2>比賽公告</h2>		 
 			<div class="col-sm-8 col-sm-offset-2">
 				<div class="list">
-					<a href="https://goo.gl/G8yhhF" target="_blank">【TOZZI 台股投資實戰賽】 2018.02.01 ~ 2018.04.13</a>
+					<a v-for="n in news" :href="n.url" target="_blank" v-html="n.title"></a>
 				</div>
 			</div>
 		</div>
