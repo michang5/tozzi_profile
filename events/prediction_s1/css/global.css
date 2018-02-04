@@ -936,6 +936,15 @@ header .container-fluid {
 }
 #maincard-group .card {
     margin-bottom: 56px;
+    position: relative;
+}
+.card .disqualification {
+    width: 100%;
+    height: 300px;
+    position: absolute;
+    z-index: 6;
+    left: 0;
+    background: url('../images/disqualification.png') no-repeat center center;
 }
 #maincard-group .card .trader {
     float: left;

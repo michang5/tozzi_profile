@@ -130,6 +130,85 @@
             </section>
             <section id="maincard-group" class="clearfix">
                 <div class="container">
+<!--
+                    <div class="col-sm-6">
+                    <div class="card">
+                        <div class="disqualification"></div>
+                        <div class="cate-item level-1">
+                            <div class="ribbon"></div>
+                            <div class="cate-img"></div>
+                        </div>
+                        <div class="row header-info">
+                            <div class="trader">
+                                <img src="https://s3-ap-northeast-1.amazonaws.com/tozzi-img/11%E6%A5%8A%E7%9A%93%E5%AE%87s4.jpg" alt="">
+                                <span>楊皓宇</span>
+                            </div>
+                            <div class="stock-info">
+                                <div class="info">
+                                    <div class="rate-of-return">
+                                        <span class="rate"><sup>+</sup>25.6</span>
+                                        <span class="percent">%</span>
+                                    </div>
+                                    <div class="rank-info">
+                                        <span>排名</span>
+                                        <span class="rank">1</span>
+                                        <span class="lift rise">
+                                            <span></span>
+                                            <span>2</span>
+                                        </span>
+
+                                    </div>
+                                </div>
+                                <div class="stock">
+                                    <span class="stock-item">
+                                        <span>選股</span>
+                                        <span>2317鴻海</span>
+                                    </span>
+                                    <span class="price">
+                                        <span>買進價</span>
+                                        <span>104</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stock original">
+                            <span class="repentance">悔棋</span>
+                            <span class="stock-item">
+                                <span>原標的</span>
+                                <span>6615慧智</span>
+                            </span>
+                            <span class="price">
+                                <span>原投報率</span>
+                                <span>-3%</span>
+                            </span>
+                            <div><a href="" class="btn btn-info" data-toggle="modal" data-target="#modal-prediction">原預測內容<i class="fa fa-arrow-right" aria-hidden="true"></i></a></div>
+                        </div>
+                        <div id="analysis"  class="txt-block expandable row">
+                            <input type="checkbox" name="read01" id="read01" />
+                            <label class="more-link" for="read01"> 
+                                <div class="shown btn">看更多分析</div>
+                                <div class="not-shown">Collapse</div>
+                            </label>
+                            <div class="expand-block">
+                                <h4>預測分析</h4>
+                                <p>權證無交易，看看有什麼機會吧。</p>
+                                <p>本週刺激的下跌對於心臟是強大的考驗，但融資餘額殺的並不夠多，短線還不能期待有強烈反彈。個股營收有好有壞，但大盤回檔造成多數個股都下跌，此時是否有投資價值浮現的公司值得好好研究。下週比特幣期貨將在CBOE上開始交易，虛擬貨幣市場與金融市場的關係將掀起一陣波瀾，無法預測走勢，但的確值得好好關注。</p>
+                                <h4>預測分析</h4>
+                                <p>權證無交易，看看有什麼機會吧。</p>
+                                <p>本週刺激的下跌對於心臟是強大的考驗，但融資餘額殺的並不夠多，短線還不能期待有強烈反彈。個股營收有好有壞，但大盤回檔造成多數個股都下跌，此時是否有投資價值浮現的公司值得好好研究。下週比特幣期貨將在CBOE上開始交易，虛擬貨幣市場與金融市場的關係將掀起一陣波瀾，無法預測走勢，但的確值得好好關注。</p>
+                            </div>
+                        </div>
+                        <div class="history row">
+                            <h5>參賽紀錄</h5>
+                            <p>TOZZI 台股實戰賽第 <a href="#">二</a> / <a href="#">三</a> / <a href="#">四</a> 季</p>
+                            <p>TOZZI x 台新權證實戰賽第<a href="#">一</a>季</p>
+                            <p>TOZZI 百人百萬領投計畫第<a href="#">一</a>季</p>
+                            <div><a href="" class="btn btn-info" data-toggle="modal" data-target="#modal-statement">選手專訪</a></div>
+                        </div>
+                    </div>
+                </div>
+                    
+-->
                     <div class="col-sm-6" v-for="trader in traders" :style="{clear: ((trader.rank+1)%2 == 0)? 'left': ''}">
                         <div class="card" v-cloak>
                             <div v-bind:class="trader.dishLevel">
