@@ -131,7 +131,7 @@
             <section id="maincard-group" class="clearfix">
                 <div class="container">
 
-                    <!-- <div class="col-sm-6">
+<!--                 <div class="col-sm-6">
                     <div class="card">
                         <div class="disqualification"></div>
                         <div class="cate-item level-1">
@@ -280,6 +280,83 @@
                                 <p v-if="trader.WarrantHistory.length">TOZZI x 台新權證實戰賽第 <history-link v-for="record in trader.WarrantHistory" v-bind:history="record" :key="record.id"></history-link> 季</p>
                                 <p v-if="trader.MillionHistory.length">TOZZI 百人百萬領投計畫第 <history-link v-for="record in trader.MillionHistory" v-bind:history="record" :key="record.id"></history-link> 季</p>
                                 <div v-if="trader.interview"><a v-bind:href="trader.interview" target="_blank" class="btn btn-info">選手專訪</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="disqualification"></div>
+                            <div class="cate-item level-5">
+                                <div class="ribbon"></div>
+                                <div class="cate-img"></div>
+                            </div>
+                            <div class="row header-info">
+                                <div class="trader">
+                                    <img src="https://s3-ap-northeast-1.amazonaws.com/tozzi-img/21%E6%B5%81%E7%9A%84%E6%BB%91s4.jpg" alt="">
+                                    <span>流的滑</span>
+                                </div>
+                                <div class="stock-info">
+                                    <div class="info">
+                                        <div class="rate-of-return">
+<!--                                             <span class="rate"><sup>+</sup></span>
+                                            <span class="percent">%</span> -->
+                                        </div>
+                                        <div class="rank-info">
+<!--                                             <span>排名</span>
+                                            <span class="rank"></span>
+                                            <span class="lift rise">
+                                                <span></span>
+                                                <span>2</span>
+                                            </span> -->
+
+                                        </div>
+                                    </div>
+                                    <div class="stock">
+                                        <span class="stock-item">
+                                            <span>選股</span>
+                                            <span>9958世紀鋼</span>
+                                        </span>
+                                        <span class="price">
+                                            <span>買進價</span>
+                                            <span>39.45</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stock original">
+                                <span class="repentance">悔棋</span>
+                                <span class="stock-item">
+                                    <span>原標的</span>
+                                    <span>1524耿鼎</span>
+                                </span>
+                                <span class="price">
+                                    <span>原投報率</span>
+                                    <span>-0.4%</span>
+                                </span>
+                                <div><a href="" class="btn btn-info" data-toggle="modal" data-target="#modal-prediction">原預測內容<i class="fa fa-arrow-right" aria-hidden="true"></i></a></div>
+                            </div>
+                            <div id="analysis"  class="txt-block expandable row">
+                                <input type="checkbox" name="read01" id="read01" />
+                                <label class="more-link" for="read01"> 
+                                    <div class="shown btn">看更多分析</div>
+                                    <div class="not-shown">Collapse</div>
+                                </label>
+                                <div class="expand-block">
+                                    <h4>投資結論</h4>
+                                    <p>買進，雖然現在買的點不好，但是我已經吃到一隻漲停了，可是我們要讓利潤奔跑，千萬不要為了蠅頭小利把股票買了，好的股票是不需要賣的，不需要每天在那邊沖來沖去，營業員也不會感謝你，我們每天睡到自然醒起床數錢，大家說好不好!!</p>
+                                    <p>本週刺激的下跌對於心臟是強大的考驗，但融資餘額殺的並不夠多，短線還不能期待有強烈反彈。個股營收有好有壞，但大盤回檔造成多數個股都下跌，此時是否有投資價值浮現的公司值得好好研究。下週比特幣期貨將在CBOE上開始交易，虛擬貨幣市場與金融市場的關係將掀起一陣波瀾，無法預測走勢，但的確值得好好關注。</p>
+                                    <h4>標的簡介</h4>
+                                    <p>世紀鋼構成立於民國76年10月9日，為國內鋼結構大型事業製造廠之一，且成為第一及唯一之此類上市公司，總部設於桃園市觀音區，專營鋼骨結構工程。近年來，公共工程、科技廠房朝向更加大型化發展，不但柱距、跨度、高度都日趨擴大，同時對施工工期卻要求盡可能縮短，使得鋼結構可以盡情發揮其特點，擴大建築的應用領域。<br>世紀鋼構的產品規模涵蓋層面相當廣泛，生產高質量產品， 目前公司產品主要內銷，產品主要銷售全省各地，舉凡是屬於超高大樓、各式鋼構橋梁及工業廠房結構，均為公司主要業務，公司也配合政府政推行之「新南向政策」及「再生能源-離岸風力發電項目」。 </p>
+                                    <h4>買進理由</h4>
+                                    <p>基本面:沒甚麼好講的，小賺小賠，看不出特點的公司，風電才剛剛開始而已，只是個題材，離運轉看我大學畢業有沒有機會，基本上我是把大學當醫學院在讀的QQ<br>技術面:超級強，政府認證的強，強到被警示，我們交易就是要買最強的</p>
+                                    <h4>預期風險</h4>
+                                    <p>這支股票啊，大起大落，有可能會被鎖跌停關廁所，不過人為財死，鳥為食亡，既然他這麼強，我們就是要拿新台幣幫主力抬轎，大家說好不好!!如果跌太多的話，可能是被出貨了，那我們就認賠，眼淚擦一擦，明天又是一條好漢。</p>
+                                </div>
+                            </div>
+                            <div class="history row">
+                                <h5>參賽紀錄</h5>
+                                <p>TOZZI 台股實戰賽第 <a href="http://tozzi.com.tw/traders_s3.html?id=21">三</a> / <a href="http://tozzi.com.tw/traders_s4.html?id=21">四</a> 季</p>
+                                <p>TOZZI x 台新權證實戰賽第<a href="http://tozzi.com.tw/traders_w1.html?id=21">一</a>季</p>
                             </div>
                         </div>
                     </div>
@@ -839,33 +916,33 @@
                  MillionHistory: [],
                  interview: 'https://www.facebook.com/notes/tozzi/%E9%81%B8%E6%89%8B%E5%B0%88%E8%A8%AA%E7%B3%BB%E5%88%97-%E5%BC%B5%E9%9D%9C%E7%8E%89%E7%9A%84%E6%B3%A2%E6%96%AF%E8%B2%93%E6%8A%95%E8%B3%87%E8%97%9D%E8%A1%93/1322042447882373/'},
                  /////////////////////////////////////
-                 {dishLevel: 'cate-item level-1',
-                 name: '流的滑',
-                 qual: 'disqualification',
-                 profilePic: 'https://s3-ap-northeast-1.amazonaws.com/tozzi-img/21%E6%B5%81%E7%9A%84%E6%BB%91s4.jpg',
-                 return: true,
-                 returnRate: 25.6,
-                 rate: 1,
-                 rank: 11,
-                 stock: '9958世紀鋼',
-                 stockId: '9958',
-                 price: 39.45,
-                 regret: true,
-                 regretStock: '1524耿鼎',
-                 regretReturn: '-0.4%',
-                 regretId: '#regretModal1',
-                 analysisId: 'ana11',
-                 analysis1: '買進，雖然現在買的點不好，但是我已經吃到一隻漲停了，可是我們要讓利潤奔跑，千萬不要為了蠅頭小利把股票買了，好的股票是不需要賣的，不需要每天在那邊沖來沖去，營業員也不會感謝你，我們每天睡到自然醒起床數錢，大家說好不好!!',
-                 analysis2: '世紀鋼構成立於民國76年10月9日，為國內鋼結構大型事業製造廠之一，且成為第一及唯一之此類上市公司，總部設於桃園市觀音區，專營鋼骨結構工程。近年來，公共工程、科技廠房朝向更加大型化發展，不但柱距、跨度、高度都日趨擴大，同時對施工工期卻要求盡可能縮短，使得鋼結構可以盡情發揮其特點，擴大建築的應用領域。<br>世紀鋼構的產品規模涵蓋層面相當廣泛，生產高質量產品， 目前公司產品主要內銷，產品主要銷售全省各地，舉凡是屬於超高大樓、各式鋼構橋梁及工業廠房結構，均為公司主要業務，公司也配合政府政推行之「新南向政策」及「再生能源-離岸風力發電項目」。 ',
-                 analysis3: '基本面:沒甚麼好講的，小賺小賠，看不出特點的公司，風電才剛剛開始而已，只是個題材，離運轉看我大學畢業有沒有機會，基本上我是把大學當醫學院在讀的QQ<br>技術面:超級強，政府認證的強，強到被警示，我們交易就是要買最強的',
-                 analysis4: '這支股票啊，大起大落，有可能會被鎖跌停關廁所，不過人為財死，鳥為食亡，既然他這麼強，我們就是要拿新台幣幫主力抬轎，大家說好不好!!如果跌太多的話，可能是被出貨了，那我們就認賠，眼淚擦一擦，明天又是一條好漢。',
-                 TStockHistory: [
-                     {href: 'http://tozzi.com.tw/traders_s3.html?id=21', season: '三', id: 3, slash: '/'},
-                     {href: 'http://tozzi.com.tw/traders_s4.html?id=21', season: '四', id: 4, slash: ''}],
-                 WarrantHistory: [
-                     {href: 'http://tozzi.com.tw/traders_w1.html?id=21', season: '一', id: 1, slash: ''}],
-                 MillionHistory: [],
-                 interview: ''},
+                 // {dishLevel: 'cate-item level-1',
+                 // name: '流的滑',
+                 // qual: 'disqualification',
+                 // profilePic: 'https://s3-ap-northeast-1.amazonaws.com/tozzi-img/21%E6%B5%81%E7%9A%84%E6%BB%91s4.jpg',
+                 // return: true,
+                 // returnRate: 25.6,
+                 // rate: 1,
+                 // rank: 11,
+                 // stock: '9958世紀鋼',
+                 // stockId: '9958',
+                 // price: 39.45,
+                 // regret: true,
+                 // regretStock: '1524耿鼎',
+                 // regretReturn: '-0.4%',
+                 // regretId: '#regretModal1',
+                 // analysisId: 'ana11',
+                 // analysis1: '買進，雖然現在買的點不好，但是我已經吃到一隻漲停了，可是我們要讓利潤奔跑，千萬不要為了蠅頭小利把股票買了，好的股票是不需要賣的，不需要每天在那邊沖來沖去，營業員也不會感謝你，我們每天睡到自然醒起床數錢，大家說好不好!!',
+                 // analysis2: '世紀鋼構成立於民國76年10月9日，為國內鋼結構大型事業製造廠之一，且成為第一及唯一之此類上市公司，總部設於桃園市觀音區，專營鋼骨結構工程。近年來，公共工程、科技廠房朝向更加大型化發展，不但柱距、跨度、高度都日趨擴大，同時對施工工期卻要求盡可能縮短，使得鋼結構可以盡情發揮其特點，擴大建築的應用領域。<br>世紀鋼構的產品規模涵蓋層面相當廣泛，生產高質量產品， 目前公司產品主要內銷，產品主要銷售全省各地，舉凡是屬於超高大樓、各式鋼構橋梁及工業廠房結構，均為公司主要業務，公司也配合政府政推行之「新南向政策」及「再生能源-離岸風力發電項目」。 ',
+                 // analysis3: '基本面:沒甚麼好講的，小賺小賠，看不出特點的公司，風電才剛剛開始而已，只是個題材，離運轉看我大學畢業有沒有機會，基本上我是把大學當醫學院在讀的QQ<br>技術面:超級強，政府認證的強，強到被警示，我們交易就是要買最強的',
+                 // analysis4: '這支股票啊，大起大落，有可能會被鎖跌停關廁所，不過人為財死，鳥為食亡，既然他這麼強，我們就是要拿新台幣幫主力抬轎，大家說好不好!!如果跌太多的話，可能是被出貨了，那我們就認賠，眼淚擦一擦，明天又是一條好漢。',
+                 // TStockHistory: [
+                 //     {href: 'http://tozzi.com.tw/traders_s3.html?id=21', season: '三', id: 3, slash: '/'},
+                 //     {href: 'http://tozzi.com.tw/traders_s4.html?id=21', season: '四', id: 4, slash: ''}],
+                 // WarrantHistory: [
+                 //     {href: 'http://tozzi.com.tw/traders_w1.html?id=21', season: '一', id: 1, slash: ''}],
+                 // MillionHistory: [],
+                 // interview: ''},
                  /////////////////////////////////////
                  {dishLevel: 'cate-item level-1',
                  name: '股感小編',
