@@ -130,8 +130,8 @@
             </section>
             <section id="maincard-group" class="clearfix">
                 <div class="container">
-<!--
-                    <div class="col-sm-6">
+
+                    <!-- <div class="col-sm-6">
                     <div class="card">
                         <div class="disqualification"></div>
                         <div class="cate-item level-1">
@@ -206,11 +206,12 @@
                             <div><a href="" class="btn btn-info" data-toggle="modal" data-target="#modal-statement">選手專訪</a></div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                     
--->
+
                     <div class="col-sm-6" v-for="trader in traders" :style="{clear: ((trader.rank+1)%2 == 0)? 'left': ''}">
                         <div class="card" v-cloak>
+                            <div :class="trader.qual"></div>
                             <div v-bind:class="trader.dishLevel">
                                 <div class="ribbon"></div>
                                 <div class="cate-img"></div>
@@ -593,6 +594,7 @@
                 /////////////////////////////////////
                 {dishLevel: 'cate-item level-1',
                  name: '框框',
+                 qual: '',
                  profilePic: 'https://s3-ap-northeast-1.amazonaws.com/tozzi-img/64%E6%A1%86%E6%A1%86s4.jpg',
                  return: false,
                  returnRate: 25.6,
@@ -618,6 +620,7 @@
                  /////////////////////////////////////
                  {dishLevel: 'cate-item level-1',
                  name: '吳駿廷',
+                 qual: '',
                  profilePic: 'https://s3-ap-northeast-1.amazonaws.com/tozzi-img/50%E5%90%B3%E9%A7%BF%E5%BB%B7s4.jpg',
                  return: true,
                  returnRate: 25.6,
@@ -640,6 +643,7 @@
                  /////////////////////////////////////
                  {dishLevel: 'cate-item level-1',
                  name: '陳大信',
+                 qual: '',
                  profilePic: 'https://s3-ap-northeast-1.amazonaws.com/tozzi-img/9%E9%99%B3%E5%A4%A7%E4%BF%A1s2.jpg',
                  return: true,
                  returnRate: 25.6,
@@ -665,6 +669,7 @@
                  /////////////////////////////////////
                  {dishLevel: 'cate-item level-1',
                  name: '游穎繜',
+                 qual: '',
                  profilePic: 'https://s3-ap-northeast-1.amazonaws.com/tozzi-img/24%E6%B8%B8%E7%A9%8E%E7%B9%9C.jpg',
                  return: true,
                  returnRate: 25.6,
@@ -688,6 +693,7 @@
                  /////////////////////////////////////
                  {dishLevel: 'cate-item level-1',
                  name: '楊皓宇',
+                 qual: '',
                  profilePic: 'https://s3-ap-northeast-1.amazonaws.com/tozzi-img/11%E6%A5%8A%E7%9A%93%E5%AE%87s4.jpg',
                  return: true,
                  returnRate: 25.6,
@@ -713,6 +719,7 @@
                  /////////////////////////////////////
                  {dishLevel: 'cate-item level-1',
                  name: 'Moore',
+                 qual: '',
                  profilePic: 'https://s3-ap-northeast-1.amazonaws.com/tozzi-img/27Moore.jpg',
                  return: true,
                  returnRate: 25.6,
@@ -737,6 +744,7 @@
                  /////////////////////////////////////
                  {dishLevel: 'cate-item level-1',
                  name: 'Trader Yu',
+                 qual: '',
                  profilePic: 'https://s3-ap-northeast-1.amazonaws.com/tozzi-img/30Trader+Yu.jpg',
                  return: true,
                  returnRate: 25.6,
@@ -760,6 +768,7 @@
                  /////////////////////////////////////
                  {dishLevel: 'cate-item level-1',
                  name: 'cyc',
+                 qual: '',
                  profilePic: 'https://s3-ap-northeast-1.amazonaws.com/tozzi-img/49-%E6%B1%9F%E5%93%B2%E5%AE%87s4.jpg',
                  return: true,
                  returnRate: 25.6,
@@ -782,6 +791,7 @@
                  /////////////////////////////////////
                  {dishLevel: 'cate-item level-1',
                  name: '羅翊仁',
+                 qual: '',
                  profilePic: 'https://s3-ap-northeast-1.amazonaws.com/tozzi-img/45%E7%BE%85%E7%BF%8A%E4%BB%81.jpg',
                  return: true,
                  returnRate: 25.6,
@@ -805,6 +815,7 @@
                  /////////////////////////////////////
                  {dishLevel: 'cate-item level-1',
                  name: '冬天好冷',
+                 qual: '',
                  profilePic: 'https://s3-ap-northeast-1.amazonaws.com/tozzi-img/%E5%A4%A7%E9%A0%AD%E7%85%A7-%E5%86%AC%E5%A4%A9%E5%A5%BD%E5%86%B7.jpg',
                  return: true,
                  returnRate: 25.6,
@@ -830,6 +841,7 @@
                  /////////////////////////////////////
                  {dishLevel: 'cate-item level-1',
                  name: '流的滑',
+                 qual: 'disqualification',
                  profilePic: 'https://s3-ap-northeast-1.amazonaws.com/tozzi-img/21%E6%B5%81%E7%9A%84%E6%BB%91s4.jpg',
                  return: true,
                  returnRate: 25.6,
@@ -857,6 +869,7 @@
                  /////////////////////////////////////
                  {dishLevel: 'cate-item level-1',
                  name: '股感小編',
+                 qual: '',
                  profilePic: 'https://s3-ap-northeast-1.amazonaws.com/tozzi-img/%E5%A4%A7%E9%A0%AD%E7%85%A7-%E8%82%A1%E6%84%9F%E5%B0%8F%E7%B7%A8.jpg',
                  return: true,
                  returnRate: 25.6,
