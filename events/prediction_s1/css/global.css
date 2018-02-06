@@ -1331,4 +1331,6 @@ footer {
 .partner img {
     width: 318px;
 }
-
+.retracement-rate {
+    display: none;
+}
