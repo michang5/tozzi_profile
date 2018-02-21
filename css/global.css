@@ -87,7 +87,7 @@ a:hover, a:focus {
 body.crowd-plan a {
   color: #00BFEB;
 }
-body.warrant a {
+body.warrant a, body.warrant-s2 a  {
   color: #FF726C;
 }
 
@@ -667,7 +667,7 @@ body.crowd-plan .navbar-fixed-top .right-nav > li > a:hover, body.crowd-plan .na
   background-color: #00BFEB;
   color: #2A2A32;
 }
-body.warrant .navbar-fixed-top .right-nav > li > a {
+body.warrant .navbar-fixed-top .right-nav > li > a, body.warrant-s2 .navbar-fixed-top .right-nav > li > a {
   color: #FF726C;
 }
 body.warrant .navbar-fixed-top .right-nav > li > a:hover, body.warrant .navbar-fixed-top .right-nav > li > a:focus {
@@ -689,7 +689,7 @@ body.warrant .navbar-fixed-top .right-nav > li > a:hover, body.warrant .navbar-f
 body.crowd-plan .navbar-fixed-top .right-nav > li.others > a {
   background-image: url(../images/nav_hamburger_blue.png);
 }
-body.warrant .navbar-fixed-top .right-nav > li.others > a {
+body.warrant .navbar-fixed-top .right-nav > li.others > a, body.warrant-s2 .navbar-fixed-top .right-nav > li.others > a  {
   background-image: url(../images/nav_hamburger_pink.png);
 }
 .navbar-fixed-top .right-nav > li.dropdown .dropdown-menu {
@@ -883,6 +883,7 @@ body.warrant .navbar-fixed-top .right-nav > li.dropdown.open .dropdown-menu {
   font-weight: 700;
   box-shadow: 0 2px #2A2A32;
 }
+
 @media only screen and (min-width: 1200px) {
   #section-1 .container {
     font-size: 1.25em;
@@ -967,19 +968,29 @@ body.warrant #section-1 {
   background-image: url("../images/tozzi_banner_warrant_s1.jpg");
   text-align: left;
 }
-body.warrant #section-1 h1 {
+body.warrant #section-1 h1, body.warrant-s2 #section-1 h1 {
   color: #b90000;
 }
-body.warrant #section-1 h2 {
+body.warrant #section-1 h2, body.warrant-s2 #section-1 h2 {
   color: #fff;
-  background-image: -webkit-linear-gradient(top, #b90000, #FF4C78);
-  background-image: -o-linear-gradient(top, #b90000, #FF4C78);
-  background-image: linear-gradient(to bottom, #b90000, #ff4c78);
+  background-image: -webkit-linear-gradient(top, #b90000, #340000);
+  background-image: -o-linear-gradient(top, #b90000, #340000);
+  background-image: linear-gradient(to bottom, #b90000, #340000);
   width: auto;
+    font-size: 16px;
+    padding: 6px 16px
+}
+body.warrant-s2 #section-1 {
+  background-image: url("../images/tozzi_banner_warrant_s2.jpg");
+    background-position: right;
+  text-align: left;
 }
 @media only screen and (max-width: 480px) {
   body.warrant #section-1 {
     background-position: -300px;
+  }
+    body.warrant-s2 #section-1 {
+    background-position: -500px;
   }
 }
 
@@ -1630,7 +1641,7 @@ footer p {
   background-color: #2A2A32;
   color: #00BFEB;
 }
-.warrant footer {
+.warrant footer, .warrant-s2 footer {
   background-color: #2A2A32;
   color: #FF726C;
 }

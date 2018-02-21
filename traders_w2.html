@@ -29,7 +29,7 @@
 	<script src="https://www.amcharts.com/lib/3/serial.js"></script>
 	<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
 	<link href="css/chart.css" rel="stylesheet">
-	<script src="js/chart3.js"></script>
+	<script src="js/chart_w1.js"></script>
 
 	<!--vue-->
 	<script src="https://unpkg.com/vue/dist/vue.js"></script>
@@ -53,7 +53,7 @@
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
 </head>
-<body id="traders" class="season5">
+<body id="traders" class="warrant-s2">
 	<div id="vue">
     <!-- Navigation -->
     <header class="navbar-fixed-top">
@@ -61,14 +61,14 @@
             <h2 class="logo"><a href="index.html"><img src="images/tozzi_logo_new.png" alt="TOZZI"></a></h2>
             <h2 class="logo-s"><a href="index.html"><img src="images/tozzi_logo_s.png" alt="TOZZI"></a></h2>
             <ul class="right-nav">
-                <li><a href="index_s5.html">實況</a></li>
+                <li><a href="index_s4.html">實況</a></li>
                 <li class="dropdown avatar-menu">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">選手</a>
                     <ul class="dropdown-menu">
                         <div class="container">
                             <div class="row">
                                 <li class="col-xs-3" v-for="(t,i) in traders" :style="{clear: (i%4 == 0)? 'both': ''}">
-                                    <a :href="'traders_s5.html?id=' + t.id"><img :src="t.image" class="img-responsive" :alt="t.name">
+                                    <a :href="'traders_w1.html?id=' + t.id"><img :src="t.image" class="img-responsive" :alt="t.name">
                                     <span v-text="t.name"></span></a>
                                 </li>
                             </div>
@@ -105,6 +105,7 @@
                             <ul>
                                 <li>潛力股預測賽</li>
                                 <li><a href="events/prediction_s1/index.html">第一季-股感知識庫聯合舉辦</a></li>
+                                
                             </ul>
                         </li>
                     </ul>
@@ -112,9 +113,8 @@
                 <li class="dropdown others">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#"></a>
                     <ul class="dropdown-menu">
-                        <li><a href="https://goo.gl/G8yhhF" target="_blank">比賽規則</a></li>
-                        <li><a href="https://goo.gl/iNyU4Z" target="_blank">常見問答</a></li>
-                        <li><a href="https://goo.gl/v3NMWh" target="_blank">選手發言常見問答</a></li>
+                        <li><a href="https://goo.gl/hYidRC" target="_blank">比賽規則</a></li>
+                         <li><a href="https://goo.gl/iNyU4Z" target="_blank">常見問答</a></li>
                         <li><a href="https://goo.gl/A95Vg9" target="_blank">FB社團</a></li>
                         <li><a href="https://www.facebook.com/tozziarena" target="_blank"><span>FB粉絲頁</span></a></li>
                     </ul>
@@ -126,8 +126,8 @@
 	<div id="section-1">
 		<div class="container-fluid">
 		    <div class="container">
-		        <h1>台股投資實戰賽</h1>
-                <h2>第五季</h2>
+		        <h1>權證投資實戰賽</h1>
+                <h2>第二季-台新權證聯合舉辦</h2>
 		    </div>
 		</div>
 	</div>
@@ -160,29 +160,9 @@
                                     <span v-text="'總得分：' + s.score"></span>
                                 </div>
                                 <span class="more"><a :href="'traders_s1.html?id=' + id">看更多</a></span>
-                            </div> 
+                            </div>
                         </div>
                     </div>
-<!--
-                    <div class="retracement-rate row">
-                        <p class="max"><span>最大回撤率：</span><span>0.5</span></p>
-                        <p class="max"><span>持股庫存：</span></p>
-                        <ul class="col-sm-6">
-                            <li><span>弘裕1474</span><span>2000張</span><span>平均成本 20.5</span></li>
-                            <li><span>燿華2367</span><span>6000張</span><span>平均成本 21.6</span></li>
-                            <li><span>台光電2383</span><span>2000張</span><span>平均成本 42.6</span></li>
-                            <li><span>京元電子2449</span><span>1000張</span><span>平均成本 71.6</span></li>
-                            <li><span>敦揚科2480</span><span>8000張</span><span>平均成本 16.3</span></li>
-                        </ul>
-                        <ul class="col-sm-6">
-                            <li><span>弘裕1474</span><span>2000張</span><span>平均成本 20.5</span></li>
-                            <li><span>燿華2367</span><span>6000張</span><span>平均成本 21.6</span></li>
-                            <li><span>台光電2383</span><span>2000張</span><span>平均成本 42.6</span></li>
-                            <li><span>京元電子2449</span><span>1000張</span><span>平均成本 71.6</span></li>
-                            <li><span>敦揚科2480</span><span>8000張</span><span>平均成本 16.3</span></li>
-                        </ul>
-                    </div>
--->
                 </div>
 		    </div>
 
@@ -313,6 +293,10 @@
 	</div>
 
 	<footer>
+        <div class="partner">
+            <h5>合作夥伴</h5>
+            <a href="https://warrant.tssco.com.tw/warrantweb/Index.action" target="_blank"><img src="images/taishin_warrant_LOGO.jpg" alt="台新權證網"></a>
+        </div>
 	    <p>Copyright © tozzi.com.tw, 2017</p>
 	</footer>
 	</div>
